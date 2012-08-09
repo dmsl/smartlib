@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/encode
+END
+Formatter.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/encode/Formatter.java
+END
+MECARDContactEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/encode/MECARDContactEncoder.java
+END
+EncodeActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/encode/EncodeActivity.java
+END
+ContactEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/encode/ContactEncoder.java
+END
+VCardContactEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/encode/VCardContactEncoder.java
+END
+QRCodeEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/encode/QRCodeEncoder.java
+END

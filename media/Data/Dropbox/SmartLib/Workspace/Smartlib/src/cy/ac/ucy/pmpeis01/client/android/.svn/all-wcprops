@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/smartlib/!svn/ver/290/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android
+END
+DecodeFormatManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/DecodeFormatManager.java
+END
+ViewfinderResultPointCallback.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/ViewfinderResultPointCallback.java
+END
+LocaleManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/repos/smartlib/!svn/ver/211/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/LocaleManager.java
+END
+Contents.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/Contents.java
+END
+ViewfinderView.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/ViewfinderView.java
+END
+PlanarYUVLuminanceSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/PlanarYUVLuminanceSource.java
+END
+HelpActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/HelpActivity.java
+END
+BeepManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/BeepManager.java
+END
+DecodeThread.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/smartlib/!svn/ver/211/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/DecodeThread.java
+END
+PreferencesActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/PreferencesActivity.java
+END
+CaptureActivityHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/CaptureActivityHandler.java
+END
+HttpHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/HttpHelper.java
+END
+CaptureActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/CaptureActivity.java
+END
+DecodeHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/DecodeHandler.java
+END
+IntentSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/IntentSource.java
+END
+InactivityTimer.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/InactivityTimer.java
+END
+Intents.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/Intents.java
+END
+FinishListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/FinishListener.java
+END
