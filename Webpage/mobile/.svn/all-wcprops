@@ -1,0 +1,143 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/repos/smartlib/!svn/ver/271/Webpage/mobile
+END
+getUserBooks.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/smartlib/!svn/ver/298/Webpage/mobile/getUserBooks.php
+END
+borrowBooks_iTook.php
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/repos/smartlib/!svn/ver/336/Webpage/mobile/borrowBooks_iTook.php
+END
+lentABook.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/repos/smartlib/!svn/ver/336/Webpage/mobile/lentABook.php
+END
+deleteABook.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/repos/smartlib/!svn/ver/336/Webpage/mobile/deleteABook.php
+END
+authenticate.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/smartlib/!svn/ver/296/Webpage/mobile/authenticate.php
+END
+stateOfBook.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/repos/smartlib/!svn/ver/296/Webpage/mobile/stateOfBook.php
+END
+popularBooks.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/smartlib/!svn/ver/336/Webpage/mobile/popularBooks.php
+END
+replyToBookRequest.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/smartlib/!svn/ver/336/Webpage/mobile/replyToBookRequest.php
+END
+borrowBooks_iGave.php
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/repos/smartlib/!svn/ver/336/Webpage/mobile/borrowBooks_iGave.php
+END
+insertBookByISBN.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/repos/smartlib/!svn/ver/296/Webpage/mobile/insertBookByISBN.php
+END
+deleteABookRequest.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/smartlib/!svn/ver/336/Webpage/mobile/deleteABookRequest.php
+END
+outgoingRequests.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/repos/smartlib/!svn/ver/336/Webpage/mobile/outgoingRequests.php
+END
+changeStatusOfBook.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/smartlib/!svn/ver/336/Webpage/mobile/changeStatusOfBook.php
+END
+returnABook.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/repos/smartlib/!svn/ver/296/Webpage/mobile/returnABook.php
+END
+mobileSearch.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/smartlib/!svn/ver/271/Webpage/mobile/mobileSearch.php
+END
+sendMessage.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/repos/smartlib/!svn/ver/345/Webpage/mobile/sendMessage.php
+END
+incomingRequests.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/repos/smartlib/!svn/ver/345/Webpage/mobile/incomingRequests.php
+END
+sendEmail.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/repos/smartlib/!svn/ver/336/Webpage/mobile/sendEmail.php
+END
+SQLregister.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/repos/smartlib/!svn/ver/296/Webpage/mobile/SQLregister.php
+END
+requestABook.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/smartlib/!svn/ver/336/Webpage/mobile/requestABook.php
+END
+search.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/repos/smartlib/!svn/ver/336/Webpage/mobile/search.php
+END
+index.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/repos/smartlib/!svn/ver/271/Webpage/mobile/index.php
+END
+location.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/repos/smartlib/!svn/ver/345/Webpage/mobile/location.php
+END

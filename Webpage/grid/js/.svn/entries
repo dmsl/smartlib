@@ -1,0 +1,98 @@
+10
+
+dir
+0
+http://svn.cs.ucy.ac.cy:80/repos/smartlib/grid/js
+http://svn.cs.ucy.ac.cy:80/repos/smartlib
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ef8c7546-dff2-46d2-8c90-3d45ac214529
+
+i18n
+dir
+
+
+
+add
+
+ui.multiselect.js
+file
+
+
+
+add
+
+jquery.contextmenu.js
+file
+
+
+
+add
+
+jquery-ui-1.8.2.custom.min.js
+file
+
+
+
+add
+
+jquery.layout.js
+file
+
+
+
+add
+
+jquery.tablednd.js
+file
+
+
+
+add
+
+src
+dir
+
+
+
+add
+
+tablednd.js
+file
+
+
+
+add
+
+jquery.js
+file
+
+
+
+add
+
+jquery.jqGrid.min.js
+file
+
+
+
+add
+
