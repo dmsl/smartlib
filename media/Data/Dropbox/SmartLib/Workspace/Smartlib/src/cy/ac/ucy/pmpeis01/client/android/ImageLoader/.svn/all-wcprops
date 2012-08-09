@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/repos/smartlib/!svn/ver/267/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/ImageLoader
+END
+Utils.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/ImageLoader/Utils.java
+END
+FileCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/ImageLoader/FileCache.java
+END
+ImageLoader.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/ImageLoader/ImageLoader.java
+END
+MemoryCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/ImageLoader/MemoryCache.java
+END

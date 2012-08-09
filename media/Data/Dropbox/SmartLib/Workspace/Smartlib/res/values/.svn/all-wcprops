@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/repos/smartlib/!svn/ver/290/Android/SmartLib/res/values
+END
+strings.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/smartlib/!svn/ver/370/Android/SmartLib/res/values/strings.xml
+END
+dimens.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/smartlib/!svn/ver/186/Android/SmartLib/res/values/dimens.xml
+END
+ids.xml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/repos/smartlib/!svn/ver/176/Android/SmartLib/res/values/ids.xml
+END
+arrays.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/smartlib/!svn/ver/370/Android/SmartLib/res/values/arrays.xml
+END
+colors.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/smartlib/!svn/ver/176/Android/SmartLib/res/values/colors.xml
+END
+styles.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/smartlib/!svn/ver/370/Android/SmartLib/res/values/styles.xml
+END

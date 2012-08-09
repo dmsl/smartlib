@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/datamatrix/decoder
+END
+DecodedBitStreamParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/datamatrix/decoder/DecodedBitStreamParser.java
+END
+BitMatrixParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/datamatrix/decoder/BitMatrixParser.java
+END
+DataBlock.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/datamatrix/decoder/DataBlock.java
+END
+Decoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/datamatrix/decoder/Decoder.java
+END
+Version.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/datamatrix/decoder/Version.java
+END
