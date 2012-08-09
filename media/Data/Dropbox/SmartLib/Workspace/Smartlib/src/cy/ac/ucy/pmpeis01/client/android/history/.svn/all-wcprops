@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/repos/smartlib/!svn/ver/248/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/history
+END
+DBHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/history/DBHelper.java
+END
+HistoryManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/history/HistoryManager.java
+END
+HistoryActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/history/HistoryActivity.java
+END
+HistoryItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/history/HistoryItem.java
+END
+HistoryItemAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/history/HistoryItemAdapter.java
+END
