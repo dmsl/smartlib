@@ -1,0 +1,12 @@
+<?php
+function inform($pError){
+	$loginError=1;
+	//Mark the error
+	$_SESSION['topTypeMsg']="err";
+	$_SESSION['topMsg']="Internal Error: ".$pError."</br>You can't use SmartLib right now</br>".
+	"Please check back later.";
+	
+	}
+
+
+?>

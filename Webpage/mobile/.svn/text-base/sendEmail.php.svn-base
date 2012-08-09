@@ -1,0 +1,278 @@
+<?php 
+
+session_start();
+$_SESSION['isMobileDevice']=0;
+
+//Get the device, ISBN & Username Owner, & Username Destination
+$device = $_REQUEST['device'];
+$pUsername = $_REQUEST['username'];//person who wants to take his requests
+$pDestination = $_REQUEST['destination'];//person who wants to take his requests
+$_SESSION['message'] = $_REQUEST['message'];//person who wants to take his requests
+
+$_SESSION['destName'] = "";
+$_SESSION['destEmail'] = "";
+$_SESSION['senderName'] = "";
+/*
+ * username: from who i ask the book
+*
+*  1: mail send
+*  0: mail failed to send
+*  -11 -12
+*/
+
+
+//User owner, will lent this book to User Destination
+$_SESSION['UsernameID']="";
+
+
+
+//Find out if we are on mobile device
+if($device=="android" || $device=="iOS"){
+	$_SESSION['isMobileDevice']=1;
+
+}
+//else{
+//	//curently works only for mobile devices
+//	die();
+//}
+
+//Connect to database
+include ('../dbConnect.php');
+
+if($_SESSION['isMobileDevice']){
+
+
+
+
+	//Find out the relation between owner of book and the book
+	//findOwnersRelationWithBook($pOwner, $pISBN);
+
+
+	//Find User ID of Destination User
+	findMyID($pUsername);
+	
+
+	findDestinationData($pDestination);
+
+	//SEND EMAIL
+	sendEmail();
+
+
+
+}
+
+
+
+
+
+
+/** Check if book already requested
+ *
+ * */ 
+function sendEmail(){
+	
+	
+	// SMARTLIB ADMIN MAIL
+	$strTo =  $_SESSION['destEmail'].PHP_EOL;
+
+	
+	//Build Email
+	$strSubject = "SmartLib Message".PHP_EOL;
+	$strHeader = "From: Smartlib UCY<smartlib@cs.ucy.ac.cy>";
+	$strMessage = "Hello ". mysql_real_escape_string($_SESSION['destName']) .",\n"
+	."SmartLib User ".$_SESSION['senderName']. " left a message for you:\n\n"
+	.mysql_real_escape_string($_SESSION['message']) ."\n\n\n".
+
+	
+	//Send email
+	// @ = avoid showing error
+	$flgSend = @mail($strTo,$strSubject,$strMessage,$strHeader);
+	
+	if(!$flgSend)
+	{
+		//Show error to user
+		mobileSendMailFailed();
+	}
+	else{
+		//Show info to user
+		mobileSendSuccess();
+	}
+
+
+}
+
+
+
+/** Finds User ID of User that wants to send mail
+ *
+ * */
+function findDestinationData($pUser){
+
+	
+	$queryFindUser= sprintf("SELECT name, email  FROM SMARTLIB_USER WHERE username='%s'",
+			mysql_real_escape_string($pUser));
+
+	// Find Unique ID of User
+	$result = mysql_query($queryFindUser) or dbError(mysql_error());
+
+	//Get book ID and its status
+	if(mysql_num_rows($result) > 0){
+	
+		$row = mysql_fetch_row($result);
+	
+		$_SESSION['destName'] = $row[0];
+		$_SESSION['destEmail'] = $row[1];
+	
+	}
+	//Use dont owns this book
+	else{
+		//User dont have this book
+		mobileSendWeirdError();
+	}
+	
+	
+ 
+}
+
+
+
+
+/** Finds Info about User that will receive email
+ *
+ * */
+function findMyID($pUser){
+	
+	$queryFindUser= sprintf("SELECT name FROM SMARTLIB_USER WHERE username='%s'",
+			mysql_real_escape_string($pUser));
+	
+
+
+// Find Unique ID of User
+	$result = mysql_query($queryFindUser) or dbError(mysql_error());
+
+
+	//Get book ID and its status
+	if(mysql_num_rows($result) > 0){
+	
+		$row = mysql_fetch_row($result);
+	
+		$_SESSION['senderName'] = $row[0];
+	
+	}
+	//Use dont owns this book
+	else{
+		//User dont have this book
+		mobileSendWeirdError();
+	}
+}
+
+
+
+
+
+// Previously requested
+function mobileSendSuccess(){
+
+	$row_set[] = array(
+			"result"=>"1",
+	);
+
+	//Encode Answer
+	echo json_encode($row_set);
+
+	die();
+}
+
+
+
+
+
+// Previously requested
+function mobileSendMailFailed(){
+	
+	$row_set[] = array(
+			"result"=>"0",
+	);
+
+	//Encode Answer
+	echo json_encode($row_set);
+
+	die();
+}
+
+
+
+
+
+
+
+
+
+
+// Sends error to mobile device: Book dont exists in Google API
+function mobileSendWeirdError(){
+	
+	$row_set[] = array(
+			"result"=>"-12",
+	);
+	
+	//Encode Answer
+	echo json_encode($row_set);
+
+
+	die();
+}
+
+
+
+
+
+
+// TODO Sends error to mobile device using JSON Object Format
+function mobileSendDatabaseError(){
+	$row_set[] = array(
+			"result"=>"-11",
+	);
+	
+	//Encode Answer
+	echo json_encode($row_set);
+
+	
+	die();
+}
+
+
+
+
+
+
+
+
+// Database Error
+function dbError($pError){
+
+	if($_SESSION['isMobileDevice']){
+		//Inform Mobile Device about database Error
+		mobileSendDatabaseError();
+	}
+
+	//if there is DB Error, inform user and move him back
+	inform($pError);
+
+
+	if($_SESSION['currentPage']==""){
+		$_SESSION['currentPage']="index.php";
+	}
+
+	header("Location: ".$_SESSION['currentPage']);
+	die();
+
+}
+
+
+
+
+
+
+
+?>

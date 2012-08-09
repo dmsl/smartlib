@@ -1,0 +1,152 @@
+<?php
+
+session_start();
+
+include ('dbConnect.php');
+
+
+
+
+
+//Get username and password from our form (login.php)
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+//echo "user :" . $username . "</br>"."pass: ".$password."</br>";
+
+//Check if user hasnt provided credencials
+if($username=="" || $password==""
+ || $username=="Type your Username"
+ || $password =="Type your Password"
+){
+
+			$_SESSION['topTypeMsg'] = "err";
+			$_SESSION['topMsg'] = "Username or Password Cant be empty";
+			
+			if($_SESSION['currentPage']==""){
+				$_SESSION['currentPage']="index.php";
+				}
+		
+		header("Location: ".$_SESSION['currentPage']);
+		die();
+	}
+	
+
+//TODO this in register users also!
+//TODO move this somewhere safer! Salting String
+$salt = "5fG42Ak8^9bN";
+$salt2 = "abcde07583";
+// Put salt on password (salt+PASS+salt)
+$salt .= $password.$salt2;
+$password = $salt;
+
+// Password Encryption
+$password = md5($password);
+
+	
+// just to be sure.
+$username = mysql_real_escape_string($username);
+	
+
+	
+	//Connect to database
+
+	
+
+	//Build the query string CHECK select * ?
+	$query = "SELECT * FROM USER WHERE username = '$username' AND password = '$password'  LIMIT 1";
+
+	
+	
+	//Execute the query(Find all users with that password)
+	$result = mysql_query($query) or dbError(mysql_error());
+
+	
+
+
+//Username is correct
+	
+	while($row = mysql_fetch_array($result)){
+		$resusername = $row['username']; 	// username from DB
+		$resname = $row['name']; 			// users name from DB
+		$respassword = $row['password']; 	// password from DB
+		$resemail = $row['email']; 			// email from DB
+		$reslevel = $row['level']; 			// level from DB
+
+	}
+
+	// Validate User & Update User Session
+	if ($respassword == $password)
+	{
+		
+				// INFO magic HAPENS HERE!
+		// TODO add to session the mySQL login!!!
+		$_SESSION['email'] = $resemail;
+		$_SESSION['username'] = $resusername;
+		$_SESSION['name'] = $resname;
+		
+		
+		
+		if($reslevel==0){
+			$_SESSION['loggedin'] = "0";
+			//header("Location: userNotActivated.php"); 
+			$_SESSION['topTypeMsg'] = "err";
+			$_SESSION['topMsg'] = $_SESSION['name']. ", your account is not activated</br>".
+			"Activate it using your email: ".$_SESSION['email'];
+			}
+			
+		else if($reslevel==-1){
+			$_SESSION['loggedin'] = "0";
+			//header("Location: userNotActivated.php"); 
+			$_SESSION['topTypeMsg'] = "err";
+			$_SESSION['topMsg'] = $_SESSION['name']. ", your are banned from SmartLib.</br>".
+			"Contact SmartLib Admin for further Details.";
+			}
+		else {
+			$_SESSION['loggedin'] = "1";
+			unset($_SESSION['topTypeMsg']);
+			unset($_SESSION['topMsg']);
+			}
+
+		 header("Location: ".$_SESSION['currentPage']); 
+		
+	}
+	else
+	{
+		// Inform the user about wrong username or password
+			$_SESSION['loggedin'] = "0";
+			//header("Location: userNotActivated.php"); 
+			$_SESSION['topTypeMsg'] = "err";
+			$_SESSION['topMsg'] = "Wrong Username or Password.</br>".
+			"Please try again.";
+		
+		header("Location: ".$_SESSION['currentPage']); 
+
+	}
+	
+	function dbError($pError){
+	
+		//if there is DB Error, inform user and move him back
+		inform($pError);
+
+			
+		if($_SESSION['currentPage']==""){
+				$_SESSION['currentPage']="index.php";
+				}
+		
+		header("Location: ".$_SESSION['currentPage']);
+		die();
+
+		}
+
+
+
+	?>
+</body>
+</html>
+
+
+
+
+
+

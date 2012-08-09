@@ -1,0 +1,24 @@
+<?php
+
+
+define('DB_NAME', 'smartlib');    // The name of the database
+define('DB_HOST', 'dbserver.in.cs.ucy.ac.cy');    // 
+define('DB_DSN','mysql:host=dbserver.in.cs.ucy.ac.cy;dbname=smartlib');
+define('DB_USER', 'smartlib');     // Your MySQL username
+define('DB_PASSWORD', 'fF8nPKZQaJrzfvzm'); // ...and password
+
+define('_FULL_NAME', 'University Of Cyprus');
+define('_NAME', 'UCY');
+define('_ADDRESS',
+'Data Management Systems Laboratory</br>
+Dept. of Computer Science</br>
+University of Cyprus P.O. Box 20537</br>
+1678 Nicosia, CYPRUS</br>'
+);
+define('_TELEPHONE', '+357-22-892755');
+define('_FAX', '+357-22-892701');
+define('_EMAIL', 'smartLib@cs.ucy.ac.cy');
+define('_DEPARTMENT_URL', 'dmsl.cs.ucy.ac.cy');
+define('_ORGANIZATION_URL', 'cs.ucy.ac.cy');
+
+?>
