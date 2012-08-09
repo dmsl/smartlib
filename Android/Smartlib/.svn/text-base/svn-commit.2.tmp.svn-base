@@ -1,0 +1,32 @@
+\
+--This line, and those below, will be ignored--
+
+A    res/layout/activity_my_books.xml
+A    res/layout/book_item.xml
+A    res/layout/activity_edit_book.xml
+A    res/layout/library_item.xml
+M    res/values/strings.xml
+A    res/drawable/nocover.png
+M    src/cy/ac/ucy/pmpeis01/client/android/CaptureActivityHandler.java
+M    src/cy/ac/ucy/pmpeis01/client/android/CaptureActivity.java
+A    src/cy/ac/ucy/pmpeis01/client/android/ImageLoader
+AM   src/cy/ac/ucy/pmpeis01/client/android/ImageLoader/ImageLoader.java
+AM   src/cy/ac/ucy/pmpeis01/client/android/ImageLoader/MemoryCache.java
+AM   src/cy/ac/ucy/pmpeis01/client/android/ImageLoader/Utils.java
+AM   src/cy/ac/ucy/pmpeis01/client/android/ImageLoader/FileCache.java
+M    src/cy/ac/ucy/pmpeis01/client/android/SmartLib/ChooseLibraryFragment.java
+A    src/cy/ac/ucy/pmpeis01/client/android/SmartLib/Book.java
+M    src/cy/ac/ucy/pmpeis01/client/android/SmartLib/LentBookActivity.java
+M    src/cy/ac/ucy/pmpeis01/client/android/SmartLib/RegisterSuccessActivity.java
+M    src/cy/ac/ucy/pmpeis01/client/android/SmartLib/LoginFragment.java
+A    src/cy/ac/ucy/pmpeis01/client/android/SmartLib/MyBooksActivity.java
+M    src/cy/ac/ucy/pmpeis01/client/android/SmartLib/MainActivity.java
+M    src/cy/ac/ucy/pmpeis01/client/android/SmartLib/RegisterActivity.java
+M    src/cy/ac/ucy/pmpeis01/client/android/SmartLib/Library.java
+M    src/cy/ac/ucy/pmpeis01/client/android/SmartLib/TODO.java
+A    src/cy/ac/ucy/pmpeis01/client/android/SmartLib/BookInfoAdapter.java
+M    src/cy/ac/ucy/pmpeis01/client/android/SmartLib/StartActivity.java
+A    src/cy/ac/ucy/pmpeis01/client/android/SmartLib/EditBookActivity.java
+M    src/cy/ac/ucy/pmpeis01/client/android/SmartLib/User.java
+M    src/cy/ac/ucy/pmpeis01/client/android/SmartLib/App.java
+M    src/cy/ac/ucy/pmpeis01/client/android/SmartLib/LibraryInfoAdapter.java

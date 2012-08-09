@@ -1,0 +1,34 @@
+/*
+ 
+ 
+TODO wifi check on library chooser
+
+TODO modify scanner
+.FIX History on HC Devices
+
+.When books are flushed to PHP/DB, clearHistory of scanned books!
+
+TODO
+.back button, when async task is executing, make it finish it!
+eg on login
+
+TODO
+.make an arraylist, and dont allow re-occurances for same events.
+.implement: return of a book when scanned (PHP/JAVA)
+.implement: change state of book, when -1 -2 (not rentable)
+.implement: when book not rented, and rentable, put option to change rent state
+..3 options: rent? yes?no? change options
+
+CHECK: if dialog present, and user continues to scan?
+TODO!!! Disable scanning method, and wait user to answer
+
+.Future TODO
+..Add scanning only method(no dialogs like: "you have this book rented. do you??" will apear)
+
+TODO: logout button to menu in main activity
+
+TODO FUTURE: make manual insertion new activity!
+TODO SORT BOOK RESULTS BY BOOK TITLE!
+
+
+*/

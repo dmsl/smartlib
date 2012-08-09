@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/common/reedsolomon
+END
+GenericGF.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/common/reedsolomon/GenericGF.java
+END
+ReedSolomonDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/common/reedsolomon/ReedSolomonDecoder.java
+END
+GenericGFPoly.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/common/reedsolomon/GenericGFPoly.java
+END
+ReedSolomonException.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/common/reedsolomon/ReedSolomonException.java
+END
+ReedSolomonEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/common/reedsolomon/ReedSolomonEncoder.java
+END

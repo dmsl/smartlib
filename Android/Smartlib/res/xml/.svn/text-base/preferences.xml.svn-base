@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+
+	Author: Paschalis Mpeis
+
+	Affiliation:
+	Data Management Systems Laboratory 
+	Dept. of Computer Science 
+	University of Cyprus 
+	P.O. Box 20537 
+	1678 Nicosia, CYPRUS 
+	Web: http://dmsl.cs.ucy.ac.cy/
+	Email: dmsl@cs.ucy.ac.cy
+	Tel: +357-22-892755
+	Fax: +357-22-892701
+
+
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <PreferenceCategory android:title="@string/preferences_actions_title">
+    <CheckBoxPreference
+        android:key="preferences_play_beep"
+        android:defaultValue="true"
+        android:title="@string/preferences_play_beep_title"/>
+    <CheckBoxPreference
+        android:key="preferences_vibrate"
+        android:defaultValue="false"
+        android:title="@string/preferences_vibrate_title"/>
+    <CheckBoxPreference
+        android:key="preferences_copy_to_clipboard"
+        android:defaultValue="true"
+        android:title="@string/preferences_copy_to_clipboard_title"/>
+        <CheckBoxPreference
+        android:key="preferences_scan_only_mode"
+        android:defaultValue="false"
+        android:title="@string/preferences_scan_only_mode"
+        android:summaryOn="@string/preferences_scan_only_modeON"
+         android:summaryOff="@string/preferences_scan_only_modeOFF"
+        />
+
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/preferences_general_title">
+
+    <CheckBoxPreference
+        android:key="preferences_auto_focus"
+        android:defaultValue="true"
+        android:title="@string/preferences_auto_focus_title"/>
+
+  </PreferenceCategory>
+</PreferenceScreen>
