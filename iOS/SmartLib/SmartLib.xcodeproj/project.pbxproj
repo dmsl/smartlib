@@ -14,17 +14,12 @@
 		5EDBDF0915BDD54F007D0B94 /* MyBookResultsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDBDF0815BDD54F007D0B94 /* MyBookResultsCell.m */; };
 		5EDBDF1115BDDF1E007D0B94 /* ActivitiesForBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EDBDF1015BDDF1E007D0B94 /* ActivitiesForBookCell.m */; };
 		C041565515BDEC78003E8160 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C041565315BDEC78003E8160 /* MainStoryboard_iPad.storyboard */; };
-		C06660AB15D7CE9100C056F7 /* logo-iPad_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = C06660AA15D7CE9100C056F7 /* logo-iPad_retina.png */; };
-		C06660AE15D7CE9F00C056F7 /* logo-iPad_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = C06660AD15D7CE9F00C056F7 /* logo-iPad_retina.png */; };
 		C06660B215D7CF7F00C056F7 /* spash-iPad_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = C06660AF15D7CF7F00C056F7 /* spash-iPad_retina.png */; };
 		C06660B315D7CF7F00C056F7 /* spash-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C06660B015D7CF7F00C056F7 /* spash-iPad.png */; };
 		C06660B415D7CF7F00C056F7 /* splash-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C06660B115D7CF7F00C056F7 /* splash-iPhone.png */; };
-		C06660C015D7D3AB00C056F7 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C06660BD15D7D3AB00C056F7 /* Default-Landscape~ipad.png */; };
-		C06660C115D7D3AB00C056F7 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C06660BE15D7D3AB00C056F7 /* Default-Portrait@2x~ipad.png */; };
-		C06660C215D7D3AB00C056F7 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C06660BF15D7D3AB00C056F7 /* Default-Portrait~ipad.png */; };
-		C06660C315D7D3C500C056F7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C06660B515D7CF9100C056F7 /* Default.png */; };
 		C08FA26B15BCB9770081FA83 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C08FA26A15BCB9770081FA83 /* Reachability.m */; };
 		C08FA26E15BCBA2F0081FA83 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08FA26D15BCBA2F0081FA83 /* SystemConfiguration.framework */; };
+		C09A91B415D8338500C5F294 /* spalsh-iPad_landcape.png in Resources */ = {isa = PBXBuildFile; fileRef = C09A91B315D8338500C5F294 /* spalsh-iPad_landcape.png */; };
 		C0A486BF15BF5BC60034845D /* BookActions.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A486BE15BF5BC60034845D /* BookActions.m */; };
 		C0B2673515C758BB00CE7130 /* SendMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2673415C758BB00CE7130 /* SendMessageViewController.m */; };
 		C0CCDCDF15C20BD000F307C9 /* ConnectivityChecks.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CCDCDE15C20BD000F307C9 /* ConnectivityChecks.m */; };
@@ -95,18 +90,13 @@
 		5EDBDF0F15BDDF1E007D0B94 /* ActivitiesForBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivitiesForBookCell.h; sourceTree = "<group>"; };
 		5EDBDF1015BDDF1E007D0B94 /* ActivitiesForBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivitiesForBookCell.m; sourceTree = "<group>"; };
 		C041565415BDEC78003E8160 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		C06660AA15D7CE9100C056F7 /* logo-iPad_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-iPad_retina.png"; path = "Resources/logo-iPad_retina.png"; sourceTree = "<group>"; };
-		C06660AD15D7CE9F00C056F7 /* logo-iPad_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-iPad_retina.png"; sourceTree = "<group>"; };
 		C06660AF15D7CF7F00C056F7 /* spash-iPad_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spash-iPad_retina.png"; path = "Resources/spash-iPad_retina.png"; sourceTree = "<group>"; };
 		C06660B015D7CF7F00C056F7 /* spash-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spash-iPad.png"; path = "Resources/spash-iPad.png"; sourceTree = "<group>"; };
 		C06660B115D7CF7F00C056F7 /* splash-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "splash-iPhone.png"; path = "Resources/splash-iPhone.png"; sourceTree = "<group>"; };
-		C06660B515D7CF9100C056F7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		C06660BD15D7D3AB00C056F7 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
-		C06660BE15D7D3AB00C056F7 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
-		C06660BF15D7D3AB00C056F7 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		C08FA26915BCB9760081FA83 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		C08FA26A15BCB9770081FA83 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		C08FA26D15BCBA2F0081FA83 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C09A91B315D8338500C5F294 /* spalsh-iPad_landcape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spalsh-iPad_landcape.png"; path = "Resources/spalsh-iPad_landcape.png"; sourceTree = "<group>"; };
 		C0A486BD15BF5BC60034845D /* BookActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookActions.h; sourceTree = "<group>"; };
 		C0A486BE15BF5BC60034845D /* BookActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookActions.m; sourceTree = "<group>"; };
 		C0B2673315C758BB00CE7130 /* SendMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMessageViewController.h; sourceTree = "<group>"; };
@@ -558,11 +548,6 @@
 		C0F59C4015BCA2DB00B0BBE2 = {
 			isa = PBXGroup;
 			children = (
-				C06660BD15D7D3AB00C056F7 /* Default-Landscape~ipad.png */,
-				C06660BE15D7D3AB00C056F7 /* Default-Portrait@2x~ipad.png */,
-				C06660BF15D7D3AB00C056F7 /* Default-Portrait~ipad.png */,
-				C06660B515D7CF9100C056F7 /* Default.png */,
-				C06660AD15D7CE9F00C056F7 /* logo-iPad_retina.png */,
 				C0F59C5515BCA2DB00B0BBE2 /* SmartLib */,
 				C0F59CB615BCA38F00B0BBE2 /* Resources */,
 				C0F59C4E15BCA2DB00B0BBE2 /* Frameworks */,
@@ -680,10 +665,10 @@
 		C0F59CB615BCA38F00B0BBE2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C09A91B315D8338500C5F294 /* spalsh-iPad_landcape.png */,
 				C06660AF15D7CF7F00C056F7 /* spash-iPad_retina.png */,
 				C06660B015D7CF7F00C056F7 /* spash-iPad.png */,
 				C06660B115D7CF7F00C056F7 /* splash-iPhone.png */,
-				C06660AA15D7CE9100C056F7 /* logo-iPad_retina.png */,
 				C0F59CB715BCA3A600B0BBE2 /* 18-envelope.png */,
 				C0F59CB815BCA3A600B0BBE2 /* 19-gear.png */,
 				C0F59CB915BCA3A600B0BBE2 /* 96-book.png */,
@@ -1175,15 +1160,10 @@
 				C0F59CF115BCA3E400B0BBE2 /* zbar-samples.png in Resources */,
 				C0F59E3A15BCA3EF00B0BBE2 /* README.txt in Resources */,
 				C041565515BDEC78003E8160 /* MainStoryboard_iPad.storyboard in Resources */,
-				C06660AB15D7CE9100C056F7 /* logo-iPad_retina.png in Resources */,
-				C06660AE15D7CE9F00C056F7 /* logo-iPad_retina.png in Resources */,
 				C06660B215D7CF7F00C056F7 /* spash-iPad_retina.png in Resources */,
 				C06660B315D7CF7F00C056F7 /* spash-iPad.png in Resources */,
 				C06660B415D7CF7F00C056F7 /* splash-iPhone.png in Resources */,
-				C06660C015D7D3AB00C056F7 /* Default-Landscape~ipad.png in Resources */,
-				C06660C115D7D3AB00C056F7 /* Default-Portrait@2x~ipad.png in Resources */,
-				C06660C215D7D3AB00C056F7 /* Default-Portrait~ipad.png in Resources */,
-				C06660C315D7D3C500C056F7 /* Default.png in Resources */,
+				C09A91B415D8338500C5F294 /* spalsh-iPad_landcape.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1262,21 +1242,21 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Demetris Zeinalipour";
+				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "67D3B845-C9CD-423E-9ED4-583F53971224";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1287,15 +1267,18 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Demetris Zeinalipour";
+				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "67D3B845-C9CD-423E-9ED4-583F53971224";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1307,6 +1290,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartLib/SmartLib-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "SmartLib/SmartLib-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1325,6 +1309,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartLib/SmartLib-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "SmartLib/SmartLib-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (

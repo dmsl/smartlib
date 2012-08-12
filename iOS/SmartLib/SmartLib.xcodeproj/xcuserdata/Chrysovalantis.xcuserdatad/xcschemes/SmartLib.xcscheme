@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C05D7E4B15A79EE8000AD636"
+               BlueprintIdentifier = "C0F59C4A15BCA2DB00B0BBE2"
                BuildableName = "SmartLib.app"
                BlueprintName = "SmartLib"
                ReferencedContainer = "container:SmartLib.xcodeproj">
@@ -31,7 +31,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C05D7E4B15A79EE8000AD636"
+            BlueprintIdentifier = "C0F59C4A15BCA2DB00B0BBE2"
             BuildableName = "SmartLib.app"
             BlueprintName = "SmartLib"
             ReferencedContainer = "container:SmartLib.xcodeproj">
@@ -43,14 +43,15 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      enableOpenGLFrameCaptureMode = "0"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C05D7E4B15A79EE8000AD636"
+            BlueprintIdentifier = "C0F59C4A15BCA2DB00B0BBE2"
             BuildableName = "SmartLib.app"
             BlueprintName = "SmartLib"
             ReferencedContainer = "container:SmartLib.xcodeproj">
@@ -68,7 +69,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C05D7E4B15A79EE8000AD636"
+            BlueprintIdentifier = "C0F59C4A15BCA2DB00B0BBE2"
             BuildableName = "SmartLib.app"
             BlueprintName = "SmartLib"
             ReferencedContainer = "container:SmartLib.xcodeproj">
