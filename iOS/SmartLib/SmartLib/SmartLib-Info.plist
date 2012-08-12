@@ -16,12 +16,9 @@
 			<array>
 				<string>logo-iPhone.png</string>
 				<string>logo-iPad.png</string>
-				<string>logo-iPad_retina.png</string>
-				<string>Default.png</string>
-				<string>Default-Portrait~ipad.png</string>
-				<string>Default-Portrait@2x~ipad.png</string>
-				<string>Default-Landscape~ipad.png</string>
 			</array>
+			<key>UIPrerenderedIcon</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
@@ -44,6 +41,8 @@
 	<string>MainStoryboard_iPhone</string>
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>MainStoryboard_iPad</string>
+	<key>UIPrerenderedIcon</key>
+	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
