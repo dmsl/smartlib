@@ -1,0 +1,69 @@
+/*   GNU Public Licence
+ *   SmartLib-Prefix Prefix header for all source files of the 'SmartLib' target in the 'SmartLib' project
+ *
+ *   Copyright (C) 2012 University of Cyprus
+ *   This program is free software: you can redistribute it and/or modify it under
+ *   the terms of the GNU General Public License as published by the Free Software
+ *   Foundation, either version 3 of the License, or at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful, but
+ *   WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ *   FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ *   details.
+ *
+ *   You should have received a copy of the GNU General Public License along with
+ *   this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ *  @file SmartLib-Prefix.pch
+ *  @brief Prefix header for all source files of the 'SmartLib' target in the 'SmartLib' project
+ *
+ *  @author Chrysovalantis Anastasiou
+ *  @affiliation
+ *      Data Management Systems Laboratory
+ *      Dept. of Computer Science
+ *      University of Cyprus
+ *      P.O. Box 20537
+ *      1678 Nicosia, CYPRUS
+ *      Web: http://dmsl.cs.ucy.ac.cy/
+ *      Email: dmsl@cs.ucy.ac.cy
+ *      Tel: +357-22-892755
+ *      Fax: +357-22-892701
+ *
+ *  @bug No known bugs.
+ */
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+
+#define MASTER_URL @"http://www.cs.ucy.ac.cy/projects/smartLib"
+#define GET_LIBRARIES_PHP @"/MASTER/getLibraries.php"
+#define LOGIN_PHP @"/authenticate.php"
+#define REGISTER_PHP @"/SQLregister.php"
+#define INSERT_PHP @"/insertBookByISBN.php"
+#define BOOK_STATE_PHP @"/stateOfBook.php"
+#define LENT_PHP @"/lentABook.php"
+#define RETURN_PHP @"/returnABook.php"
+#define USER_BOOKS_PHP @"/getUserBooks.php"
+#define CHANGE_BOOK_STATUS_PHP @"/changeStatusOfBook.php"
+#define DELETE_BOOK_PHP @"/deleteABook.php"
+#define MOBILE_SEARCH_PHP @"/search.php"
+#define REQUEST_BOOK_PHP @"/requestABook.php"
+#define INCOMING_REQUESTS_PHP @"/incomingRequests.php"
+#define OUTGOING_REQUESTS_PHP @"/outgoingRequests.php"
+#define DELETE_REQUEST_PHP @"/deleteABookRequest.php"
+#define BOOKS_GIVEN_PHP @"/borrowBooks_iGave.php"
+#define BOOKS_TAKEN_PHP @"/borrowBooks_iTook.php"
+#define POPULAR_BOOKS_PHP @"/popularBooks.php"
+#define REPLY_REQUEST_PHP @"/replyToBookRequest.php"
+#define SEND_MESSAGE_PHP @"/sendMessage.php"
+
+
+#endif
