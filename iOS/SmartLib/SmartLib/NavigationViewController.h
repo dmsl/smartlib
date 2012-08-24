@@ -36,4 +36,6 @@
 
 @interface NavigationViewController : UINavigationController
 
+@property (nonatomic) BOOL dissmiss;
+
 @end

@@ -35,6 +35,7 @@
 #import "SmartLibMenuViewController.h"
 #import "SmartLibNavigationController.h"
 #import "AppPreferencesViewController.h"
+#import "NavigationViewController.h"
 
 @interface SmartLibMenuViewController ()
 
@@ -115,6 +116,7 @@
         [userdef setBool:NO forKey:@"session"];
         [userdef synchronize];
         [self performSegueWithIdentifier:@"logout" sender:self];
+//        [self dismissModalViewControllerAnimated:YES];
     }
     else if (buttonIndex == 1) {
             [self performSegueWithIdentifier:@"preferences" sender:self];
@@ -161,6 +163,10 @@
         else {
             scanner.flag = 2;
         }
+    }
+    else if ([[segue identifier] isEqualToString:@"logout"]) {
+        NavigationViewController *dvc = [segue destinationViewController];
+        dvc.dissmiss = YES;
     }
     
     if ([popover isPopoverVisible]) {
