@@ -34,7 +34,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RegisterViewController : UITableViewController <UIPickerViewDelegate, UIPickerViewDataSource,UITextFieldDelegate, UIAlertViewDelegate>
+@interface RegisterViewController : UITableViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIAlertViewDelegate>
 {
     IBOutlet UITextField *username;
     IBOutlet UITextField *fname;
@@ -48,6 +48,7 @@
     IBOutlet UIPickerView *libraries;
 }
 
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *title;
 @property (nonatomic, retain) IBOutlet UITextField *username;
 @property (nonatomic, retain) IBOutlet UITextField *fname;
 @property (nonatomic, retain) IBOutlet UITextField *lname;
@@ -58,8 +59,12 @@
 @property (nonatomic, retain) IBOutlet UISwitch *emailNotifications;
 @property (nonatomic, retain) IBOutlet UISwitch *appNotifications;
 @property (nonatomic, retain) IBOutlet UIPickerView *libraries;
+@property (nonatomic, retain) NSString *baseURL;
+@property (nonatomic, retain) NSString *baseName;
 
 -(IBAction)resetFields:(id)sender;
 -(IBAction)submitRegistration:(id)sender;
+-(IBAction)showList:(id)sender;
+-(void)refreshTitle;
 
 @end

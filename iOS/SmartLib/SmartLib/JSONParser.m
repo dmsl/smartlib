@@ -40,7 +40,7 @@
 {
     //getting book title 
     NSString *title = [bookData objectForKey:@"title"];
-    if (title!=nil || [title isEqualToString:@""]) {
+    if (title==nil || [title isEqualToString:@""]) {
         title = @"N/A";
     }
     
@@ -74,11 +74,9 @@
     
     //getting book-cover thumbnail
     NSString *imageURL = [[bookData objectForKey:@"imageLinks"] objectForKey:@"thumbnail"];
-    if (imageURL!=nil || [imageURL isEqualToString:@""]) {
+    NSLog(@"%@",imageURL);
+    if (imageURL==nil || [imageURL isEqualToString:@""]) {
         imageURL = @"N/A";
-    }
-    else {
-        
     }
     
     //getting publish date
@@ -109,8 +107,8 @@
     NSNumber *copAvail = [NSNumber numberWithInt:1];
     NSString *owner = [[[NSUserDefaults standardUserDefaults] objectForKey:@"user"] objectForKey:@"username"];
     NSArray *data = [[NSArray alloc] initWithObjects:isbn,title,author,publishedDate,pageCount,copAvail,copAvail,today,rate,imageURL,lang,owner,nil];
-
-    return [data autorelease];
+    
+    return data;
 }
 
 -(NSDictionary*)parseLoginInfo:(NSString *)loginInfo

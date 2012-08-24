@@ -34,6 +34,7 @@
 
 #import "LoginViewController.h"
 #import "BookActions.h"
+#import "PickerViewPopover.h"
 
 @interface LoginViewController ()
 
@@ -48,9 +49,10 @@
     NSString *baseURL;
     UIAlertView *waiting;
     UIView *indicating;
+    UIPopoverController *popover;
 }
 
-@synthesize username, password, remember, libraries;
+@synthesize username, password, remember, libraries, title, currentLib, baseName, baseURL;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -66,6 +68,11 @@
     [super viewDidLoad];
 }
 
+-(void)refreshTitle
+{
+    title.text = baseName;
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -79,20 +86,21 @@
 {
     [super viewDidAppear:animated];
     
-    indicating = [[UIView alloc] init];
-    indicating.center = libraries.center;
-    indicating.frame = CGRectMake([libraries center].x-50,[libraries center].y-50, 100, 100);
-    indicating.backgroundColor = [UIColor blackColor];
-    indicating.alpha = 0.5;
-    [self.view addSubview:indicating];
-    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    indicator.center = CGPointMake(50, 50);
-    [indicator startAnimating];
-    [indicating addSubview:indicator];
-    [indicator release];
-    
-    
-    [self performSelector:@selector(getLibraries) withObject:nil afterDelay:0];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        indicating = [[UIView alloc] init];
+        indicating.center = libraries.center;
+        indicating.frame = CGRectMake([libraries center].x-50,[libraries center].y-50, 100, 100);
+        indicating.backgroundColor = [UIColor blackColor];
+        indicating.alpha = 0.5;
+        [self.view addSubview:indicating];
+        UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        indicator.center = CGPointMake(50, 50);
+        [indicator startAnimating];
+        [indicating addSubview:indicator];
+        [indicator release];
+        
+        [self performSelector:@selector(getLibraries) withObject:nil afterDelay:0];
+    }
 }
 
 -(void)getLibraries
@@ -223,7 +231,12 @@
                     rememberedLibs = [[NSMutableDictionary alloc] initWithCapacity:2];
                 }
                 
-                [rememberedLibs setObject:userCredentials forKey:[[librariesList objectAtIndex:[libraries selectedRowInComponent:0]] objectForKey:@"name"]];
+                if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                    [rememberedLibs setObject:userCredentials forKey:baseName];
+                }
+                else {
+                    [rememberedLibs setObject:userCredentials forKey:[[librariesList objectAtIndex:[libraries selectedRowInComponent:0]] objectForKey:@"name"]];
+                }
                 [addingUserCred setObject:rememberedLibs forKey:@"rememberedLibs"];
                 [rememberedLibs release];
             }
@@ -233,7 +246,12 @@
             [addingUserCred setBool:YES forKey:@"session"];
             [addingUserCred setObject:userInfo forKey:@"user"];
             [addingUserCred setObject:baseURL forKey:@"baseURL"];
-            [addingUserCred setObject:[librariesList objectAtIndex:[libraries selectedRowInComponent:0]] forKey:@"currentLib"];
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                [addingUserCred setObject:currentLib forKey:@"currentLib"];
+            }
+            else {
+                [addingUserCred setObject:[librariesList objectAtIndex:[libraries selectedRowInComponent:0]] forKey:@"currentLib"];
+            }
             [addingUserCred synchronize];
             [self performSegueWithIdentifier:@"enterLibrary" sender:self];
         }
@@ -349,6 +367,26 @@
         username.text = nil;
         password.text = nil;
         remember.on = NO;
+    }
+}
+
+#pragma mark - Seque
+
+-(IBAction)showList:(id)sender
+{
+    [self performSegueWithIdentifier:@"libList" sender:sender];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"libList"]) {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            PickerViewPopover *dvc = [(UIStoryboardPopoverSegue*)segue destinationViewController];
+            popover = [(UIStoryboardPopoverSegue *)segue popoverController];
+            dvc.popover = popover;
+            dvc.delegate = self;
+            dvc.saveLib = YES;
+        }
     }
 }
 

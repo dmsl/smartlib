@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2549" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3XU-qN-NeS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3XU-qN-NeS">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development version="4200" identifier="xcode"/>
@@ -627,8 +627,8 @@
                                     <segue destination="5VZ-Ye-ELi" kind="modal" identifier="myBooks" modalTransitionStyle="flipHorizontal" id="0xr-VF-UYk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NA5-0U-Dw3">
-                                <rect key="frame" x="98" y="323" width="125" height="37"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NA5-0U-Dw3">
+                                <rect key="frame" x="98" y="368" width="125" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="User Actions">
@@ -643,7 +643,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ODw-oD-Pgd">
-                                <rect key="frame" x="98" y="368" width="125" height="37"/>
+                                <rect key="frame" x="98" y="323" width="125" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Popular Books">
@@ -2092,7 +2092,6 @@
         <class className="IncomingRequests" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IncomingRequests.h"/>
             <relationships>
-                <relationship kind="action" name="SendAResponse:"/>
                 <relationship kind="action" name="mainMenu:"/>
             </relationships>
         </class>
@@ -2103,9 +2102,11 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
                 <relationship kind="action" name="login:"/>
+                <relationship kind="action" name="showList:"/>
                 <relationship kind="outlet" name="libraries" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="remember" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="title" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="username" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -2137,6 +2138,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterViewController.h"/>
             <relationships>
                 <relationship kind="action" name="resetFields:"/>
+                <relationship kind="action" name="showList:"/>
                 <relationship kind="action" name="submitRegistration:"/>
                 <relationship kind="outlet" name="appNotifications" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="confirmPassword" candidateClass="UITextField"/>
@@ -2147,6 +2149,7 @@
                 <relationship kind="outlet" name="lname" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="telephone" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="title" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="username" candidateClass="UITextField"/>
             </relationships>
         </class>

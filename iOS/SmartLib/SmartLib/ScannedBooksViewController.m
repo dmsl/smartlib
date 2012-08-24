@@ -109,10 +109,11 @@
     }
     else {
         BookActions *getState = [[BookActions alloc] init];
-        isbn = [[scannedBooks lastObject] objectForKey:@"isbn"];
+        isbn = [[[scannedBooks lastObject] info] objectForKey:@"isbn"];
         username = [[[NSUserDefaults standardUserDefaults] objectForKey:@"user"] objectForKey:@"username"];
         NSInteger bookState = [getState stateOfBook:isbn user:username];
         [getState release];
+        [scannedBooks removeLastObject];
         
         switch (bookState) {
             case 1:

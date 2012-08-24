@@ -181,7 +181,6 @@
                 default:
                     break;
             }
-            //            [self performSegueWithIdentifier:@"scannedBooks" sender:self];
         }
         else {
             [[Zreader readerView] start];
@@ -212,7 +211,7 @@
     BookActions *addBook = [[BookActions alloc] init];
     NSInteger result = [addBook saveBook:isbn];
     [addBook release];
-    
+    [waiting dismissWithClickedButtonIndex:-1 animated:YES];
     NSString *title;
     NSString *message;
     
@@ -227,7 +226,7 @@
         {
             //could not save
             title = [NSString stringWithFormat:@"Error"];
-            message = [NSString stringWithFormat:@"Could not add book to your library."];
+            message = [NSString stringWithFormat:@"Book is already added to your library."];
             break;
         }
         case -2:
@@ -405,11 +404,12 @@
     if ([popover isPopoverVisible]) {
         [popover dismissPopoverAnimated:NO];
     }
-    [[Zreader readerView] stop];
-    UIAlertView *mainMenu = [[UIAlertView alloc] initWithTitle:@"Warning!" message:@"You will lose all unsaved scanned books. Is it OK?" delegate:self cancelButtonTitle:@"Don't Leave" otherButtonTitles:@"Main Menu", nil];
-    mainMenu.tag = 3;
-    [mainMenu show];
-    [mainMenu release];
+//    [[Zreader readerView] stop];
+//    UIAlertView *mainMenu = [[UIAlertView alloc] initWithTitle:@"Warning!" message:@"You will lose all unsaved scanned books. Is it OK?" delegate:self cancelButtonTitle:@"Don't Leave" otherButtonTitles:@"Main Menu", nil];
+//    mainMenu.tag = 3;
+//    [mainMenu show];
+//    [mainMenu release];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad
