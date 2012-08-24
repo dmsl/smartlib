@@ -46,7 +46,7 @@
     BOOL connectivityCheckStarted;
 }
 
-@synthesize connectivityStatus;
+@synthesize connectivityStatus,dismiss;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -72,6 +72,7 @@
     [connectivityAlert addSubview:indicator];
     [indicator startAnimating];
     [connectivityAlert show];
+    [connectivityAlert release];
     [indicator release];
 }
 
@@ -88,12 +89,11 @@
         [checkConnection performSelector: @selector(checkConnectivity:)
                               withObject: self
                               afterDelay: 0];
-        //now i'm waiting for a response
+        //now i'm waiting for a responses
     }
     else {
-        if (connectivityAlert!=nil) {
+        if (dismiss) {
             [connectivityAlert dismissWithClickedButtonIndex:-1 animated:YES];
-            [connectivityAlert release];
         }
         
         self.view.hidden = NO;
@@ -102,6 +102,7 @@
 
 -(void)receivedResponse
 {
+    NSLog(@"%d",[connectivityAlert retainCount]);
     [connectivityAlert dismissWithClickedButtonIndex:-1 animated:YES];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     NSLog(@"Connectivity Status is: %d",connectivityStatus);

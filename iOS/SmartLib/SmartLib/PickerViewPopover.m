@@ -21,6 +21,7 @@
 {
     NSArray *librariesList;
     NSString *baseURL;
+    UIView *indicating;
 }
 
 @synthesize libraries, delegate, popover, saveLib;
@@ -38,6 +39,17 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    indicating = [[UIView alloc] init];
+    indicating.center = libraries.center;
+    indicating.frame = CGRectMake([libraries center].x-50,[libraries center].y-50, 100, 100);
+    indicating.backgroundColor = [UIColor blackColor];
+    indicating.alpha = 0.5;
+    [self.view addSubview:indicating];
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = CGPointMake(50, 50);
+    [indicator startAnimating];
+    [indicating addSubview:indicator];
+    [indicator release];
     
     [self performSelector:@selector(getLibraries) withObject:nil afterDelay:0];
 }
@@ -49,6 +61,7 @@
     [getLibraries release];
     if ([[[librariesList objectAtIndex:0] objectForKey:@"result"] integerValue] == 1) {
         [(NSMutableArray*)librariesList removeObjectAtIndex:0];
+        [indicating removeFromSuperview];
         [libraries reloadAllComponents];
     }
     else if ([[[librariesList objectAtIndex:0] objectForKey:@"result"] integerValue] == -11) {

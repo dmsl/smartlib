@@ -33,12 +33,15 @@
  */
 
 #import "NavigationViewController.h"
+#import "RootViewController.h"
 
 @interface NavigationViewController ()
 
 @end
 
 @implementation NavigationViewController
+
+@synthesize dissmiss;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,6 +56,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [(RootViewController*)[self topViewController] setDismiss:dissmiss];
 }
 
 - (void)viewDidUnload

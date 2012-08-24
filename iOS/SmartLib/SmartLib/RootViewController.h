@@ -40,5 +40,6 @@
 @interface RootViewController : UIViewController <ConnectivityChecksDelegate,UIAlertViewDelegate>
 
 @property (nonatomic) NSInteger connectivityStatus;
+@property (nonatomic) BOOL dismiss;
 
 @end
