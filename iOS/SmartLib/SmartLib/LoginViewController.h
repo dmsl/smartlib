@@ -47,6 +47,13 @@
 @property (nonatomic, retain) IBOutlet UISwitch *remember;
 @property (nonatomic, retain) IBOutlet UIPickerView *libraries;
 
+@property (nonatomic, retain) IBOutlet UILabel *title;
+@property (nonatomic, retain) NSDictionary *currentLib;
+@property (nonatomic, retain) NSString *baseURL;
+@property (nonatomic, retain) NSString *baseName;
+
 -(IBAction)login:(id)sender;
+-(IBAction)showList:(id)sender;
+-(void)refreshTitle;
 
 @end

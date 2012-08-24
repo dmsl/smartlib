@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2549" systemVersion="11E53" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="Cve-bU-BVB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="Cve-bU-BVB">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development version="4200" identifier="xcode"/>
@@ -92,19 +92,11 @@
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <pickerView key="tableHeaderView" contentMode="scaleAspectFit" id="C5i-oy-MxZ">
-                            <rect key="frame" x="0.0" y="0.0" width="768" height="216"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <connections>
-                                <outlet property="dataSource" destination="rws-Zl-5Wl" id="eWc-pB-iHP"/>
-                                <outlet property="delegate" destination="rws-Zl-5Wl" id="NFT-ph-axy"/>
-                            </connections>
-                        </pickerView>
                         <sections>
                             <tableViewSection headerTitle="Log in" id="Eyf-QD-YGB">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="49" id="PIo-8l-k0Q">
-                                        <rect key="frame" x="0.0" y="250" width="768" height="50"/>
+                                        <rect key="frame" x="0.0" y="54" width="768" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="1" width="678" height="48"/>
@@ -133,7 +125,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="49" id="lCq-H6-Xr0">
-                                        <rect key="frame" x="0.0" y="300" width="768" height="49"/>
+                                        <rect key="frame" x="0.0" y="104" width="768" height="49"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="48"/>
@@ -162,7 +154,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="49" id="EVO-E5-PSE">
-                                        <rect key="frame" x="0.0" y="349" width="768" height="50"/>
+                                        <rect key="frame" x="0.0" y="153" width="768" height="49"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="48"/>
@@ -179,6 +171,47 @@
                                                     <rect key="frame" x="579" y="10" width="79" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </switch>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="49" id="JyD-X9-whV">
+                                        <rect key="frame" x="0.0" y="202" width="768" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="45" y="0.0" width="678" height="48"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Library" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="UnA-RV-gaL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="117" height="48"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OQz-lj-CHB">
+                                                    <rect key="frame" x="559" y="5" width="99" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="Choose...">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="showList:" destination="rws-Zl-5Wl" eventType="touchDown" id="fyo-Qf-S2x"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Choose Library..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" enabled="NO" id="C1w-mq-Msg">
+                                                    <rect key="frame" x="125" y="0.0" width="396" height="48"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -204,15 +237,65 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
-                        <outlet property="libraries" destination="C5i-oy-MxZ" id="ZlO-iI-Db2"/>
                         <outlet property="password" destination="OQJ-E3-3gz" id="Acd-5T-I6s"/>
                         <outlet property="remember" destination="SdM-IJ-Sdg" id="G2S-vo-jJu"/>
+                        <outlet property="title" destination="C1w-mq-Msg" id="dQZ-lV-w5h"/>
                         <outlet property="username" destination="cwa-YV-lXP" id="1ZS-C3-BQ0"/>
                         <segue destination="qkC-eW-5Ns" kind="modal" identifier="enterLibrary" id="igy-7J-kgu"/>
+                        <segue destination="W6M-on-c9i" kind="popover" identifier="libList" popoverAnchorView="OQz-lj-CHB" id="ZIQ-4M-Wih">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="-15305" y="-5464"/>
+        </scene>
+        <!--Picker View Popover-->
+        <scene sceneID="0YY-st-90h">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a68-Qp-hNb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController autoresizesArchivedViewToFullSize="NO" modalPresentationStyle="pageSheet" id="W6M-on-c9i" customClass="PickerViewPopover" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pwW-jO-sTF">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleAspectFill" id="dAd-j9-uLl">
+                                <rect key="frame" x="0.0" y="0.0" width="540" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" updatesFrequently="YES"/>
+                                </accessibility>
+                                <connections>
+                                    <outlet property="dataSource" destination="W6M-on-c9i" id="Fcp-jL-GRy"/>
+                                    <outlet property="delegate" destination="W6M-on-c9i" id="ocU-jy-coJ"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VlU-tG-XaH">
+                                <rect key="frame" x="151" y="224" width="72" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneChoosing:" destination="W6M-on-c9i" eventType="touchDown" id="MoW-0j-Mxl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="418" height="266"/>
+                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="libraries" destination="dAd-j9-uLl" id="mMQ-ob-Nby"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-15107" y="-7544"/>
         </scene>
         <!--Register View Controller - REGISTER-->
         <scene sceneID="69j-RC-EQc">
@@ -223,19 +306,11 @@
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <pickerView key="tableHeaderView" contentMode="scaleToFill" id="PMn-ef-kYF">
-                            <rect key="frame" x="0.0" y="0.0" width="768" height="216"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <connections>
-                                <outlet property="dataSource" destination="2uZ-Pt-kXv" id="6IE-bK-CVg"/>
-                                <outlet property="delegate" destination="2uZ-Pt-kXv" id="svk-0Q-DMj"/>
-                            </connections>
-                        </pickerView>
                         <sections>
                             <tableViewSection id="TND-cJ-Xu8">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="9Ki-Ht-o8U">
-                                        <rect key="frame" x="0.0" y="226" width="768" height="45"/>
+                                        <rect key="frame" x="0.0" y="30" width="768" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="1" width="678" height="43"/>
@@ -245,7 +320,14 @@
                                                     <rect key="frame" x="0.0" y="-1" width="678" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                     <items>
+                                                        <barButtonItem title="Choose Library" id="kvL-C7-afl">
+                                                            <connections>
+                                                                <action selector="showList:" destination="2uZ-Pt-kXv" id="xfe-cx-PhN"/>
+                                                            </connections>
+                                                        </barButtonItem>
                                                         <barButtonItem style="plain" systemItem="flexibleSpace" id="KIx-W3-Ygp"/>
+                                                        <barButtonItem enabled="NO" title="Choose Library..." style="plain" id="klH-ko-Q3Q"/>
+                                                        <barButtonItem style="plain" systemItem="flexibleSpace" id="NtL-JA-gZF"/>
                                                         <barButtonItem systemItem="refresh" id="1NE-dQ-VCX">
                                                             <connections>
                                                                 <action selector="resetFields:" destination="2uZ-Pt-kXv" id="Efs-2L-TfS"/>
@@ -263,7 +345,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="mS2-Lt-TMm">
-                                        <rect key="frame" x="0.0" y="271" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="75" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -288,7 +370,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Bm4-9y-3rV">
-                                        <rect key="frame" x="0.0" y="315" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="119" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -313,7 +395,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="O1A-Kx-1mC">
-                                        <rect key="frame" x="0.0" y="359" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="163" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -338,7 +420,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="d3e-XS-Bb4">
-                                        <rect key="frame" x="0.0" y="403" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="207" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -363,7 +445,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="XC1-6U-s8M">
-                                        <rect key="frame" x="0.0" y="447" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="251" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -388,7 +470,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Shq-st-Hb6">
-                                        <rect key="frame" x="0.0" y="491" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="295" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -413,7 +495,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2dO-2d-Wb4">
-                                        <rect key="frame" x="0.0" y="535" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="339" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -438,7 +520,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="107" id="S8N-RP-fyf">
-                                        <rect key="frame" x="0.0" y="579" width="768" height="108"/>
+                                        <rect key="frame" x="0.0" y="383" width="768" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="106"/>
@@ -496,11 +578,14 @@
                         <outlet property="email" destination="iBk-06-52n" id="S8w-3Q-59E"/>
                         <outlet property="emailNotifications" destination="wcd-LZ-7bN" id="WFB-SR-XCI"/>
                         <outlet property="fname" destination="Vpq-Bb-izn" id="axt-Kh-BLa"/>
-                        <outlet property="libraries" destination="PMn-ef-kYF" id="lLB-V9-SfR"/>
                         <outlet property="lname" destination="0Zn-aG-KLo" id="pEa-ez-LD6"/>
                         <outlet property="password" destination="kky-eX-aLC" id="7RI-qx-26c"/>
                         <outlet property="telephone" destination="v1h-z0-qcS" id="0sP-4T-Jen"/>
+                        <outlet property="title" destination="klH-ko-Q3Q" id="uGS-pH-m4G"/>
                         <outlet property="username" destination="kzI-YS-Lg3" id="Rk1-Hs-JO8"/>
+                        <segue destination="W6M-on-c9i" kind="popover" identifier="libList" popoverAnchorBarButtonItem="kvL-C7-afl" id="vur-QI-V1G">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </tableViewController>
             </objects>
@@ -615,11 +700,11 @@
                                     <segue destination="6QU-Th-OQP" kind="modal" identifier="Mybooks" modalTransitionStyle="flipHorizontal" id="88V-U6-iyE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="N7j-Cr-cP7">
-                                <rect key="frame" x="266" y="779" width="201" height="47"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="N7j-Cr-cP7">
+                                <rect key="frame" x="256" y="868" width="229" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="User Actions">
+                                <state key="normal" title="User Actions (Coming Soon)">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -631,7 +716,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="G5U-Ao-0B0">
-                                <rect key="frame" x="266" y="865" width="201" height="47"/>
+                                <rect key="frame" x="266" y="782" width="201" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Popular Books">
@@ -2047,7 +2132,6 @@
         <class className="IncomingRequests" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IncomingRequests.h"/>
             <relationships>
-                <relationship kind="action" name="SendAResponse:"/>
                 <relationship kind="action" name="mainMenu:"/>
             </relationships>
         </class>
@@ -2058,9 +2142,11 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
                 <relationship kind="action" name="login:"/>
+                <relationship kind="action" name="showList:"/>
                 <relationship kind="outlet" name="libraries" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="remember" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="title" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="username" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -2088,10 +2174,18 @@
                 <relationship kind="action" name="mainMenu:"/>
             </relationships>
         </class>
+        <class className="PickerViewPopover" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PickerViewPopover.h"/>
+            <relationships>
+                <relationship kind="action" name="doneChoosing:"/>
+                <relationship kind="outlet" name="libraries" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
         <class className="RegisterViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterViewController.h"/>
             <relationships>
                 <relationship kind="action" name="resetFields:"/>
+                <relationship kind="action" name="showList:"/>
                 <relationship kind="action" name="submitRegistration:"/>
                 <relationship kind="outlet" name="appNotifications" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="confirmPassword" candidateClass="UITextField"/>
@@ -2102,6 +2196,7 @@
                 <relationship kind="outlet" name="lname" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="telephone" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="title" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="username" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -2180,6 +2275,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="igy-7J-kgu"/>
+        <segue reference="ZIQ-4M-Wih"/>
         <segue reference="3mD-Xv-4VC"/>
         <segue reference="EGd-DF-h0T"/>
     </inferredMetricsTieBreakers>

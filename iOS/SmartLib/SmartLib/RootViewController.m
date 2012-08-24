@@ -91,7 +91,7 @@
         //now i'm waiting for a response
     }
     else {
-        if (connectivityAlert!=nil && [connectivityAlert isVisible]) {
+        if (connectivityAlert!=nil) {
             [connectivityAlert dismissWithClickedButtonIndex:-1 animated:YES];
             [connectivityAlert release];
         }

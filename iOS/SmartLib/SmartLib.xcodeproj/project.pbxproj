@@ -74,6 +74,11 @@
 		C0F59E4415BCA41A00B0BBE2 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F59E4315BCA41A00B0BBE2 /* libxml2.dylib */; };
 		C0F59E4B15BCA43F00B0BBE2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F59E4915BCA43F00B0BBE2 /* AudioToolbox.framework */; };
 		C0F59E4C15BCA43F00B0BBE2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F59E4A15BCA43F00B0BBE2 /* QuartzCore.framework */; };
+		C0FD4ADA15D944E500B04E39 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FD4AD915D944E500B04E39 /* Default.png */; };
+		C0FD4ADC15D944ED00B04E39 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FD4ADB15D944ED00B04E39 /* Default-Portrait~ipad.png */; };
+		C0FD4ADE15D944F200B04E39 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FD4ADD15D944F200B04E39 /* Default-Portrait@2x~ipad.png */; };
+		C0FD4AE015D944F500B04E39 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FD4ADF15D944F500B04E39 /* Default-Landscape~ipad.png */; };
+		C0FD7F8E15E7FDCD00F99A81 /* PickerViewPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FD7F8D15E7FDCD00F99A81 /* PickerViewPopover.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -519,6 +524,12 @@
 		C0F59E4315BCA41A00B0BBE2 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		C0F59E4915BCA43F00B0BBE2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C0F59E4A15BCA43F00B0BBE2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C0FD4AD915D944E500B04E39 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		C0FD4ADB15D944ED00B04E39 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		C0FD4ADD15D944F200B04E39 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		C0FD4ADF15D944F500B04E39 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		C0FD7F8C15E7FDCC00F99A81 /* PickerViewPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewPopover.h; sourceTree = "<group>"; };
+		C0FD7F8D15E7FDCD00F99A81 /* PickerViewPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewPopover.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -548,6 +559,10 @@
 		C0F59C4015BCA2DB00B0BBE2 = {
 			isa = PBXGroup;
 			children = (
+				C0FD4ADF15D944F500B04E39 /* Default-Landscape~ipad.png */,
+				C0FD4ADD15D944F200B04E39 /* Default-Portrait@2x~ipad.png */,
+				C0FD4ADB15D944ED00B04E39 /* Default-Portrait~ipad.png */,
+				C0FD4AD915D944E500B04E39 /* Default.png */,
 				C0F59C5515BCA2DB00B0BBE2 /* SmartLib */,
 				C0F59CB615BCA38F00B0BBE2 /* Resources */,
 				C0F59C4E15BCA2DB00B0BBE2 /* Frameworks */,
@@ -608,6 +623,8 @@
 				C0F59C9115BCA37000B0BBE2 /* RootViewController.m */,
 				C0F59C8E15BCA37000B0BBE2 /* RegisterViewController.h */,
 				C0F59C8F15BCA37000B0BBE2 /* RegisterViewController.m */,
+				C0FD7F8C15E7FDCC00F99A81 /* PickerViewPopover.h */,
+				C0FD7F8D15E7FDCD00F99A81 /* PickerViewPopover.m */,
 				C0F59C8815BCA37000B0BBE2 /* LoginViewController.h */,
 				C0F59C8915BCA37000B0BBE2 /* LoginViewController.m */,
 				C0F59C9C15BCA37000B0BBE2 /* SmartLibNavigationController.h */,
@@ -1164,6 +1181,10 @@
 				C06660B315D7CF7F00C056F7 /* spash-iPad.png in Resources */,
 				C06660B415D7CF7F00C056F7 /* splash-iPhone.png in Resources */,
 				C09A91B415D8338500C5F294 /* spalsh-iPad_landcape.png in Resources */,
+				C0FD4ADA15D944E500B04E39 /* Default.png in Resources */,
+				C0FD4ADC15D944ED00B04E39 /* Default-Portrait~ipad.png in Resources */,
+				C0FD4ADE15D944F200B04E39 /* Default-Portrait@2x~ipad.png in Resources */,
+				C0FD4AE015D944F500B04E39 /* Default-Landscape~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1204,6 +1225,7 @@
 				5E6013A915C457BD00224CB5 /* OutgoingRequests.m in Sources */,
 				C0F4678D15C4A37000AAE8EF /* UserActionsViewController.m in Sources */,
 				C0B2673515C758BB00CE7130 /* SendMessageViewController.m in Sources */,
+				C0FD7F8E15E7FDCD00F99A81 /* PickerViewPopover.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1242,7 +1264,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Demetris Zeinalipour";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Demetris Zeinalipour (HY45H9826Z)";
 				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1256,7 +1278,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "67D3B845-C9CD-423E-9ED4-583F53971224";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FB9CE2C3-A106-4156-8BF9-E4AB6DF345F0";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

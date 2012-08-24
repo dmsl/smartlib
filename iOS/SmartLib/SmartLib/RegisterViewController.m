@@ -33,6 +33,7 @@
  */
 
 #import "RegisterViewController.h"
+#import "PickerViewPopover.h"
 #import "BookActions.h"
 
 #define switchValue(x) x?@"on":@"off"
@@ -47,13 +48,13 @@
 {
     NSArray *librariesList;
     NSArray *keys;
-    NSString *baseURL;
     id nextResponder;
     id isFirstResponser;
     UIView *indicating;
+    UIPopoverController *popover;
 }
 
-@synthesize username,fname,lname,email,password, confirmPassword, telephone, emailNotifications, appNotifications,libraries;
+@synthesize title,username,fname,lname,email,password, confirmPassword, telephone, emailNotifications, appNotifications,libraries, baseURL, baseName;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -67,6 +68,16 @@
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     isFirstResponser = textField;
+}
+
+-(IBAction)showList:(id)sender
+{
+    [self performSegueWithIdentifier:@"libList" sender:sender];
+}
+
+-(void)refreshTitle
+{
+    title.title = baseName;
 }
 
 - (void)viewDidLoad
@@ -109,19 +120,21 @@
 {
     [super viewDidAppear:animated];
     
-    indicating = [[UIView alloc] init];
-    indicating.center = libraries.center;
-    indicating.frame = CGRectMake([libraries center].x-50,[libraries center].y-50, 100, 100);
-    indicating.backgroundColor = [UIColor blackColor];
-    indicating.alpha = 0.5;
-    [self.view addSubview:indicating];
-    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    indicator.center = CGPointMake(50, 50);
-    [indicator startAnimating];
-    [indicating addSubview:indicator];
-    [indicator release];
-
-    [self performSelector:@selector(getLibraries) withObject:nil afterDelay:0];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        indicating = [[UIView alloc] init];
+        indicating.center = libraries.center;
+        indicating.frame = CGRectMake([libraries center].x-50,[libraries center].y-50, 100, 100);
+        indicating.backgroundColor = [UIColor blackColor];
+        indicating.alpha = 0.5;
+        [self.view addSubview:indicating];
+        UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        indicator.center = CGPointMake(50, 50);
+        [indicator startAnimating];
+        [indicating addSubview:indicator];
+        [indicator release];
+        
+        [self performSelector:@selector(getLibraries) withObject:nil afterDelay:0];
+    }
 }
 
 -(void)getLibraries
@@ -346,4 +359,17 @@
     }
 }
 
+#pragma mark - Seque
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"libList"]) {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            PickerViewPopover *dvc = [(UIStoryboardPopoverSegue*)segue destinationViewController];
+            popover = [(UIStoryboardPopoverSegue *)segue popoverController];
+            dvc.popover = popover;
+            dvc.delegate = self;
+            dvc.saveLib = NO;
+        }
+    }
+}
 @end
