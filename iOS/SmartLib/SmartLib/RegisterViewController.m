@@ -50,11 +50,12 @@
     NSArray *keys;
     id nextResponder;
     id isFirstResponser;
-    UIView *indicating;
+//    UIView *indicating;
+    UIActionSheet *sheet;
     UIPopoverController *popover;
 }
 
-@synthesize title,username,fname,lname,email,password, confirmPassword, telephone, emailNotifications, appNotifications,libraries, baseURL, baseName;
+@synthesize title,title2,username,fname,lname,email,password, confirmPassword, telephone, emailNotifications, appNotifications,libraries, baseURL, baseName;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -72,12 +73,39 @@
 
 -(IBAction)showList:(id)sender
 {
-    [self performSegueWithIdentifier:@"libList" sender:sender];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self performSegueWithIdentifier:@"libList" sender:sender];
+    }
+    else {
+        sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil  otherButtonTitles:nil];
+        [sheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+        
+        CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
+        libraries = [[UIPickerView alloc] initWithFrame:pickerFrame];
+        libraries.showsSelectionIndicator = YES;
+        libraries.dataSource = self;
+        libraries.delegate = self;
+        [sheet addSubview:libraries];
+        [libraries release];
+        [sheet showInView:self.view];
+        [sheet setBounds:CGRectMake(0, 0, 320, 485)];
+        [sheet release];
+        
+        UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Close"]];
+        closeButton.momentary = YES;
+        closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
+        closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
+        closeButton.tintColor = [UIColor blackColor];
+        [closeButton addTarget:self action:@selector(dismissActionSheet) forControlEvents:UIControlEventValueChanged];
+        [sheet addSubview:closeButton];
+        [closeButton release];
+    }
 }
 
 -(void)refreshTitle
 {
     title.title = baseName;
+    title2.text = baseName;
 }
 
 - (void)viewDidLoad
@@ -120,21 +148,28 @@
 {
     [super viewDidAppear:animated];
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        indicating = [[UIView alloc] init];
-        indicating.center = libraries.center;
-        indicating.frame = CGRectMake([libraries center].x-50,[libraries center].y-50, 100, 100);
-        indicating.backgroundColor = [UIColor blackColor];
-        indicating.alpha = 0.5;
-        [self.view addSubview:indicating];
-        UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        indicator.center = CGPointMake(50, 50);
-        [indicator startAnimating];
-        [indicating addSubview:indicator];
-        [indicator release];
-        
+//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+//        indicating = [[UIView alloc] init];
+//        indicating.center = libraries.center;
+//        indicating.frame = CGRectMake([libraries center].x-50,[libraries center].y-50, 100, 100);
+//        indicating.backgroundColor = [UIColor blackColor];
+//        indicating.alpha = 0.5;
+//        [self.view addSubview:indicating];
+//        UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+//        indicator.center = CGPointMake(50, 50);
+//        [indicator startAnimating];
+//        [indicating addSubview:indicator];
+//        [indicator release];
+//        
         [self performSelector:@selector(getLibraries) withObject:nil afterDelay:0];
-    }
+//    }
+}
+
+-(void)dismissActionSheet
+{
+    [self pickerView:libraries didSelectRow:[libraries selectedRowInComponent:0] inComponent:0];
+    [self refreshTitle];
+    [sheet dismissWithClickedButtonIndex:-1 animated:YES];
 }
 
 -(void)getLibraries
@@ -142,7 +177,7 @@
     BookActions *getLibraries = [[BookActions alloc] init];
     librariesList = [[getLibraries getLibraries] retain];
     [getLibraries release];
-    [indicating removeFromSuperview];
+//    [indicating removeFromSuperview];
     if ([[[librariesList objectAtIndex:0] objectForKey:@"result"] integerValue] == 1) {
         [(NSMutableArray*)librariesList removeObjectAtIndex:0];
         [libraries reloadAllComponents];
@@ -193,7 +228,7 @@
 //            indicating.frame = CGRectMake([libraries center].x-50,[libraries center].y-50, 100, 100);
 //            indicating.backgroundColor = [UIColor blackColor];
 //            indicating.alpha = 0.5;
-            [self.view addSubview:indicating];
+//            [self.view addSubview:indicating];
 //            UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 //            indicator.center = CGPointMake(50, 50);
 //            [indicator startAnimating];
@@ -204,7 +239,7 @@
     }
     else {
         if (buttonIndex == 0) {
-            [self.navigationController popViewControllerAnimated:YES];
+            [self resetFields:self];
         }
         else {
             [self getNextResponder];
@@ -250,7 +285,7 @@
     {
         NSString *alertTitle = @"Error";
         NSString *alertMessage = @"You haven't filled all the required fields.";
-        UIAlertView *registrationDone = [[UIAlertView alloc] initWithTitle: alertTitle message: alertMessage delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Retry",  nil];
+        UIAlertView *registrationDone = [[UIAlertView alloc] initWithTitle: alertTitle message: alertMessage delegate:self cancelButtonTitle:@"Clear" otherButtonTitles:@"Retry",  nil];
         [registrationDone show];
         [registrationDone release];
     }
@@ -259,7 +294,7 @@
         
         NSString *alertTitle = @"Registration Unsuccessfull";
         NSString *alertMessage = @"The Password field and Confirm Password one are not same ";
-        UIAlertView *registrationDone = [[UIAlertView alloc] initWithTitle: alertTitle message: alertMessage delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Retry",  nil];
+        UIAlertView *registrationDone = [[UIAlertView alloc] initWithTitle: alertTitle message: alertMessage delegate:self cancelButtonTitle:@"Clear" otherButtonTitles:@"Retry",  nil];
         [registrationDone show];
         [registrationDone release];
         password.text =@"";
@@ -353,9 +388,11 @@
 {
     if (librariesList!=nil && ([librariesList count] != 0)) {
         baseURL = [[librariesList objectAtIndex:row] objectForKey:@"url"];
+        baseName = [[librariesList objectAtIndex:row] objectForKey:@"name"];
     }
     else {
         baseURL = @"";
+        baseName = @"";
     }
 }
 

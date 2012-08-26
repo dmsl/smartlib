@@ -136,14 +136,14 @@
         NSString *libName = [[librariesList objectAtIndex:row] objectForKey:@"name"];
         NSDictionary *rememberedCredentials = [[rememberedLibsCheck objectForKey:@"rememberedLibs"] objectForKey:libName];
         if (rememberedCredentials && ([rememberedCredentials count] != 0)) {
-            [[delegate username] setText: [rememberedCredentials objectForKey:@"username"]];
-            [[delegate password] setText: [rememberedCredentials objectForKey:@"password"]];
-            [[delegate remember] setOn:YES];
+            [(UITextField*)[delegate username] setText: [rememberedCredentials objectForKey:@"username"]];
+            [(UITextField*)[delegate password] setText: [rememberedCredentials objectForKey:@"password"]];
+            [(UISwitch*)[delegate remember] setOn:YES];
         }
         else {
-            [[delegate username] setText: nil];
-            [[delegate password] setText: nil];
-            [[delegate remember] setOn:NO];
+            [(UITextField*)[delegate username] setText: nil];
+            [(UITextField*)[delegate password] setText: nil];
+            [(UISwitch*)[delegate remember] setOn:NO];
 
         }
     }

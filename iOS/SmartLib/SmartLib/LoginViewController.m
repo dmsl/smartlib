@@ -48,8 +48,9 @@
     id responder;
     NSString *baseURL;
     UIAlertView *waiting;
-    UIView *indicating;
+//    UIView *indicating;
     UIPopoverController *popover;
+    UIActionSheet *sheet;
 }
 
 @synthesize username, password, remember, libraries, title, currentLib, baseName, baseURL;
@@ -86,21 +87,29 @@
 {
     [super viewDidAppear:animated];
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        indicating = [[UIView alloc] init];
-        indicating.center = libraries.center;
-        indicating.frame = CGRectMake([libraries center].x-50,[libraries center].y-50, 100, 100);
-        indicating.backgroundColor = [UIColor blackColor];
-        indicating.alpha = 0.5;
-        [self.view addSubview:indicating];
-        UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        indicator.center = CGPointMake(50, 50);
-        [indicator startAnimating];
-        [indicating addSubview:indicator];
-        [indicator release];
-        
+//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+//        indicating = [[UIView alloc] init];
+//        indicating.center = libraries.center;
+//        indicating.frame = CGRectMake([libraries center].x-50,[libraries center].y-50, 100, 100);
+//        indicating.backgroundColor = [UIColor blackColor];
+//        indicating.alpha = 0.5;
+//        [self.view addSubview:indicating];
+//        UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+//        indicator.center = CGPointMake(50, 50);
+//        [indicator startAnimating];
+//        [indicating addSubview:indicator];
+//        [indicator release];
+//        
         [self performSelector:@selector(getLibraries) withObject:nil afterDelay:0];
-    }
+//    }
+}
+
+-(void)dismissActionSheet
+{
+    currentLib = [librariesList objectAtIndex:[libraries selectedRowInComponent:0]];
+    [self pickerView:libraries didSelectRow:[libraries selectedRowInComponent:0] inComponent:0];
+    [self refreshTitle];
+    [sheet dismissWithClickedButtonIndex:-1 animated:YES];
 }
 
 -(void)getLibraries
@@ -108,11 +117,10 @@
     BookActions *getLibraries = [[BookActions alloc] init];
     librariesList = [[getLibraries getLibraries] retain];
     [getLibraries release];
-    [indicating removeFromSuperview];
+//    [indicating removeFromSuperview];
     if ([[[librariesList objectAtIndex:0] objectForKey:@"result"] integerValue] == 1) {
         [(NSMutableArray*)librariesList removeObjectAtIndex:0];
         [libraries reloadAllComponents];
-        [self pickerView:libraries didSelectRow:[libraries selectedRowInComponent:0] inComponent:0];
     }
     else if ([[[librariesList objectAtIndex:0] objectForKey:@"result"] integerValue] == -11) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Database Error" message:@"Error connecting to database" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Try again", nil];
@@ -231,12 +239,12 @@
                     rememberedLibs = [[NSMutableDictionary alloc] initWithCapacity:2];
                 }
                 
-                if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+//                if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
                     [rememberedLibs setObject:userCredentials forKey:baseName];
-                }
-                else {
-                    [rememberedLibs setObject:userCredentials forKey:[[librariesList objectAtIndex:[libraries selectedRowInComponent:0]] objectForKey:@"name"]];
-                }
+//                }
+//                else {
+//                    [rememberedLibs setObject:userCredentials forKey:[[librariesList objectAtIndex:[libraries selectedRowInComponent:0]] objectForKey:@"name"]];
+//                }
                 [addingUserCred setObject:rememberedLibs forKey:@"rememberedLibs"];
                 [rememberedLibs release];
             }
@@ -246,12 +254,12 @@
             [addingUserCred setBool:YES forKey:@"session"];
             [addingUserCred setObject:userInfo forKey:@"user"];
             [addingUserCred setObject:baseURL forKey:@"baseURL"];
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+//            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
                 [addingUserCred setObject:currentLib forKey:@"currentLib"];
-            }
-            else {
-                [addingUserCred setObject:[librariesList objectAtIndex:[libraries selectedRowInComponent:0]] forKey:@"currentLib"];
-            }
+//            }
+//            else {
+//                [addingUserCred setObject:[librariesList objectAtIndex:[libraries selectedRowInComponent:0]] forKey:@"currentLib"];
+//            }
             [addingUserCred synchronize];
             [self performSegueWithIdentifier:@"enterLibrary" sender:self];
         }
@@ -350,9 +358,11 @@
 {
     if (librariesList!=nil && ([librariesList count] != 0)) {
         baseURL = [[librariesList objectAtIndex:row] objectForKey:@"url"];
+        baseName = [[librariesList objectAtIndex:row] objectForKey:@"name"];
     }
     else {
         baseURL = @"";
+        baseName = @"";
     }
     
     NSUserDefaults *rememberedLibsCheck = [NSUserDefaults standardUserDefaults];
@@ -374,7 +384,33 @@
 
 -(IBAction)showList:(id)sender
 {
-    [self performSegueWithIdentifier:@"libList" sender:sender];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self performSegueWithIdentifier:@"libList" sender:sender];
+    }
+    else {
+        sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil  otherButtonTitles:nil];
+        [sheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+        
+        CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
+        libraries = [[UIPickerView alloc] initWithFrame:pickerFrame];
+        libraries.showsSelectionIndicator = YES;
+        libraries.dataSource = self;
+        libraries.delegate = self;
+        [sheet addSubview:libraries];
+        [libraries release];
+        [sheet showInView:self.view];
+        [sheet setBounds:CGRectMake(0, 0, 320, 485)];
+        [sheet release];
+        
+        UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Close"]];
+        closeButton.momentary = YES;
+        closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
+        closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
+        closeButton.tintColor = [UIColor blackColor];
+        [closeButton addTarget:self action:@selector(dismissActionSheet) forControlEvents:UIControlEventValueChanged];
+        [sheet addSubview:closeButton];
+        [closeButton release];
+    }
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
