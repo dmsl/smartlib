@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="Cve-bU-BVB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2549" systemVersion="12B19" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="Cve-bU-BVB">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development version="4200" identifier="xcode"/>
@@ -1228,7 +1228,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="203-VZ-VXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="VZd-ic-Pja" customClass="BookDetailsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="wKc-KG-Ks7">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <rect key="frame" x="0.0" y="64" width="768" height="916"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -1925,7 +1925,7 @@
             </objects>
             <point key="canvasLocation" x="-12195" y="-6695"/>
         </scene>
-        <!--My Books View Controller-->
+        <!--My Books View Controller - My Books-->
         <scene sceneID="beO-HG-rig">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JK1-pR-5Xv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1976,7 +1976,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="1AE-zv-uh7"/>
                         <barButtonItem image="96-book.png" style="plain" id="z21-Xk-qIW"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="OdO-qA-GEw">
+                    <navigationItem key="navigationItem" title="My Books" id="OdO-qA-GEw">
                         <barButtonItem key="leftBarButtonItem" title="Main Menu" id="LUA-qb-gh3">
                             <connections>
                                 <action selector="mainMenu:" destination="1ni-g8-04D" id="0ci-7d-7r0"/>
@@ -2277,6 +2277,6 @@
         <segue reference="igy-7J-kgu"/>
         <segue reference="ZIQ-4M-Wih"/>
         <segue reference="3mD-Xv-4VC"/>
-        <segue reference="EGd-DF-h0T"/>
+        <segue reference="1Ep-Ns-Vyj"/>
     </inferredMetricsTieBreakers>
 </document>

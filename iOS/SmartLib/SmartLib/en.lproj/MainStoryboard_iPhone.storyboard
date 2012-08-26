@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3XU-qN-NeS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2549" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3XU-qN-NeS">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development version="4200" identifier="xcode"/>
@@ -69,29 +69,47 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="mph-lI-baR">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="222"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <pickerView contentMode="scaleToFill" id="ZUj-Ep-YLk">
-                                    <rect key="frame" x="12" y="0.0" width="297" height="216"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <connections>
-                                        <outlet property="dataSource" destination="IOA-KR-2Cp" id="I62-Og-WWp"/>
-                                        <outlet property="delegate" destination="IOA-KR-2Cp" id="mfp-Dg-IZ2"/>
-                                    </connections>
-                                </pickerView>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </view>
                         <sections>
                             <tableViewSection id="198-lH-AGr">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="bcv-4E-ez6">
-                                        <rect key="frame" x="0.0" y="232" width="320" height="45"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="52" id="aYU-Hl-Pem">
+                                        <rect key="frame" x="0.0" y="10" width="320" height="53"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="300" height="51"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SB3-UR-Qfr">
+                                                    <rect key="frame" x="6" y="7" width="130" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="Choose library">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="showList:" destination="IOA-KR-2Cp" eventType="touchDown" id="QEo-z1-dVA"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" enabled="NO" id="ODY-hO-jct">
+                                                    <rect key="frame" x="144" y="5" width="142" height="42"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="bcv-4E-ez6">
+                                        <rect key="frame" x="0.0" y="63" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Pai-31-QwS">
@@ -116,7 +134,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="VgL-fR-au2">
-                                        <rect key="frame" x="0.0" y="277" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="107" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -144,7 +162,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="QrN-8y-2UL">
-                                        <rect key="frame" x="0.0" y="321" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="151" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -172,7 +190,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="tEP-Mu-ey7">
-                                        <rect key="frame" x="0.0" y="365" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="195" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -200,7 +218,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="SUU-WL-Wyz">
-                                        <rect key="frame" x="0.0" y="409" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="239" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -228,7 +246,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Dtx-ht-tO9">
-                                        <rect key="frame" x="0.0" y="453" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="283" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -256,7 +274,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="vrA-hC-h4M">
-                                        <rect key="frame" x="0.0" y="497" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="327" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -284,7 +302,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="107" id="hbC-xE-WFU">
-                                        <rect key="frame" x="0.0" y="541" width="320" height="108"/>
+                                        <rect key="frame" x="0.0" y="371" width="320" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="106"/>
@@ -338,10 +356,10 @@
                         <outlet property="email" destination="5L6-hV-Ywl" id="6rQ-fH-qv5"/>
                         <outlet property="emailNotifications" destination="1je-gf-Fpr" id="bF1-kh-1Ub"/>
                         <outlet property="fname" destination="VAs-4w-1dX" id="Alf-XT-wqy"/>
-                        <outlet property="libraries" destination="ZUj-Ep-YLk" id="4Ya-1S-Yp4"/>
                         <outlet property="lname" destination="8xo-6k-jfY" id="HPp-Mt-kr1"/>
                         <outlet property="password" destination="y0R-pW-NqV" id="Tvz-HB-Sip"/>
                         <outlet property="telephone" destination="phA-aB-X8h" id="v5n-O1-VDw"/>
+                        <outlet property="title2" destination="ODY-hO-jct" id="uaa-pa-yeO"/>
                         <outlet property="username" destination="2bB-wZ-KNO" id="vD9-xi-3TR"/>
                     </connections>
                 </tableViewController>
@@ -357,27 +375,48 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="jyo-Uy-yXS">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="221"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <pickerView contentMode="scaleToFill" id="gZR-ax-jgM">
-                                    <rect key="frame" x="11" y="0.0" width="299" height="216"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <rect key="contentStretch" x="0.0" y="0.0" width="0.49999999999999961" height="1"/>
-                                    <connections>
-                                        <outlet property="dataSource" destination="X3J-a0-znc" id="dzZ-5N-nlr"/>
-                                        <outlet property="delegate" destination="X3J-a0-znc" id="AeF-0L-TyO"/>
-                                    </connections>
-                                </pickerView>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </view>
                         <sections>
+                            <tableViewSection headerTitle="Choose Library..." id="04T-Tc-qEq">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Pk4-99-vY1">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UEn-RO-e1e">
+                                                    <rect key="frame" x="12" y="5" width="92" height="33"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="Choose...">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="showList:" destination="X3J-a0-znc" eventType="touchDown" id="EZr-oq-Akc"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" enabled="NO" id="C1Y-Ji-BLw">
+                                                    <rect key="frame" x="112" y="0.0" width="168" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Log In" id="9WS-3O-vLN">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ljZ-xp-mBf">
-                                        <rect key="frame" x="0.0" y="257" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="138" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -405,7 +444,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="eSd-FR-2Vd">
-                                        <rect key="frame" x="0.0" y="302" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="183" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -433,7 +472,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="jhE-Ah-CiI">
-                                        <rect key="frame" x="0.0" y="346" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="227" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -471,9 +510,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="libraries" destination="gZR-ax-jgM" id="R7Z-YT-jxy"/>
                         <outlet property="password" destination="aep-yl-tRR" id="VU0-L2-eJg"/>
                         <outlet property="remember" destination="Bhj-iX-vmp" id="cI9-l4-LEJ"/>
+                        <outlet property="title" destination="C1Y-Ji-BLw" id="YjR-wY-vnf"/>
                         <outlet property="username" destination="Cgv-x4-rjx" id="G8M-xH-QbV"/>
                         <segue destination="kvA-iW-hNw" kind="modal" identifier="enterLibrary" id="wI2-Gq-vyN"/>
                     </connections>
@@ -2032,13 +2071,203 @@
         <image name="nocover.png" width="62" height="80"/>
         <image name="trash.png" width="20" height="27"/>
     </resources>
+    <classes>
+        <class className="ActivitiesForBookCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivitiesForBookCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="ActivityResponse" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="activityTitle" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="answer" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="AppPreferencesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppPreferencesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="savePreferences:"/>
+                <relationship kind="outlet" name="beep" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="scanning1Donly" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="vibrate" candidateClass="UISwitch"/>
+            </relationships>
+        </class>
+        <class className="BookDetailsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BookDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="takeAction:"/>
+                <relationship kind="outlet" name="authors" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="availability" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="cover" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="isbn" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="lang" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="owner" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="pageCount" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="publishYear" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="title" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="BooksGiven" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BooksGiven.h"/>
+            <relationships>
+                <relationship kind="action" name="mainMenu:"/>
+            </relationships>
+        </class>
+        <class className="BooksTaken" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BooksTaken.h"/>
+            <relationships>
+                <relationship kind="action" name="mainMenu:"/>
+            </relationships>
+        </class>
+        <class className="EnterBookViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EnterBookViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="extraOptions:"/>
+                <relationship kind="action" name="mainMenu:"/>
+                <relationship kind="action" name="toggleFlash:"/>
+                <relationship kind="outlet" name="duplicates" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="flash" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="readerViewer" candidateClass="ZBarReaderView"/>
+            </relationships>
+        </class>
+        <class className="IncomingRequests" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IncomingRequests.h"/>
+            <relationships>
+                <relationship kind="action" name="mainMenu:"/>
+            </relationships>
+        </class>
+        <class className="LibraryDetailsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LibraryDetailsViewController.h"/>
+        </class>
+        <class className="LoginViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="login:"/>
+                <relationship kind="action" name="showList:"/>
+                <relationship kind="outlet" name="libraries" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="remember" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="title" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MyBookResultsCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyBookResultsCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bookCover" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="selectForShare" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="title" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MyBooksViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyBooksViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="mainMenu:"/>
+                <relationship kind="action" name="reloadBooks:"/>
+            </relationships>
+        </class>
+        <class className="NavigationViewController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NavigationViewController.h"/>
+        </class>
+        <class className="OutgoingRequests" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OutgoingRequests.h"/>
+            <relationships>
+                <relationship kind="action" name="mainMenu:"/>
+            </relationships>
+        </class>
+        <class className="RegisterViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resetFields:"/>
+                <relationship kind="action" name="showList:"/>
+                <relationship kind="action" name="submitRegistration:"/>
+                <relationship kind="outlet" name="appNotifications" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="confirmPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="emailNotifications" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="fname" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="libraries" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="lname" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="telephone" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="title" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="title2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="RootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
+        </class>
+        <class className="ScannedBooksViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScannedBooksViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lastBookCover" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scannedBooksList" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SearchBooksViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchBooksViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="bookInfo:"/>
+                <relationship kind="action" name="borrowBook:"/>
+                <relationship kind="action" name="deleteBook:"/>
+                <relationship kind="action" name="mainMenu:"/>
+                <relationship kind="action" name="refreshResults:"/>
+                <relationship kind="outlet" name="searchField" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="SearchViewResultsCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchViewResultsCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="availability" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="bookCover" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="bookInfo" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="bookTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="borrowBook" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="deleteBook" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="SendMessageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SendMessageViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="sendMessage:"/>
+                <relationship kind="outlet" name="message" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="receiver" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SmartLibMenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmartLibMenuViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="appOptions:"/>
+                <relationship kind="action" name="scanner:"/>
+                <relationship kind="outlet" name="welcome" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SmartLibNavigationController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmartLibNavigationController.h"/>
+        </class>
+        <class className="TopBooksViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TopBooksViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="mainMenu:"/>
+                <relationship kind="action" name="reloadBooks:"/>
+            </relationships>
+        </class>
+        <class className="UserActionsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserActionsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="mainMenu:"/>
+            </relationships>
+        </class>
+        <class className="ZBarReaderView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ZBarReaderView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pGZ-7i-VG3"/>
+        <segue reference="wI2-Gq-vyN"/>
         <segue reference="CHY-F9-0bz"/>
         <segue reference="7Rq-RE-fmv"/>
     </inferredMetricsTieBreakers>

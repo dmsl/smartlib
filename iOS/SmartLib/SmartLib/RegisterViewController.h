@@ -49,6 +49,7 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *title;
+@property (nonatomic, retain) IBOutlet UILabel *title2;
 @property (nonatomic, retain) IBOutlet UITextField *username;
 @property (nonatomic, retain) IBOutlet UITextField *fname;
 @property (nonatomic, retain) IBOutlet UITextField *lname;

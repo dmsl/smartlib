@@ -346,7 +346,7 @@
     //Error appears
     else if (result ==-11 || result ==-12)
     {
-        UIAlertView *Error =[[UIAlertView alloc] initWithTitle:@"Error" message:@"Unexpected error appeared!" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        UIAlertView *Error =[[UIAlertView alloc] initWithTitle:@"Error" message:@"Unexpected error appeared!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [Error show];
         [Error release];
     }
@@ -559,7 +559,7 @@
         }
         
         NSString *msg = [NSString stringWithFormat:@"Book status is going from %@ to %@",Currentstatus ,NewStatus];
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Book Status "  message:msg delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Book Status "  message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         alert.tag =1;
         [ alert show];
         [alert release];
