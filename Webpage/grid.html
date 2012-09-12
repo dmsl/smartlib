@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<!-- Load CSS--><br />
+<link rel="stylesheet" href="grid/themes/ui.jqgrid.css" type="text/css" media="all" />
+<!-- For this theme, download your own from link above, and place it at css folder -->
+<link rel="stylesheet" href="grid/themes/redmond/jquery-ui-1.8.2.custom.css" type="text/css" media="all" />
+<!-- Load Javascript -->
+<script src="grid/js/jquery.js" type="text/javascript"></script>
+<script src="grid/js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+<script src="grid/js/i18n/grid.locale-en.js" type="text/javascript"></script>
+<script src="grid/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+
+
+</head>
+
+<body>
+
+
+
+<table id="list2"></table>
+
+<div id="pager2"></div>
+
+  <script type="text/javascript">
+
+	jQuery(document).ready(function(){
+    var lastsel2
+	jQuery("#list2").jqGrid({
+
+		url:'grid/server.php?q=allbooks&rows=5',
+
+		height:"auto",
+
+		datatype: "json",
+
+		colNames:['Cover','Title','Authors','Published','Pages','Language', 'ISBN'],
+
+		colModel:[
+
+			{name:'imgURL',index:'imgURL', width:85, align:"center", search:false ,editoptions:{readonly:true}, formatter:imageFunction},
+
+			{name:'title',index:'title', width:260 , align:"center"},
+
+			{name:'authors',index:'authors', width:150, align:"left"},
+
+			{name:'publishedYear',index:'publishedYear', width:70, align:"center"},		
+
+			{name:'pageCount',index:'pageCount', width:70,align:"center", search:false},		
+
+			{name:'lang',index:'lang', width:170, align:"center", search:false, editable:false }	,	
+
+			{name:'isbn',index:'isbn', width:120, align:"center"}
+		],
+
+	//	editurl: "server.php",
+		
+		rowNum:5,
+
+	//	rowList:[10,20],
+
+		pager: '#pager2',
+
+		sortname: 'title',
+
+		viewrecords: true,
+
+		sortorder: "desc",
+
+	//	caption: "Library Books"
+
+	});
+
+	jQuery("#list2").jqGrid('navGrid','#pager2',{edit:false,add:false,del:false});
+	
+	function imageFunction(cellvalue, options, rowObject) 
+	{
+		return  "<img src='" + cellvalue + "' width='80px' height='80px' />";
+	};
+
+
+	});
+	
+	var timeoutHnd;
+	
+	function doSearch(ev){
+		if(timeoutHnd)
+			clearTimeout(timeoutHnd)
+		timeoutHnd = setTimeout(gridReload,500)
+	}
+	
+	function gridReload(){
+		var cd_mask = jQuery("#search_cd").val();
+		jQuery("#list2").jqGrid('setGridParam',{url:"server.php?page=1&limit=10&searchString="+ cd_mask  +"&rows=10"}).trigger("reloadGrid");
+	}
+	
+//	$('#search').submit(function () {
+//		
+//				jQuery("#list2").jqGrid('setGridParam',{url:"server.php?page=1&limit=10&searchString="+ cd_mask  +"&rows=10"}).trigger("reloadGrid");
+//		return false;
+//	});
+
+</script>
+            
+
+
+</body>
+</html>
