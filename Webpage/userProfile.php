@@ -109,11 +109,19 @@ if($_SESSION['loggedin']==0){
             <?php include 'grid/userBooks.php'; ?></center>
             
                 <br><br>
+                </p>
                 <header>
-                <h1><center>Export your books in JSON Object:</center></h1></header>
-                <br>
-                <a class="button" target="_blank"
-				href="scripts/exportBooks.php" >Export your Books</a>       
+                <h1><center>Export your books in Bibtext Format:</center></h1></header>
+                <p>To export your books in bibtext format, you have to build and use the following URL:
+                <br><br>
+                http://www.cs.ucy.ac.cy/projects/smartLib/scripts/exportUserBooks.php?user=<span
+                class="errorSmall">USERNAME</span>&pass=<span 
+                class="errorSmall">PASSWORD</span>
+                <br>and replace <span
+                class="errorSmall">USERNAME</span> and <span 
+                class="errorSmall">PASSWORD</span> with your SmartLib Credencials.
+                <!--<a class="button" target="_blank"
+				href="scripts/exportBooks.php" >Export your Books</a>   -->    
                                 
             </p>
 			<br><br>
