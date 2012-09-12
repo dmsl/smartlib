@@ -109,9 +109,9 @@ include 'scripts/sessionInit.php';
  
                                       <br>
                                       <blockquote>
-										<img src="images/qr.png"  alt="Smart QR Code"/>
+										<img src="http://www.cs.ucy.ac.cy/projects/smartLib/images/qr.png"  alt="Smart QR Code"/>
                                         </blockquote>
-                                        
+                                        </p>
 			<header>
 				<h1>Setup your own Library</h1>
 			</header>
