@@ -39,7 +39,7 @@ $_SESSION['isMobileDevice']=0;
 
 //Get the device, ISBN & Username
 $device = $_REQUEST['device'];
-$pUsername = $_REQUEST['username'];
+//$pUsername = $_REQUEST['username'];
 $pKey = $_REQUEST['mykey'];
 
 $_SESSION['UserID']="";
@@ -68,16 +68,18 @@ if($device=="android" || $device=="iOS" ||  $device=="web"  ){
 //	die();
 //}
 
+
 //Connect to database
 include ('../dbConnect.php');
 
 if($_SESSION['isMobileDevice']){
 
 
-	if($device!="web"){
+	// removed safety check
+	//if($device!="web"){
 		//Safety check
-		findUserID($pUsername);
-	}
+	//	findUserID($pUsername);
+	//}
 
 	printPopularBooks();
 
@@ -88,6 +90,7 @@ if($_SESSION['isMobileDevice']){
 
 
 //Checks if books already exists for user
+/*
 function findUserID($pUser){
 
 
@@ -104,7 +107,7 @@ function findUserID($pUser){
 
 }
 
-
+*/
 
 function printPopularBooks(){
 

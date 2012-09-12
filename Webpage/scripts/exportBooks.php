@@ -33,98 +33,143 @@ Fax: +357-22-892701
 
 */
 
+
 session_start();
 
 
- // include 'sessionInit.php';
+include ('../CREDENCIALS.php');
+//Connect to database
+include ('../dbConnect.php');
 
-  
+//Get the key
+$pKey = $_REQUEST['mykey'];
 
-	$device="?device=web";
-	$username="&username=".$_SESSION['username'];
-	$mykey="&mykey=23f234trfv34";
+$mykey=_MY_KEY;
+
+
+if($pKey!=$mykey)
+	die();
+
+
+
+
+printAllBooks();
+
+
+
+
+
+
+function printAllBooks(){
 	
-	$buildURL= "http://".getCustom2ndURL()."mobile/getUserBooks.php".$device.$username.$mykey;
-	
-	
-	$json = file_get_contents($buildURL,0,null,null);
-	
-	
-	echo "Here are your Exported books:<br><br>";
-	echo "In JSON Format:<br><br>";
-	
-	?>
-	<textarea rows="15" cols="70">
-<?php echo $json;?>
-</textarea>
-
-<?php 
-
-echo "In XML Format:<br><br>";
-
-$json_xml = json_to_xml($json);
-	
-?>
-<textarea rows="15" cols="70">
-<?php echo $json_xml;?>
-</textarea>
-
-<?php 
-
-	
-	// CAN USE ALSO http://jsontoxml.utilities-online.info/
-	
-	
-	
-	function getCustom2ndURL(){
-
-	$len = strlen($_SERVER['REQUEST_URI']);
-	$fullURL=$_SERVER['REQUEST_URI'];
-	$found=0;
 
 
-	for( $i= $len-1; $i>0; $i--){
-		
 
-		//Remove the last name of the URI
-		if($fullURL[$i]=="/"){
-				
-			$found=1;
-				
-			$urlResult = substr($fullURL,0,$i);
-			break;
-		}
+ 	$queryAllBooks = sprintf(
+ 			"SELECT BI.isbn, BI.title, BI.authors, BI.publishedYear, 
+BI.pageCount, BI.dateOfInsert, 
+BI.imgURL, BI.lang 
+FROM SMARTLIB_BOOK_INFO BI 
+;"
+ 	);
 
+
+	//Find Unique ID of Book Info
+	$result = mysql_query($queryAllBooks) or dbError(mysql_error());
+
+	
+/*if(!($_SESSION['web']==1)){
+
+	$row_set[] = array(
+			"result"=>"1",
+	);
+}
+*/
+	while($row = mysql_fetch_row($result))//RM was assoc for no duplicate infos
+	{
+		//Each row, has 8 columns with data fetched from database
+		//isbn, title, authors, publishedYear, pageCount, dateOfInsert, imgURL, lang 
+		echo "@isbn {". $row[0].", <br>".
+		"title = {".$row[1]."}, <br>".
+		"author = {".$row[2]."}, <br>".
+		"publishedYear = {".$row[3]."}, <br>".
+		"pageCount = {".$row[4]."}, <br>".
+		"dateOfInsert = {".$row[5]."}, <br>".
+		//REMOVED img: "imgURL = {}, ".
+		"lang = {".$row[7]."} } ,<br>";
+
+		echo "<br>";
+		//OLD..rm?
+		$row_set[] = $row;
 	}
-	
-	
-	$len = strlen($urlResult);
-	$fullURL=$urlResult;
-	$found=0;
-
-
-	for( $i= $len-1; $i>0; $i--){
-		
-
-		//Remove the last name of the URI
-		if($fullURL[$i]=="/"){
-				
-			$found=1;
-				
-			$urlResult = substr($fullURL,0,$i+1);
-			break;
-		}
-
-	}
-
-
-
-	if(!$found)
-		$urlResult = $_SERVER['REQUEST_URI'];
-
-	return $_SERVER['SERVER_NAME']. $urlResult;
+//	echo json_encode($row_set);
 
 }
+
+
+
+
+// Sends error to mobile device: Book dont exists in Google API
+/*function mobileSendWeirdError(){
+	$result[] = array(
+			"result"=>"-12"
+	);
+	//Encode Answer
+	echo json_encode($result);
+
+	die();
+}
+
+*/
+
+
+
+
+// TODO Sends error to mobile device using JSON Object Format
+function mobileSendDatabaseError(){
+	$result[] = array(
+			"result"=>"-11"
+	);
+	//Encode Answer
+	echo json_encode($result);
+
+	die();
+}
+
+
+
+
+
+
+
+
+// Database Error
+function dbError($pError){
 	
-	
-	?>
+	//TODO SEND BIXTEXT ERROR!
+
+	if($_SESSION['isMobileDevice']){
+		//Inform Mobile Device about database Error
+		mobileSendDatabaseError();
+	}
+
+	//if there is DB Error, inform user and move him back
+	inform($pError);
+
+
+	if($_SESSION['currentPage']==""){
+		$_SESSION['currentPage']="index.php";
+	}
+
+	header("Location: ".$_SESSION['currentPage']);
+	die();
+
+}
+
+
+
+
+
+
+
+?>

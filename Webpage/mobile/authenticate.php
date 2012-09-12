@@ -58,6 +58,8 @@ if($device=="android" || $device=="iOS"){
 
 
 
+
+
 //echo "user :" . $username . "</br>"."pass: ".$password."</br>";
 
 //Check if user hasnt provided credencials
@@ -73,18 +75,13 @@ if($username=="" || $password==""
 
 }
 
-
-
-//TODO this in register users also!
-//TODO move this somewhere safer! Salting String
-	$salt = _SALT;
-	$pepper = _PEPPER;
+$salt = _SALT;
+$pepper = _PEPPER;
 // Put salt and pepper
 $password = $salt.$password.$pepper;
 
 // Password Encryption
 $password = md5($password);
-
 
 // just to be sure.
 $username = mysql_real_escape_string($username);

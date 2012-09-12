@@ -45,12 +45,9 @@ include 'scripts/sessionInit.php';
    <?php include 'scripts/gridHeader.php'; ?>
    
                 <?php 
-							//User is logged in
-							if($_SESSION['loggedin']==1){
-								//Show popular books
 
+			//Include carousel header
 								include 'carousel/carouselHeader.php';
-								}
 							
 								?>
 
@@ -104,24 +101,26 @@ include 'scripts/sessionInit.php';
 	</nav>
 			
             
-             <?php 
-							//User is logged in
-							if($_SESSION['loggedin']==1){
-								//Show popular books
-								?>
+<!--            Show popular books at all times-->
                                 <header>	
 								<h1>Popular Books</h1>
                                 </header>
-                                
                                <center>
                                   <ul id="mycarousel" class="jcarousel-skin-ie7">
                                     <ul>
                                       <!-- The content will be dynamically loaded in here -->
                                     </ul>
                                   </ul>
-                                    </center>
-                                    <header>
-                                    <h1>All Books</h1>
+                               </center>
+         <?php 
+							//User is logged in
+							if($_SESSION['loggedin']==1){
+								
+								?>
+
+                                    
+                                 <header>
+                                <h1>All Books</h1>
                                 </header>
                                 <center>
                                 <?php include 'grid/allBooksLoggedIn.php'; ?></center>
