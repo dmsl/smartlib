@@ -1,126 +1,0 @@
-10
-
-dir
-0
-http://svn.cs.ucy.ac.cy:80/repos/smartlib/scripts
-http://svn.cs.ucy.ac.cy:80/repos/smartlib
-add
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ef8c7546-dff2-46d2-8c90-3d45ac214529
-
-logout.php
-file
-
-
-
-add
-
-smartWidget.php
-file
-
-
-
-add
-
-loginWidget.php
-file
-
-
-
-add
-
-phoneRedirector.php
-file
-
-
-
-add
-
-activateAccount.php
-file
-
-
-
-add
-
-logoutWidget.php
-file
-
-
-
-add
-
-footer.php
-file
-
-
-
-add
-
-gridHeader.php
-file
-
-
-
-add
-
-resetContact.php
-file
-
-
-
-add
-
-contactSubmit.php
-file
-
-
-
-add
-
-genericFunctions.php
-file
-
-
-
-add
-
-resetRegister.php
-file
-
-
-
-add
-
-sessionInit.php
-file
-
-
-
-add
-
-header.php
-file
-
-
-
-add
-
