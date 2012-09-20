@@ -41,6 +41,7 @@ if($_SESSION['loggedin']==1){
 	header("Location: userProfile.php"); 
 }
 
+
 ?>
 <!DOCTYPE html>
 <html lang=en>
