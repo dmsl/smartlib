@@ -410,6 +410,27 @@ nav#global ul li a:hover {
 
 
 
+#login-panel-submit-filled  {
+    line-height: 20px;
+    width: 8em;
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    display: block;
+    color: #ff6347;
+    font-weight: bold;
+
+
+    /*left: 2.5em;*/
+    /*top:50px;*/
+    position: absolute;
+    font-size: 1.3em;
+
+
+}
+
+
+
 
 /*.loginhint {*/
     /*color: #d3d3d3;*/

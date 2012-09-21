@@ -58,31 +58,31 @@ include 'scripts/sessionInit.php';
     <script>
         var isShown = false;
 
-        //Slide top menu
-        $(document).ready(function () {
-            $('#sub-menu-panel').click(function () {
-                //Show panel
-                if (!isShown) {
-                    $('#login-panel').slideDown("slow");
-                    isShown = true;
-                }
-                //Hide panel
-                else {
-
-
-                    $('#login-panel').slideUp("slow");
-                    isShown = false;
-                }
-
-
-            });
-            $('#login-panel').click(function () {
-
-
-            });
-
-
-        });
+//        //Slide top menu
+//        $(document).ready(function () {
+//            $('#sub-menu-panel').click(function () {
+//                //Show panel
+//                if (!isShown) {
+//                    $('#login-panel').slideDown("slow");
+//                    isShown = true;
+//                }
+//                //Hide panel
+//                else {
+//
+//
+//                    $('#login-panel').slideUp("slow");
+//                    isShown = false;
+//                }
+//
+//
+//            });
+//            $('#login-panel').click(function () {
+//
+//
+//            });
+//
+//
+//        });
 
         function toggleLoginButton() {
             if (($('#loginUsernameField').attr('value') != "")
@@ -91,15 +91,20 @@ include 'scripts/sessionInit.php';
                     ) {
                 //Activate Login Link
                 //              //            //Login is link class=\"loginButton\"
-                $('#login-panel-submit').replaceWith("<a  id=\"login-panel-submit\" \
-                      href=\"#\" onClick=\"document.getElementById('login-widget').submit() >Login</a>");
+/*                $('#login-panel-submit').replaceWith("aaaaaaaaaa <a  id=\"login-panel-submit\" \
+                      href=\"#\" onClick=\"document.getElementById('login-widget').submit() >Login</a>");*/
+
+                $('#login-panel-submit').replaceWith(
+                        '<a  id="login-panel-submit-filled" href="#"  onClick="document.getElementById("login-widget").submit()" >Login</a>');
+
+
 
 
             }
             else {
                 //Deactivate Login Link
                 //Login is not link
-                $('#login-panel-submit').replaceWith(
+                $('#login-panel-submit-filled').replaceWith(
                         "<div id=\"login-panel-submit\">Login</div>");
             }
 
@@ -111,7 +116,8 @@ include 'scripts/sessionInit.php';
             //Toggle Login Button
             toggleLoginButton();
             if (event.keyCode == 13) {
-                $("#login-panel-submit").click();
+               // $('#login-panel-submit-filled').click();
+                document.getElementById("login-widget").submit()
             }
 
 
@@ -162,23 +168,24 @@ include 'scripts/sessionInit.php';
         </ul>
     </nav>
 
-
     <!--LOGIN INPUT USER & PASS -->
     <!--Webpage Title: SmartLib .. -->
     <form id="login-widget" action="mobile/authenticate.php" method="post"
+    autocomplete="off"
           enctype="multipart/form-data">
         <fieldset>
             <div id="login-panel">
                 <input type="text" name="username" placeholder="Username"
+                       autocomplete="off"
                        class="loginInput" id="loginUsernameField"
                        onkeyup="toggleLoginButton()"
                         />
 
-                <input type="text" name="password" placeholder="Password"
-                       class="loginInput" id="loginPasswordField"
-                       onblur="toggleLoginButton()"
+                <input type="password" name="password" placeholder="Password"
+                       class="loginInput"
                        onkeyup="toggleLoginButtonPassword(event)"
-                        />
+                       id="loginPasswordField"
+                       autocomplete="off"  />
                 <!--        Login Button-->
                 <div id="login-panel-submit">Login</div>
             </div>
