@@ -238,79 +238,6 @@ hgroup h2 {
     color: #024C69;
 }
 
-#sub-menu-panel{
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    font-size: 1.5em;
-    background-color: #011633;
-    color: #ddd;
-    line-height: 45px;
-    border-bottom-right-radius: 5px;
-    -moz-border-bottom-right-radius: 5px;
-    -webkit-border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    -moz-border-bottom-left-radius: 5px;
-    -webkit-border-bottom-left-radius: 5px;
-}
-
-
-
-
-
-
-
-#login-panel{
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #011633;
-    text-align: center;
-    color: white;
-    line-height: 45px;
-
-  /*  border-bottom-right-radius: 5px;
-    -moz-border-bottom-right-radius: 5px;
-    -webkit-border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    -moz-border-bottom-left-radius: 5px;
-    -webkit-border-bottom-left-radius: 5px;*/
-
-    display: none;
-}
-
-#login-panel input{
-    line-height: 25px;
-    width: 10em;
-    border-radius: 7px;
-    -moz-border-radius: 7px;
-    -webkit-border-radius: 7px;
-}
-
-.loginInput {
-    color: #011633;
-    font-size: 1.5em;
-    text-align: center;
-}
-
-/*.loginhint {*/
-    /*color: #d3d3d3;*/
-    /*font-size: 1.5em;*/
-    /*text-align: center;*/
-/*}*/
-/*.loginhint:focus {*/
-    /*color: #011633;*/
-/*}*/
-/*.loginfilled {*/
-    /*color: #011633;*/
-    /*font-size: 1.5em;*/
-    /*text-align: center;*/
-/*}*/
-
-.loginButton {
-
-}
 
 
 /* Navigation */
@@ -328,20 +255,27 @@ nav#global {
     margin-right: auto;
 
     background-color: #011633;
+    border-bottom-right-radius: 20px;
+    -moz-border-bottom-right-radius: 20px;
+    -webkit-border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    -moz-border-bottom-left-radius: 20px;
+    -webkit-border-bottom-left-radius: 20px;
     /*
 
     background-image: -moz-linear-gradient(top, #ca0000, #000000);
      background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #ca0000),color-stop(1, #000000));
      */
- /*   box-shadow: inset 0 0 15px #000, 0 0 20px #B5C7C6, inset 0 35px 35px -18px #000000;
-    -moz-box-shadow: inset 0 0 15px #900, 0 0 20px #B5C7C6;
-    -webkit-box-shadow: 0 0 20px #B5C7C6;
-*/
+    /*   box-shadow: inset 0 0 15px #000, 0 0 20px #B5C7C6, inset 0 35px 35px -18px #000000;
+        -moz-box-shadow: inset 0 0 15px #900, 0 0 20px #B5C7C6;
+        -webkit-box-shadow: 0 0 20px #B5C7C6;
+    */
 }
 
 nav#global ul {
     text-align: center;
-  /*  height: 40px;*/
+
+    /*  height: 40px;*/
     margin: 0 auto;
     display: table;
     list-style-type: none;
@@ -361,7 +295,7 @@ nav#global ul li a {
     display: block;
     text-transform: uppercase;
     line-height: 45px;
-    padding: 0 25px;
+    padding: 0 15px;
     color: #fff;
 }
 
@@ -374,6 +308,123 @@ nav#global ul li a:hover {
     background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #305FA1), color-stop(1, #305FA1));
 
 }
+
+
+#top-panel{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: right;
+    font-size: 1.5em;
+    background-color: #011633;
+    color: #ddd;
+    line-height: 45px;
+
+}
+
+
+#top-panel #top-panel-title{
+    color: #ffffff;
+    font-family: Sans;
+    font-size: 2em;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+
+}
+
+/* Login Panel */
+#login-panel{
+
+    display: inline-block;
+    position:relative;
+    left:88%;
+    top:-85px;
+
+    margin-right: auto;
+    /*background-color: #011633;*/
+    text-align: center;
+    color: white;
+    line-height: 45px;
+
+  /*  border-bottom-right-radius: 5px;
+    -moz-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    -moz-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;*/
+
+    /*display: none;*/
+}
+
+
+
+
+
+
+/* todo */
+#login-panel input{
+    line-height: 20px;
+    width: 8em;
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    display: block;
+    background-color: #f4f4f4;
+}
+
+
+#login-panel input::-webkit-input-placeholder {
+    color:    #999;
+}
+#login-panel input:-moz-placeholder {
+    color:    #999;
+}
+#login-panel input:-ms-input-placeholder {
+    color:    #999;
+}
+
+
+/* TODO CHECK FOR RM*/
+.loginInput {
+    color: #011633;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+#login-panel #login-panel-submit {
+    line-height: 20px;
+    width: 8em;
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    display: block;
+    color: white;
+
+
+    /*left: 2.5em;*/
+    /*top:50px;*/
+    position: absolute;
+    font-size: 1.3em;
+}
+
+
+
+
+/*.loginhint {*/
+    /*color: #d3d3d3;*/
+    /*font-size: 1.5em;*/
+    /*text-align: center;*/
+/*}*/
+/*.loginhint:focus {*/
+    /*color: #011633;*/
+/*}*/
+/*.loginfilled {*/
+    /*color: #011633;*/
+    /*font-size: 1.5em;*/
+    /*text-align: center;*/
+/*}*/
+
 
 /*
 nav#global ul li #subMenu {
@@ -813,8 +864,8 @@ blockquote:hover {
     display: inline-block;
 
     position:relative;
-    left:-20px;
-    top:-120px;
+
+    top:-155px;
 
     -o-transition: all 0.5s ease-out;
     -moz-transition: all 0.5s ease-out;
@@ -848,10 +899,10 @@ blockquote:hover {
 .imageHandle:hover {
     border: none;
 
-    transform: scale(1.2);
-    -o-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -webkit-transform: scale(1.2);
+    /*transform: scale(1.1);*/
+    /*-o-transform: scale(1.1);*/
+    /*-moz-transform: scale(1.1);*/
+    /*-webkit-transform: scale(1.1);*/
 }
 
 .textHandle {

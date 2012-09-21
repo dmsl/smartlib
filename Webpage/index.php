@@ -39,85 +39,83 @@ include 'scripts/sessionInit.php';
 <html lang=en>
 <head>
     <meta charset=UTF-8>
-<!--    TODO fill metadata for all pages-->
-    <meta name="description" content="SmartLib : Library of Modern World" />
+    <!--    TODO fill metadata for all pages-->
+    <meta name="description" content="SmartLib : Library of Modern World"/>
     <meta name="keywords" content="SmartLib, Smart, Library, Books, UCY,
-    University Of Cyprus, CrowdSourcing" />
+    University Of Cyprus, CrowdSourcing"/>
     <title>SmartLib</title>
 
     <!--    Include Scripts-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+
     <link href=styles.css rel=stylesheet />
+
     <!--    Include Extra headers-->
     <?php include 'scripts/gridHeader.php';
     include 'carousel/carouselHeader.php';  ?>
 
 
     <script>
-        var isShown=false;
+        var isShown = false;
 
         //Slide top menu
-        $(document).ready(function(){
-            $('#sub-menu-panel').click (function(){
+        $(document).ready(function () {
+            $('#sub-menu-panel').click(function () {
                 //Show panel
-                if(!isShown){
+                if (!isShown) {
                     $('#login-panel').slideDown("slow");
-                    isShown=true;
+                    isShown = true;
                 }
                 //Hide panel
-                else{
+                else {
 
 
                     $('#login-panel').slideUp("slow");
-                    isShown=false;
+                    isShown = false;
                 }
 
 
             });
-            $('#login-panel').click (function(){
+            $('#login-panel').click(function () {
 
 
             });
-
 
 
         });
 
-
-        function toggleLoginButton(){
-            if (($('#loginUsernameField').attr('value')!="")
+        function toggleLoginButton() {
+            if (($('#loginUsernameField').attr('value') != "")
                     &&
-               ($('#loginPasswordField').attr('value')!="")
-                    ){
+                    ($('#loginPasswordField').attr('value') != "")
+                    ) {
                 //Activate Login Link
-                //Login is link
-                    $('#sub-menu-panel-login-link').replaceWith(
-                            "<a class=\"loginButton\" id=\"sub-menu-panel-login-link\" \
-                           href=\"#\" onClick=\"document.getElementById('login-widget').submit()\">Login</a>");
+                //              //            //Login is link class=\"loginButton\"
+                $('#login-panel-submit').replaceWith("<a  id=\"login-panel-submit\" \
+                      href=\"#\" onClick=\"document.getElementById('login-widget').submit() >Login</a>");
 
 
             }
-            else{
+            else {
                 //Deactivate Login Link
-                    //Login is not link
-                    $('#sub-menu-panel-login-link').replaceWith(
-                            "<div id=\"sub-menu-panel-login-link\">Login</div>");
+                //Login is not link
+                $('#login-panel-submit').replaceWith(
+                        "<div id=\"login-panel-submit\">Login</div>");
             }
 
         }
 
 
-    //Add extra functionality to password
-        function toggleLoginButtonPassword(event){
+        //Add extra functionality to password
+        function toggleLoginButtonPassword(event) {
             //Toggle Login Button
             toggleLoginButton();
-            if(event.keyCode==13){
-                $("#sub-menu-panel-login-link").click();
-        }
+            if (event.keyCode == 13) {
+                $("#login-panel-submit").click();
+            }
 
 
         }
-
 
 
     </script>
@@ -128,73 +126,73 @@ include 'scripts/sessionInit.php';
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>-->
 
 
-
 <body>
+
 <!-- Header -->
 <header>
-<!-- Webpage Menu -->
-<nav id=global>
-    <ul>
-        <li><a href="index.php">Home</a></li>
-        <?php
-        //User is logged in
-        if ($_SESSION['loggedin'] == 1) {
-            ?>
-            <li><a href="userProfile.php">Profile</a>
-            </li>
-            <?php
-        } //User is Guest
-        else {
-            ?>
 
-            <li><a href="register.php">Register</a></li>
+
+    <div id="top-panel">
+        <div id="top-panel-title">SmartLib: Library of the modern World</div>
+    </div>
+
+
+    <!-- Webpage Menu -->
+    <nav id=global>
+        <ul>
+            <li><a href="index.php">Home</a></li>
             <?php
-        }
-        ?>
-        <li><a href="downloads.php">Downloads</a></li>
-        <li><a href="about.php">About</a></li>
-        <li><a href="contact.php">Contact</a></li>
-    </ul>
-</nav>
+            //User is logged in
+            if ($_SESSION['loggedin'] == 1) {
+                ?>
+                <li><a href="userProfile.php">Profile</a>
+                </li>
+                <?php
+            } //User is Guest
+            else {
+                ?>
+
+                <li><a href="register.php">Register</a></li>
+                <?php
+            }
+            ?>
+            <li><a href="downloads.php">Downloads</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="contact.php">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!--LOGIN INPUT USER & PASS -->
+    <!--Webpage Title: SmartLib .. -->
     <form id="login-widget" action="mobile/authenticate.php" method="post"
           enctype="multipart/form-data">
         <fieldset>
-    <div id="login-panel">
-                <input type="text" name="username"  placeholder="Username"
+            <div id="login-panel">
+                <input type="text" name="username" placeholder="Username"
                        class="loginInput" id="loginUsernameField"
                        onkeyup="toggleLoginButton()"
                         />
-
 
                 <input type="text" name="password" placeholder="Password"
                        class="loginInput" id="loginPasswordField"
                        onblur="toggleLoginButton()"
                        onkeyup="toggleLoginButtonPassword(event)"
                         />
-
-    </div>
-
-    <div id="sub-menu-panel">
-        <div id="sub-menu-panel-login-link">Login</div>
-    </div>
-
-    </fieldset>
+                <!--        Login Button-->
+                <div id="login-panel-submit">Login</div>
+            </div>
+        </fieldset>
     </form>
 
-    <section>
-        <?php include 'scripts/header.php'; ?>
-    </section>
 
-
-    <aside>
-        <?php include 'scripts/smartWidget.php'; ?>
-    </aside>
+    <a class="imageHandle" href="index.php">
+        <img height="100"
+             align="left" src="images/logo.png"/>
+    </a>
 
 
 </header>
-
-
-
 
 
 <div class=clearfix>
@@ -203,7 +201,6 @@ include 'scripts/sessionInit.php';
     <div id=content>
         <!--    If user is logged in-->
         <article>
-
 
 
             <!--            Show popular books at all times-->

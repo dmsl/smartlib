@@ -8,10 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list id="56ede854-0033-4441-ab8b-3ce698c2888a" name="PHPStorm" comment="New project in php storm&#10;Excluded credencials" />
-    <list default="true" id="137310d1-b305-48f5-9f40-3cbe4dbe825f" name="Credencials" comment="Credencials">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="137310d1-b305-48f5-9f40-3cbe4dbe825f" name="Credencials" comment="Login Panel on top">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/gridHeader.php" afterPath="$PROJECT_DIR$/scripts/gridHeader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/header.php" afterPath="$PROJECT_DIR$/scripts/header.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles.css" afterPath="$PROJECT_DIR$/styles.css" />
     </list>
     <ignored path="Webpage.iws" />
@@ -40,8 +40,10 @@
       <file leaf-file-name="styles.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="313" column="0" selection-start="5545" selection-end="5545" vertical-scroll-proportion="-0.18320611">
-              <folding />
+            <state line="34" column="0" selection-start="691" selection-end="691" vertical-scroll-proportion="0.65839696">
+              <folding>
+                <marker date="1348245631340" expanded="true" signature="7467:7717" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -49,28 +51,10 @@
       <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="172" column="26" selection-start="4768" selection-end="4768" vertical-scroll-proportion="-6.875">
+            <state line="50" column="23" selection-start="1443" selection-end="1444" vertical-scroll-proportion="-4.714286">
               <folding>
-                <marker date="1348232432074" expanded="true" signature="2605:2715" placeholder="..." />
+                <marker date="1348245754255" expanded="true" signature="2615:2719" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="loginWidget.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/loginWidget.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="19" selection-start="2111" selection-end="2214" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/header.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="4" selection-start="969" selection-end="969" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -104,17 +88,17 @@
         <option value="$PROJECT_DIR$/CREDENCIALS.php" />
         <option value="$PROJECT_DIR$/register.php" />
         <option value="$PROJECT_DIR$/scripts/gridHeader.php" />
-        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/scripts/header.php" />
         <option value="$PROJECT_DIR$/styles.css" />
+        <option value="$PROJECT_DIR$/index.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
     <option name="y" value="25" />
-    <option name="width" value="1282" />
-    <option name="height" value="735" />
+    <option name="width" value="1280" />
+    <option name="height" value="734" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -142,17 +126,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Problems" />
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -219,16 +192,27 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.235" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="web.server" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PublishConfig" serverName="SmartLib SFTP" serverId="812db4ce-4c32-418f-b817-fcc9f1e9ba42" autoUpload="true" uploadOnSaveAll="true">
     <servers>
@@ -242,9 +226,6 @@
     </servers>
   </component>
   <component name="RunManager" selected="PHP Script.index.php">
-    <configuration default="false" name="index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/index.php">
-      <method />
-    </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
       <method />
@@ -255,6 +236,9 @@
     <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="812db4ce-4c32-418f-b817-fcc9f1e9ba42" server_name="SmartLib SFTP">
       <method />
     </configuration>
+    <configuration default="false" name="index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/index.php">
+      <method />
+    </configuration>
     <configuration default="false" name="Webpage" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner directory="$PROJECT_DIR$" />
       <RunnerSettings RunnerId="PhpRunner" />
@@ -262,14 +246,9 @@
       <method />
     </configuration>
     <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="PHPUnit.Webpage" />
-      <item index="1" class="java.lang.String" itemvalue="PHP Script.index.php" />
+      <item index="0" class="java.lang.String" itemvalue="PHP Script.index.php" />
+      <item index="1" class="java.lang.String" itemvalue="PHPUnit.Webpage" />
     </list>
-    <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="PHP Script.index.php" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
@@ -309,11 +288,15 @@
       <created>1348179951610</created>
       <updated>1348179951610</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Login Panel on top">
+      <created>1348232648182</created>
+      <updated>1348232648182</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="25" width="1282" height="735" extended-state="6" />
+    <frame x="0" y="25" width="1280" height="734" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282313" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -321,7 +304,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.6006826" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25769854" sideWeight="0.6020408" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2617504" sideWeight="0.6717687" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39795917" sideWeight="0.49756888" order="7" side_tool="true" content_ui="tabs" />
@@ -372,7 +355,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working on nw login widget, smaller than previous.&#10;On this logged-in bar, will appear search options, advanced search etc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login Panel on top" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -388,6 +371,7 @@
     <MESSAGE value="Removed Dreamweaver files" />
     <MESSAGE value="Credencials" />
     <MESSAGE value="Working on nw login widget, smaller than previous.&#10;On this logged-in bar, will appear search options, advanced search etc" />
+    <MESSAGE value="Login Panel on top" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -397,7 +381,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="153" column="14" selection-start="4043" selection-end="4043" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1348232432074" expanded="true" signature="2605:2715" placeholder="..." />
+            <marker date="1348245754255" expanded="true" signature="2615:2719" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -405,29 +389,25 @@
     <entry file="file://$PROJECT_DIR$/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="341" column="16" selection-start="6428" selection-end="6428" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <marker date="1348245631340" expanded="true" signature="7467:7717" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/smartWidget.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/loginWidget.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="19" selection-start="2111" selection-end="2214" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="69" column="19" selection-start="2111" selection-end="2214" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="4" selection-start="969" selection-end="969" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="29" column="4" selection-start="969" selection-end="969" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grid/examples/JSON.php">
@@ -452,52 +432,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/smartWidget.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="4" selection-start="969" selection-end="969" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/loginWidget.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="19" selection-start="2111" selection-end="2214" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/gridHeader.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1014" selection-end="1014" vertical-scroll-proportion="-3.2916667">
-          <folding />
-        </state>
+        <state line="35" column="0" selection-start="1014" selection-end="1014" vertical-scroll-proportion="-3.2916667" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/carouselHeader.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="27" selection-start="313" selection-end="313" vertical-scroll-proportion="0.21201414">
-          <folding />
-        </state>
+        <state line="10" column="27" selection-start="313" selection-end="313" vertical-scroll-proportion="0.21201414" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="27" selection-start="1028" selection-end="1028" vertical-scroll-proportion="0.79532164" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/loginWidget.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="17" selection-start="1903" selection-end="1903" vertical-scroll-proportion="0.6237817" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="26" selection-start="4768" selection-end="4768" vertical-scroll-proportion="-6.875">
+        <state line="50" column="23" selection-start="1443" selection-end="1444" vertical-scroll-proportion="-4.714286">
           <folding>
-            <marker date="1348232432074" expanded="true" signature="2605:2715" placeholder="..." />
+            <marker date="1348245754255" expanded="true" signature="2615:2719" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="313" column="0" selection-start="5545" selection-end="5545" vertical-scroll-proportion="-0.18320611">
-          <folding />
+        <state line="34" column="0" selection-start="691" selection-end="691" vertical-scroll-proportion="0.65839696">
+          <folding>
+            <marker date="1348245631340" expanded="true" signature="7467:7717" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
