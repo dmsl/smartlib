@@ -39,57 +39,94 @@ include 'scripts/sessionInit.php';
 <html lang=en>
 <head>
     <meta charset=UTF-8>
+<!--    TODO fill metadata for all pages-->
+    <meta name="description" content="SmartLib : Library of Modern World" />
+    <meta name="keywords" content="SmartLib, Smart, Library, Books, UCY,
+    University Of Cyprus, CrowdSourcing" />
     <title>SmartLib</title>
+
+    <!--    Include Scripts-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <link href=styles.css rel=stylesheet />
     <!--    Include Extra headers-->
-    <?php include 'scripts/gridHeader.php'; ?>
+    <?php include 'scripts/gridHeader.php';
+    include 'carousel/carouselHeader.php';  ?>
 
-    <?php
 
-    //Include carousel header
-    include 'carousel/carouselHeader.php';    ?>
-</head>
+    <script>
+        var isShown=false;
 
-<script src="jquery.js"></script>
-<script>
-    var isShown=false;
+        //Slide top menu
+        $(document).ready(function(){
+            $('#sub-menu-panel').click (function(){
+                //Show panel
+                if(!isShown){
+                    $('#login-panel').slideDown("slow");
+                    isShown=true;
+                }
+                //Hide panel
+                else{
 
-    //Slide top menu
-    $(document).ready(function(){
-        $('#sub-menu-panel').click (function(){
-            //Show panel
-            if(!isShown){
-                //Login is not link
-                $('#login-panel').slideDown("slow",function(){
+
+                    $('#login-panel').slideUp("slow");
+                    isShown=false;
+                }
+
+
+            });
+            $('#login-panel').click (function(){
+
+
+            });
+
+
+
+        });
+
+
+        function toggleLoginButton(){
+            if (($('#loginUsernameField').attr('value')!="")
+                    &&
+               ($('#loginPasswordField').attr('value')!="")
+                    ){
+                //Activate Login Link
+                //Login is link
                     $('#sub-menu-panel-login-link').replaceWith(
                             "<a class=\"loginButton\" id=\"sub-menu-panel-login-link\" \
                            href=\"#\" onClick=\"document.getElementById('login-widget').submit()\">Login</a>");
 
-                });
-                isShown=true;
+
             }
-            //Hide panel
             else{
-
-
-                $('#login-panel').slideUp("slow");
-                //Login is not link
-                $('#sub-menu-panel-login-link').replaceWith(
-                        "<div id=\"sub-menu-panel-login-link\">Login</div>");
-                isShown=false;
+                //Deactivate Login Link
+                    //Login is not link
+                    $('#sub-menu-panel-login-link').replaceWith(
+                            "<div id=\"sub-menu-panel-login-link\">Login</div>");
             }
 
-
-        });
-        $('#login-panel').click (function(){
+        }
 
 
-        });
+    //Add extra functionality to password
+        function toggleLoginButtonPassword(event){
+            //Toggle Login Button
+            toggleLoginButton();
+            if(event.keyCode==13){
+                $("#sub-menu-panel-login-link").click();
+        }
+
+
+        }
 
 
 
-    });
-</script>
+    </script>
+
+
+</head>
+<!-- Include Google's JQUery TODO make this for all pages!
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>-->
+
 
 
 <body>
@@ -110,8 +147,7 @@ include 'scripts/sessionInit.php';
         else {
             ?>
 
-            <li><a href="register.php">Register</a>
-            </li>
+            <li><a href="register.php">Register</a></li>
             <?php
         }
         ?>
@@ -124,44 +160,17 @@ include 'scripts/sessionInit.php';
           enctype="multipart/form-data">
         <fieldset>
     <div id="login-panel">
-
-
-                <input type="text" name="username" value="Username"   class="loginhint"
-                       onBlur="if(this.value=='') {
-                       //TODO MAKE THOSE FUNCTIONS
-                this.value='Username';
-                this.className='loginhint';
-                }
-                else {
-                 this.className='loginfilled';
-                 }
-
-                "
-                 onFocus="if(this.value =='Username' ){
-                 this.value='';
-
-                 }
-
-                 " />
-                <input type="text" name="password" value="Password" class="loginhint"
-                       onBlur="if(this.value=='') {
-                this.value='Password';
-                type='text';
-                this.className='loginhint';
-                }
-                else {
-                this.className='loginfilled';
-                }
-                "
-                onFocus="if(this.value =='Password' ){
-                this.value='';
-               	type='password';
-
-                }
-
-                "
+                <input type="text" name="username"  placeholder="Username"
+                       class="loginInput" id="loginUsernameField"
+                       onkeyup="toggleLoginButton()"
                         />
 
+
+                <input type="text" name="password" placeholder="Password"
+                       class="loginInput" id="loginPasswordField"
+                       onblur="toggleLoginButton()"
+                       onkeyup="toggleLoginButtonPassword(event)"
+                        />
 
     </div>
 
@@ -179,7 +188,6 @@ include 'scripts/sessionInit.php';
 
     <aside>
         <?php include 'scripts/smartWidget.php'; ?>
-
     </aside>
 
 

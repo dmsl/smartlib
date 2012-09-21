@@ -32,12 +32,16 @@
     -->
     
     
-    <!-- Load CSS--><br />
+    <!-- Load CSS-->
+
 <link rel="stylesheet" href="grid/themes/ui.jqgrid.css" type="text/css" media="all" />
 <!-- For this theme, download your own from link above, and place it at css folder -->
 <link rel="stylesheet" href="grid/themes/pasqtheme/paschalis.custom.css" type="text/css" media="all" />
-<!-- Load Javascript -->
-<script src="grid/js/jquery.js" type="text/javascript"></script>
+<!-- Load Javascript-->
+<!--<script src="grid/js/jquery.js" type="text/javascript"></script>-->
 <script src="grid/js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
 <script src="grid/js/i18n/grid.locale-en.js" type="text/javascript"></script>
-<script src="grid/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+
+
+ <script src="grid/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+

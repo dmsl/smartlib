@@ -239,7 +239,7 @@ hgroup h2 {
 }
 
 #sub-menu-panel{
-    width: 98%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -255,8 +255,14 @@ hgroup h2 {
     -webkit-border-bottom-left-radius: 5px;
 }
 
+
+
+
+
+
+
 #login-panel{
-    width: 98%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     background-color: #011633;
@@ -282,19 +288,25 @@ hgroup h2 {
     -webkit-border-radius: 7px;
 }
 
-.loginhint {
-    color: #d3d3d3;
-    font-size: 1.5em;
-    text-align: center;
-}
-.loginhint:focus {
-    color: #011633;
-}
-.loginfilled {
+.loginInput {
     color: #011633;
     font-size: 1.5em;
     text-align: center;
 }
+
+/*.loginhint {*/
+    /*color: #d3d3d3;*/
+    /*font-size: 1.5em;*/
+    /*text-align: center;*/
+/*}*/
+/*.loginhint:focus {*/
+    /*color: #011633;*/
+/*}*/
+/*.loginfilled {*/
+    /*color: #011633;*/
+    /*font-size: 1.5em;*/
+    /*text-align: center;*/
+/*}*/
 
 .loginButton {
 
@@ -304,14 +316,14 @@ hgroup h2 {
 /* Navigation */
 nav#global {
     margin: 0; /*top middleMiddle bottom */
-    border-top-right-radius: 5px;
-    -moz-border-top-right-radius: 5px;
-    -webkit-border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    -moz-border-top-left-radius: 5px;
-    -webkit-border-top-left-radius: 5px;
+    /*border-top-right-radius: 5px;*/
+    /*-moz-border-top-right-radius: 5px;*/
+    /*-webkit-border-top-right-radius: 5px;*/
+    /*border-top-left-radius: 5px;*/
+    /*-moz-border-top-left-radius: 5px;*/
+    /*-webkit-border-top-left-radius: 5px;*/
 
-    width: 98%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 
