@@ -30,7 +30,7 @@ Tel: +357-22-892755
 Fax: +357-22-892701
 
 
-*/ 
+*/
 session_start();
 include 'scripts/sessionInit.php';
 
@@ -38,118 +38,155 @@ include 'scripts/sessionInit.php';
 <!DOCTYPE html>
 <html lang=en>
 <head>
-	<meta charset=UTF-8>
-	<title>SmartLib</title>
-	<link href=styles.css rel=stylesheet />
-<!--    Include Extra headers-->
-   <?php include 'scripts/gridHeader.php'; ?>
-   
-                <?php 
+    <meta charset=UTF-8>
+    <!--    TODO fill metadata for all pages-->
+    <meta name="description" content="SmartLib : Library of Modern World"/>
+    <meta name="keywords" content="smartLib, smart, library, books, ucy,
+    university of cyprus, university, cyprus, cs"/>
+    <title>SmartLib</title>
 
-			//Include carousel header
-								include 'carousel/carouselHeader.php';
-							
-								?>
+    <!--    Include Scripts-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <link href=styles.css rel=stylesheet />
+    <!--    Include Extra headers-->
+    <?php include 'scripts/gridHeader.php';
+    include 'carousel/carouselHeader.php';  ?>
+
+
+    <script src="scripts/loginScript.js"></script>
+
 
 </head>
+<!-- Include Google's JQUery TODO make this for all pages!
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>-->
+
 
 <body>
+
+<!-- Header -->
 <header>
 
-   <section>
-   <?php include 'scripts/header.php'; ?>
-		</section>
-		
 
-     <aside>
-     <?php include 'scripts/smartWidget.php'; ?>
-     
-</aside>
-	
+    <div id="top-panel">
+        <div id="top-panel-title">SmartLib: Library of the modern World</div>
+    </div>
 
-		
+
+    <!-- Webpage Menu -->
+    <nav id=global>
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <?php
+            //User is logged in
+            if ($_SESSION['loggedin'] == 1) {
+                ?>
+                <li><a href="userProfile.php">Profile</a>
+                </li>
+                <?php
+            } //User is Guest
+            else {
+                ?>
+
+                <li><a href="register.php">Register</a></li>
+                <?php
+            }
+            ?>
+            <li><a href="downloads.php">Downloads</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="contact.php">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Login widget, on up-right corner of webpage  action=mobile/authenticate.php  method="post" -->
+<!--    <form id="login-widget" onsubmit="javascript:asyncLogin()"-->
+<!---->
+<!--    autocomplete="off"-->
+<!--          enctype="multipart/form-data">-->
+        <fieldset>
+            <div id="login-panel">
+                <input type="text" name="username" placeholder="Username"
+                       autocomplete="off"
+
+                       id="loginUsernameField"
+                       onkeyup="toggleLoginButton()"
+                        />
+
+                <input type="password" name="password" placeholder="Password"
+
+                       onkeyup="toggleLoginButtonPassword(event)"
+                       id="loginPasswordField"
+                       autocomplete="off"  />
+                <!--        Login Button-->
+                <div  id="login-panel-submit">Login</div>
+            </div>
+        </fieldset>
+<!--    </form>-->
+
+<!--TODO LIBRARY logo TODO MOVE THIS-->
+    <a class="imageHandle" href="index.php">
+        <img height="100"
+             align="left" src="images/logo.png"/>
+    </a>
 </header>
 
-<div class=clearfix>
-	<div id=content>
-<!--    If user is logged in-->
-		<article>
-        	<nav id=global>
-		<ul>
-			<li><a href="index.php">Home</a></li>
-                             <?php 
-							//User is logged in
-							if($_SESSION['loggedin']==1){
-								?>
-								<li><a href="userProfile.php"><?php echo $_SESSION['name']?> Profile</a>
-								</li>
-                                <?php
-								}
-							//User is Guest
-							else{
-								?>
-								
-								<li><a href="register.php">Register</a>
-								</li>
-                                <?php
-								}
-								?>
-			<li><a href="downloads.php">Downloads</a></li>
-			<li><a href="about.php">About</a></li>
-   			<li><a href="contact.php">Contact</a></li>
-		</ul>
-	</nav>
-			
-            
-<!--            Show popular books at all times-->
-                                <header>	
-								<h1>Popular Books</h1>
-                                </header>
-                               <center>
-                                  <ul id="mycarousel" class="jcarousel-skin-ie7">
-                                    <ul>
-                                      <!-- The content will be dynamically loaded in here -->
-                                    </ul>
-                                  </ul>
-                               </center>
-         <?php 
-							//User is logged in
-							if($_SESSION['loggedin']==1){
-								
-								?>
 
-                                    
-                                 <header>
-                                <h1>All Books</h1>
-                                </header>
-                                <center>
-                                <?php include 'grid/allBooksLoggedIn.php'; ?></center>
-                                <br>
-                              
-                                <?php
-								}
-								else
-								{
-								?>
-            
-				
-                            <header>
-                                <h1>All Books</h1>
-                            </header>
-                            <center>
-                            <?php include 'grid/allBooks.php'; ?></center>
-                            <br>
-                             <?php } ?>
-        
-		</article>
-			
-	</div>
-	
+<div class=clearfix>
+
+    <div class="toast-message" id="notoast">No Errors Found</div>
+
+
+    <div id=content>
+
+        <article>
+
+
+            <!--            Show popular books at all times-->
+            <header>
+                <h1>Popular Books</h1>
+            </header>
+            <center>
+                <ul id="mycarousel" class="jcarousel-skin-ie7">
+                    <ul>
+                        <!-- The content will be dynamically loaded in here -->
+                    </ul>
+                </ul>
+            </center>
+            <?php
+            //User is logged in
+            if ($_SESSION['loggedin'] == 1) {
+
+                ?>
+
+
+                <header>
+                    <h1>All Books</h1>
+                </header>
+                <center>
+                    <?php include 'grid/allBooksLoggedIn.php'; ?></center>
+                <br>
+
+                <?php
+            } else {
+                ?>
+
+
+                <header>
+                    <h1>All Books</h1>
+                </header>
+                <center>
+                    <?php include 'grid/allBooks.php'; ?></center>
+                <br>
+                <?php } ?>
+
+        </article>
+
+    </div>
+
 
 </div>
 
 <footer class=clearfix>
-<?php include "scripts/footer.php" ?>
+    <?php include "scripts/footer.php" ?>
 
 </footer>
 

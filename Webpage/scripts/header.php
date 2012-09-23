@@ -27,17 +27,11 @@
 	Email: dmsl@cs.ucy.ac.cy
 	Tel: +357-22-892755
 	Fax: +357-22-892701
-    
-    
+
+    REMOVE TODO REMOVE T
+
     -->
+
+<!-- TODO REMOVE THIS FILE -->
     
-    
-            <hgroup>
-        <a  class="imageHandle"  href="index.php">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <img  height="100" 
-                            align="center" src="images/logo.png"/>
-                            </a>
-<!--            <h1><a href=#>SmartLib <?php echo _NAME;?></a></h1>-->
-            <h2>LIBRARY OF THE MODERN WORLD</h2>
-        </hgroup>
+
