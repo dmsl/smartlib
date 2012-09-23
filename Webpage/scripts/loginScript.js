@@ -50,8 +50,6 @@ function toggleLoginButton() {
                 ' >Login</button>');
 
 
-
-
     }
     else {
         //Deactivate Login Link
@@ -63,93 +61,163 @@ function toggleLoginButton() {
 }
 
 
-
-
-
-
 /* Toggle login button according to password field changes */
 function toggleLoginButtonPassword(event) {
     //Toggle Login Button
     toggleLoginButton();
     if (event.keyCode == 13) {
         // $('#login-panel-submit-filled').click();
-       //TODO changed document.getElementById("login-widget").submit()
+        //TODO changed document.getElementById("login-widget").submit()
         asyncLogin();
     }
 
 
 }
 
+//Show toast message according to message type
+function showToastMessage(msg) {
 
-function hideToastMessage(){
-    var alert = document.getElementById("toast-message");
-    alert.style.opacity = 0;
+    $(document).ready(function () {
+
+
+        var messageType = msg.substring(0, 3);
+        var message = msg.substring(3);
+
+        //Show error toast
+        if (messageType == "err") {
+            messageType = 'error';
+        }
+        //Show info toast
+        else if (messageType == "inf") {
+            messageType = 'info';
+        }
+        else {
+            //Show nothing
+            return;
+        }
+
+
+        //Show toast message
+        $('.toast-message').replaceWith(
+            "<div dis class='toast-message' id='" + messageType + "'>" + message + "</div>");
+
+        $('.toast-message').fadeIn("normal", onToastClickFadeOut());
+
+
+    });
+
 
 }
 
-function showToastMessage(message){
+//Adds fade out functionality to Toast Message
+function onToastClickFadeOut() {
+    $('.toast-message').click(function () {
+        $('.toast-message').fadeOut("slow");
 
-//    alert.style.opacity = 1;
-//    var alert = document.getElementById("toast");
-
-    $('.toast-message').replaceWith(
-        "<div dis class='toast-message' id='error'>" + message+ "</div>");
-
-    $('.toast-message').fadeIn(500);
-
-
-
+    });
 
 }
-
-
 
 
 /* Asychromous Login */
-function asyncLogin(){
+function asyncLogin() {
+
+    //TODO fade and make items unclickable!
+    // UNTIL USER LOGINS!
 
     //onClick="document.getElementById("login-widget").submit()
-   // var username = document.getElementById("loginUsernameField").value;
-  //  var password = document.getElementById("loginPasswordField").value;
-    showToastMessage("TextToShow");
+    var username = document.getElementById("loginUsernameField").value;
+    var password = document.getElementById("loginPasswordField").value;
 
 
+    var buildParams = "username=" + username + "&password=" + password;
 
 
-  //  document.getElementById("resultDiv").innerHTML="adsfas" ;
-
-   /* var xmlhttp;
+    var xmlhttp;
 
     //Make the request (IE7+, and browsers)
-    if (window.XMLHttpRequest){
-        xmlhttp=new XMLHttpRequest();
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
     }
     //For IE<=6
-    else
-    {
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
+
+
+    xmlhttp.open("POST", "mobile/authenticate.php", true);
+    //Send the proper header information along with the request
+
+
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    xmlhttp.send(buildParams);//TODO
 
     //When state changed
-    xmlhttp.onreadystatechange=function()
-    {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200)
-        {
-            document.getElementById("resultdiv").innerHTML=xmlhttp.responseText ;
+    xmlhttp.onreadystatechange = function () {
+
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+            var message = xmlhttp.responseText.trim();
+
+            //TODO MESSAGE MUST BE:
+            // 1
+            // pASHALIS
+            // PMPEIS01
+            // EMAIL etc.. ALL HAS TO GO DONT IN JS/AJAX
+            //user has logged in
+            if (message == '1') {
+                var phpCode = "<?PHP echo \"Gergo\"; ?>";
+
+                var string2 = "<div id='login-panel-loggedin'>" +
+                    phpCode +
+                    "</div>";
+
+                //Modify login area
+                $('#loginUsernameField').replaceWith(string2);
+
+
+                $('#loginPasswordField').hide();
+
+
+
+                //Login button
+                $('#login-panel-submit-filled').replaceWith(
+                    '<button type="submit" onclick="asyncLogout()"   id="login-panel-submit-filled" href=""  ' +
+                        ' >LogouT</button>');
+
+                //Profile Button
+
+            }
+            else {
+                //Un-fade items
+                showToastMessage(message);
+            }
+
+
         }
-        else if(xmlhttp.status==404){
+        else if (xmlhttp.status == 404) {
             //Authentication script not found
-            document.getElementById("resultdiv").innerHTML="script not found" ;
+            //TODO check if have todo something
+            showErrorToastMessage("Webpage Error");
+            //document.getElementById("resultdiv").innerHTML="script not found" ;
 
         }
     }
 
-    xmlhttp.open("POST","ajax_info.txt",true);
-    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    xmlhttp.send("fname=Henry&lname=Ford");//TODO
-    */
 
 }
+
+
+
+
+
+/* TODO Asychromous Login  */
+function asyncLogout() {
+
+
+}
+
 
 
 

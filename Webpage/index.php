@@ -97,16 +97,19 @@ include 'scripts/sessionInit.php';
         </ul>
     </nav>
 
-    <!-- Login widget, on up-right corner of webpage  action=mobile/authenticate.php  method="post" -->
-<!--    <form id="login-widget" onsubmit="javascript:asyncLogin()"-->
-<!---->
-<!--    autocomplete="off"-->
-<!--          enctype="multipart/form-data">-->
+
+
+
+
+
+
+<!--    TODO if user is logged in show logged in panel, else show this panel-->
+
         <fieldset>
             <div id="login-panel">
                 <input type="text" name="username" placeholder="Username"
                        autocomplete="off"
-
+                       autofocus="autofocus"
                        id="loginUsernameField"
                        onkeyup="toggleLoginButton()"
                         />

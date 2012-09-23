@@ -114,7 +114,7 @@ if ($respassword == $password)
 			$_SESSION['topTypeMsg'] = "err";
 			$_SESSION['topMsg'] = $_SESSION['name']. ", your account is not activated</br>".
 					"Activate it using your email: ".$_SESSION['email'];
-            echo 	$_SESSION['topTypeMsg'].$_SESSION['topMsg'];
+            echo 	$_SESSION['topMsg'];
 		}
 			
 		else if($reslevel==-1){
@@ -123,7 +123,7 @@ if ($respassword == $password)
 			$_SESSION['topTypeMsg'] = "err";
 			$_SESSION['topMsg'] = $_SESSION['name']. ", you are a visitor to SmartLib.</br>".
 					"Please activate full account.";
-            echo 	$_SESSION['topTypeMsg'].$_SESSION['topMsg'];
+            echo $_SESSION['topMsg'];
 		}
 
         else if($reslevel==-2){
@@ -132,7 +132,7 @@ if ($respassword == $password)
             $_SESSION['topTypeMsg'] = "err";
             $_SESSION['topMsg'] = $_SESSION['name']. ", your are banned from SmartLib.</br>".
                 "Contact SmartLib Admin for further Details.";
-            echo 	$_SESSION['topTypeMsg'].$_SESSION['topMsg'];
+            echo $_SESSION['topMsg'];
         }
 
 		else {
@@ -140,7 +140,7 @@ if ($respassword == $password)
 			unset($_SESSION['topTypeMsg']);
 			unset($_SESSION['topMsg']);
 		}
-		// TODO RM echo "conne". $_SESSION['currentPage'];
+
 		//TODO
 		//header("Location: ".$_SESSION['currentPage']);
 
@@ -162,7 +162,7 @@ else
 		$_SESSION['topMsg'] = "Wrong Username or Password.</br>".
 				"Please try again.";
 
-        echo 	$_SESSION['topTypeMsg'].$_SESSION['topMsg'];
+        echo $_SESSION['topMsg'];
 		//TODO
 		//header("Location: ".$_SESSION['currentPage']);
 	}
@@ -191,7 +191,7 @@ function dbError($pError){
     $_SESSION['topMsg']="Internal Error: ".$pError."</br>You can't use SmartLib right now</br>".
         "Please check back later.";
 
-    echo 	$_SESSION['topTypeMsg'].$_SESSION['topMsg'];
+    echo $_SESSION['topMsg'];
 
 	//header("Location: ".$_SESSION['currentPage']);
 	die();
@@ -267,7 +267,7 @@ function webSendLoginError(){
 		$_SESSION['currentPage']="index.php";
 	}
 
-    echo 	$_SESSION['topTypeMsg'].$_SESSION['topMsg'];
+    echo 	$_SESSION['topMsg'];
 	//header("Location: ".$_SESSION['currentPage']);
 	die();
 	
