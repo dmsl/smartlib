@@ -114,21 +114,33 @@ if ($respassword == $password)
 			$_SESSION['topTypeMsg'] = "err";
 			$_SESSION['topMsg'] = $_SESSION['name']. ", your account is not activated</br>".
 					"Activate it using your email: ".$_SESSION['email'];
+            echo 	$_SESSION['topTypeMsg'].$_SESSION['topMsg'];
 		}
 			
 		else if($reslevel==-1){
 			$_SESSION['loggedin'] = "0";
 			//header("Location: userNotActivated.php");
 			$_SESSION['topTypeMsg'] = "err";
-			$_SESSION['topMsg'] = $_SESSION['name']. ", your are banned from SmartLib.</br>".
-					"Contact SmartLib Admin for further Details.";
+			$_SESSION['topMsg'] = $_SESSION['name']. ", you are a visitor to SmartLib.</br>".
+					"Please activate full account.";
+            echo 	$_SESSION['topTypeMsg'].$_SESSION['topMsg'];
 		}
+
+        else if($reslevel==-2){
+            $_SESSION['loggedin'] = "0";
+            //header("Location: userNotActivated.php");
+            $_SESSION['topTypeMsg'] = "err";
+            $_SESSION['topMsg'] = $_SESSION['name']. ", your are banned from SmartLib.</br>".
+                "Contact SmartLib Admin for further Details.";
+            echo 	$_SESSION['topTypeMsg'].$_SESSION['topMsg'];
+        }
+
 		else {
 			$_SESSION['loggedin'] = "1";
 			unset($_SESSION['topTypeMsg']);
 			unset($_SESSION['topMsg']);
 		}
-		echo "conne". $_SESSION['currentPage'];
+		// TODO RM echo "conne". $_SESSION['currentPage'];
 		//TODO
 		//header("Location: ".$_SESSION['currentPage']);
 
@@ -150,7 +162,7 @@ else
 		$_SESSION['topMsg'] = "Wrong Username or Password.</br>".
 				"Please try again.";
 
-echo "wrong cred". $_SESSION['currentPage'];
+        echo 	$_SESSION['topTypeMsg'].$_SESSION['topMsg'];
 		//TODO
 		//header("Location: ".$_SESSION['currentPage']);
 	}
@@ -169,20 +181,24 @@ function dbError($pError){
 		mobileSendDatabaseError();
 	}
 
-	//if there is DB Error, inform user and move him back
-	inform($pError);
-
 
 	if($_SESSION['currentPage']==""){
 		$_SESSION['currentPage']="index.php";
 	}
 
-echo  "bd error".$_SESSION['currentPage'];
-		//TODO
+
+    $_SESSION['topTypeMsg']="err";
+    $_SESSION['topMsg']="Internal Error: ".$pError."</br>You can't use SmartLib right now</br>".
+        "Please check back later.";
+
+    echo 	$_SESSION['topTypeMsg'].$_SESSION['topMsg'];
+
 	//header("Location: ".$_SESSION['currentPage']);
 	die();
 
 }
+
+
 
 
 //Send login data to mobile device
@@ -224,6 +240,9 @@ function mobileSendDatabaseError(){
 }
 
 
+
+
+
 // Sends error to mobile device using JSON Object Format
 function mobileSendLoginError(){
 	$result = array(
@@ -235,6 +254,9 @@ function mobileSendLoginError(){
 	die();
 }
 
+
+
+
 //Sends login error to Website visitors
 function webSendLoginError(){
 	
@@ -244,8 +266,9 @@ function webSendLoginError(){
 	if($_SESSION['currentPage']==""){
 		$_SESSION['currentPage']="index.php";
 	}
-	
-	header("Location: ".$_SESSION['currentPage']);
+
+    echo 	$_SESSION['topTypeMsg'].$_SESSION['topMsg'];
+	//header("Location: ".$_SESSION['currentPage']);
 	die();
 	
 }
