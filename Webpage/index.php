@@ -67,11 +67,14 @@ include 'scripts/sessionInit.php';
 <header>
 
 
+
+
     <div id="top-panel">
         <div id="top-panel-title">SmartLib: Library of the modern World</div>
     </div>
 
-
+<!-- TODO move this to script to a php, and check if its connected-->
+<!--    If it is, show the logged in div, else this-->
     <!-- Webpage Menu -->
     <nav id=global>
         <ul>
@@ -99,37 +102,19 @@ include 'scripts/sessionInit.php';
 
 
 
-
-
-
-
-<!--    TODO if user is logged in show logged in panel, else show this panel-->
-
-        <fieldset>
-            <div id="login-panel">
-                <input type="text" name="username" placeholder="Username"
-                       autocomplete="off"
-                       autofocus="autofocus"
-                       id="loginUsernameField"
-                       onkeyup="toggleLoginButton()"
-                        />
-
-                <input type="password" name="password" placeholder="Password"
-
-                       onkeyup="toggleLoginButtonPassword(event)"
-                       id="loginPasswordField"
-                       autocomplete="off"  />
-                <!--        Login Button-->
-                <div  id="login-panel-submit">Login</div>
-            </div>
-        </fieldset>
-<!--    </form>-->
-
-<!--TODO LIBRARY logo TODO MOVE THIS-->
-    <a class="imageHandle" href="index.php">
+    <!--TODO LIBRARY logo TODO MOVE THIS-->
+    <a id="imageLogo" href="index.php" >
         <img height="100"
              align="left" src="images/logo.png"/>
     </a>
+
+
+<!--Show Login (Widget)Panel-->
+<!--    TODO if user is logged in show logged in panel, else show this panel-->
+<?php include('scripts/smartWidget.php'); ?>
+<!--    </form>-->
+
+
 </header>
 
 

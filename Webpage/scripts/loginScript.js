@@ -29,9 +29,16 @@
  Fax: +357-22-892701
  */
 
+// User Variables
 
-
-
+var _username;
+var _name;
+var _surname;
+var _email;
+var _telephone;
+var _allowrequests;
+var _level;
+var _loginResult;
 
 
 /* Toggle login button according to username field changes */
@@ -75,33 +82,48 @@ function toggleLoginButtonPassword(event) {
 }
 
 //Show toast message according to message type
-function showToastMessage(msg) {
+function showToastMessage(msg,type) {
 
     $(document).ready(function () {
 
 
-        var messageType = msg.substring(0, 3);
-        var message = msg.substring(3);
+        var messageType;// = msg.substring(0, 3);
+       // var message = msg.substring(3);
 
         //Show error toast
-        if (messageType == "err") {
-            messageType = 'error';
+        if (type == "0") {
+            messageType= 'error';
         }
         //Show info toast
-        else if (messageType == "inf") {
+        else if (type== "1") {
             messageType = 'info';
         }
         else {
             //Show nothing
-            return;
+            //TODO  restore-> return;
         }
 
 
-        //Show toast message
+
+//        //Show toast message
         $('.toast-message').replaceWith(
-            "<div dis class='toast-message' id='" + messageType + "'>" + message + "</div>");
+            "<div dis class='toast-message' id='" + messageType + "'>" + msg + "</div>");
 
-        $('.toast-message').fadeIn("normal", onToastClickFadeOut());
+        $('.toast-message').fadeIn("normal", function(){
+
+            //Hide on click
+            $('.toast-message').click(function () {
+                $('.toast-message').clearQueue();
+                $('.toast-message').fadeOut("slow");
+
+            });
+
+       //Auto hide
+       $('.toast-message').delay(5000);
+       $('.toast-message').fadeOut("slow");
+
+
+        });
 
 
     });
@@ -109,14 +131,7 @@ function showToastMessage(msg) {
 
 }
 
-//Adds fade out functionality to Toast Message
-function onToastClickFadeOut() {
-    $('.toast-message').click(function () {
-        $('.toast-message').fadeOut("slow");
 
-    });
-
-}
 
 
 /* Asychromous Login */
@@ -158,53 +173,138 @@ function asyncLogin() {
 
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
-            var message = xmlhttp.responseText.trim();
+            var jsonString =xmlhttp.responseText.trim();
 
-            //TODO MESSAGE MUST BE:
-            // 1
-            // pASHALIS
-            // PMPEIS01
-            // EMAIL etc.. ALL HAS TO GO DONT IN JS/AJAX
-            //user has logged in
-            if (message == '1') {
-                var phpCode = "<?PHP echo \"Gergo\"; ?>";
 
-                var string2 = "<div id='login-panel-loggedin'>" +
-                    phpCode +
-                    "</div>";
+            var jsonOBJ = eval('(' + jsonString + ')'   );
+
+            _loginResult = jsonOBJ['result'];
+
+            //If result is wrong, save the message
+            var message = jsonOBJ['message'];
+
+            _username = jsonOBJ['username'];
+
+            _name = jsonOBJ['name'];
+
+            _surname = jsonOBJ['surname'];
+
+            _email = jsonOBJ['email'];
+
+            _telephone = jsonOBJ['telephone'];
+
+            _allowrequests = jsonOBJ['allowRequests'];
+
+            _level = jsonOBJ['level'];
+
+
+//
+//
+            //User successfully logged in
+            if(_loginResult=="1"){
+                //TODO CHECK FOR ACTIVATED OR NOT
+                if(_level=="1" || _level=="2" ){
+                    //Admin logged in!
+                    if(_level=="2"){
+                        showToastMessage("Welcome ADMIN.",1);
+                    }
+
+                    //TODO CHANGE STAFF IN  JS , PHP, AJAX
+
+
+
 
                 //Modify login area
-                $('#loginUsernameField').replaceWith(string2);
+                $('#loginUsernameField').replaceWith(
+                    "<div id='login-panel-loggedin'>" +
+                        _name +
+                        "</div>"
+
+                );
 
 
                 $('#loginPasswordField').hide();
 
 
-
                 //Login button
                 $('#login-panel-submit-filled').replaceWith(
-                    '<button type="submit" onclick="asyncLogout()"   id="login-panel-submit-filled" href=""  ' +
-                        ' >LogouT</button>');
+                    '<button type="submit" onclick="asyncLogout()"   id="login-panel-submit-logout" href=""  ' +
+                        ' >Logout' +'</button>');
 
-                //Profile Button
+
+                }
+
+                //Not activated account
+                else if(_level=="0"){
+
+                    showToastMessage(_name + ", your account is not activated.</br>"+
+                        "Activate it using your email: " +_email
+                        ,0);
+
+                }
+                //User is visitor
+                else if(_level=="-1"){
+                    showToastMessage(_name + ", you are a visitor to SmartLib.</br>"+
+                        "Please make a regular account."
+                        ,0);
+
+
+
+
+                }
+                //User is banned
+                else if(_level=="-2"){
+                    showToastMessage(_name + ", you are banned from SmartLib</br>"+
+                        "Contact SmartLib Admin for further Details."
+                        ,0);
+
+                }
 
             }
+            //Wrong username and/or password
+            else if(_loginResult=="0"){
+                showToastMessage(
+                    "Wrong Username or Password.</br>" +
+                        "Please try again."
+                    ,0)
+            }
+            //Database error | -11 code
             else {
-                //Un-fade items
-                showToastMessage(message);
+                showToastMessage("Database Error :(",0);
             }
 
 
+
+
+
+//
+////                var string2 = "<div id='login-panel-loggedin'>" +
+////                   "test" +
+////                    "</div>";
+//
+//                //Modify login area
+//                $('#loginUsernameField').replaceWith(string2);
+//
+//
+//                $('#loginPasswordField').hide();
+//
+//
+//                //Login button
+//                $('#login-panel-submit-filled').replaceWith(
+//                    '<button type="submit" onclick="asyncLogout()"   id="login-panel-submit-filled" href=""  ' +
+//                        ' >LogouT '+ _name +'</button>');
         }
+        //Error Code
         else if (xmlhttp.status == 404) {
+
             //Authentication script not found
             //TODO check if have todo something
-            showErrorToastMessage("Webpage Error");
-            //document.getElementById("resultdiv").innerHTML="script not found" ;
+            showToastMessage("Webpage Error :(",0);
 
         }
-    }
 
+
+        }
 
 }
 

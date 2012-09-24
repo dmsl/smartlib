@@ -10,10 +10,10 @@ var, dl, dt, dd, ol, ul, li, fieldset,
 form, label, legend, table, caption,
 tbody, tfoot, thead, tr, th, td, header, nav,
 article, aside, footer, hgroup, section {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    outline: 0px;
     font-weight: inherit;
     font-style: inherit;
     font-size: 100%;
@@ -22,7 +22,7 @@ article, aside, footer, hgroup, section {
 }
 
 :focus, :active {
-    outline: 0
+    outline: 0px
 }
 
 ol, ul {
@@ -105,7 +105,9 @@ em {
 }
 
 a {
-    color: #077CE3
+    color: #077CE3;
+    text-decoration: none;
+
 }
 
 a:hover {
@@ -366,27 +368,23 @@ nav#global ul li a:hover {
     position:relative;
 /*    left:50%;
     top:10px;*/
+    left: -0.8em;
+
 
     margin-right: auto;
+    margin-left: auto;
     /*background-color: #011633;*/
     text-align: center;
-    color: white;
-
-
-    /*  border-bottom-right-radius: 5px;
-   -moz-border-bottom-right-radius: 5px;
-   -webkit-border-bottom-right-radius: 5px;
-   border-bottom-left-radius: 5px;
-   -moz-border-bottom-left-radius: 5px;
-   -webkit-border-bottom-left-radius: 5px;*/
+    color: #DEDEDE;
 
     /*display: none;*/
 
-    line-height: 20px;
+    line-height: 45px;
     width: 8em;
     display: block;
     color: white;
-    font-size: 1.2em;
+    font-size: 1.6em;
+    font-weight: bold;
     text-align: center;
 }
 
@@ -452,6 +450,24 @@ nav#global ul li a:hover {
     /*top:50px;*/
     position: absolute;
     font-size: 1.3em;
+    border: none;
+
+
+}
+
+#login-panel #login-panel-submit-logout {
+    line-height: 20px;
+    width: 8em;
+
+    display: block;
+    color: tomato;
+    font-weight: bold;
+    background-color: transparent;
+    /*left: 2.5em;*/
+    /*top:50px;*/
+    left:-0.5em;
+    position: absolute;
+    font-size: 1.5em;
     border: none;
 
 
@@ -771,7 +787,7 @@ footer p {
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
 }
-
+/*TODO CHANGE*/
 .button:hover {
     border: none;
     box-shadow: inset 0 -35px 35px -18px #305FA1, inset 3px 0 12px #600;
@@ -779,6 +795,23 @@ footer p {
      background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #011633),color-stop(1, #ca0000));*/
     padding-left: 30px
 }
+
+#imageLogo {
+    /*margin-top: 5px;*/
+    /*margin-bottom: 5px;*/
+
+
+    text-decoration: none;
+    top: 0px;
+    position:absolute;
+
+    border: none;
+
+
+}
+
+
+
 
 /* SIDEBAR */
 aside {
@@ -862,7 +895,7 @@ aside section:last-child {
 .floatRight {
     float: right;
 }
-
+/*TODO RM*/
 .rss {
     background-color: #d98b3c;
     box-shadow: inset 0 35px 35px -18px #e1a467;

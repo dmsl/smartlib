@@ -35,20 +35,38 @@ Fax: +357-22-892701
 
 
 //Double check if user is logged in
-if($_SESSION['loggedin']==1){
-?>
+if ($_SESSION['loggedin'] == 1) {
+    ?>
 
-	
-	<form id="search-widget" action="" method="post" enctype="multipart/form-data">
-	<fieldset>
-	<center><strong >Welcome, <?php 
-															echo $_SESSION['name'];
-																?></strong></center>
-   <h3><center><a href="scripts/logout.php" class="textHandle">Logout</a><br/></center></h3>
-    
-						</fieldset>
-					</form>
-	
+
+
+    <div id="login-panel">
+<div id='login-panel-loggedin'>
+    <?php  echo $_SESSION['name'];; ?>
+    </div>
+
+
+
+
+<button type="submit" onclick="asyncLogout()"
+       id="login-panel-submit-logout" href="" >Logout</button>
+
+</div>
+
+<!-- TODO RM-->
+<!--<form id="search-widget" action="" method="post" enctype="multipart/form-data">-->
+<!--    <fieldset>-->
+<!--        <center><strong>Welcome, --><?php
+//            echo $_SESSION['name'];
+//            ?><!--</strong></center>-->
+<!--        <h3>-->
+<!--            <center><a href="scripts/logout.php" class="textHandle">Logout</a><br/></center>-->
+<!--        </h3>-->
+<!---->
+<!--    </fieldset>-->
+<!--</form>-->
+
 <?php
+
 }
 ?>

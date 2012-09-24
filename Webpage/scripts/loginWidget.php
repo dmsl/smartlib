@@ -30,45 +30,65 @@
     
     
     -->
-    
-    
-    <form id="login-widget" action="mobile/authenticate.php" method="post" 
-	enctype="multipart/form-data">
-	<fieldset>
 
-        Username:<br/>
-		<div >
-			<input type="text" name="username" value="Type your Username"   class="loginhint"
-				onBlur="if(this.value=='') {
-                this.value='Type your Username';
-                this.className='loginhint';
-                }
-                
-                "
-				onFocus="if(this.value =='Type your Username' ){
-                 this.value='';
-                 this.className='';
-                 }
-                 " /> 
-		</div>
-  		<br/>
-        Password:<br/>
-        <div >
-			<input type="text" name="password" value="Type your Password" class="loginhint"
-				onBlur="if(this.value=='') {
-                this.value='Type your Password';
-                type='text';
-                this.className='loginhint';
-                }
-                "
-				onFocus="if(this.value =='Type your Password' ){
-                this.value='';
-               	type='password';
-                this.className='';
-                }
-                "
-                 /><a class="textHandle"
-				href="#" onClick="document.getElementById('login-widget').submit()">Login</a>
-		</div>
-	</fieldset>
-</form>
+
+<fieldset>
+    <div id="login-panel">
+        <input type="text" name="username" placeholder="Username"
+               autocomplete="off"
+               autofocus="autofocus"
+               id="loginUsernameField"
+               onkeyup="toggleLoginButton()"
+                />
+
+        <input type="password" name="password" placeholder="Password"
+
+               onkeyup="toggleLoginButtonPassword(event)"
+               id="loginPasswordField"
+               autocomplete="off"  />
+        <!--        Login Button-->
+        <div  id="login-panel-submit">Login</div>
+    </div>
+</fieldset>
+
+<!--  OLD CODE  -->
+<!--    <form id="login-widget" action="mobile/authenticate.php" method="post" -->
+<!--	enctype="multipart/form-data">-->
+<!--	<fieldset>-->
+<!---->
+<!--        Username:<br/>-->
+<!--		<div >-->
+<!--			<input type="text" name="username" value="Type your Username"   class="loginhint"-->
+<!--				onBlur="if(this.value=='') {-->
+<!--                this.value='Type your Username';-->
+<!--                this.className='loginhint';-->
+<!--                }-->
+<!--                -->
+<!--                "-->
+<!--				onFocus="if(this.value =='Type your Username' ){-->
+<!--                 this.value='';-->
+<!--                 this.className='';-->
+<!--                 }-->
+<!--                 " /> -->
+<!--		</div>-->
+<!--  		<br/>-->
+<!--        Password:<br/>-->
+<!--        <div >-->
+<!--			<input type="text" name="password" value="Type your Password" class="loginhint"-->
+<!--				onBlur="if(this.value=='') {-->
+<!--                this.value='Type your Password';-->
+<!--                type='text';-->
+<!--                this.className='loginhint';-->
+<!--                }-->
+<!--                "-->
+<!--				onFocus="if(this.value =='Type your Password' ){-->
+<!--                this.value='';-->
+<!--               	type='password';-->
+<!--                this.className='';-->
+<!--                }-->
+<!--                "-->
+<!--                 /><a class="textHandle"-->
+<!--				href="#" onClick="document.getElementById('login-widget').submit()">Login</a>-->
+<!--		</div>-->
+<!--	</fieldset>-->
+<!--</form>-->
