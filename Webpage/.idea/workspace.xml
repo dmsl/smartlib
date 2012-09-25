@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a830dd3-cf48-4f11-8f30-ca2fbd98c0f8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CREDENCIALS.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/department.png" afterPath="$PROJECT_DIR$/images/department.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/organization.png" afterPath="$PROJECT_DIR$/images/organization.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/about.php" afterPath="$PROJECT_DIR$/about.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/carousel/carouselHeader.php" afterPath="$PROJECT_DIR$/carousel/carouselHeader.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/footer.php" afterPath="$PROJECT_DIR$/scripts/footer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/header.php" afterPath="$PROJECT_DIR$/scripts/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/loginScript.js" afterPath="$PROJECT_DIR$/scripts/loginScript.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/loginWidget.php" afterPath="$PROJECT_DIR$/scripts/loginWidget.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/logout.php" afterPath="$PROJECT_DIR$/scripts/logout.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles.css" afterPath="$PROJECT_DIR$/styles.css" />
     </list>
     <ignored path="Webpage.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -299,7 +287,11 @@
       <created>1348491403546</created>
       <updated>1348491403546</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Working on webpage layout">
+      <created>1348613641967</created>
+      <updated>1348613641967</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -308,21 +300,21 @@
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.493517" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28606158" sideWeight="0.670068" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5008104" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28606158" sideWeight="0.670068" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -363,7 +355,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login/Logout widget switch" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on webpage layout" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -380,6 +372,7 @@
     <MESSAGE value="building notification messages (toast-like)&#10;..authenticate with error log" />
     <MESSAGE value="23 sept push..&#10;AJAX'ing login" />
     <MESSAGE value="Login/Logout widget switch" />
+    <MESSAGE value="Working on webpage layout" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -399,7 +392,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/logout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="26" selection-start="955" selection-end="955" vertical-scroll-proportion="0.19144982" />
+        <state line="37" column="26" selection-start="955" selection-end="955" vertical-scroll-proportion="0.19144982">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/logoutWidget.php">
@@ -414,17 +409,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/about.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="6" selection-start="1770" selection-end="1770" vertical-scroll-proportion="-26.791666" />
+        <state line="60" column="6" selection-start="1770" selection-end="1770" vertical-scroll-proportion="-26.791666">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/loginScript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="312" column="0" selection-start="8251" selection-end="8251" vertical-scroll-proportion="1.3772242" />
+        <state line="312" column="0" selection-start="8251" selection-end="8251" vertical-scroll-proportion="1.3772242">
+          <folding>
+            <marker date="1348593622250" expanded="true" signature="8423:9069" placeholder="..." />
+            <marker date="1348593622250" expanded="true" signature="8503:8705" placeholder="..." />
+            <marker date="1348593622250" expanded="true" signature="8789:8929" placeholder="..." />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/loginWidget.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="10" selection-start="1574" selection-end="1574" vertical-scroll-proportion="-15.875" />
+        <state line="49" column="10" selection-start="1574" selection-end="1574" vertical-scroll-proportion="-15.875">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/carousel/carouselAll.php">
@@ -434,7 +439,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/carousel/carouselHeader.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="0" selection-start="3279" selection-end="3279" vertical-scroll-proportion="-1.4081633" />
+        <state line="143" column="0" selection-start="3279" selection-end="3279" vertical-scroll-proportion="-1.4081633">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/carousel/carouselFetchImages.php">
