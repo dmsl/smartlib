@@ -82,20 +82,20 @@ function toggleLoginButtonPassword(event) {
 }
 
 //Show toast message according to message type
-function showToastMessage(msg,type) {
+function showToastMessage(msg, type) {
 
     $(document).ready(function () {
 
 
         var messageType;// = msg.substring(0, 3);
-       // var message = msg.substring(3);
+        // var message = msg.substring(3);
 
         //Show error toast
         if (type == "0") {
-            messageType= 'error';
+            messageType = 'error';
         }
         //Show info toast
-        else if (type== "1") {
+        else if (type == "1") {
             messageType = 'info';
         }
         else {
@@ -104,12 +104,11 @@ function showToastMessage(msg,type) {
         }
 
 
-
-//        //Show toast message
+        //Show toast message
         $('.toast-message').replaceWith(
             "<div dis class='toast-message' id='" + messageType + "'>" + msg + "</div>");
 
-        $('.toast-message').fadeIn("normal", function(){
+        $('.toast-message').fadeIn("normal", function () {
 
             //Hide on click
             $('.toast-message').click(function () {
@@ -118,9 +117,9 @@ function showToastMessage(msg,type) {
 
             });
 
-       //Auto hide
-       $('.toast-message').delay(5000);
-       $('.toast-message').fadeOut("slow");
+            //Auto hide
+            $('.toast-message').delay(5000);
+            $('.toast-message').fadeOut("slow");
 
 
         });
@@ -132,13 +131,11 @@ function showToastMessage(msg,type) {
 }
 
 
-
-
-/* Asychromous Login */
+/* Async Login */
 function asyncLogin() {
 
-    //TODO fade and make items unclickable!
-    // UNTIL USER LOGINS!
+    //TODO FUTURE fade and make items unclickable!
+    // UNTIL USER LOGINS! FINISHES!!
 
     //onClick="document.getElementById("login-widget").submit()
     var username = document.getElementById("loginUsernameField").value;
@@ -165,18 +162,17 @@ function asyncLogin() {
 
 
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-    xmlhttp.send(buildParams);//TODO
+    xmlhttp.send(buildParams);
 
     //When state changed
     xmlhttp.onreadystatechange = function () {
 
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
-            var jsonString =xmlhttp.responseText.trim();
+            var jsonString = xmlhttp.responseText.trim();
 
 
-            var jsonOBJ = eval('(' + jsonString + ')'   );
+            var jsonOBJ = eval('(' + jsonString + ')');
 
             _loginResult = jsonOBJ['result'];
 
@@ -201,124 +197,163 @@ function asyncLogin() {
 //
 //
             //User successfully logged in
-            if(_loginResult=="1"){
+            if (_loginResult == "1") {
                 //TODO CHECK FOR ACTIVATED OR NOT
-                if(_level=="1" || _level=="2" ){
+                if (_level == "1" || _level == "2") {
                     //Admin logged in!
-                    if(_level=="2"){
-                        showToastMessage("Welcome ADMIN.",1);
+                    if (_level == "2") {
+                        showToastMessage("Welcome ADMIN.", 1);
                     }
 
                     //TODO CHANGE STAFF IN  JS , PHP, AJAX
 
 
+                    //Modify login area
+                    $('#loginUsernameField').replaceWith(
+                        "<div id='login-panel-loggedin'>" +
+                            _name +
+                            "</div>"
+
+                    );
 
 
-                //Modify login area
-                $('#loginUsernameField').replaceWith(
-                    "<div id='login-panel-loggedin'>" +
-                        _name +
-                        "</div>"
+                    $('#loginPasswordField').hide();
 
-                );
-
-
-                $('#loginPasswordField').hide();
-
-
-                //Login button
-                $('#login-panel-submit-filled').replaceWith(
-                    '<button type="submit" onclick="asyncLogout()"   id="login-panel-submit-logout" href=""  ' +
-                        ' >Logout' +'</button>');
+                    //Login button
+                    $('#login-panel-submit-filled').replaceWith(
+                        '<button type="submit" onclick="asyncLogout()"   id="login-panel-submit-logout" href=""  ' +
+                            ' >Logout' + '</button>');
 
 
                 }
 
                 //Not activated account
-                else if(_level=="0"){
+                else if (_level == "0") {
 
-                    showToastMessage(_name + ", your account is not activated.</br>"+
-                        "Activate it using your email: " +_email
-                        ,0);
+                    showToastMessage(_name + ", your account is not activated.</br>" +
+                        "Activate it using your email: " + _email
+                        , 0);
 
                 }
                 //User is visitor
-                else if(_level=="-1"){
-                    showToastMessage(_name + ", you are a visitor to SmartLib.</br>"+
+                else if (_level == "-1") {
+                    showToastMessage(_name + ", you are a visitor to SmartLib.</br>" +
                         "Please make a regular account."
-                        ,0);
-
-
-
+                        , 0);
 
                 }
                 //User is banned
-                else if(_level=="-2"){
-                    showToastMessage(_name + ", you are banned from SmartLib</br>"+
+                else if (_level == "-2") {
+                    showToastMessage(_name + ", you are banned from SmartLib</br>" +
                         "Contact SmartLib Admin for further Details."
-                        ,0);
+                        , 0);
 
                 }
 
             }
             //Wrong username and/or password
-            else if(_loginResult=="0"){
+            else if (_loginResult == "0") {
                 showToastMessage(
                     "Wrong Username or Password.</br>" +
                         "Please try again."
-                    ,0)
+                    , 0)
             }
             //Database error | -11 code
             else {
-                showToastMessage("Database Error :(",0);
+                showToastMessage("Database Error :(", 0);
             }
 
-
-
-
-
-//
-////                var string2 = "<div id='login-panel-loggedin'>" +
-////                   "test" +
-////                    "</div>";
-//
-//                //Modify login area
-//                $('#loginUsernameField').replaceWith(string2);
-//
-//
-//                $('#loginPasswordField').hide();
-//
-//
-//                //Login button
-//                $('#login-panel-submit-filled').replaceWith(
-//                    '<button type="submit" onclick="asyncLogout()"   id="login-panel-submit-filled" href=""  ' +
-//                        ' >LogouT '+ _name +'</button>');
         }
         //Error Code
         else if (xmlhttp.status == 404) {
 
             //Authentication script not found
             //TODO check if have todo something
-            showToastMessage("Webpage Error :(",0);
+            showToastMessage("Webpage Error :(", 0);
 
         }
 
 
-        }
+    }
 
 }
 
 
-
-
-
-/* TODO Asychromous Login  */
+/* Async Logout  */
 function asyncLogout() {
 
+    var xmlhttp;
+
+    //Make the request (IE7+, and browsers)
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    }
+    //For IE<=6
+    else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+
+    xmlhttp.open("GET", "scripts/logout.php", true);
+    //Send the proper header information along with the request
+    xmlhttp.send();
+
+    //When state changed
+    xmlhttp.onreadystatechange = function () {
+
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+            var jsonString = xmlhttp.responseText.trim();
+
+
+            var jsonOBJ = eval('(' + jsonString + ')');
+
+            _logoutResult = jsonOBJ['result'];
+
+
+            //User successfully logged in
+            if (_logoutResult == "1") {
+                $('#login-panel').replaceWith(
+                    '<div id="login-panel">\
+                    <input type="text" name="username" placeholder="Username"\
+                    autocomplete="off"\
+                    autofocus="autofocus"\
+                    id="loginUsernameField"\
+                    onkeyup="toggleLoginButton()"\
+                    />\
+                    <input type="password" name="password" placeholder="Password"\
+                onkeyup="toggleLoginButtonPassword(event)"\
+                id="loginPasswordField"\
+                autocomplete="off"  />\
+                    <!--        Login Button-->\
+                    <div  id="login-panel-submit">Login</div>\
+                    </div>');
+
+
+            }
+            // Weird error
+            else {
+                showToastMessage("Something went wrong :(", 0);
+            }
+
+        }
+
+
+
+        //Error Code
+        else if (xmlhttp.status == 404) {
+
+            //Authentication script not found
+            //TODO check if have todo something
+            showToastMessage("Webpage Error :(", 0);
+
+        }
+
+
+    }
+
 
 }
-
-
 
 
 //MAY REMOVE THIS CODE

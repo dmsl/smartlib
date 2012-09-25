@@ -30,30 +30,28 @@
     
     
     -->
-    
-    
-    <div class="row-padding">
-				
-								
-								<a href=
-                                 <?php echo "\""._DEPARTMENT_URL."\"";?>
-                                 class="imageHandle" target="_blank">
-                                <img height="100"  align="left"
-                                src="images/department.png"/>
-                                 </a>
-                                    
-                             
-									
-								
-					
-							
-                            
-                           <span class="floatRight"> <a  class="imageHandle"  href=
-                            <?php echo "\""._ORGANIZATION_URL."\"";?> target="new">
-                            <img  height="100" 
-                            align="right" src="images/organization.png"/>
-                            </a></span>
-	
-						
-                        
-                        	<p class=copyright><strong>Copyright &copy; 2012 Data Management Systems Laboratory</strong><br>University Of Cyprus</p>
+<div id="downFooter">
+    <a id="deptImage" href=
+    <?php echo "\"" . _DEPARTMENT_URL . "\"";?>
+            class="imageHandle" target="_blank">
+    <img align="left"
+         src="images/department.png"/>
+    </a>
+
+
+    <a id="orgImage" class="imageHandle" href=
+    <?php echo "\"" . _ORGANIZATION_URL . "\"";?> target="new">
+    <img src="images/organization.png"/>
+    </a></span>
+
+
+    <p class=copyright>
+        Copyright &copy; 2012 <a class="nodec" href=
+    <?php echo "\"" . _DEPARTMENT_URL . "\"";?>
+            target="_blank">Data Management Systems Laboratory</a>
+        <br><a class="nodec" href=
+    <?php echo "\"" . _ORGANIZATION_URL . "\"";?>
+            target="_blank">
+        <?php echo "\"" . _FULL_NAME . "\"";?>
+        </a></p>
+</div>

@@ -148,7 +148,7 @@ var j=0;
 function mycarousel_getItemHTML(url, isbn, title)
 {
 	
-	return '<a href="http://books.google.com/books?vid=isbn'+ isbn+'" target="_blank"  class="imageHandle">'+
+	return '<a href="http://books.google.com/books?vid=isbn'+ isbn+'" target="_blank"  class="carouselImage">'+
     		'<img src="' + url + '" width="130" height="170" alt="'+title+'" id="'+isbn+'"'+
 			' title="'+title+'"/></a>'
 		//	+ '<div id="div'+isbn+'">Hiiii</div> $(\'#img\').live(\'mouseover\', function(){'+

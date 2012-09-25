@@ -36,27 +36,32 @@ include 'scripts/sessionInit.php';
 ?>
 <!DOCTYPE html>
 <html lang=en>
+
+<!--        Head         -->
 <head>
-	<meta charset=UTF-8>
-	<title>SmartLib</title>
-	<link href=styles.css rel=stylesheet />
+    <meta charset=UTF-8>
+    <!--    TODO fill metadata for all pages-->
+    <meta name="description" content="SmartLib : Library of Modern World"/>
+    <meta name="keywords" content="smartLib, smart, library, books, ucy,
+    university of cyprus, university, cyprus, cs"/>
+    <title>SmartLib</title>
+
+    <!--    Include Scripts-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <link href=styles.css rel=stylesheet />
+    <!--    Include Extra headers-->
+    <?php include 'scripts/gridHeader.php';
+    include 'carousel/carouselHeader.php';  ?>
+
+
+    <script src="scripts/loginScript.js"></script>
 </head>
 
+
 <body>
+<!-- Header -->
 <header>
-
-   <section>
-   <?php include 'scripts/header.php'; ?>
-		</section>
-		
-
-     <aside>
-     <?php include 'scripts/smartWidget.php'; ?>
-     
-</aside>
-	
-
-		
+    <?php  include('scripts/header.php'); ?>
 </header>
 
 <div class=clearfix>

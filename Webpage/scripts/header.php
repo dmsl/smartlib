@@ -33,5 +33,46 @@
     -->
 
 <!-- TODO REMOVE THIS FILE -->
-    
 
+
+<div id="top-panel">
+    <div id="top-panel-title">SmartLib: Library of the modern World</div>
+</div>
+
+<!-- TODO move this to script to a php, and check if its connected-->
+<!--    If it is, show the logged in div, else this-->
+<!-- Webpage Menu -->
+<nav id=global>
+    <ul>
+        <li><a href="index.php">Home</a></li>
+        <?php
+        //User is logged in
+        if ($_SESSION['loggedin'] == 1) {
+            ?>
+            <li><a href="userProfile.php">Profile</a>
+            </li>
+            <?php
+        } //User is Guest
+        else {
+            ?>
+
+            <li><a href="register.php">Register</a></li>
+            <?php
+        }
+        ?>
+        <li><a href="downloads.php">Downloads</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="contact.php">Contact</a></li>
+    </ul>
+</nav>
+
+
+<!--TODO LIBRARY logo TODO MOVE THIS-->
+<a id="imageLogo" href="index.php">
+    <img height="100"
+         align="left" src="images/logo.png"/>
+</a>
+
+
+<!--Show Login Panel-->
+<?php include('scripts/smartWidget.php'); ?>

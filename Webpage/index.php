@@ -37,6 +37,8 @@ include 'scripts/sessionInit.php';
 ?>
 <!DOCTYPE html>
 <html lang=en>
+
+<!--        Head         -->
 <head>
     <meta charset=UTF-8>
     <!--    TODO fill metadata for all pages-->
@@ -54,80 +56,19 @@ include 'scripts/sessionInit.php';
 
 
     <script src="scripts/loginScript.js"></script>
-
-
 </head>
-<!-- Include Google's JQUery TODO make this for all pages!
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>-->
 
 
 <body>
-
 <!-- Header -->
-<header>
-
-
-
-
-    <div id="top-panel">
-        <div id="top-panel-title">SmartLib: Library of the modern World</div>
-    </div>
-
-<!-- TODO move this to script to a php, and check if its connected-->
-<!--    If it is, show the logged in div, else this-->
-    <!-- Webpage Menu -->
-    <nav id=global>
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <?php
-            //User is logged in
-            if ($_SESSION['loggedin'] == 1) {
-                ?>
-                <li><a href="userProfile.php">Profile</a>
-                </li>
-                <?php
-            } //User is Guest
-            else {
-                ?>
-
-                <li><a href="register.php">Register</a></li>
-                <?php
-            }
-            ?>
-            <li><a href="downloads.php">Downloads</a></li>
-            <li><a href="about.php">About</a></li>
-            <li><a href="contact.php">Contact</a></li>
-        </ul>
-    </nav>
-
-
-
-    <!--TODO LIBRARY logo TODO MOVE THIS-->
-    <a id="imageLogo" href="index.php" >
-        <img height="100"
-             align="left" src="images/logo.png"/>
-    </a>
-
-
-<!--Show Login (Widget)Panel-->
-<!--    TODO if user is logged in show logged in panel, else show this panel-->
-<?php include('scripts/smartWidget.php'); ?>
-<!--    </form>-->
-
-
+<header id='topHeader'>
+    <?php  include('scripts/header.php'); ?>
 </header>
-
-
+<!--Toast Messages -->
 <div class=clearfix>
-
     <div class="toast-message" id="notoast">No Errors Found</div>
-
-
-    <div id=content>
-
+<div id=content>
         <article>
-
-
             <!--            Show popular books at all times-->
             <header>
                 <h1>Popular Books</h1>
@@ -167,7 +108,6 @@ include 'scripts/sessionInit.php';
                 <?php } ?>
 
         </article>
-
     </div>
 
 
@@ -175,7 +115,6 @@ include 'scripts/sessionInit.php';
 
 <footer class=clearfix>
     <?php include "scripts/footer.php" ?>
-
 </footer>
 
 </body>

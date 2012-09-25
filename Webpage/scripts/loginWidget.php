@@ -31,8 +31,7 @@
     
     -->
 
-
-<fieldset>
+<!--TODO FIX BUG-->
     <div id="login-panel">
         <input type="text" name="username" placeholder="Username"
                autocomplete="off"
@@ -49,7 +48,6 @@
         <!--        Login Button-->
         <div  id="login-panel-submit">Login</div>
     </div>
-</fieldset>
 
 <!--  OLD CODE  -->
 <!--    <form id="login-widget" action="mobile/authenticate.php" method="post" -->

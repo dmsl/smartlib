@@ -41,7 +41,13 @@ session_start();
 $_SESSION['loggedin'] = "0";
 
 //Move to users page
-header("Location: ".$_SESSION['currentPage']); 
+//header("Location: ".$_SESSION['currentPage']);
+$result = array(
+    "result" => "1"
+);
+
+echo json_encode($result);
+die();
 
 	?>
 </body>
