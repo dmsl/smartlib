@@ -1,0 +1,7 @@
+# binary
+Android/Smartlib/bin/
+Android/Smartlib/gen/
+Webpage/CREDENCIALS.php 
+#linux backup files
+*.~
+Android/Smartlib/.settings/
