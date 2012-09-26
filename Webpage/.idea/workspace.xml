@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4a830dd3-cf48-4f11-8f30-ca2fbd98c0f8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registerActivated.php" afterPath="$PROJECT_DIR$/registerActivated.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/loginScript.js" afterPath="$PROJECT_DIR$/scripts/loginScript.js" />
     </list>
     <list id="1aee1695-d3ee-477e-8981-dc2526402b2a" name="MASTER DATA" comment="Master fils should not be uploaded" />
     <ignored path="Webpage.iws" />
@@ -24,7 +22,17 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="authenticate.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mobile/authenticate.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="120" column="8" selection-start="3014" selection-end="3014" vertical-scroll-proportion="0.27695167">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -42,7 +50,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/scripts/footer.php" />
         <option value="$PROJECT_DIR$/carousel/carouselHeader.php" />
         <option value="$PROJECT_DIR$/carousel/index.html" />
         <option value="$PROJECT_DIR$/carousel/skins/ie7/skin.css" />
@@ -58,6 +65,7 @@
         <option value="$PROJECT_DIR$/scripts/header.php" />
         <option value="$PROJECT_DIR$/registerActivated.php" />
         <option value="$PROJECT_DIR$/scripts/loginScript.js" />
+        <option value="$PROJECT_DIR$/mobile/authenticate.php" />
       </list>
     </option>
   </component>
@@ -103,6 +111,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -131,37 +140,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Webpage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Webpage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="mobile" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="web.server" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig" serverName="SmartLib SFTP" serverId="812db4ce-4c32-418f-b817-fcc9f1e9ba42" autoUpload="true" uploadOnSaveAll="true" autoUploadExternalChanges="true">
     <servers>
@@ -271,7 +265,15 @@
       <created>1348630043170</created>
       <updated>1348630043170</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Implemented new AJAX login/logout methods.&#10;Next todo(in order):&#10;.Synchronise php session with AJAX data pulled&#10;.Fix search in homepage (and query bugs in jqgrid php)">
+      <created>1348631835108</created>
+      <updated>1348631835108</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Fixed issue between local and server data (PHP, JS)&#10;Next todo(in order):&#10;.Fix search in homepage (and query bugs in jqgrid php)">
+      <created>1348684588130</created>
+      <updated>1348684588130</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -280,21 +282,21 @@
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.493517" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28687197" sideWeight="0.670068" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5008104" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2917342" sideWeight="0.670068" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -335,7 +337,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fully implemented new AJAX login/logout methods.&#10;Next todo(in order):&#10;.Fix search in homepage (and query bugs in jqgrid php)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed issue between local and server data (PHP, JS)&#10;Next todo(in order):&#10;.Fix search in homepage (and query bugs in jqgrid php)" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -356,6 +358,8 @@
     <MESSAGE value="Milestone 1 for homepage" />
     <MESSAGE value="AJAX'd logged in/out books grids" />
     <MESSAGE value="Fully implemented new AJAX login/logout methods.&#10;Next todo(in order):&#10;.Fix search in homepage (and query bugs in jqgrid php)" />
+    <MESSAGE value="Implemented new AJAX login/logout methods.&#10;Next todo(in order):&#10;.Synchronise php session with AJAX data pulled&#10;.Fix search in homepage (and query bugs in jqgrid php)" />
+    <MESSAGE value="Fixed issue between local and server data (PHP, JS)&#10;Next todo(in order):&#10;.Fix search in homepage (and query bugs in jqgrid php)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -363,11 +367,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ie.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="416" column="23" selection-start="7871" selection-end="7871" vertical-scroll-proportion="0.0" />
@@ -385,16 +384,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/about.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="0" selection-start="2166" selection-end="2166" vertical-scroll-proportion="-36.875">
-          <folding />
-        </state>
+        <state line="77" column="0" selection-start="2166" selection-end="2166" vertical-scroll-proportion="-36.875" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/contact.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="36" selection-start="1547" selection-end="1547" vertical-scroll-proportion="-29.375">
-          <folding />
-        </state>
+        <state line="53" column="36" selection-start="1547" selection-end="1547" vertical-scroll-proportion="-29.375" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CREDENCIALS.php">
@@ -406,23 +401,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dbConnect.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/downloads.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="17" selection-start="1954" selection-end="1954" vertical-scroll-proportion="-27.5">
-          <folding />
-        </state>
+        <state line="75" column="17" selection-start="1954" selection-end="1954" vertical-scroll-proportion="-27.5" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="0" selection-start="1722" selection-end="1722" vertical-scroll-proportion="-34.375">
-          <folding />
-        </state>
+        <state line="64" column="0" selection-start="1722" selection-end="1722" vertical-scroll-proportion="-34.375" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/register.php">
@@ -434,40 +423,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/registerActivated.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="0" selection-start="2562" selection-end="2562" vertical-scroll-proportion="-7.1666665">
-          <folding />
-        </state>
+        <state line="112" column="0" selection-start="2562" selection-end="2562" vertical-scroll-proportion="-7.1666665" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/registerSuccess.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="1.875">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="1.875" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/userProfile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="17" selection-start="2111" selection-end="2111" vertical-scroll-proportion="-32.5">
-          <folding />
-        </state>
+        <state line="83" column="17" selection-start="2111" selection-end="2111" vertical-scroll-proportion="-32.5" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mobile/authenticate.php">
+    <entry file="file://$PROJECT_DIR$/scripts/logoutWidget.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="48" column="0" selection-start="1103" selection-end="1103" vertical-scroll-proportion="0.5018587" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/loginScript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="1926" selection-end="1926" vertical-scroll-proportion="-0.40983605">
-          <folding>
-            <marker date="1348631780259" expanded="true" signature="8759:9405" placeholder="..." />
-            <marker date="1348631780259" expanded="true" signature="8839:9041" placeholder="..." />
-            <marker date="1348631780259" expanded="true" signature="9125:9265" placeholder="..." />
-          </folding>
+        <state line="213" column="0" selection-start="5279" selection-end="5279" vertical-scroll-proportion="0.47519085" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/authenticate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="120" column="8" selection-start="3014" selection-end="3014" vertical-scroll-proportion="0.27695167">
+          <folding />
         </state>
       </provider>
     </entry>

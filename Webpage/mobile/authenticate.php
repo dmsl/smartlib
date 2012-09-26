@@ -1,6 +1,6 @@
 <?php
 
-Header('Content-type: text/plain');
+//Header('Content-type: text/plain');
 
 /*
 This file is part of SmartLib Project.
@@ -114,14 +114,29 @@ if ($respassword == $password) {
 
     //Mark session as logged in on Website
     if (!$_SESSION['isMobileDevice']) {
-        if($reslevel>=1)
+        if($reslevel>=1){
             $_SESSION['loggedin'] = "1";
-        else
+
+        //Store user data on session
+        $_SESSION['email'] = $resemail;
+        $_SESSION['username'] = $resusername;
+        $_SESSION['name'] = $resname;
+        $_SESSION['surname'] = $ressurname;
+        $_SESSION['telephone'] = $restelephone;
+        $_SESSION['allowRequests'] = $resallowRequests;
+        $_SESSION['level'] = $reslevel;
+        }
+
+
+
+        else{
             $_SESSION['loggedin'] = "0";
     }
 
+    }
 
-        //Send Login Info to Mobile Device
+
+    //Send Login Info to Mobile Device
         mobileSendLoginData($resusername, $resname, $ressurname,
             $resemail, $restelephone, $resallowRequests, $reslevel);
 
@@ -229,6 +244,8 @@ if ($respassword == $password) {
 } //Users credencials are wrong
 else {
 //    if ($_SESSION['isMobileDevice']) {
+
+    //If user is from webpage, mark as loggout
     if (!$_SESSION['isMobileDevice']) {
         $_SESSION['loggedin'] = "0";
         }
