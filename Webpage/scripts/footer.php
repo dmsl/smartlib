@@ -48,10 +48,12 @@
     <p class=copyright>
         Copyright &copy; 2012 <a class="nodec" href=
     <?php echo "\"" . _DEPARTMENT_URL . "\"";?>
-            target="_blank">Data Management Systems Laboratory</a>
+            target="_blank">
+        <?php echo _ORG_FULL_NAME ;?>
+        </a>
         <br><a class="nodec" href=
     <?php echo "\"" . _ORGANIZATION_URL . "\"";?>
             target="_blank">
-        <?php echo "\"" . _FULL_NAME . "\"";?>
+        <?php echo _FULL_NAME ;?>
         </a></p>
 </div>

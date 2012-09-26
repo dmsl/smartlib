@@ -1191,3 +1191,7 @@ a.nodec {
     color:inherit;
     border: 0px;
 }
+
+a.nodec:hover {
+    color: #077CE3;
+}
