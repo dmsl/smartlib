@@ -95,6 +95,7 @@ body {
 p {
     margin-bottom: 18px;
     font-size: 16px;
+    color: #000000;
 }
 
 strong {
@@ -131,7 +132,8 @@ h3 {
     display: block
 }
 
-/* TODO check for rm
+
+/*TODO FIX THIS is thead text form in contact*/
 .text-form {
     float: left;
     display: block;
@@ -140,7 +142,7 @@ h3 {
     line-height: 1.78em;
     color: #0f0f0f
 }
-*/
+
 /* My CLASSES */
 .h4blueInline {
     font-size: 23px;
@@ -394,7 +396,13 @@ nav#global ul li a:hover {
 }
 
 
-
+input {
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    background-color: #f4f4f4;
+    color: #011633;
+}
 
 
 
@@ -402,9 +410,6 @@ nav#global ul li a:hover {
 #login-panel input {
     line-height: 20px;
     width: 8em;
-    border-radius: 7px;
-    -moz-border-radius: 7px;
-    -webkit-border-radius: 7px;
     display: block;
     background-color: #f4f4f4;
     color: #011633;
@@ -704,6 +709,7 @@ footer p {
 
 /* SIDEBAR */
 aside {
+    color:#011633;
     width: 260px;
     font-size: 16px;
     float: right;

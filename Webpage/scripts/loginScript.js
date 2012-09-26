@@ -226,12 +226,29 @@ function asyncLogin() {
                             ' >Logout' + '</button>');
 
 
-                    //Replace books with logged in books
-                    getLoggedInBooksJqGrid();
+                    //Switch menu links
+                    $('#navRegister').replaceWith(
+                        '<a id="navUserProfile" href="userProfile.php">Profile</a>'
+                    );
+
+
+                    //Do actions according to current page
+                    var curPage = window.location.pathname;
+                    var curPage = curPage.substring(curPage.lastIndexOf('/') + 1);
+                    //If on homepage, switch books
+                    if(curPage=="index.php"){
+                        //Replace books with logged in books
+                        getLoggedInBooksJqGrid();
+                    }
+                    //Refresh Page
+                   else if(curPage=="register.php"){
+                        window.location.reload();
+                    }
+
+
+
 
                 }
-//                          +
-
 
                 //Not activated account
                 else if (_level == "0") {
@@ -335,8 +352,30 @@ function asyncLogout() {
                     <div  id="login-panel-submit">Login</div>\
                     </div>');
 
-                //Replace books with logged out books
-                getLoggedOutBooksJqGrid();
+                //Switch menu links
+                $('#navUserProfile').replaceWith(
+                    '<a id="navRegister" href="register.php">Register</a>'
+                );
+
+
+
+                //Do actions according to current page
+                var curPage = window.location.pathname;
+                var curPage = curPage.substring(curPage.lastIndexOf('/') + 1);
+
+                //If on homepage, switch books
+                if(curPage=="index.php"){
+                    //Replace books with logged out books
+                    getLoggedOutBooksJqGrid();
+                }
+                //Refresh Page
+                else if(curPage=="userProfile.php"){
+                    window.location.reload();
+                }
+
+
+
+
 
             }
             // Weird error
@@ -453,7 +492,7 @@ function getLoggedInBooksJqGrid() {
 
             var result = xmlhttp.responseText.trim();
 
-            //Enable logged in books TODO GET CONTENT IN AJAX !
+            //Enable logged in books
             $('.mainContent#booksNotLoggedIn').replaceWith(
                 '<div class="mainContent" id="booksLoggedIn" >' +
                     result +

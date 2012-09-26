@@ -49,14 +49,14 @@
         //User is logged in
         if ($_SESSION['loggedin'] == 1) {
             ?>
-            <li><a href="userProfile.php">Profile</a>
+            <li><a id="navUserProfile" href="userProfile.php">Profile</a>
             </li>
             <?php
         } //User is Guest
         else {
             ?>
 
-            <li><a href="register.php">Register</a></li>
+            <li><a id="navRegister" href="register.php">Register</a></li>
             <?php
         }
         ?>

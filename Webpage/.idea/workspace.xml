@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a830dd3-cf48-4f11-8f30-ca2fbd98c0f8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gitignore" afterPath="$PROJECT_DIR$/../.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grid/allBooksLoggedIn.php" afterPath="$PROJECT_DIR$/grid/allBooksLoggedIn.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/about.php" afterPath="$PROJECT_DIR$/about.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/contact.php" afterPath="$PROJECT_DIR$/contact.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/downloads.php" afterPath="$PROJECT_DIR$/downloads.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grid/themes/ui.jqgrid.css" afterPath="$PROJECT_DIR$/grid/themes/ui.jqgrid.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/register.php" afterPath="$PROJECT_DIR$/register.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/header.php" afterPath="$PROJECT_DIR$/scripts/header.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/loginScript.js" afterPath="$PROJECT_DIR$/scripts/loginScript.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles.css" afterPath="$PROJECT_DIR$/styles.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userProfile.php" afterPath="$PROJECT_DIR$/userProfile.php" />
     </list>
     <list id="1aee1695-d3ee-477e-8981-dc2526402b2a" name="MASTER DATA" comment="Master fils should not be uploaded">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CREDENCIALS.php" afterPath="$PROJECT_DIR$/CREDENCIALS.php" />
@@ -33,31 +38,38 @@
       <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="61" selection-start="2861" selection-end="2877" vertical-scroll-proportion="-6.4897957">
+            <state line="64" column="23" selection-start="1745" selection-end="1745" vertical-scroll-proportion="1.25">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="loginScript.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/scripts/loginScript.js">
+      <file leaf-file-name="header.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scripts/header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="338" column="42" selection-start="9329" selection-end="9329" vertical-scroll-proportion="0.66108006">
-              <folding>
-                <marker date="1348627118710" expanded="true" signature="8581:9227" placeholder="..." />
-                <marker date="1348627118710" expanded="true" signature="8661:8863" placeholder="..." />
-                <marker date="1348627118710" expanded="true" signature="8947:9087" placeholder="..." />
-              </folding>
+            <state line="58" column="34" selection-start="0" selection-end="2126" vertical-scroll-proportion="0.5297398">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="allBooksLoggedIn.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grid/allBooksLoggedIn.php">
+      <file leaf-file-name="userProfile.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/userProfile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="0" selection-start="1117" selection-end="1117" vertical-scroll-proportion="-17.5">
+            <state line="83" column="17" selection-start="2111" selection-end="2111" vertical-scroll-proportion="-6.25">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loginScript.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/loginScript.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="229" column="35" selection-start="6119" selection-end="6119" vertical-scroll-proportion="66.72">
               <folding>
-                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+                <marker date="1348629375855" expanded="true" signature="9242:9888" placeholder="..." />
+                <marker date="1348629375855" expanded="true" signature="9322:9524" placeholder="..." />
+                <marker date="1348629375855" expanded="true" signature="9608:9748" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -66,7 +78,32 @@
       <file leaf-file-name="styles.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1065" column="16" selection-start="21484" selection-end="21484" vertical-scroll-proportion="-7.56">
+            <state line="416" column="23" selection-start="7871" selection-end="7871" vertical-scroll-proportion="-18.36">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ui.jqgrid.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grid/themes/ui.jqgrid.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="345" column="23" selection-start="6394" selection-end="6394" vertical-scroll-proportion="-9.56">
+              <folding>
+                <marker date="1348628875096" expanded="true" signature="8677:8709" placeholder="{...}" />
+                <marker date="1348628875096" expanded="true" signature="8735:8768" placeholder="{...}" />
+                <marker date="1348628875096" expanded="true" signature="8889:8921" placeholder="{...}" />
+                <marker date="1348628875096" expanded="true" signature="8947:8980" placeholder="{...}" />
+                <marker date="1348628875096" expanded="true" signature="12986:13018" placeholder="{...}" />
+                <marker date="1348628875096" expanded="true" signature="13044:13077" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/register.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="100" column="72" selection-start="2682" selection-end="2682" vertical-scroll-proportion="-43.125">
               <folding />
             </state>
           </provider>
@@ -90,22 +127,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/scripts/sessionInit.php" />
-        <option value="$PROJECT_DIR$/scripts/authenticate.php" />
-        <option value="$PROJECT_DIR$/mobile/authenticate.php" />
-        <option value="$PROJECT_DIR$/scripts/logoutWidget.php" />
-        <option value="$PROJECT_DIR$/scripts/logout.php" />
-        <option value="$PROJECT_DIR$/scripts/header.php" />
-        <option value="$PROJECT_DIR$/about.php" />
         <option value="$PROJECT_DIR$/scripts/loginWidget.php" />
         <option value="$PROJECT_DIR$/scripts/footer.php" />
         <option value="$PROJECT_DIR$/carousel/carouselHeader.php" />
         <option value="$PROJECT_DIR$/carousel/index.html" />
         <option value="$PROJECT_DIR$/carousel/skins/ie7/skin.css" />
-        <option value="$PROJECT_DIR$/styles.css" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/grid/allBooksLoggedIn.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/about.php" />
+        <option value="$PROJECT_DIR$/contact.php" />
+        <option value="$PROJECT_DIR$/downloads.php" />
+        <option value="$PROJECT_DIR$/register.php" />
+        <option value="$PROJECT_DIR$/userProfile.php" />
+        <option value="$PROJECT_DIR$/styles.css" />
+        <option value="$PROJECT_DIR$/grid/themes/ui.jqgrid.css" />
         <option value="$PROJECT_DIR$/scripts/loginScript.js" />
+        <option value="$PROJECT_DIR$/scripts/header.php" />
       </list>
     </option>
   </component>
@@ -195,6 +232,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="grid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Webpage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Webpage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -321,7 +376,11 @@
       <created>1348621108290</created>
       <updated>1348621108290</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="AJAX'd logged in/out books grids">
+      <created>1348627249051</created>
+      <updated>1348627249051</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -385,7 +444,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Milestone 1 for homepage" />
+    <option name="LAST_COMMIT_MESSAGE" value="AJAX'd logged in/out books grids" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -404,6 +463,7 @@
     <MESSAGE value="Login/Logout widget switch" />
     <MESSAGE value="Working on webpage layout" />
     <MESSAGE value="Milestone 1 for homepage" />
+    <MESSAGE value="AJAX'd logged in/out books grids" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -411,49 +471,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/about.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="6" selection-start="1770" selection-end="1770" vertical-scroll-proportion="-26.791666">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/loginWidget.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="10" selection-start="1574" selection-end="1574" vertical-scroll-proportion="-15.875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/carousel/carouselFetchImages.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="10" selection-start="1425" selection-end="1430" vertical-scroll-proportion="-3.3469388" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="35" selection-start="1944" selection-end="1944" vertical-scroll-proportion="-5.5833335">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/department.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CREDENCIALS.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/dmsl1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/carousel/carouselHeader.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="44" column="0" selection-start="1215" selection-end="1215" vertical-scroll-proportion="55.0">
@@ -482,13 +499,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1065" column="16" selection-start="21484" selection-end="21484" vertical-scroll-proportion="-7.56">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grid/allBooksLoggedIn.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="0" selection-start="1117" selection-end="1117" vertical-scroll-proportion="-17.5">
@@ -498,21 +508,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ie.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contact.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="36" selection-start="1547" selection-end="1547" vertical-scroll-proportion="0.44423792">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/about.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="0" selection-start="2166" selection-end="2166" vertical-scroll-proportion="12.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/downloads.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="17" selection-start="1954" selection-end="1954" vertical-scroll-proportion="11.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userProfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="17" selection-start="2111" selection-end="2111" vertical-scroll-proportion="-6.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="100" column="72" selection-start="2682" selection-end="2682" vertical-scroll-proportion="-43.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="416" column="23" selection-start="7871" selection-end="7871" vertical-scroll-proportion="-18.36">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grid/themes/ui.jqgrid.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="345" column="23" selection-start="6394" selection-end="6394" vertical-scroll-proportion="-9.56">
+          <folding>
+            <marker date="1348628875096" expanded="true" signature="8677:8709" placeholder="{...}" />
+            <marker date="1348628875096" expanded="true" signature="8735:8768" placeholder="{...}" />
+            <marker date="1348628875096" expanded="true" signature="8889:8921" placeholder="{...}" />
+            <marker date="1348628875096" expanded="true" signature="8947:8980" placeholder="{...}" />
+            <marker date="1348628875096" expanded="true" signature="12986:13018" placeholder="{...}" />
+            <marker date="1348628875096" expanded="true" signature="13044:13077" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="61" selection-start="2861" selection-end="2877" vertical-scroll-proportion="-6.4897957">
+        <state line="64" column="23" selection-start="1745" selection-end="1745" vertical-scroll-proportion="1.25">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/loginScript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="338" column="42" selection-start="9329" selection-end="9329" vertical-scroll-proportion="0.66108006">
+        <state line="229" column="35" selection-start="6119" selection-end="6119" vertical-scroll-proportion="66.72">
           <folding>
-            <marker date="1348627118710" expanded="true" signature="8581:9227" placeholder="..." />
-            <marker date="1348627118710" expanded="true" signature="8661:8863" placeholder="..." />
-            <marker date="1348627118710" expanded="true" signature="8947:9087" placeholder="..." />
+            <marker date="1348629375855" expanded="true" signature="9242:9888" placeholder="..." />
+            <marker date="1348629375855" expanded="true" signature="9322:9524" placeholder="..." />
+            <marker date="1348629375855" expanded="true" signature="9608:9748" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="34" selection-start="0" selection-end="2126" vertical-scroll-proportion="0.5297398">
+          <folding />
         </state>
       </provider>
     </entry>

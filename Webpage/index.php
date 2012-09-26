@@ -60,6 +60,7 @@ include 'scripts/sessionInit.php';
 
 
 <body>
+
 <!-- Header -->
 <header id='topHeader'>
     <?php  include('scripts/header.php'); ?>
@@ -68,7 +69,7 @@ include 'scripts/sessionInit.php';
 <!--Toast Messages -->
 <div class=clearfix>
     <div class="toast-message" id="notoast">No Errors Found</div>
-    <div id=content>
+<div id=content>
 
         <article>
             <!--            Show popular books at all times-->

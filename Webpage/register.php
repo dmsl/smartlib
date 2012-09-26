@@ -45,59 +45,42 @@ if($_SESSION['loggedin']==1){
 ?>
 <!DOCTYPE html>
 <html lang=en>
+
+<!--        Head         -->
 <head>
-	<meta charset=UTF-8>
-	<title>SmartLib</title>
-	<link href=styles.css rel=stylesheet />
+    <meta charset=UTF-8>
+    <!--    TODO fill metadata for all pages-->
+    <meta name="description" content="SmartLib : Library of Modern World"/>
+    <meta name="keywords" content="smartLib, smart, library, books, ucy,
+    university of cyprus, university, cyprus, cs"/>
+    <title>SmartLib</title>
+
+    <!--    Include Scripts-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <link href=styles.css rel=stylesheet> </link>
+    <!--    Include Extra headers-->
+    <?php include 'scripts/gridHeader.php';
+    include 'carousel/carouselHeader.php';  ?>
+
+
+    <script src="scripts/loginScript.js"></script>
 </head>
 
+
 <body>
-<header>
 
-   <section>
-   <?php include 'scripts/header.php'; ?>
-		</section>
-		
-
-     <aside>
-     <?php include 'scripts/smartWidget.php'; ?>
-     
-</aside>
-	
-
-		
+<!-- Header -->
+<header id='topHeader'>
+    <?php  include('scripts/header.php'); ?>
 </header>
 
+<!--Toast Messages -->
 <div class=clearfix>
-	<div id=content>
-<!--    If user is logged in-->
-		<article>
-        	<nav id=global>
-		<ul>
-			<li><a href="index.php">Home</a></li>
-                             <?php 
-							//User is logged in
-							if($_SESSION['loggedin']==1){
-								?>
-								<li><a href="userProfile.php"><?php echo $_SESSION['name']?> Profile</a>
-								</li>
-                                <?php
-								}
-							//User is Guest
-							else{
-								?>
-								
-								<li><a href="register.php">Register</a>
-								</li>
-                                <?php
-								}
-								?>
-			<li><a href="downloads.php">Downloads</a></li>
-			<li><a href="about.php">About</a></li>
-   			<li><a href="contact.php">Contact</a></li>
-		</ul>
-	</nav>
-			<header>	
+    <div class="toast-message" id="notoast">No Errors Found</div>
+    <div id=content>
+
+        <article>
+			<header>
 				<h1>Please fill up the Registration Form</h1>
 			</header>
 			<p>
