@@ -499,6 +499,7 @@ nav#global ul li a:hover {
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
+    z-index: 10;
     /*The good stuff */
     /*-webkit-transition: opacity 0.5s ease-out;  *//* Saf3.2+, Chrome */
     /*-moz-transition: opacity 0.5s ease-out;  *//* FF4+ */
@@ -549,7 +550,7 @@ article {
     padding-top: 7px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom:20px;
+    /*padding-bottom:20px;*/
     border-top: none;
     border-left: none;
     border-right: none;

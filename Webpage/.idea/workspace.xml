@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a830dd3-cf48-4f11-8f30-ca2fbd98c0f8" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/carousel/carouselAll.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/carousel/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/carousel/style.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/nocover.png" afterPath="$PROJECT_DIR$/images/nocover.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gitignore" afterPath="$PROJECT_DIR$/../.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/carousel/carouselHeader.php" afterPath="$PROJECT_DIR$/carousel/carouselHeader.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/carousel/skins/ie7/skin.css" afterPath="$PROJECT_DIR$/carousel/skins/ie7/skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grid/allBooksLoggedIn.php" afterPath="$PROJECT_DIR$/grid/allBooksLoggedIn.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/loginScript.js" afterPath="$PROJECT_DIR$/scripts/loginScript.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles.css" afterPath="$PROJECT_DIR$/styles.css" />
     </list>
     <list id="1aee1695-d3ee-477e-8981-dc2526402b2a" name="MASTER DATA" comment="Master fils should not be uploaded">
@@ -37,50 +33,40 @@
       <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="107" column="30" selection-start="3036" selection-end="3036" vertical-scroll-proportion="-4.612245">
+            <state line="99" column="61" selection-start="2861" selection-end="2877" vertical-scroll-proportion="-6.4897957">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="styles.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="loginScript.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scripts/loginScript.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="338" column="42" selection-start="9329" selection-end="9329" vertical-scroll-proportion="0.66108006">
+              <folding>
+                <marker date="1348627118710" expanded="true" signature="8581:9227" placeholder="..." />
+                <marker date="1348627118710" expanded="true" signature="8661:8863" placeholder="..." />
+                <marker date="1348627118710" expanded="true" signature="8947:9087" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="allBooksLoggedIn.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grid/allBooksLoggedIn.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="0" selection-start="1117" selection-end="1117" vertical-scroll-proportion="-17.5">
+              <folding>
+                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1066" column="1" selection-start="21470" selection-end="21470" vertical-scroll-proportion="0.82791585">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="carouselHeader.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/carousel/carouselHeader.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="0" selection-start="1215" selection-end="1215" vertical-scroll-proportion="55.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nocover.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/images/nocover.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="footer.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/footer.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="23" selection-start="1395" selection-end="1395" vertical-scroll-proportion="-11.791667">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/header.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="35" selection-start="1944" selection-end="1944" vertical-scroll-proportion="-5.5833335">
+            <state line="1065" column="16" selection-start="21484" selection-end="21484" vertical-scroll-proportion="-7.56">
               <folding />
             </state>
           </provider>
@@ -111,14 +97,15 @@
         <option value="$PROJECT_DIR$/scripts/logout.php" />
         <option value="$PROJECT_DIR$/scripts/header.php" />
         <option value="$PROJECT_DIR$/about.php" />
-        <option value="$PROJECT_DIR$/scripts/loginScript.js" />
         <option value="$PROJECT_DIR$/scripts/loginWidget.php" />
         <option value="$PROJECT_DIR$/scripts/footer.php" />
         <option value="$PROJECT_DIR$/carousel/carouselHeader.php" />
         <option value="$PROJECT_DIR$/carousel/index.html" />
         <option value="$PROJECT_DIR$/carousel/skins/ie7/skin.css" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/styles.css" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/grid/allBooksLoggedIn.php" />
+        <option value="$PROJECT_DIR$/scripts/loginScript.js" />
       </list>
     </option>
   </component>
@@ -194,6 +181,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Webpage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Webpage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grid" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -316,7 +317,11 @@
       <created>1348617742988</created>
       <updated>1348617742988</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Milestone 1 for homepage">
+      <created>1348621108290</created>
+      <updated>1348621108290</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -334,7 +339,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28606158" sideWeight="0.670068" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26256078" sideWeight="0.670068" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -380,7 +385,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working on webpage layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="Milestone 1 for homepage" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -398,6 +403,7 @@
     <MESSAGE value="23 sept push..&#10;AJAX'ing login" />
     <MESSAGE value="Login/Logout widget switch" />
     <MESSAGE value="Working on webpage layout" />
+    <MESSAGE value="Milestone 1 for homepage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -409,17 +415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="60" column="6" selection-start="1770" selection-end="1770" vertical-scroll-proportion="-26.791666">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/loginScript.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="312" column="0" selection-start="8251" selection-end="8251" vertical-scroll-proportion="1.3772242">
-          <folding>
-            <marker date="1348593622250" expanded="true" signature="8423:9069" placeholder="..." />
-            <marker date="1348593622250" expanded="true" signature="8503:8705" placeholder="..." />
-            <marker date="1348593622250" expanded="true" signature="8789:8929" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -459,11 +454,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/images/nocover.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/carousel/carouselHeader.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="44" column="0" selection-start="1215" selection-end="1215" vertical-scroll-proportion="55.0">
@@ -480,24 +470,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/scripts/footer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="30" selection-start="3036" selection-end="3036" vertical-scroll-proportion="-4.612245">
+        <state line="47" column="23" selection-start="1395" selection-end="1395" vertical-scroll-proportion="0.52700186">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/footer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="23" selection-start="1395" selection-end="1395" vertical-scroll-proportion="-11.791667">
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/images/nocover.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1066" column="1" selection-start="21470" selection-end="21470" vertical-scroll-proportion="0.82791585">
+        <state line="1065" column="16" selection-start="21484" selection-end="21484" vertical-scroll-proportion="-7.56">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grid/allBooksLoggedIn.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="0" selection-start="1117" selection-end="1117" vertical-scroll-proportion="-17.5">
+          <folding>
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="99" column="61" selection-start="2861" selection-end="2877" vertical-scroll-proportion="-6.4897957">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/loginScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="338" column="42" selection-start="9329" selection-end="9329" vertical-scroll-proportion="0.66108006">
+          <folding>
+            <marker date="1348627118710" expanded="true" signature="8581:9227" placeholder="..." />
+            <marker date="1348627118710" expanded="true" signature="8661:8863" placeholder="..." />
+            <marker date="1348627118710" expanded="true" signature="8947:9087" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

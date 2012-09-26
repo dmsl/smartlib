@@ -1,7 +1,8 @@
 # binary
 Android/Smartlib/bin/
 Android/Smartlib/gen/
-Webpage/CREDENCIALS.php 
+Webpage/CREDENCIALS.php
+Webpage/MASTER/
 #linux backup files
 *.~
 Android/Smartlib/.settings/

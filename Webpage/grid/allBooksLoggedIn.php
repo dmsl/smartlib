@@ -30,7 +30,9 @@
     
     
     -->
- <table id="s3list"></table>
+
+
+<table id="s3list"></table>
 <div id="s3pager"></div>
 <div id="filter" style="margin-left:30%;display:none">Search Invoices</div>
 
@@ -58,33 +60,33 @@
 
 		colModel:[
 
-			{name:'imgURL',index:'imgURL', width:80, align:"center", search:false 
+			{name:'imgURL',index:'imgURL', width:80, align:"center", search:false
 			,editoptions:{readonly:true}, formatter:imageFunction,
 			sortable:false},
 
 			{name:'title',index:'title', width:200 , align:"center",
 			cellattr: function (rowId, tv, rawObject, cm, rdata) { return 'style="white-space: normal;"' } },
-			
+
 			{name:'authors',index:'authors', width:100, align:"center", formatter:formatAuthors,
 			cellattr: function (rowId, tv, rawObject, cm, rdata) { return 'style="white-space: normal;"' } },
 
 			{name:'publishedYear',index:'publishedYear', width:70, align:"center", search:false,
-			sortable:false},		
+			sortable:false},
 
-			{name:'pageCount',index:'pageCount', width:70,align:"center", search:false, sortable:false},	
-			
+			{name:'pageCount',index:'pageCount', width:70,align:"center", search:false, sortable:false},
+
 			{name:'owners',index:'owners', width:70,align:"center", search:false, sortable:false},
 			{name:'status',index:'status', width:70,align:"center", search:false, sortable:false,
-			 formatter:formatStatus},	
+			 formatter:formatStatus},
 
-			{name:'lang',index:'lang', width:70, align:"center", search:false, editable:false,sortable:false }	,	
+			{name:'lang',index:'lang', width:70, align:"center", search:false, editable:false,sortable:false }	,
 
 			{name:'isbn',index:'isbn', width:160, align:"left",
 			}
 		],
-		
+
 	//	editurl: "server.php",
-		
+
 		rowNum:5,
 
 
@@ -110,16 +112,16 @@ jQuery("#s3list").jqGrid('navGrid','#s3pager',{edit:false,add:false,del:false,se
 
 jQuery("#s3list").jqGrid('navButtonAdd',"#s3pager",{caption:"Clear",title:"Clear Search",buttonicon :'ui-icon-refresh',
 	onClickButton:function(){
-		
-		
+
+
     var grid = $("#s3list");
     grid.jqGrid('setGridParam',{search:false});
-	
+
 	grid.jqGrid('setGridParam', { postData: { filters: null} });
 	$("#gs_title").val("");
 	$("#gs_authors").val("");
 	$("#gs_isbn").val("");
-	
+
 
     var postData = grid.jqGrid('getGridParam','postData');
     $.extend(postData,{filters:""});
@@ -128,39 +130,39 @@ jQuery("#s3list").jqGrid('navButtonAdd',"#s3pager",{caption:"Clear",title:"Clear
 
     grid.trigger("reloadGrid",[{page:1}]);
 
-	} 
+	}
 });
 
 jQuery("#s3list").jqGrid('filterToolbar');
 
 
 /*	jQuery("#s3list").jqGrid('navGrid','#s3pager',{edit:false,add:false,del:false,search:true});
-	
+
 */
 
-	
-	function imageFunction(cellvalue, options, rowObject) 
+
+	function imageFunction(cellvalue, options, rowObject)
 	{
 		return  "<img src='" + cellvalue + "' width='80px' height='80px' />";
 	};
 
 
 	});
-	
+
 	var timeoutHnd;
-	
+
 	function doSearch(ev){
 		if(timeoutHnd)
 			clearTimeout(timeoutHnd)
 		timeoutHnd = setTimeout(gridReload,500)
 	}
-	
+
 	function gridReload(){
 		var cd_mask = jQuery("#search_cd").val();
 		jQuery("#s3list").jqGrid('setGridParam',{url:"server.php?page=1&limit=10&searchString="+ cd_mask  +"&rows=10"}).trigger("reloadGrid");
 	}
-	
-	
+
+
 	function formatAuthors(cellvalue, options, cellObject) {
 
 	return  cellvalue.replace(new RegExp(", "),",</br>")
@@ -173,16 +175,16 @@ function unformatAuthors(cellValue, options, cellObject) {
 
 	function formatStatus(cellvalue, options, cellObject) {
 	switch (cellvalue){
-		case "1":  return 'Rented' 
+		case "1":  return 'Rented'
 		case "0":  return 'Available'
 		case "-1":  return 'Not Available'
 		case "-2":  return 'Other'
-		
+
 		}
 	}
-	
+
 //	$('#search').submit(function () {
-//		
+//
 //				jQuery("#s3list").jqGrid('setGridParam',{url:"server.php?page=1&limit=10&searchString="+ cd_mask  +"&rows=10"}).trigger("reloadGrid");
 //		return false;
 //	});

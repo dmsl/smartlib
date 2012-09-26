@@ -198,7 +198,8 @@ function asyncLogin() {
 //
             //User successfully logged in
             if (_loginResult == "1") {
-                //TODO CHECK FOR ACTIVATED OR NOT
+
+                // User successfully logged in, and everything is okay!
                 if (_level == "1" || _level == "2") {
                     //Admin logged in!
                     if (_level == "2") {
@@ -225,7 +226,12 @@ function asyncLogin() {
                             ' >Logout' + '</button>');
 
 
+                    //Replace books with logged in books
+                    getLoggedInBooksJqGrid();
+
                 }
+//                          +
+
 
                 //Not activated account
                 else if (_level == "0") {
@@ -329,6 +335,8 @@ function asyncLogout() {
                     <div  id="login-panel-submit">Login</div>\
                     </div>');
 
+                //Replace books with logged out books
+                getLoggedOutBooksJqGrid();
 
             }
             // Weird error
@@ -349,6 +357,63 @@ function asyncLogout() {
 
         }
 
+    }
+
+}
+
+
+
+
+
+
+/* Get logged in books JQ Grid  */
+function getLoggedOutBooksJqGrid() {
+
+    var xmlhttp;
+
+
+    //Make the request (IE7+, and browsers)
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    }
+    //For IE<=6
+    else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+
+    xmlhttp.open("GET", "grid/allBooks.php", true);
+    //Send the proper header information along with the request
+    xmlhttp.send();
+
+    //When state changed
+    xmlhttp.onreadystatechange = function () {
+
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+            var result = xmlhttp.responseText.trim();
+
+            //Enable logged in books TODO GET CONTENT IN AJAX !
+            $('.mainContent#booksLoggedIn').replaceWith(
+                '<div class="mainContent" id="booksNotLoggedIn" >' +
+                    result +
+                    '</div>'
+            );
+
+
+        }
+
+        //Error Code
+        else if (xmlhttp.status == 404) {
+
+            //Authentication script not found
+            //TODO check if have todo something
+            showToastMessage("Webpage Error :(", 0);
+
+            // return "Webpage Error :(";
+
+        }
+
 
     }
 
@@ -356,11 +421,74 @@ function asyncLogout() {
 }
 
 
+
+
+
+
+
+/* Get logged in books JQ Grid  */
+function getLoggedInBooksJqGrid() {
+
+    var xmlhttp;
+
+
+    //Make the request (IE7+, and browsers)
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    }
+    //For IE<=6
+    else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+
+    xmlhttp.open("GET", "grid/allBooksLoggedIn.php", true);
+    //Send the proper header information along with the request
+    xmlhttp.send();
+
+    //When state changed
+    xmlhttp.onreadystatechange = function () {
+
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+            var result = xmlhttp.responseText.trim();
+
+            //Enable logged in books TODO GET CONTENT IN AJAX !
+            $('.mainContent#booksNotLoggedIn').replaceWith(
+                '<div class="mainContent" id="booksLoggedIn" >' +
+                    result +
+                    '</div>'
+            );
+
+
+        }
+
+
+        //Error Code
+        else if (xmlhttp.status == 404) {
+
+            //Authentication script not found
+            //TODO check if have todo something
+            showToastMessage("Webpage Error :(", 0);
+
+           // return "Webpage Error :(";
+
+        }
+
+
+    }
+
+
+}
+
+
+
+
 //MAY REMOVE THIS CODE
 
 //   var isShown = false;
 
-//        //todo rm Slide top menu
+//        //TODO SLIDE UP DOWN CODE! use this on search fields!
 //        $(document).ready(function () {
 //            $('#sub-menu-panel').click(function () {
 //                //Show panel
