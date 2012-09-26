@@ -47,11 +47,8 @@ function toggleLoginButton() {
         &&
         ($('#loginPasswordField').attr('value') != "")
         ) {
-        //Activate Login Link
-        //              //            //Login is link class=\"loginButton\"
-        /*                $('#login-panel-submit').replaceWith("aaaaaaaaaa <a  id=\"login-panel-submit\" \
-         href=\"#\" onClick=\"document.getElementById('login-widget').submit() >Login</a>");*/
 
+        //Activate Login Link
         $('#login-panel-submit').replaceWith(
             '<button type="submit" onclick="asyncLogin()"   id="login-panel-submit-filled" href=""  ' +
                 ' >Login</button>');
@@ -73,11 +70,8 @@ function toggleLoginButtonPassword(event) {
     //Toggle Login Button
     toggleLoginButton();
     if (event.keyCode == 13) {
-        // $('#login-panel-submit-filled').click();
-        //TODO changed document.getElementById("login-widget").submit()
         asyncLogin();
     }
-
 
 }
 
@@ -100,7 +94,7 @@ function showToastMessage(msg, type) {
         }
         else {
             //Show nothing
-            //TODO  restore-> return;
+            return;
         }
 
 
@@ -193,6 +187,8 @@ function asyncLogin() {
 
             _level = jsonOBJ['level'];
 
+            //TODO SYNC THE PHP SESSION!!!!
+
 
 //
 //
@@ -206,7 +202,6 @@ function asyncLogin() {
                         showToastMessage("Welcome ADMIN.", 1);
                     }
 
-                    //TODO CHANGE STAFF IN  JS , PHP, AJAX
 
 
                     //Modify login area
@@ -291,7 +286,6 @@ function asyncLogin() {
         else if (xmlhttp.status == 404) {
 
             //Authentication script not found
-            //TODO check if have todo something
             showToastMessage("Webpage Error :(", 0);
 
         }
@@ -373,7 +367,7 @@ function asyncLogout() {
                     window.location.reload();
                 }
 
-
+                //TODO SYNC THE PHP SESSION!!!!
 
 
 
@@ -391,7 +385,6 @@ function asyncLogout() {
         else if (xmlhttp.status == 404) {
 
             //Authentication script not found
-            //TODO check if have todo something
             showToastMessage("Webpage Error :(", 0);
 
         }
@@ -432,7 +425,7 @@ function getLoggedOutBooksJqGrid() {
 
             var result = xmlhttp.responseText.trim();
 
-            //Enable logged in books TODO GET CONTENT IN AJAX !
+            //Enable logged in books
             $('.mainContent#booksLoggedIn').replaceWith(
                 '<div class="mainContent" id="booksNotLoggedIn" >' +
                     result +
@@ -446,7 +439,6 @@ function getLoggedOutBooksJqGrid() {
         else if (xmlhttp.status == 404) {
 
             //Authentication script not found
-            //TODO check if have todo something
             showToastMessage("Webpage Error :(", 0);
 
             // return "Webpage Error :(";
@@ -507,7 +499,6 @@ function getLoggedInBooksJqGrid() {
         else if (xmlhttp.status == 404) {
 
             //Authentication script not found
-            //TODO check if have todo something
             showToastMessage("Webpage Error :(", 0);
 
            // return "Webpage Error :(";

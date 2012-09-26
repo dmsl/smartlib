@@ -110,7 +110,7 @@ if($_SESSION['loggedin']==1){
 			<header>	
 				<h1><?php echo $_SESSION['REGname']?>, you have successfully activated your account!</h1>
 			</header>
-			<p>
+
 
                                 </br></br>
                                 <h4blue>You can now login to smartlib!</h4blue>
