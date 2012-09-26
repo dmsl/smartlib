@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4a830dd3-cf48-4f11-8f30-ca2fbd98c0f8" name="Default" comment="Working on webpage layout">
+    <list default="true" id="4a830dd3-cf48-4f11-8f30-ca2fbd98c0f8" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/carousel/carouselAll.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/carousel/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/carousel/style.css" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/nocover.png" afterPath="$PROJECT_DIR$/images/nocover.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gitignore" afterPath="$PROJECT_DIR$/../.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/footer.php" afterPath="$PROJECT_DIR$/scripts/footer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/carousel/carouselHeader.php" afterPath="$PROJECT_DIR$/carousel/carouselHeader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/carousel/skins/ie7/skin.css" afterPath="$PROJECT_DIR$/carousel/skins/ie7/skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles.css" afterPath="$PROJECT_DIR$/styles.css" />
     </list>
     <list id="1aee1695-d3ee-477e-8981-dc2526402b2a" name="MASTER DATA" comment="Master fils should not be uploaded">
@@ -30,16 +37,41 @@
       <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="36" selection-start="1135" selection-end="1142" vertical-scroll-proportion="-2.1632652">
+            <state line="107" column="30" selection-start="3036" selection-end="3036" vertical-scroll-proportion="-4.612245">
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1066" column="1" selection-start="21470" selection-end="21470" vertical-scroll-proportion="0.82791585">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="carouselHeader.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/carousel/carouselHeader.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="44" column="0" selection-start="1215" selection-end="1215" vertical-scroll-proportion="55.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nocover.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/images/nocover.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="footer.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/footer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="28" selection-start="1525" selection-end="1525" vertical-scroll-proportion="-13.666667">
+            <state line="47" column="23" selection-start="1395" selection-end="1395" vertical-scroll-proportion="-11.791667">
               <folding />
             </state>
           </provider>
@@ -49,15 +81,6 @@
         <entry file="file://$PROJECT_DIR$/scripts/header.php">
           <provider selected="true" editor-type-id="text-editor">
             <state line="70" column="35" selection-start="1944" selection-end="1944" vertical-scroll-proportion="-5.5833335">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="11" selection-start="687" selection-end="694" vertical-scroll-proportion="0.33206108">
               <folding />
             </state>
           </provider>
@@ -90,10 +113,12 @@
         <option value="$PROJECT_DIR$/about.php" />
         <option value="$PROJECT_DIR$/scripts/loginScript.js" />
         <option value="$PROJECT_DIR$/scripts/loginWidget.php" />
+        <option value="$PROJECT_DIR$/scripts/footer.php" />
         <option value="$PROJECT_DIR$/carousel/carouselHeader.php" />
+        <option value="$PROJECT_DIR$/carousel/index.html" />
+        <option value="$PROJECT_DIR$/carousel/skins/ie7/skin.css" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/styles.css" />
-        <option value="$PROJECT_DIR$/scripts/footer.php" />
       </list>
     </option>
   </component>
@@ -169,48 +194,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Webpage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Webpage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Webpage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Webpage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MASTER" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Webpage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Webpage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -329,7 +312,11 @@
       <created>1348613836197</created>
       <updated>1348613836197</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Working on webpage layout">
+      <created>1348617742988</created>
+      <updated>1348617742988</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -418,28 +405,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mobile/authenticate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="310" column="0" selection-start="8725" selection-end="8997" vertical-scroll-proportion="0.40618956" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/logout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="26" selection-start="955" selection-end="955" vertical-scroll-proportion="0.19144982">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/logoutWidget.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="45" selection-start="1150" selection-end="1150" vertical-scroll-proportion="-9.291667" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/userProfile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="16" selection-start="336" selection-end="336" vertical-scroll-proportion="0.47619048" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/about.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="60" column="6" selection-start="1770" selection-end="1770" vertical-scroll-proportion="-26.791666">
@@ -465,18 +430,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/carousel/carouselAll.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="83" selection-start="503" selection-end="508" vertical-scroll-proportion="-5.5102043" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/carousel/carouselHeader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="0" selection-start="3279" selection-end="3279" vertical-scroll-proportion="-1.4081633">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/carousel/carouselFetchImages.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="57" column="10" selection-start="1425" selection-end="1430" vertical-scroll-proportion="-3.3469388" />
@@ -485,13 +438,6 @@
     <entry file="file://$PROJECT_DIR$/scripts/header.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="70" column="35" selection-start="1944" selection-end="1944" vertical-scroll-proportion="-5.5833335">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="36" selection-start="1135" selection-end="1142" vertical-scroll-proportion="-2.1632652">
           <folding />
         </state>
       </provider>
@@ -508,16 +454,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/images/dmsl1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/nocover.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/carousel/carouselHeader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="0" selection-start="1215" selection-end="1215" vertical-scroll-proportion="55.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/carousel/skins/ie7/skin.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="13" selection-start="921" selection-end="921" vertical-scroll-proportion="-28.2">
+          <folding>
+            <marker date="1348620576355" expanded="true" signature="90:106" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="107" column="30" selection-start="3036" selection-end="3036" vertical-scroll-proportion="-4.612245">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/footer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="28" selection-start="1525" selection-end="1525" vertical-scroll-proportion="-13.666667">
+        <state line="47" column="23" selection-start="1395" selection-end="1395" vertical-scroll-proportion="-11.791667">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="11" selection-start="687" selection-end="694" vertical-scroll-proportion="0.33206108">
+        <state line="1066" column="1" selection-start="21470" selection-end="21470" vertical-scroll-proportion="0.82791585">
           <folding />
         </state>
       </provider>

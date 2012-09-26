@@ -1,4 +1,7 @@
 .jcarousel-skin-ie7 .jcarousel-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
    /* -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
@@ -6,12 +9,27 @@
     border: 1px solid #808080;*/
 }
 
+
+
+/**
+ * Overwrite for having a carousel with dynamic width.
+ */
+/*.jcarousel-skin-ie7 .jcarousel-container-horizontal {*/
+    /*width: 85%;*/
+/*}*/
+
+/*.jcarousel-skin-ie7 .jcarousel-clip-horizontal {*/
+    /*width: 100%;*/
+/*}*/
+
+
+
 .jcarousel-skin-ie7 .jcarousel-direction-rtl {
 	direction: rtl;
 }
 
 .jcarousel-skin-ie7 .jcarousel-container-horizontal {
-    width: 245px;
+    width: 90%;
     padding: 20px 40px;
 }
 
@@ -25,8 +43,9 @@
     overflow: hidden;
 }
 
+/*How carousel books appear*/
 .jcarousel-skin-ie7 .jcarousel-clip-horizontal {
-    width:  245px;
+    width: 100%;
     height: 150%;
 }
 
@@ -36,17 +55,17 @@
 }
 
 .jcarousel-skin-ie7 .jcarousel-item {
-    width: 140px;
-    height: 2oopx;
-   /*border: 3px solid #B5C7C6;*/
+    width: 130px;
+    height: 170px;
+   border: 3px solid #B5C7C6;
 	
-	/*	border-radius: 2px;
-	-moz-border-radius: 2px;
-	-webkit-border-radius: 2px;
-	z-index: 1;
-	box-shadow: 0 0 5px #305FA1;
-	-moz-box-shadow: 0 0 5px #305FA1;
-	-webkit-box-shadow: 0 0 5px #305FA1;*/
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	/*z-index: 1;*/
+	/*box-shadow: 0 0 15px 0 0 #305FA1;*/
+	/*-moz-box-shadow: 0 15px 0 0 #305FA1;*/
+	/*-webkit-box-shadow: 0  15px 0 0 #305FA1;*/
 }
 
 .jcarousel-skin-ie7 .jcarousel-item:hover,

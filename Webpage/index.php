@@ -73,13 +73,13 @@ include 'scripts/sessionInit.php';
             <header>
                 <h1>Popular Books</h1>
             </header>
-            <center>
+            <div class="mainContent" >
                 <ul id="mycarousel" class="jcarousel-skin-ie7">
                     <ul>
                         <!-- The content will be dynamically loaded in here -->
                     </ul>
                 </ul>
-            </center>
+                </div>
             <?php
             //User is logged in
             if ($_SESSION['loggedin'] == 1) {
@@ -90,8 +90,9 @@ include 'scripts/sessionInit.php';
                 <header>
                     <h1>All Books</h1>
                 </header>
-                <center>
+                <div class="mainContent" >
                     <?php include 'grid/allBooksLoggedIn.php'; ?></center>
+                        </div>
                 <br>
 
                 <?php
@@ -102,8 +103,9 @@ include 'scripts/sessionInit.php';
                 <header>
                     <h1>All Books</h1>
                 </header>
-                <center>
+                <div class="mainContent" >
                     <?php include 'grid/allBooks.php'; ?></center>
+                        </div>
                 <br>
                 <?php } ?>
 

@@ -43,21 +43,6 @@
 
 <link rel="stylesheet" type="text/css" href="carousel/skins/ie7/skin.css" />
 
-<style type="text/css">
-
-/**
- * Overwrite for having a carousel with dynamic width.
- */
-.jcarousel-skin-ie7 .jcarousel-container-horizontal {
-    width: 85%;
-}
-
-.jcarousel-skin-ie7 .jcarousel-clip-horizontal {
-    width: 100%;
-}
-
-</style>
-
 
 
 <script type="text/javascript">
