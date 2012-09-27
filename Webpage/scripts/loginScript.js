@@ -203,7 +203,6 @@ function asyncLogin() {
                     }
 
 
-
                     //Modify login area
                     $('#loginUsernameField').replaceWith(
                         "<div id='login-panel-loggedin'>" +
@@ -231,16 +230,15 @@ function asyncLogin() {
                     var curPage = window.location.pathname;
                     var curPage = curPage.substring(curPage.lastIndexOf('/') + 1);
                     //If on homepage, switch books
-                    if(curPage=="index.php"){
+                    if (curPage == "index.php" || curPage == "") {
                         //Replace books with logged in books
-                        getLoggedInBooksJqGrid();
-                    }
-                    //Refresh Page
-                   else if(curPage=="register.php"){
+                        // TODO CHECK getLoggedInBooksJqGrid();
                         window.location.reload();
                     }
-
-
+                    //Refresh Page
+                    else if (curPage == "register.php") {
+                        window.location.reload();
+                    }
 
 
                 }
@@ -352,23 +350,22 @@ function asyncLogout() {
                 );
 
 
-
                 //Do actions according to current page
                 var curPage = window.location.pathname;
                 var curPage = curPage.substring(curPage.lastIndexOf('/') + 1);
 
                 //If on homepage, switch books
-                if(curPage=="index.php"){
+                if (curPage == "index.php" || curPage == "") {
                     //Replace books with logged out books
-                    getLoggedOutBooksJqGrid();
+                    //TODO CHECK getLoggedOutBooksJqGrid();
+                    window.location.reload();
                 }
                 //Refresh Page
-                else if(curPage=="userProfile.php"){
+                else if (curPage == "userProfile.php") {
                     window.location.reload();
                 }
 
                 //TODO SYNC THE PHP SESSION!!!!
-
 
 
             }
@@ -392,10 +389,6 @@ function asyncLogout() {
     }
 
 }
-
-
-
-
 
 
 /* Get logged in books JQ Grid  */
@@ -452,11 +445,6 @@ function getLoggedOutBooksJqGrid() {
 }
 
 
-
-
-
-
-
 /* Get logged in books JQ Grid  */
 function getLoggedInBooksJqGrid() {
 
@@ -501,7 +489,7 @@ function getLoggedInBooksJqGrid() {
             //Authentication script not found
             showToastMessage("Webpage Error :(", 0);
 
-           // return "Webpage Error :(";
+            // return "Webpage Error :(";
 
         }
 
@@ -510,8 +498,6 @@ function getLoggedInBooksJqGrid() {
 
 
 }
-
-
 
 
 //MAY REMOVE THIS CODE

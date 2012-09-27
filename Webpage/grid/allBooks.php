@@ -30,112 +30,195 @@
     
     
     -->
- 
+
+<div id="search-panel">
+    <form id="simpleSearchLoggedOut" action="#" method="post">
+        <input type="text" class="input" id="search_cd_loggedOut"/>
+
+        <button type="submit" value="" class="searchButton">Search</button>
+
+        <button type="reset" value="" id="clearButtonID"
+                class="clearButton">Clear
+        </button>
+    </form>
+</div>
 
 <table id="allBooksList"></table>
 
 <div id="allBooksPager"></div>
 
-  <script type="text/javascript">
+<script type="text/javascript">
 
-	jQuery(document).ready(function(){
-    var lastsel2
-	jQuery("#allBooksList").jqGrid({
+    jQuery(document).ready(function () {
 
-		url:'grid/server.php?q=allbooks&rows=5',
 
-		height:"auto",
+        jQuery("#allBooksList").jqGrid({
+
+            url:'grid/server.php?q=allbooks&rows=5',
+            mtype:"POST",
+            height:"auto",
 //width:"auto",
-		datatype: "json",
-		shrinktofit:false,
-		autowidth:true,
+            datatype:"json",
+            shrinktofit:false,
+            autowidth:true,
 
-		colNames:['Cover','Title','Authors','Published','Pages','Language', 'ISBN'],
+            colNames:['Cover', 'Title', 'Authors', 'Published', 'Pages', 'Language', 'ISBN'],
 
-		colModel:[
+            colModel:[
 
-			{name:'imgURL',index:'imgURL', width:80, align:"center", search:false 
-			,editoptions:{readonly:true}, formatter:imageFunction,
-			sortable:false},
+                {name:'imgURL', index:'imgURL', width:80, align:"center", search:false, editoptions:{readonly:true}, formatter:imageFunction,
+                    sortable:false},
 
-			{name:'title',index:'title', width:200 , align:"center",
-			cellattr: function (rowId, tv, rawObject, cm, rdata) { return 'style="white-space: normal;"' } },
-			
-			{name:'authors',index:'authors', width:100, align:"center", formatter:formatAuthors,
-			cellattr: function (rowId, tv, rawObject, cm, rdata) { return 'style="white-space: normal;"' } },
+                {name:'title', index:'title', width:200, align:"center",
+                    cellattr:function (rowId, tv, rawObject, cm, rdata) {
+                        return 'style="white-space: normal;"'
+                    } },
 
-			{name:'publishedYear',index:'publishedYear', width:70, align:"center",
-			sortable:false},		
+                {name:'authors', index:'authors', width:100, align:"center", formatter:formatAuthors,
+                    cellattr:function (rowId, tv, rawObject, cm, rdata) {
+                        return 'style="white-space: normal;"'
+                    } },
 
-			{name:'pageCount',index:'pageCount', width:70,align:"center", search:false, sortable:false},		
+                {name:'publishedYear', index:'publishedYear', width:70, align:"center",
+                    sortable:false},
 
-			{name:'lang',index:'lang', width:70, align:"center", search:false, editable:false,sortable:false }	,	
+                {name:'pageCount', index:'pageCount', width:70, align:"center", search:false, sortable:false},
 
-			{name:'isbn',index:'isbn', width:160, align:"center",
-			}
-		],
-		
-	//	editurl: "server.php",
-		
-		rowNum:5,
+                {name:'lang', index:'lang', width:70, align:"center", search:false, editable:false, sortable:false }    ,
 
-	//	rowList:[10,20],
+                {name:'isbn', index:'isbn', width:160, align:"center"
+                }
+            ],
 
-		pager: '#allBooksPager',
+            //	editurl: "server.php",
 
-		sortname: 'title',
+            rowNum:5,
 
-		viewrecords: true,
+            //	rowList:[10,20],
 
-		sortorder: "desc",
+            pager:'#allBooksPager',
 
-	//	caption: "Library Books"
+            sortname:'title',
 
-	});
+            viewrecords:true,
 
-	jQuery("#allBooksList").jqGrid('navGrid','#allBooksPager',{edit:false,add:false,del:false,search:false});
-	
+            sortorder:"asc"
 
+            //	caption: "Library Books"
 
-	
-	function imageFunction(cellvalue, options, rowObject) 
-	{
-		return  "<img src='" + cellvalue + "' width='80px' height='80px' />";
-	};
+        });
+
+        jQuery("#allBooksList").jqGrid('navGrid', '#allBooksPager', {edit:false, add:false, del:false, search:false,
+            refresh:false});
 
 
-	});
-	
-	var timeoutHnd;
-	
-	function doSearch(ev){
-		if(timeoutHnd)
-			clearTimeout(timeoutHnd)
-		timeoutHnd = setTimeout(gridReload,500)
-	}
-	
-	function gridReload(){
-		var cd_mask = jQuery("#search_cd").val();
-		jQuery("#allBooksList").jqGrid('setGridParam',{url:"server.php?page=1&limit=10&searchString="+ cd_mask  +"&rows=10"}).trigger("reloadGrid");
-	}
-	
-	
-	function formatAuthors(cellvalue, options, cellObject) {
-
-	return  cellvalue.replace(new RegExp(", "),",</br>")
-}
+        function imageFunction(cellvalue, options, rowObject) {
+            return  "<img src='" + cellvalue + "' width='80px' height='80px' />";
+        }
 
 
-function unformatAuthors(cellValue, options, cellObject) {
-    return $(cellObject.html()).attr("originalValue");
-}
+        var timeoutHnd;
 
-	
-	
+
+        $('#simpleSearchLoggedOut').submit(function () {
+
+            doSearch();
+            // gridReload();
+            return false;
+        });
+
+
+        //Clear the search
+        $('#clearButtonID').click(function () {
+            $("#search_cd_loggedOut").val("");
+            doSearch();
+            // gridReload();
+            return false;
+        });
+
+
+// TODO TEST functionality
+//        $('#search_cd_loggedOut').onkeydown(function () {
+//
+//            if (timeoutHnd)
+//                clearTimeout(timeoutHnd)
+//            timeoutHnd = setTimeout(doSearch(), 200)
+//        });
+
+
+        //Search in Grid
+        function doSearch(ev) {
+
+            var grid = $("#allBooksList");
+            //We will make search
+            grid.jqGrid('setGridParam', {search:true});
+
+
+            //Clear search fields TODO move this outside
+// RM    $("#gs_title").val("");
+//    $("#gs_authors").val("");
+//    $("#gs_isbn").val("");
+
+            var cd_mask = jQuery("#search_cd_loggedOut").val();
+
+            var postData = grid.jqGrid('getGridParam', 'postData');
+            $.extend(postData, {searchString:cd_mask});
+
+
+            gridReload();
+
+
+        }
+
+
+        function gridReload() {
+            //  var nm_mask = jQuery("#item_nm").val();
+//        var cd_mask = jQuery("#search_cd_loggedOut").val();
+            //_search=false&nd=1348742622373&rows=5&page=1&sidx=title&sord=asc
+
+
+            //jQuery("#allBooksList").jqGrid('setGridParam', {url:"grid/server.php?q=allbooks"}).trigger("reloadGrid");
+//   jQuery("#s3list").jqGrid('setGridParam', {url:"grid/server.php?q=allbooksloggedin&_search=true&page=1&limit=10&searchString=" + cd_mask + "&rows=10"}).trigger("reloadGrid");
+            //jQuery("#s3list").jqGrid('setGridParam',{url:"server.php?page=1&limit=10&searchString="+ cd_mask + "nm_mask="+nm_mask ,page:1}).trigger("reloadGrid");
+
+            $('#allBooksList').trigger("reloadGrid");
+//
+//        $('#allBooksPager').trigger("reloadPager");
+        }
+
+
+        //	function doSearch(ev){
+//		if(timeoutHnd)
+//			clearTimeout(timeoutHnd)
+//		timeoutHnd = setTimeout(gridReload,500)
+//	}
+//
+//
+//
+//	function gridReload(){
+//		var cd_mask = jQuery("#search_cd_loggedOut").val();
+//		jQuery("#allBooksList").jqGrid('setGridParam',{url:"server.php?page=1&limit=10&searchString="+ cd_mask  +"&rows=10"}).trigger("reloadGrid");
+//	}
+
+
+        function formatAuthors(cellvalue, options, cellObject) {
+
+            return  cellvalue.replace(new RegExp(", "), ",</br>")
+        }
+
+
+        function unformatAuthors(cellValue, options, cellObject) {
+            return $(cellObject.html()).attr("originalValue");
+        }
+
+
 //	$('#search').submit(function () {
 //		
 //				jQuery("#allBooksList").jqGrid('setGridParam',{url:"server.php?page=1&limit=10&searchString="+ cd_mask  +"&rows=10"}).trigger("reloadGrid");
 //		return false;
 //	});
+
+
+    });//End of document load
 
 </script>
