@@ -34,29 +34,21 @@
 
 
 <div id="search-panel">
-    <button type="button" value="" id="toggleAdvancedSearchButtonID" class="toggleSearchButton"
+    <button type="button" value="" id="toggleSearchButton" class="toggleSearchButton"
             >Advanced Search
     </button>
-    <form id="simpleSearchLoggedIn" action="#" method="post">
-        <input type="text" class="input" id="search_cd_loggedIn"/>
+    <div id="simpleSearchLoggedIn">
+        <input type="text" id="search_cd_loggedIn"/>
+    </div>
+    <!--    TODO onkeyup="searchOnEnter(event)"-->
 
-        <button type="submit" value="" id="simpleSearchButtonID" class="searchButton">Search</button>
-
-        <button type="reset" value="" id="clearButtonID"
-                class="clearButton">Clear
-        </button>
-    </form>
+    <button type="button" id="searchButtonID"
+            class="searchButton">Search
+    </button>
+    <button type="reset" id="clearButtonID"
+            class="clearButton">Clear
+    </button>
 </div>
-
-
-<!--<form id="simpleSearch" action="#" method="post">-->
-<!--<!--    <div class="bg">-->-->
-<!---->
-<!--        <input type="text" class="input" id="search_cd" onkeydown="doSimpleSearch(arguments[0]||event)">-->
-<!--        <input type="submit" class="submit" value="">-->
-<!--<!--    </div>-->-->
-<!--</form>-->
-
 
 
 
@@ -79,6 +71,9 @@
 <script type="text/javascript">
 
 jQuery(document).ready(function () {
+
+//    enableSearchFunctionality();
+
 
     // Grid Table
     jQuery("#allBooksLoggedInList").jqGrid({
@@ -218,53 +213,50 @@ jQuery(document).ready(function () {
 
         //Switch to Simple
         if (isAdv) {
-            //Swap to Simple Search
-            //  $('#toggleSimpleSearchButtonID').click(function () {
+            //Reload Grid
+            $('#clearButtonID').click();
 
-
-            $("#search-panel label, #clearButtonID, #advSearchButtonID").animate({
+            $("#search-panel label, #clearButtonID, #searchButtonID").animate({
                 opacity:'0.0'
             }, "normal");
 
-
             $(".toggleSearchButton").animate({
-                top:'+=70px'
+                top:'+=65px'
             }, "slow", function () {
 
                 //Replace form
                 $('#advancedSearchLoggedIn').replaceWith(
-                        '<form id="simpleSearchLoggedIn" action="#" method="post">\
-                        <input type="text" class="input" id="search_cd_loggedIn"/>\
-                        <button type="submit" value="" id="simpleSearchButtonID" class="searchButton">Search</button>\
-                        <button type="reset" value="" id="clearButtonID"\
-                        class="clearButton">Clear</button></form>'
+                        '<div id="simpleSearchLoggedIn">\
+                        <input type="text" class="input" id="search_cd_loggedIn"/>'
                 );
 
 
                 $('.toggleSearchButton').text("Advanced Search");
-                //Toggle button to Advanced
-//                    $('#toggleSimpleSearchButtonID').replaceWith(
-//                            '<button type="button" value="" id="toggleAdvancedSearchButtonID" class="toggleSearchButton"\
-//                           >Advanced Search</button>');
 
-                //Hide content
+                //Hide& Unveil content
                 $('#simpleSearchLoggedIn').hide();
-                // $('#advancedSearchLoggedIn').css({visibility:"hidden"});
-                //Unveil content
                 $('#simpleSearchLoggedIn').fadeIn(1000);
+
+                $("#search-panel #clearButtonID, #searchButtonID").animate({
+                    opacity:'1.0'}, "normal");
 
             });
 
-            // });
 
+            $("#advsearch_cd_loggedIn_title").val("");
+            $("#advsearch_cd_loggedIn_authors").val("");
+            $("#advsearch_cd_loggedIn_owner").val("");
+            $("#advsearch_cd_loggedIn_isbn").val("");
             isAdv = 0;//Switched
         }
 
 
         //Switch to advance
         else {
+            //Reload Grid
+            $('#clearButtonID').click();
 
-            $("#search-panel input, #clearButtonID, #simpleSearchButtonID").animate({
+            $("#search-panel input, #clearButtonID, #searchButtonID").animate({
                         opacity:'0.0'
                     }
                     , "normal"
@@ -273,13 +265,12 @@ jQuery(document).ready(function () {
 
 
             $(".toggleSearchButton").animate({
-//        opacity:'0.5',
-                top:'-=70px'
+                top:'-=65px'
             }, "slow", function () {
 
-                //Replace form TODO CHECK  action="#"
+                //Replace form TODO CHECK
                 $('#simpleSearchLoggedIn').replaceWith(
-                        '<form id="advancedSearchLoggedIn" method="post">\
+                        '<div id="advancedSearchLoggedIn">\
                         <label>&nbsp&nbspTitle: \
                         <input type="text" class="input" id="advsearch_cd_loggedIn_title" /></label> \
                         <label>Authors: \
@@ -288,34 +279,30 @@ jQuery(document).ready(function () {
                         <input type="text" class="input" id="advsearch_cd_loggedIn_owner" /></label> \
                         <label>&nbsp&nbsp&nbspISBN: \
                         <input type="text" class="input" id="advsearch_cd_loggedIn_isbn" /></label> \
-                        <button type="submit" value="" id="advSearchButtonID" class="searchButton">Search</button>\
-                        <button type="reset" value="" id="clearButtonID"\
-                        class="clearButton">Clear</button>\
-                        </form>\
+                        </div>\
                         '
                 );
 
+
+//                <button id="searchButtonID" onkeyup="searchOnEnter(event)" class="searchButton">Search</button>\
+//                <button type="reset" value="" id="clearButtonID"\
+//                class="clearButton">Clear</button>\
+
                 //Toggle button to Simple
                 $('.toggleSearchButton').html("Simple Search");
-//                $('#toggleAdvancedSearchButtonID').replaceWith(
-//                        '<button type="button" value="" id="toggleSimpleSearchButtonID" class="toggleSearchButton"\
-//                       >Simple Search</button>');
 
-                //Hide content
+
+                //Hide & Unveil content
                 $('#advancedSearchLoggedIn').hide();
-                // $('#advancedSearchLoggedIn').css({visibility:"hidden"});
-                //Unveil content
                 $('#advancedSearchLoggedIn').fadeIn(1000);
 
+                $("#search-panel #clearButtonID, #searchButtonID").animate({
+                    opacity:'1.0'}, "normal");
 
-                //Add ne functionality
-
-
-                ///////
 
             });
 
-
+            $("#search_cd_loggedIn").val("");
             isAdv = 1;//Switched
         }
 
@@ -323,19 +310,79 @@ jQuery(document).ready(function () {
     });
 
 
-    $('#simpleSearchLoggedIn').submit(function () {
+////    //Bind events
+//   function searchOnEnter(event){
+//        //On enter
+//        if (event.keyCode == 13) {
+//            if(isAdv){
+//            doAdvancedSearch();
+//            }
+//            else {
+//                doSimpleSearch();
+//            }
+//        }
+//       return false;
+//
+//    }
 
-        doSearch();
 
-        return false;
-    });
+    // Make Search
 
 
-//Search in Grid
-    function doSearch() {
+    function runSearch() {
+        if (isAdv) {
+
+            doAdvancedSearch();
+        }
+        else {
+
+            doSimpleSearch();
+        }
+
+        // return false;
+    }
+
+
+    //Perform Simple Search
+
+
+//    //Perform Advanced Search
+//    $('#searchButtonID').click(function () {
+//
+//        doAdvancedSearch();
+//
+//        return false;
+//    });
+
+
+    //Advanced Search
+    function doAdvancedSearch() {
 
         var grid = $('#allBooksLoggedInList');
-        //We will make search
+        grid.jqGrid('setGridParam', {search:true});
+
+        var cd_title = jQuery('#advsearch_cd_loggedIn_title').val();
+        var cd_authors = jQuery('#advsearch_cd_loggedIn_authors').val();
+        var cd_owner = jQuery('#advsearch_cd_loggedIn_owner').val();
+        var cd_isbn = jQuery('#advsearch_cd_loggedIn_isbn').val();
+
+        var postData = grid.jqGrid('getGridParam', 'postData');
+        $.extend(postData, {
+            title:cd_title,
+            authors:cd_authors,
+            username:cd_owner,
+            isbn:cd_isbn
+        });
+
+        gridReload();
+
+    }
+
+
+    //Simple Search
+    function doSimpleSearch() {
+
+        var grid = $('#allBooksLoggedInList');
         grid.jqGrid('setGridParam', {search:true});
 
         var cd_mask = jQuery('#search_cd_loggedIn').val();
@@ -350,19 +397,39 @@ jQuery(document).ready(function () {
 
     //Clear the search
     $('#clearButtonID').click(function () {
-        $("#search_cd_loggedIn").val("");
-        doSearch();
-        // gridReload();
-        return false;
+
+        if (isAdv) {
+            $("#advsearch_cd_loggedIn_title").val("");
+            $("#advsearch_cd_loggedIn_authors").val("");
+            $("#advsearch_cd_loggedIn_owner").val("");
+            $("#advsearch_cd_loggedIn_isbn").val("");
+
+            doAdvancedSearch();
+        }
+        else {
+            $("#search_cd_loggedIn").val("");
+
+            doSimpleSearch();
+        }
+
+        // return false;
     });
 
 
-    function gridReload() {
+    $('#searchButtonID').click(function () {
+        if (isAdv) {
 
+            doAdvancedSearch();
+        }
+        else {
+
+            doSimpleSearch();
+        }
+
+    });
+
+    function gridReload() {
         $('#allBooksLoggedInList').trigger("reloadGrid");
-//    jQuery("#allBooksLoggedInList").jqGrid('setGridParam', {url:"grid/server.php?q=allbooksloggedin"}).trigger("reloadGrid");
-//   jQuery("#allBooksLoggedInList").jqGrid('setGridParam', {url:"grid/server.php?q=allbooksloggedin&_search=true&page=1&limit=10&searchString=" + cd_mask + "&rows=10"}).trigger("reloadGrid");
-        //jQuery("#allBooksLoggedInList").jqGrid('setGridParam',{url:"server.php?page=1&limit=10&searchString="+ cd_mask + "nm_mask="+nm_mask ,page:1}).trigger("reloadGrid");
     }
 
 
@@ -403,5 +470,25 @@ jQuery(document).ready(function () {
 
 
 }); //END OF DOCUMENT READY FUNCTION
+
+
+////Enable Search Functionality
+//function enableSearchFunctionality(){
+//
+//    $('.searchButton').click(function () {
+//
+//        if(isAdv){
+//            doSimpleSearch();//TODO
+//        }
+//        else {
+//            doSimpleSearch();
+//        }
+//        return false;
+//    });
+//
+//}
+//
+//
+
 
 </script>

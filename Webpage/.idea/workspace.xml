@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4a830dd3-cf48-4f11-8f30-ca2fbd98c0f8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/about.php" afterPath="$PROJECT_DIR$/about.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grid/allBooksLoggedIn.php" afterPath="$PROJECT_DIR$/grid/allBooksLoggedIn.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grid/server.php" afterPath="$PROJECT_DIR$/grid/server.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles.css" afterPath="$PROJECT_DIR$/styles.css" />
     </list>
     <list id="1aee1695-d3ee-477e-8981-dc2526402b2a" name="MASTER DATA" comment="Master fils should not be uploaded" />
     <ignored path="Webpage.iws" />
@@ -28,28 +29,15 @@
       <file leaf-file-name="allBooksLoggedIn.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grid/allBooksLoggedIn.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="279" column="0" selection-start="8362" selection-end="8362" vertical-scroll-proportion="0.34136546">
+            <state line="219" column="0" selection-start="6195" selection-end="6195" vertical-scroll-proportion="0.6827309">
               <folding>
-                <marker date="1348777808970" expanded="true" signature="6873:7233" placeholder="..." />
-                <marker date="1348777808970" expanded="true" signature="7163:7226" placeholder="..." />
-                <marker date="1348777808970" expanded="true" signature="7570:7625" placeholder="..." />
-                <marker date="1348777808970" expanded="true" signature="8545:9437" placeholder="..." />
-                <marker date="1348777808970" expanded="true" signature="8578:8697" placeholder="..." />
-                <marker date="1348777808970" expanded="true" signature="8731:8844" placeholder="..." />
-                <marker date="1348777808970" expanded="true" signature="8878:8997" placeholder="..." />
-                <marker date="1348777808970" expanded="true" signature="9031:9153" placeholder="..." />
-                <marker date="1348777808970" expanded="true" signature="9345:9404" placeholder="..." />
-                <marker date="1348777808970" expanded="true" signature="9774:9823" placeholder="..." />
+                <marker date="1348787331577" expanded="true" signature="6454:6538" placeholder="..." />
+                <marker date="1348787331577" expanded="true" signature="7758:8399" placeholder="..." />
+                <marker date="1348787331577" expanded="true" signature="7791:7910" placeholder="..." />
+                <marker date="1348787331577" expanded="true" signature="7944:8057" placeholder="..." />
+                <marker date="1348787331577" expanded="true" signature="8091:8210" placeholder="..." />
+                <marker date="1348787331577" expanded="true" signature="8244:8366" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="about.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/about.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="62" selection-start="3694" selection-end="3694" vertical-scroll-proportion="-10.541667">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -66,7 +54,7 @@
       <file leaf-file-name="server.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grid/server.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="260" column="28" selection-start="6731" selection-end="6731" vertical-scroll-proportion="2.25">
+            <state line="85" column="26" selection-start="2381" selection-end="2381" vertical-scroll-proportion="-17.5">
               <folding>
                 <element signature="e#7#939#0" expanded="true" />
               </folding>
@@ -77,7 +65,7 @@
       <file leaf-file-name="styles.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="361" column="18" selection-start="7158" selection-end="7158" vertical-scroll-proportion="2.2">
+            <state line="402" column="24" selection-start="7936" selection-end="7936" vertical-scroll-proportion="-12.36">
               <folding />
             </state>
           </provider>
@@ -86,7 +74,7 @@
       <file leaf-file-name="allBooks.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grid/allBooks.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="19" selection-start="841" selection-end="841" vertical-scroll-proportion="2.25">
+            <state line="39" column="56" selection-start="1273" selection-end="1273" vertical-scroll-proportion="-7.75">
               <folding />
             </state>
           </provider>
@@ -122,10 +110,10 @@
         <option value="$PROJECT_DIR$/scripts/gridHeader.php" />
         <option value="$PROJECT_DIR$/scripts/loginScript.js" />
         <option value="$PROJECT_DIR$/grid/allBooks.php" />
-        <option value="$PROJECT_DIR$/grid/server.php" />
-        <option value="$PROJECT_DIR$/styles.css" />
-        <option value="$PROJECT_DIR$/grid/allBooksLoggedIn.php" />
         <option value="$PROJECT_DIR$/about.php" />
+        <option value="$PROJECT_DIR$/styles.css" />
+        <option value="$PROJECT_DIR$/grid/server.php" />
+        <option value="$PROJECT_DIR$/grid/allBooksLoggedIn.php" />
       </list>
     </option>
   </component>
@@ -284,9 +272,14 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="web.server" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
   </component>
@@ -432,7 +425,11 @@
       <created>1348776948942</created>
       <updated>1348776948942</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Toggle simple Advance search animations">
+      <created>1348778709552</created>
+      <updated>1348778709552</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -443,7 +440,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5008104" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -529,11 +526,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/userProfile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="17" selection-start="2111" selection-end="2111" vertical-scroll-proportion="-32.5" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/logoutWidget.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="0" selection-start="1103" selection-end="1103" vertical-scroll-proportion="0.5018587" />
@@ -554,11 +546,6 @@
     <entry file="file://$PROJECT_DIR$/grid/userBooks.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/loginScript.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="363" column="34" selection-start="10060" selection-end="10060" vertical-scroll-proportion="0.30604982" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/gridHeader.php">
@@ -587,6 +574,38 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/loginWidget.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="49" selection-start="1367" selection-end="1392" vertical-scroll-proportion="1.2865497">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/about.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="62" selection-start="3694" selection-end="3694" vertical-scroll-proportion="0.05204461">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/loginScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="20" selection-start="837" selection-end="840" vertical-scroll-proportion="-0.42085662">
+          <folding>
+            <marker date="1348774523822" expanded="true" signature="8846:9492" placeholder="..." />
+            <marker date="1348774523822" expanded="true" signature="8926:9128" placeholder="..." />
+            <marker date="1348774523822" expanded="true" signature="9212:9352" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grid/allBooks.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="56" selection-start="1273" selection-end="1273" vertical-scroll-proportion="-7.75">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/register.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="71.25">
@@ -594,50 +613,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grid/allBooks.php">
+    <entry file="file://$PROJECT_DIR$/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="19" selection-start="841" selection-end="841" vertical-scroll-proportion="2.25">
+        <state line="402" column="24" selection-start="7936" selection-end="7936" vertical-scroll-proportion="-12.36">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grid/server.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="260" column="28" selection-start="6731" selection-end="6731" vertical-scroll-proportion="2.25">
+        <state line="85" column="26" selection-start="2381" selection-end="2381" vertical-scroll-proportion="-17.5">
           <folding>
             <element signature="e#7#939#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="361" column="18" selection-start="7158" selection-end="7158" vertical-scroll-proportion="2.2">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/about.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="62" selection-start="3694" selection-end="3694" vertical-scroll-proportion="-10.541667">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grid/allBooksLoggedIn.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="279" column="0" selection-start="8362" selection-end="8362" vertical-scroll-proportion="0.34136546">
+        <state line="219" column="0" selection-start="6195" selection-end="6195" vertical-scroll-proportion="0.6827309">
           <folding>
-            <marker date="1348777808970" expanded="true" signature="6873:7233" placeholder="..." />
-            <marker date="1348777808970" expanded="true" signature="7163:7226" placeholder="..." />
-            <marker date="1348777808970" expanded="true" signature="7570:7625" placeholder="..." />
-            <marker date="1348777808970" expanded="true" signature="8545:9437" placeholder="..." />
-            <marker date="1348777808970" expanded="true" signature="8578:8697" placeholder="..." />
-            <marker date="1348777808970" expanded="true" signature="8731:8844" placeholder="..." />
-            <marker date="1348777808970" expanded="true" signature="8878:8997" placeholder="..." />
-            <marker date="1348777808970" expanded="true" signature="9031:9153" placeholder="..." />
-            <marker date="1348777808970" expanded="true" signature="9345:9404" placeholder="..." />
-            <marker date="1348777808970" expanded="true" signature="9774:9823" placeholder="..." />
+            <marker date="1348787331577" expanded="true" signature="6454:6538" placeholder="..." />
+            <marker date="1348787331577" expanded="true" signature="7758:8399" placeholder="..." />
+            <marker date="1348787331577" expanded="true" signature="7791:7910" placeholder="..." />
+            <marker date="1348787331577" expanded="true" signature="7944:8057" placeholder="..." />
+            <marker date="1348787331577" expanded="true" signature="8091:8210" placeholder="..." />
+            <marker date="1348787331577" expanded="true" signature="8244:8366" placeholder="..." />
           </folding>
         </state>
       </provider>

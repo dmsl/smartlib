@@ -335,8 +335,8 @@ nav#global ul li a:hover {
     background-color: #ffffff;
     color: #ddd;
     line-height: 45px;
-    margin-bottom: 25px;
-    /*margin-top: 20px;*/
+    margin-bottom: 35px;
+    /*margin-top: 10px;*/
 }
 
 #search-panel input {
@@ -346,6 +346,13 @@ nav#global ul li a:hover {
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
+}
+
+#simpleSearchLoggedIn {
+    display: inline-block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /*#search-panel #advancedSearchLoggedIn input{*/
@@ -363,17 +370,17 @@ nav#global ul li a:hover {
     font-family: monospace;
 }
 
-#search-panel  #toggleAdvancedSearchButtonID {
+#search-panel  #toggleSearchButton {
     position: relative;
-    top: 75px;
+    top: 70px;
 
 }
 
-#search-panel  #toggleSimpleSearchButtonID {
-    position: relative;
-    margin-top: 15px;
+/*#search-panel  #toggleSearchButton {*/
+/*position: relative;*/
+/*margin-top: 15px;*/
 
-}
+/*}*/
 
 button {
     border-radius: 3px;

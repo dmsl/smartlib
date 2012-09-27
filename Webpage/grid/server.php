@@ -83,7 +83,7 @@ if ($searchOn == 'true') {
             case 'title':
 //				$wh .= " AND ".$k." LIKE '%".$v."%' ";
 //				break;
-            case 'owner':
+            case 'username':
                 $wh .= " AND " . $k . " LIKE '%" . $v . "%' ";
                 break;
 // TODO RM those
