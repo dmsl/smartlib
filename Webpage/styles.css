@@ -359,13 +359,19 @@ nav#global ul li a:hover {
     margin-left: auto;
     margin-right: auto;
     color: #011633;
-    font-size: 0.9em;
+    font-size: 0.8em;
     font-family: monospace;
 }
 
-#search-panel  .toggleSearchButton {
+#search-panel  #toggleAdvancedSearchButtonID {
     position: relative;
     top: 75px;
+
+}
+
+#search-panel  #toggleSimpleSearchButtonID {
+    position: relative;
+    margin-top: 15px;
 
 }
 

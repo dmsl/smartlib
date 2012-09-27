@@ -46,7 +46,6 @@
                 class="clearButton">Clear
         </button>
     </form>
-
 </div>
 
 
@@ -212,58 +211,113 @@ jQuery(document).ready(function () {
     }
 
 
-    //Swap to Advanced Search
-    $('#toggleAdvancedSearchButtonID').click(function () {
+    var isAdv = 0;
+
+    //Toggle Search modes
+    $('.toggleSearchButton').click(function () {
+
+        //Switch to Simple
+        if (isAdv) {
+            //Swap to Simple Search
+            //  $('#toggleSimpleSearchButtonID').click(function () {
 
 
-//    $("").animate({
-//            opacity:'0.0',5000
-//});
-//
-
-        $("#search-panel input, #clearButtonID, #simpleSearchButtonID").animate({
-                    opacity:'0.0'
-                }
-                , "normal"
-
-        );
+            $("#search-panel label, #clearButtonID, #advSearchButtonID").animate({
+                opacity:'0.0'
+            }, "normal");
 
 
-        $(".toggleSearchButton").animate({
-//        opacity:'0.5',
-            top:'-=40px'
-        }, "slow", function () {
+            $(".toggleSearchButton").animate({
+                top:'+=70px'
+            }, "slow", function () {
+
+                //Replace form
+                $('#advancedSearchLoggedIn').replaceWith(
+                        '<form id="simpleSearchLoggedIn" action="#" method="post">\
+                        <input type="text" class="input" id="search_cd_loggedIn"/>\
+                        <button type="submit" value="" id="simpleSearchButtonID" class="searchButton">Search</button>\
+                        <button type="reset" value="" id="clearButtonID"\
+                        class="clearButton">Clear</button></form>'
+                );
 
 
-            $('#simpleSearchLoggedIn').replaceWith(
-                    '<form id="advancedSearchLoggedIn" action="#" method="post">\
-                    <label>&nbsp&nbspTitle: \
-                    <input type="text" class="input" id="advsearch_cd_loggedIn_title" /></label> \
-                    <label>Authors: \
-                    <input type="text" class="input" id="advsearch_cd_loggedIn_authors" /></label> \
-                    <label>&nbsp&nbspOwner: \
-                    <input type="text" class="input" id="advsearch_cd_loggedIn_owner" /></label> \
-                    <label>&nbsp&nbsp&nbspISBN: \
-                    <input type="text" class="input" id="advsearch_cd_loggedIn_isbn" /></label> \
-                    <button type="submit" value="" class="searchButton">Search</button>\
-                    <button type="reset" value="" id="advclearButtonID"\
-                    class="clearButton">Clear</button>\
-                    </form>\
-                    '
+                $('.toggleSearchButton').text("Advanced Search");
+                //Toggle button to Advanced
+//                    $('#toggleSimpleSearchButtonID').replaceWith(
+//                            '<button type="button" value="" id="toggleAdvancedSearchButtonID" class="toggleSearchButton"\
+//                           >Advanced Search</button>');
+
+                //Hide content
+                $('#simpleSearchLoggedIn').hide();
+                // $('#advancedSearchLoggedIn').css({visibility:"hidden"});
+                //Unveil content
+                $('#simpleSearchLoggedIn').fadeIn(1000);
+
+            });
+
+            // });
+
+            isAdv = 0;//Switched
+        }
+
+
+        //Switch to advance
+        else {
+
+            $("#search-panel input, #clearButtonID, #simpleSearchButtonID").animate({
+                        opacity:'0.0'
+                    }
+                    , "normal"
+
             );
 
-            //Toggle button
-            $('#toggleAdvancedSearchButtonID').replaceWith(
-                    '<button type="button" value="" id="toggleSimpleSearchButtonID" class="toggleSearchButton"\
-                   >Simple Search</button>'
-            )
 
-//        $('#toggleAdvancedSearchButtonID').
+            $(".toggleSearchButton").animate({
+//        opacity:'0.5',
+                top:'-=70px'
+            }, "slow", function () {
+
+                //Replace form TODO CHECK  action="#"
+                $('#simpleSearchLoggedIn').replaceWith(
+                        '<form id="advancedSearchLoggedIn" method="post">\
+                        <label>&nbsp&nbspTitle: \
+                        <input type="text" class="input" id="advsearch_cd_loggedIn_title" /></label> \
+                        <label>Authors: \
+                        <input type="text" class="input" id="advsearch_cd_loggedIn_authors" /></label> \
+                        <label>&nbsp&nbspOwner: \
+                        <input type="text" class="input" id="advsearch_cd_loggedIn_owner" /></label> \
+                        <label>&nbsp&nbsp&nbspISBN: \
+                        <input type="text" class="input" id="advsearch_cd_loggedIn_isbn" /></label> \
+                        <button type="submit" value="" id="advSearchButtonID" class="searchButton">Search</button>\
+                        <button type="reset" value="" id="clearButtonID"\
+                        class="clearButton">Clear</button>\
+                        </form>\
+                        '
+                );
+
+                //Toggle button to Simple
+                $('.toggleSearchButton').html("Simple Search");
+//                $('#toggleAdvancedSearchButtonID').replaceWith(
+//                        '<button type="button" value="" id="toggleSimpleSearchButtonID" class="toggleSearchButton"\
+//                       >Simple Search</button>');
+
+                //Hide content
+                $('#advancedSearchLoggedIn').hide();
+                // $('#advancedSearchLoggedIn').css({visibility:"hidden"});
+                //Unveil content
+                $('#advancedSearchLoggedIn').fadeIn(1000);
 
 
-            $('#advancedSearchLoggedIn').css({visibility:"hidden"});
+                //Add ne functionality
 
-        });
+
+                ///////
+
+            });
+
+
+            isAdv = 1;//Switched
+        }
 
 
     });

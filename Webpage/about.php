@@ -103,7 +103,7 @@ include 'scripts/sessionInit.php';
                        &nbsp;&nbsp;&nbsp;&nbsp;
             Requirement Analysis<br>
                        &nbsp;&nbsp;&nbsp;&nbsp;
-            Web Interface (HTML5/PHP/JS)<br>
+            Web Interface<br>
                        &nbsp;&nbsp;&nbsp;&nbsp;
             Database (MySQL)<br>
                        &nbsp;&nbsp;&nbsp;&nbsp;
