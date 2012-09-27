@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 /*
@@ -35,32 +35,32 @@ Fax: +357-22-892701
 
 
 session_start();
-$_SESSION['isMobileDevice']=0;
+$_SESSION['isMobileDevice'] = 0;
 
 //Get the device, ISBN & Username
 $device = $_REQUEST['device'];
 //$pUsername = $_REQUEST['username'];
 $pKey = $_REQUEST['mykey'];
 
-$_SESSION['UserID']="";
-$_SESSION['web']="0";
+$_SESSION['UserID'] = "";
+$_SESSION['web'] = "0";
 
 require_once("../CREDENCIALS.php");
-$mykey=_MY_KEY;
+$mykey = _MY_KEY;
 
 //Find out if we are on mobile device
-if($device=="android" || $device=="iOS" ||  $device=="web"  ){
-	
+if ($device == "android" || $device == "iOS" || $device == "web") {
 
-		//If its web, enable web mode and make a key check
-		if($device=="web" ){
-				if($pKey!=$mykey)
-						die();
-			
-			$_SESSION['web']=1;
-			}
-	
-	$_SESSION['isMobileDevice']=1;
+
+    //If its web, enable web mode and make a key check
+    if ($device == "web") {
+        if ($pKey != $mykey)
+            die();
+
+        $_SESSION['web'] = 1;
+    }
+
+    $_SESSION['isMobileDevice'] = 1;
 
 }
 //else{
@@ -72,21 +72,18 @@ if($device=="android" || $device=="iOS" ||  $device=="web"  ){
 //Connect to database
 include ('../dbConnect.php');
 
-if($_SESSION['isMobileDevice']){
+if ($_SESSION['isMobileDevice']) {
 
 
-	// removed safety check
-	//if($device!="web"){
-		//Safety check
-	//	findUserID($pUsername);
-	//}
+    // removed safety check
+    //if($device!="web"){
+    //Safety check
+    //	findUserID($pUsername);
+    //}
 
-	printPopularBooks();
+    printPopularBooks();
 
 }
-
-
-
 
 
 //Checks if books already exists for user
@@ -109,22 +106,58 @@ function findUserID($pUser){
 
 */
 
-function printPopularBooks(){
+function printPopularBooks()
+{
 
-	/*
-
-
-
+    /*
 
 
-SELECT U.username, BI2.isbn, BI2.title, BI2.authors, BI2.publishedYear,
+
+
+
+ SELECT U.username, BI2.isbn, BI2.title, BI2.authors, BI2.publishedYear,
+ BI2.pageCount, BI2.dateOfInsert,
+ BI2.imgURL, BI2.lang, B2.status,
+  count(*) AS CNT
+ FROM SMARTLIB_USER U, SMARTLIB_BOOK_INFO BI2, SMARTLIB_BOOK B2,
+ (
+ (
+ SELECT
+ BI.BI_ID, BH.B_ID, BH.U_ID
+ FROM SMARTLIB_BOOK B, SMARTLIB_BOOK_INFO BI, SMARTLIB_BORROW_HISTORY BH
+ WHERE BI.BI_ID=B.BI_ID AND
+ B.B_ID = BH.B_ID
+ )
+ UNION ALL
+ (
+ SELECT BI.BI_ID, BR.B_ID, BR.U_ID
+ FROM SMARTLIB_BOOK B, SMARTLIB_BOOK_INFO BI, SMARTLIB_BORROWS BR
+ WHERE BI.BI_ID=B.BI_ID AND
+ B.B_ID = BR.B_ID
+ )
+ )
+ as T2
+ WHERE BI2.BI_ID=T2.BI_ID
+ AND B2.B_ID=T2.B_ID AND B2.U_ID=U.U_ID
+
+ GROUP BY T2.BI_ID
+ ORDER BY COUNT(*) DESC
+ ;
+
+
+
+     * */
+
+    $queryPopularBooksHugeQuery = sprintf(
+        "SELECT U.username, BI2.isbn, BI2.title, BI2.authors, BI2.publishedYear,
 BI2.pageCount, BI2.dateOfInsert,
 BI2.imgURL, BI2.lang, B2.status,
- count(*) AS CNT 
+ count(*) AS CNT
 FROM SMARTLIB_USER U, SMARTLIB_BOOK_INFO BI2, SMARTLIB_BOOK B2,
 (
 (
-SELECT 
+-- Get Data from borrow history
+SELECT
 BI.BI_ID, BH.B_ID, BH.U_ID
 FROM SMARTLIB_BOOK B, SMARTLIB_BOOK_INFO BI, SMARTLIB_BORROW_HISTORY BH
 WHERE BI.BI_ID=B.BI_ID AND
@@ -132,154 +165,115 @@ B.B_ID = BH.B_ID
 )
 UNION ALL
 (
+-- Get Data from Active Borrows
 SELECT BI.BI_ID, BR.B_ID, BR.U_ID
 FROM SMARTLIB_BOOK B, SMARTLIB_BOOK_INFO BI, SMARTLIB_BORROWS BR
 WHERE BI.BI_ID=B.BI_ID AND
 B.B_ID = BR.B_ID
 )
-)
-as T2
-WHERE BI2.BI_ID=T2.BI_ID 
-AND B2.B_ID=T2.B_ID AND B2.U_ID=U.U_ID
 
-GROUP BY T2.BI_ID
-ORDER BY COUNT(*) DESC
-;
-
-
-
-	* */
-
- 	$queryPopularBooksHugeQuery= sprintf(
- 			"SELECT U.username, BI2.isbn, BI2.title, BI2.authors, BI2.publishedYear,
-BI2.pageCount, BI2.dateOfInsert,
-BI2.imgURL, BI2.lang, B2.status,
- count(*) AS CNT 
-FROM SMARTLIB_USER U, SMARTLIB_BOOK_INFO BI2, SMARTLIB_BOOK B2,
-(
-(
-SELECT 
-BI.BI_ID, BH.B_ID, BH.U_ID
-FROM SMARTLIB_BOOK B, SMARTLIB_BOOK_INFO BI, SMARTLIB_BORROW_HISTORY BH
-WHERE BI.BI_ID=B.BI_ID AND
-B.B_ID = BH.B_ID
-)
 UNION ALL
 (
-SELECT BI.BI_ID, BR.B_ID, BR.U_ID
-FROM SMARTLIB_BOOK B, SMARTLIB_BOOK_INFO BI, SMARTLIB_BORROWS BR
-WHERE BI.BI_ID=B.BI_ID AND
-B.B_ID = BR.B_ID
+-- Get Latest book aditions
+SELECT BI.BI_ID, B.B_ID ,B.U_ID
+FROM SMARTLIB_BOOK B, SMARTLIB_BOOK_INFO BI
+WHERE BI.BI_ID=B.BI_ID ORDER BY BI.dateOfInsert LIMIT 20
 )
+
 )
 as T2
-WHERE BI2.BI_ID=T2.BI_ID 
+WHERE BI2.BI_ID=T2.BI_ID
 AND B2.B_ID=T2.B_ID AND B2.U_ID=U.U_ID
 
 GROUP BY T2.BI_ID
 ORDER BY COUNT(*) DESC
 ;"
- 	);
+    );
 
 
-
-	//Find Unique ID of Book Info
-	$result = mysql_query($queryPopularBooksHugeQuery) or dbError(mysql_error());
-
+    //Find Unique ID of Book Info
+    $result = mysql_query($queryPopularBooksHugeQuery) or dbError(mysql_error());
 
 
-	//Get book ID and its status
-	if(($total =mysql_num_rows($result)) == 0){
-		mobileSendNoPopularBooks();
-	}
-	
-if(!($_SESSION['web']==1)){
+    //Get book ID and its status
+    if (($total = mysql_num_rows($result)) == 0) {
+        mobileSendNoPopularBooks();
+    }
 
-	$row_set[] = array(
-			"result"=>"1",
-	);
-}
+    if (!($_SESSION['web'] == 1)) {
 
-	while($row = mysql_fetch_assoc($result))
-	{
-		$row_set[] = $row;
-	}
-	echo json_encode($row_set);
+        $row_set[] = array(
+            "result" => "1",
+        );
+    }
+
+    while ($row = mysql_fetch_assoc($result)) {
+        $row_set[] = $row;
+    }
+    echo json_encode($row_set);
 
 }
-
-
 
 
 // Sends error to mobile device: Book dont exists in Google API
-function mobileSendWeirdError(){
-	$result[] = array(
-			"result"=>"-12"
-	);
-	//Encode Answer
-	echo json_encode($result);
+function mobileSendWeirdError()
+{
+    $result[] = array(
+        "result" => "-12"
+    );
+    //Encode Answer
+    echo json_encode($result);
 
-	die();
+    die();
 }
 
 
-function mobileSendNoPopularBooks(){
-	$result[] = array(
-			"result"=>"0"
-	);
-	//Encode Answer
-	echo json_encode($result);
+function mobileSendNoPopularBooks()
+{
+    $result[] = array(
+        "result" => "0"
+    );
+    //Encode Answer
+    echo json_encode($result);
 
-	die();
+    die();
 }
-
-
-
 
 
 // TODO Sends error to mobile device using JSON Object Format
-function mobileSendDatabaseError(){
-	$result[] = array(
-			"result"=>"-11"
-	);
-	//Encode Answer
-	echo json_encode($result);
+function mobileSendDatabaseError()
+{
+    $result[] = array(
+        "result" => "-11"
+    );
+    //Encode Answer
+    echo json_encode($result);
 
-	die();
+    die();
 }
-
-
-
-
-
-
 
 
 // Database Error
-function dbError($pError){
+function dbError($pError)
+{
 
-	if($_SESSION['isMobileDevice']){
-		//Inform Mobile Device about database Error
-		mobileSendDatabaseError();
-	}
+    if ($_SESSION['isMobileDevice']) {
+        //Inform Mobile Device about database Error
+        mobileSendDatabaseError();
+    }
 
-	//if there is DB Error, inform user and move him back
-	inform($pError);
+    //if there is DB Error, inform user and move him back
+    inform($pError);
 
 
-	if($_SESSION['currentPage']==""){
-		$_SESSION['currentPage']="index.php";
-	}
+    if ($_SESSION['currentPage'] == "") {
+        $_SESSION['currentPage'] = "index.php";
+    }
 
-	header("Location: ".$_SESSION['currentPage']);
-	die();
+    header("Location: " . $_SESSION['currentPage']);
+    die();
 
 }
-
-
-
-
-
 
 
 ?>

@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a830dd3-cf48-4f11-8f30-ca2fbd98c0f8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/books/9780763707996.jpg" afterPath="$PROJECT_DIR$/images/books/9780763707996.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grid/allBooksLoggedIn.php" afterPath="$PROJECT_DIR$/grid/allBooksLoggedIn.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grid/server.php" afterPath="$PROJECT_DIR$/grid/server.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles.css" afterPath="$PROJECT_DIR$/styles.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/popularBooks.php" afterPath="$PROJECT_DIR$/mobile/popularBooks.php" />
     </list>
     <list id="1aee1695-d3ee-477e-8981-dc2526402b2a" name="MASTER DATA" comment="Master fils should not be uploaded" />
     <ignored path="Webpage.iws" />
@@ -26,17 +25,31 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="allBooksLoggedIn.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="allBooksLoggedIn.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grid/allBooksLoggedIn.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="219" column="0" selection-start="6195" selection-end="6195" vertical-scroll-proportion="0.6827309">
+            <state line="222" column="46" selection-start="6255" selection-end="6255" vertical-scroll-proportion="-7.0">
               <folding>
-                <marker date="1348787331577" expanded="true" signature="6454:6538" placeholder="..." />
-                <marker date="1348787331577" expanded="true" signature="7758:8399" placeholder="..." />
-                <marker date="1348787331577" expanded="true" signature="7791:7910" placeholder="..." />
-                <marker date="1348787331577" expanded="true" signature="7944:8057" placeholder="..." />
-                <marker date="1348787331577" expanded="true" signature="8091:8210" placeholder="..." />
-                <marker date="1348787331577" expanded="true" signature="8244:8366" placeholder="..." />
+                <marker date="1348787370789" expanded="true" signature="6467:6551" placeholder="..." />
+                <marker date="1348787370789" expanded="true" signature="7768:8409" placeholder="..." />
+                <marker date="1348787370789" expanded="true" signature="7801:7920" placeholder="..." />
+                <marker date="1348787370789" expanded="true" signature="7954:8067" placeholder="..." />
+                <marker date="1348787370789" expanded="true" signature="8101:8220" placeholder="..." />
+                <marker date="1348787370789" expanded="true" signature="8254:8376" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="popularBooks.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mobile/popularBooks.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="191" column="1" selection-start="3802" selection-end="3802" vertical-scroll-proportion="0.8605948">
+              <folding>
+                <element signature="e#9#910#0" expanded="true" />
+                <marker date="1348788060388" expanded="true" signature="3137:3168" placeholder="-- Get Data ..." />
+                <marker date="1348788060388" expanded="true" signature="3333:3364" placeholder="-- Get Data ..." />
+                <marker date="1348788060388" expanded="true" signature="3523:3550" placeholder="-- Get Lates..." />
               </folding>
             </state>
           </provider>
@@ -54,7 +67,7 @@
       <file leaf-file-name="server.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grid/server.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="26" selection-start="2381" selection-end="2381" vertical-scroll-proportion="-17.5">
+            <state line="48" column="69" selection-start="1353" selection-end="1357" vertical-scroll-proportion="50.69388">
               <folding>
                 <element signature="e#7#939#0" expanded="true" />
               </folding>
@@ -65,7 +78,7 @@
       <file leaf-file-name="styles.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="402" column="24" selection-start="7936" selection-end="7936" vertical-scroll-proportion="-12.36">
+            <state line="402" column="24" selection-start="7929" selection-end="7929" vertical-scroll-proportion="2.2">
               <folding />
             </state>
           </provider>
@@ -98,7 +111,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/contact.php" />
         <option value="$PROJECT_DIR$/downloads.php" />
         <option value="$PROJECT_DIR$/register.php" />
@@ -114,6 +126,7 @@
         <option value="$PROJECT_DIR$/styles.css" />
         <option value="$PROJECT_DIR$/grid/server.php" />
         <option value="$PROJECT_DIR$/grid/allBooksLoggedIn.php" />
+        <option value="$PROJECT_DIR$/mobile/popularBooks.php" />
       </list>
     </option>
   </component>
@@ -215,6 +228,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Webpage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Webpage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="books" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -429,7 +460,11 @@
       <created>1348778709552</created>
       <updated>1348778709552</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Finished Search/Advanced Search functionality">
+      <created>1348787381298</created>
+      <updated>1348787381298</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -493,7 +528,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Toggle simple Advance search animations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished Search/Advanced Search functionality" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -519,6 +554,7 @@
     <MESSAGE value="Fixed issue between local and server data (PHP, JS)&#10;Next todo(in order):&#10;.Fix search in homepage (and query bugs in jqgrid php)&#10;.Fix layout in pages (except homepage)" />
     <MESSAGE value="Implemented:&#10;.Search while logged out&#10;.Search while logged in&#10;.Removed Inline Search&#10;..Working on Adv. Search" />
     <MESSAGE value="Toggle simple Advance search animations" />
+    <MESSAGE value="Finished Search/Advanced Search functionality" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -557,15 +593,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="4" selection-start="1059" selection-end="1128" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile/popularBooks.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="157" column="63" selection-start="3133" selection-end="3133" vertical-scroll-proportion="0.20467836">
-          <folding>
-            <element signature="e#9#910#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -615,14 +642,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="402" column="24" selection-start="7936" selection-end="7936" vertical-scroll-proportion="-12.36">
+        <state line="402" column="24" selection-start="7929" selection-end="7929" vertical-scroll-proportion="2.2">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grid/server.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="26" selection-start="2381" selection-end="2381" vertical-scroll-proportion="-17.5">
+        <state line="48" column="69" selection-start="1353" selection-end="1357" vertical-scroll-proportion="50.69388">
           <folding>
             <element signature="e#7#939#0" expanded="true" />
           </folding>
@@ -631,14 +658,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grid/allBooksLoggedIn.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="219" column="0" selection-start="6195" selection-end="6195" vertical-scroll-proportion="0.6827309">
+        <state line="222" column="46" selection-start="6255" selection-end="6255" vertical-scroll-proportion="-7.0">
           <folding>
-            <marker date="1348787331577" expanded="true" signature="6454:6538" placeholder="..." />
-            <marker date="1348787331577" expanded="true" signature="7758:8399" placeholder="..." />
-            <marker date="1348787331577" expanded="true" signature="7791:7910" placeholder="..." />
-            <marker date="1348787331577" expanded="true" signature="7944:8057" placeholder="..." />
-            <marker date="1348787331577" expanded="true" signature="8091:8210" placeholder="..." />
-            <marker date="1348787331577" expanded="true" signature="8244:8366" placeholder="..." />
+            <marker date="1348787370789" expanded="true" signature="6467:6551" placeholder="..." />
+            <marker date="1348787370789" expanded="true" signature="7768:8409" placeholder="..." />
+            <marker date="1348787370789" expanded="true" signature="7801:7920" placeholder="..." />
+            <marker date="1348787370789" expanded="true" signature="7954:8067" placeholder="..." />
+            <marker date="1348787370789" expanded="true" signature="8101:8220" placeholder="..." />
+            <marker date="1348787370789" expanded="true" signature="8254:8376" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/popularBooks.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="191" column="1" selection-start="3802" selection-end="3802" vertical-scroll-proportion="0.8605948">
+          <folding>
+            <element signature="e#9#910#0" expanded="true" />
+            <marker date="1348788060388" expanded="true" signature="3137:3168" placeholder="-- Get Data ..." />
+            <marker date="1348788060388" expanded="true" signature="3333:3364" placeholder="-- Get Data ..." />
+            <marker date="1348788060388" expanded="true" signature="3523:3550" placeholder="-- Get Lates..." />
           </folding>
         </state>
       </provider>
