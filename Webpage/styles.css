@@ -1051,9 +1051,9 @@ blockquote:hover {
     margin-bottom: 5px;
     margin-left: 30px;
     display: inline-block;
-    -o-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -webkit-transition: all 0.3s ease-out;
+    -o-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -webkit-transition: all 0.2s ease-out;
 
 }
 
@@ -1083,29 +1083,10 @@ blockquote:hover {
 .textHandle:hover {
     border: none;
 
-    transform: scale(1.1);
-    -o-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-}
-
-.twitterHandle {
-    margin: 35px 0 0;
-    color: #940033;
-    display: block;
-    -o-transition: all 0.9s ease-in-out;
-    -moz-transition: all 0.9s ease-in-out;
-    -webkit-transition: all 0.9s ease-in-out;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-}
-
-.twitterHandle:hover {
-    border: none;
-    margin-left: 8px;
+    /*transform:  scale(1.1);*/
+    /*-o-transform: scale(1.1);*/
+    /*-moz-transform: scale(1.1);*/
+    /*-webkit-transform: scale(1.1);*/
 }
 
 /* FOOTER */
