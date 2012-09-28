@@ -54,7 +54,7 @@ if ($_SESSION['loggedin'] == 1) {
     <meta name="keywords" content="smartLib, smart, library, books, ucy,
     university of cyprus, university, cyprus, cs"/>
     <title>SmartLib</title>
-
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
     <!--    Include Scripts-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
     <link href=styles.css rel=stylesheet>

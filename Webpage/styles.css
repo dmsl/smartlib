@@ -111,7 +111,7 @@ p {
     margin-bottom: 18px;
     font-size: 16px;
     color: #000000;
-    font-family: sans;
+    font-family: sans-serif;
 }
 
 p.left {
@@ -136,6 +136,12 @@ a {
 
 }
 
+a.nodec {
+    color: #077CE3;
+    text-decoration: none;
+
+}
+
 a:hover {
     border-bottom: 1px solid #000000
 }
@@ -154,10 +160,6 @@ h1 {
 
 h1.centered {
     text-align: center;
-}
-
-h3 {
-    font: 24px/36px Colaborate-RegularRegular, "Trebuchet MS", Arial, Helvetica, sans-serif
 }
 
 h3.centered {
@@ -772,6 +774,13 @@ article .mainContent {
     margin-right: auto;
 }
 
+article .mainContent#downloadsDevices {
+    width: 70%;
+    margin-left: 5%;
+    margin-right: 20%;
+    /*margin-right: ;*/
+}
+
 article .mainContent#contactContent {
     margin-left: 5%;
 
@@ -983,7 +992,7 @@ aside section:last-child {
     border: none
 }
 
-blockquote {
+#qrcode {
     margin-top: 25px;
     text-align: left;
     width: 120px;
@@ -992,6 +1001,10 @@ blockquote {
     border-radius: 5px;
     background-color: #305FA1;
     margin-bottom: 25px;
+    position: absolute;
+    right: 10%;
+    top: 28%;
+    cursor: url("images/qrcursor.cur"), wait;
 
     /*
      font-size: 20px;
@@ -1013,7 +1026,7 @@ blockquote {
     -webkit-transition: all 0.5s ease-in-out;
 }
 
-blockquote:before {
+#qrcode:before {
     position: absolute;
     /*	bottom: -29px;
      left: 20px;
@@ -1027,7 +1040,7 @@ blockquote:before {
      z-index: 2;*/
 }
 
-blockquote:after {
+#qrcode:after {
     position: absolute;
     bottom: -3px;
     left: 2px;
@@ -1040,7 +1053,8 @@ blockquote:after {
     z-index: 2;
 }
 
-blockquote:hover {
+#qrcode:hover {
+    /*TODO MOUSE*/
     transform: scale(1.2);
     -o-transform: scale(1.2);
     -moz-transform: scale(1.2);
@@ -1236,5 +1250,29 @@ a.nodec {
 }
 
 a.nodec:hover {
+    color: #077CE3;
+}
+
+/*Github widget Style*/
+.github-widget p.description {
+    font-size: 1.1em;
+    font-family: sans-serif;
+
+}
+
+/*Github widget Style*/
+.github-widget p.link {
+    padding-top: 15px;
+    font-size: 1.0em;
+    /*font-family: sans;*/
+    text-align: center;
+
+}
+
+.github-widget p.link a, .github-widget .description a {
+    color: #6e7e93;
+}
+
+.github-widget p.link a:hover, .github-widget .description a:hover {
     color: #077CE3;
 }

@@ -38,7 +38,7 @@ include 'scripts/sessionInit.php';
 ?>
 
 <!DOCTYPE html>
-<html lang=en>
+<html lang=en xmlns="http://www.w3.org/1999/html">
 
 <!--        Head         -->
 <head>
@@ -48,7 +48,7 @@ include 'scripts/sessionInit.php';
     <meta name="keywords" content="smartLib, smart, library, books, ucy,
     university of cyprus, university, cyprus, cs"/>
     <title>SmartLib</title>
-
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
     <!--    Include Scripts-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
     <link href=styles.css rel=stylesheet>
@@ -78,24 +78,31 @@ include 'scripts/sessionInit.php';
                 <header>
                     <h1>Download SmartLib on your Smartphone or Tablet</h1>
                 </header>
-                <div class="mainContent">
+                <div class="mainContent" id="downloadsDevices">
                     <p>
                         SmartLib is available for Android and iOS Platform. Using SmartLib application you
                         can have access to all activated libraries.<br>
                         Additionally you can:<br>
                         add books to your library, make them rentable or not, lent them,
-                        request books owned by other users, contact u users.<br>
-                        <a class="button" href="https://play.google.com"
-                                >Android</a><br><br>
-                        <a class="button" href="http://itunes.apple.com">iOS
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;</a> <br><br>
+                        request books owned by other users, contact u users.<br><br>
+                        <a class="nodec"
+                           href="https://play.google.com/store/apps/details?id=cy.ac.ucy.pmpeis01.client.android"
+                           target="_blank">
+                            <button class="sendButton"
+                                    >Android
+                            </button>
+                        </a>
+                        <a class="nodec"
+                           href="http://itunes.apple.com" target="_blank">
+                            <button class="sendButton">iOS</button>
+                        </a> <br>
 
 
                         <br>
-                    <blockquote>
-                        <img src="http://www.cs.ucy.ac.cy/projects/smartLib/images/qr.png" alt="Smart QR Code"/>
-                    </blockquote>
+                        <!--                    <blockquote>-->
+                        <img id="qrcode" src="http://www.cs.ucy.ac.cy/projects/smartLib/images/qr.png"
+                             alt="Smart QR Code"/>
+                        <!--                    </blockquote>-->
                     </p>
                 </div>
                 <header>
@@ -103,27 +110,45 @@ include 'scripts/sessionInit.php';
                 </header>
                 <div class="mainContent">
                     <p>
-                        <strong>Requirements:</strong> PHP Server, MySQL Database.<br>
-                        <strong>Optional:</strong> Mail Server, for users private intercomunication.<br>
-                        Download the SmartLib Open Source Project from GitHub, and follow instructions
-                        in readme file. Once the installation process completes, you have to wait
+                        You can setup your own SmartLib. All you need is a PHP Server, and
+                        a MySQL Database.<br>Also a Mail server is optional for users private intercommunication.
+                        <br><br>
+                        Download the SmartLib source code from GitHub, and follow instructions
+                        in Readme file. Once the installation process completes, you have to wait
                         for your library's activation from SmartLib Database Administrator.
-                        <br><span class="imageHandle">
-            <a href="https://github.com/dmsl/smartlib" target="_blank"><img weigth="50" src="images/github.png"
-                                                                            alt="SmartLib Repository"></a></br></span>
+                        <br><br>
+                        <!--                        <span class="imageHandle">-->
+                        <!--            <a class="nodec" href="https://github.com/dmsl/smartlib" target="_blank"><img weigth="50" src="images/github.png"-->
+                        <!--                      alt="SmartLib Repository"></a></br></span>-->
                     </p>
+
+                    <p>
+                        <strong>Smartlib activity on Github:</strong><br>
+
+                    <div style="width: 500px;">
+                        <div class="github-widget" data-repo="dmsl/smartlib"></div>
+                        <!--                        <br>-->
+                        <div class="github-widget" data-repo="dmsl/smartlib/graphs"></div>
+                    </div>
+                    </p>
+
                 </div>
-            </article>
+                <!-- #container -->
+
+                <script type="text/javascript" src="scripts/jquery.githubRepoWidget.min.js"></script>
 
         </div>
-
+        </article>
 
     </div>
 
-    <footer class=clearfix>
-        <?php include "scripts/footer.php" ?>
 
-    </footer>
+</div>
+
+<footer class=clearfix>
+    <?php include "scripts/footer.php" ?>
+
+</footer>
 
 </body>
 </html>
