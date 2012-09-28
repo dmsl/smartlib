@@ -84,175 +84,176 @@ if ($_SESSION['loggedin'] == 1) {
             <header>
                 <h1>Please fill up the Registration Form</h1>
             </header>
-            <div class="mainContent">
-                <p>
+            <div class="mainContent" id="registrationForm">
+                <?php
+                //Suppose now there are now activation errors
+                unset($_SESSION['actMessage']);
+                //If there are errors, display them
+                if ($_SESSION['regHasErrors'] == 1) {
 
-                    <?php
-                    //Suppose now there are now activation errors
-                    unset($_SESSION['actMessage']);
-                    //If there are errors, display them
-                    if ($_SESSION['regHasErrors'] == 1) {
+                    echo "<span class=\"p4Error\">Errors:</br><strong>";
 
-                        echo "<span class=\"p4Error\">Errors:</br><strong>";
+                    echo $_SESSION['regMessage'];
 
-                        echo $_SESSION['regMessage'];
+                    echo "</strong></br>";
 
-                        echo "</strong></br>";
+                    //Assume errors may resolved in next try
+                    $_SESSION['regHasErrors'] = 0;
+                }
+                ?>
+                <!--TODO action-->
 
-                        //Assume errors may resolved in next try
-                        $_SESSION['regHasErrors'] = 0;
-                    }
-                    ?>
-                    <!--TODO action-->
 
-                <form id="register-form" action="mobile/SQLregister.php" method="post"
-                      enctype="multipart/form-data">
-                    <fieldset>
+                <div id="register-panel">
 
-                        <label><span class="
+                    <form id="register-form" action="mobile/SQLregister.php" method="post"
+                          enctype="multipart/form-data">
+                        <fieldset>
+                            <label><span class="
 												<?php if ($_SESSION['errUsername'] == "1")
-                            echo "errorSmall";
-                        else
-                            echo "p4Black";
-                        ?>
+                                echo "errorSmall";
+                            else
+                                echo "p4Black";
+                            ?>
                                                          ">Username:</br></span>
-                            <input value="<?php
-                            echo $_SESSION['REGusername'];
-                            ?>"
-                                <?php if ($_SESSION['errUsername'] == "1")
-                                echo "class=\"borderRegError\"";
-                                ?>
-                                   name="username" type="text"/>
-                        </label>    </br>
+                                <input value="<?php
+                                echo $_SESSION['REGusername'];
+                                ?>"
+                                    <?php if ($_SESSION['errUsername'] == "1")
+                                    echo "class=\"borderRegError\"";
+                                    ?>
+                                       name="username" type="text"/>
+                            </label>
 
-                        <label><span class="
+                            <label><span class="
 										<?php if ($_SESSION['errPassword'] == "1"
-                            || $_SESSION['errMatchPassword'] == "1"
-                        )
-                            echo "errorSmall";
-                        else
-                            echo "p4Black";
-                        ?>
+                                || $_SESSION['errMatchPassword'] == "1"
+                            )
+                                echo "errorSmall";
+                            else
+                                echo "p4Black";
+                            ?>
                                                          ">Password:</br></span>
-                            <input
-                                <?php if ($_SESSION['errPassword'] == "1"
-                                || $_SESSION['errMatchPassword'] == "1"
-                            )
-                                echo "class=\"borderRegError\"";
-                                ?>
+                                <input
+                                    <?php if ($_SESSION['errPassword'] == "1"
+                                    || $_SESSION['errMatchPassword'] == "1"
+                                )
+                                    echo "class=\"borderRegError\"";
+                                    ?>
 
-                                    name="password" type="password"/>
-                        </label></br>
+                                        name="password" type="password"/>
+                            </label>
 
 
-                        <label><span class="
+                            <label><span class="
                                         <?php if ($_SESSION['errConfPassword'] == "1"
-                            || $_SESSION['errMatchPassword'] == "1"
-                        )
-                            echo "errorSmall";
-                        else
-                            echo "p4Black";
-                        ?>
-                                        ">Confirm Password:</br></span>
-                            <input
-                                <?php if ($_SESSION['errConfPassword'] == "1"
                                 || $_SESSION['errMatchPassword'] == "1"
                             )
-                                echo "class=\"borderRegError\"";
-                                ?>
-                                    name="confPassword" type="password"/>
-                        </label></br>
+                                echo "errorSmall";
+                            else
+                                echo "p4Black";
+                            ?>
+                                        ">Confirm Password:</br></span>
+                                <input
+                                    <?php if ($_SESSION['errConfPassword'] == "1"
+                                    || $_SESSION['errMatchPassword'] == "1"
+                                )
+                                    echo "class=\"borderRegError\"";
+                                    ?>
+                                        name="confPassword" type="password"/>
+                            </label>
 
 
-                        <label><span class="
+                            <label><span class="
                                         <?php if ($_SESSION['errName'] == "1")
-                            echo "errorSmall";
-                        else
-                            echo "p4Black";
-                        ?>
+                                echo "errorSmall";
+                            else
+                                echo "p4Black";
+                            ?>
                                         ">Name:</br></span>
-                            <input value="<?php
-                            echo $_SESSION['REGname'];
-                            ?>"
-                                <?php if ($_SESSION['errName'] == "1")
-                                echo "class=\"borderRegError\"";
-                                ?>
-                                   name="name" type="text"/>
-                        </label></br>
+                                <input value="<?php
+                                echo $_SESSION['REGname'];
+                                ?>"
+                                    <?php if ($_SESSION['errName'] == "1")
+                                    echo "class=\"borderRegError\"";
+                                    ?>
+                                       name="name" type="text"/>
+                            </label>
 
 
-                        <label><span class="
+                            <label><span class="
                                          <?php if ($_SESSION['errSurname'] == "1")
-                            echo "errorSmall";
-                        else
-                            echo "p4Black";
-                        ?>
+                                echo "errorSmall";
+                            else
+                                echo "p4Black";
+                            ?>
                                         ">Surname:</br></span>
-                            <input value="<?php
-                            echo $_SESSION['REGsurname'];
-                            ?>"
-                                <?php if ($_SESSION['errSurname'] == "1")
-                                echo "class=\"borderRegError\"";
-                                ?>
-                                   name="surname" type="text"/>
-                        </label></br>
+                                <input value="<?php
+                                echo $_SESSION['REGsurname'];
+                                ?>"
+                                    <?php if ($_SESSION['errSurname'] == "1")
+                                    echo "class=\"borderRegError\"";
+                                    ?>
+                                       name="surname" type="text"/>
+                            </label>
 
 
-                        <label><span class="
+                            <label><span class="
                                           <?php if ($_SESSION['errEmail'] == "1")
-                            echo "errorSmall";
-                        else
-                            echo "p4Black";
-                        ?>
+                                echo "errorSmall";
+                            else
+                                echo "p4Black";
+                            ?>
                                         ">Email:</br></span>
-                            <input value="<?php
-                            echo $_SESSION['REGemail'];
-                            ?>"
-                                <?php if ($_SESSION['errEmail'] == "1")
-                                echo "class=\"borderRegError\"";
-                                ?>
-                                   name="email" type="email"/>
-                        </label></br>
+                                <input value="<?php
+                                echo $_SESSION['REGemail'];
+                                ?>"
+                                    <?php if ($_SESSION['errEmail'] == "1")
+                                    echo "class=\"borderRegError\"";
+                                    ?>
+                                       name="email" type="email"/>
+                            </label>
 
 
-                        <label><span class="
+                            <label><span class="
                                          <?php if ($_SESSION['errTelephone'] == "1")
-                            echo "errorSmall";
-                        else
-                            echo "p4Black";
-                        ?>
+                                echo "errorSmall";
+                            else
+                                echo "p4Black";
+                            ?>
                                         ">Telephone:</br></span>
-                            <input value="<?php
-                            echo $_SESSION['REGtelephone'];
-                            ?>"
-                                <?php if ($_SESSION['errTelephone'] == "1")
-                                echo "class=\"borderRegError\"";
-                                ?>
-                                   name="telephone" type="text"/>
-                        </label></br>
+                                <input value="<?php
+                                echo $_SESSION['REGtelephone'];
+                                ?>"
+                                    <?php if ($_SESSION['errTelephone'] == "1")
+                                    echo "class=\"borderRegError\"";
+                                    ?>
+                                       name="telephone" type="text"/>
+                            </label>
 
 
-                        <label><span class="p4Black">Application Notifications:</br></span>
-                            <input name="appNotif" type="checkbox" checked="CHECKED"/>
-                        </label></br>
-                        <label><span class="p4Black">Email Notifications:</br></span>
-                            <input name="emailNotif" type="checkbox"/>
-                        </label>
-                        </br>
+                            <label><span class="p4Black">Application Notifications:</br></span>
+                                <input name="appNotif" type="checkbox" checked="CHECKED"/>
+                            </label>
+                            <label><span class="p4Black">Email Notifications:</br></span>
+                                <input name="emailNotif" type="checkbox"/>
+                            </label>
+                            </br>
 
 
-                        <a class="button" href="#"
-                           onClick="document.getElementById('register-form').submit()">Submit</a>
-                        </br></br></br>
-                        <a class="button"
-                        <onClick
-                        ="showAlert();"
-                        href="scripts/resetRegister.php"
-                        >Clear&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                            <a class="button" href="#"
+                               onClick="document.getElementById('register-form').submit()">Submit</a>
+                            </br></br></br>
+                            <a class="button"
+                            <onClick
+                            ="showAlert();"
+                            href="scripts/resetRegister.php"
+                            >Clear&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
-                    </fieldset>
-                </form>
-                </p>
+                        </fieldset>
+                    </form>
+                </div>
+
                 <br><br>
             </div>
         </article>

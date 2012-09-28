@@ -5,4 +5,7 @@ Webpage/CREDENCIALS.php
 Webpage/MASTER/
 #linux backup files
 *.~
+#Eclipse files
 Android/Smartlib/.settings/
+#PHP Storm files
+Webpage/.idea/

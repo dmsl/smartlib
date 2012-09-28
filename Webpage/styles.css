@@ -372,7 +372,7 @@ nav#global ul li a:hover {
     /*margin-top: 10px;*/
 }
 
-#search-panel input, #contact-panel input, textarea {
+#search-panel input, #contact-panel input, textarea, #register-panel input, textarea {
     border-style: solid;
     border-color: #a5a5a5;
     text-align: center;
@@ -383,7 +383,7 @@ nav#global ul li a:hover {
     -webkit-border-radius: 3px;
 }
 
-#contact-panel textarea {
+#contact-panel textarea, #register-panel textarea {
     border-width: 2px;
     text-align: left;
     line-height: 20px;
@@ -422,7 +422,7 @@ nav#global ul li a:hover {
 
 }
 
-#contact-panel label {
+#contact-panel label, #register-panel label {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -433,7 +433,7 @@ nav#global ul li a:hover {
     vertical-align: top;
 }
 
-#contact-panel input, textarea {
+#contact-panel input, textarea #register-panel input {
     margin-left: 10px;
     resize: none;
     /*display: block;*/
@@ -778,7 +778,11 @@ article .mainContent#downloadsDevices {
     width: 70%;
     margin-left: 5%;
     margin-right: 20%;
-    /*margin-right: ;*/
+}
+
+article .mainContent#registrationForm {
+    width: 70%;
+    margin-left: 5%;
 }
 
 article .mainContent#contactContent {
