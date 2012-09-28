@@ -34,14 +34,12 @@
 
 
 <div id="search-panel">
-    <button type="button" value="" id="toggleSearchButton" class="toggleSearchButton"
-            >Advanced Search
+    <button type="button" value="" id="toggleSearchButton"
+            class="toggleSearchButton">Advanced Search
     </button>
     <div id="simpleSearchLoggedIn">
         <input type="text" id="search_cd_loggedIn"/>
     </div>
-    <!--    TODO onkeyup="searchOnEnter(event)"-->
-
     <button type="button" id="searchButtonID"
             class="searchButton">Search
     </button>
@@ -284,10 +282,59 @@ jQuery(document).ready(function () {
                 );
 
 
-//                <button id="searchButtonID" onkeyup="searchOnEnter(event)" class="searchButton">Search</button>\
-//                <button type="reset" value="" id="clearButtonID"\
-//                class="clearButton">Clear</button>\
+                $("#advsearch_cd_loggedIn_owner").autocomplete("scripts/autocomplete/getUsernameList.php"
+                        + "?title=" + $('#advsearch_cd_loggedIn_title').text()
+                        + "&authors=" + $('#advsearch_cd_loggedIn_authors').text()
+                        + "&isbn=" + $('#advsearch_cd_loggedIn_isbn').text()
 
+                        , {
+                            matchContains:true,
+//                    minLength: 2,
+                            selectFirst:false,
+                            select:function (event, ui) {
+                                $(this).val(ui.item.label);
+                                doAdvancedSearch();
+                            }
+                        });
+
+                $('#advsearch_cd_loggedIn_owner').result(function (event, data, formatted) {
+                    doAdvancedSearch();
+                });
+
+
+//              var cd_owner = jQuery('#advsearch_cd_loggedIn_owner').val();
+
+                $("#advsearch_cd_loggedIn_authors").autocomplete("scripts/autocomplete/getAuthorsNameList.php", {
+                    matchContains:true,
+                    width:200,
+                    minLength:4,
+                    selectFirst:false,
+                    select:function (event, ui) {
+                        $(this).val(ui.item.label);
+                        doAdvancedSearch();
+                    }
+                });
+
+
+                $('#advsearch_cd_loggedIn_authors').result(function (event, data, formatted) {
+                    doAdvancedSearch();
+                });
+
+                $("#advsearch_cd_loggedIn_title").autocomplete("scripts/autocomplete/getBookTitleList.php", {
+                    matchContains:true,
+                    width:200,
+                    minLength:4,
+                    selectFirst:false,
+                    select:function (event, ui) {
+                        $(this).val(ui.item.label);
+                        doAdvancedSearch();
+                    }
+                });
+
+
+                $('#advsearch_cd_loggedIn_title').result(function (event, data, formatted) {
+                    doAdvancedSearch();
+                });
                 //Toggle button to Simple
                 $('.toggleSearchButton').html("Simple Search");
 
@@ -303,56 +350,59 @@ jQuery(document).ready(function () {
             });
 
             $("#search_cd_loggedIn").val("");
+
+
             isAdv = 1;//Switched
+
+
         }
 
 
     });
 
 
-////    //Bind events
-//   function searchOnEnter(event){
-//        //On enter
-//        if (event.keyCode == 13) {
-//            if(isAdv){
-//            doAdvancedSearch();
-//            }
-//            else {
-//                doSimpleSearch();
-//            }
-//        }
-//       return false;
 //
-//    }
+//            .autocomplete("../scripts/autocomplete/getUsernameList.php", {
+//        width: 260,
+//        matchContains: true,
+//        //mustMatch: true,
+//        //minChars: 0,
+//        //multiple: true,
+//        //highlight: false,
+//        //multipleSeparator: ",",
+//        selectFirst: false
+//    });
 
 
-    // Make Search
+    var timeoutHnd;
+
+    $("#search-panel input").live("keydown", function (event) {
+
+        if (event.keyCode == 13) {
+            doSearch();
+        }
+
+        //Do some smart search every half second
+        else {
+
+            if (timeoutHnd)
+                clearTimeout(timeoutHnd)
+            timeoutHnd = setTimeout(doSearch, 500)
+
+        }
+
+    });
 
 
-    function runSearch() {
+    //Do an Advanced or a simple search
+    function doSearch() {
         if (isAdv) {
-
             doAdvancedSearch();
         }
         else {
-
             doSimpleSearch();
         }
-
-        // return false;
     }
-
-
-    //Perform Simple Search
-
-
-//    //Perform Advanced Search
-//    $('#searchButtonID').click(function () {
-//
-//        doAdvancedSearch();
-//
-//        return false;
-//    });
 
 
     //Advanced Search
@@ -417,14 +467,7 @@ jQuery(document).ready(function () {
 
 
     $('#searchButtonID').click(function () {
-        if (isAdv) {
-
-            doAdvancedSearch();
-        }
-        else {
-
-            doSimpleSearch();
-        }
+        doSearch();
 
     });
 
@@ -470,25 +513,6 @@ jQuery(document).ready(function () {
 
 
 }); //END OF DOCUMENT READY FUNCTION
-
-
-////Enable Search Functionality
-//function enableSearchFunctionality(){
-//
-//    $('.searchButton').click(function () {
-//
-//        if(isAdv){
-//            doSimpleSearch();//TODO
-//        }
-//        else {
-//            doSimpleSearch();
-//        }
-//        return false;
-//    });
-//
-//}
-//
-//
 
 
 </script>

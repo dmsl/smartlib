@@ -74,22 +74,26 @@ include 'scripts/sessionInit.php';
             <header>
                 <h1>SmartLib Open Source Project</h1>
             </header>
-            <p>SmartLib Goal is to provide users an
-                easy way to share their personal book library with others,
-                voluntary. Users first have to create an account to
-                their desired SmartLib.</br>
-                Acounts can created using library's webpage or Smartphone
-                Application.</br></br>
-                Organizations can create their own SmartLib, using the Project Sources
-                for webpage and database, hosted on GitHub.
-                Those sources are under the General Public Licence.
-                <br>More information about Smartphone applications, and SmartLib's
-                installation process can be found on Download section.</p>
+            <div class="mainContent">
+                <p>SmartLib Goal is to provide users an
+                    easy way to share their personal book library with others,
+                    voluntary. Users first have to create an account to
+                    their desired SmartLib.</br>
+                    Acounts can created using library's webpage or Smartphone
+                    Application.</br></br>
+                    Organizations can create their own SmartLib, using the Project Sources
+                    for webpage and database, hosted on GitHub.
+                    Those sources are under the General Public Licence.
+                    <br>More information about Smartphone applications, and SmartLib's
+                    installation process can be found on Download section.</p>
+            </div
             <br><br>
             <header>
                 <h1>Project Members</h1>
             </header>
-            <p>
+            <div class="mainContent">
+                <p>
+
       <span class="textHandle">
              <strong>Demetris Zeinalipour:<br>
 
@@ -97,7 +101,7 @@ include 'scripts/sessionInit.php';
            &nbsp;&nbsp;&nbsp;&nbsp;
             Project Supervisor</span><br>
 
-                <br><br> <span class="textHandle">
+                    <br><br> <span class="textHandle">
             <strong>Paschalis Mpeis:<br>
                 BSc 4th at University of Cyprus</strong><br>
                        &nbsp;&nbsp;&nbsp;&nbsp;
@@ -110,19 +114,19 @@ include 'scripts/sessionInit.php';
             Smartlib API for Smartphone Clients(PHP/MySQL)<br>
                        &nbsp;&nbsp;&nbsp;&nbsp;
             Android Client (Java)</span><br>
-                <br><br> <span class="textHandle">
+                    <br><br> <span class="textHandle">
             <strong>Chrysovalantis Anastasiou:<br>
                 BSc 2nd at University of Cyprus</strong><br>
                        &nbsp;&nbsp;&nbsp;&nbsp;
             iOS Client (Objective C)</span><br>
-                <br><br> <span class="textHandle">
+                    <br><br> <span class="textHandle">
              <strong>Chrystalla Tsoutsouki:<br>
                  BSc 2nd at University of Cyprus</strong><br>
                        &nbsp;&nbsp;&nbsp;&nbsp;
             iOS Client (Objective C)</span><br>
-                <br><br>
+                    <br><br>
 
-
+            </div>
         </article>
 
     </div>

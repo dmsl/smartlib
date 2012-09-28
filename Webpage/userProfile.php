@@ -39,8 +39,8 @@ include 'scripts/sessionInit.php';
 //TODO require_once 'grid/tabs.php'; 
 
 //User is logged in move him to its Profile Page
-if($_SESSION['loggedin']==0){
-	header("Location: register.php"); 
+if ($_SESSION['loggedin'] == 0) {
+    header("Location: register.php");
 }
 
 ?>
@@ -59,7 +59,8 @@ if($_SESSION['loggedin']==0){
 
     <!--    Include Scripts-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-    <link href=styles.css rel=stylesheet> </link>
+    <link href=styles.css rel=stylesheet>
+    </link>
     <!--    Include Extra headers-->
     <?php include 'scripts/gridHeader.php';
     include 'carousel/carouselHeader.php';  ?>
@@ -82,40 +83,46 @@ if($_SESSION['loggedin']==0){
     <div id=content>
 
         <article>
-			<header>	
-				<h1><?php echo $_SESSION['name']?>, your books</h1>
-			</header>
-			<p>
-                    <center>
-            <?php include 'grid/userBooks.php'; ?></center>
-            
+            <header>
+                <h1><?php echo $_SESSION['name']?>, your books</h1>
+            </header>
+            <div class="mainContent">
+                <p>
+                <center>
+                    <?php include 'grid/userBooks.php'; ?></center>
+
                 <br><br>
                 </p>
-                <header>
-                <h1><center>Export your books in Bibtext Format:</center></h1></header>
+            </div>
+            <header>
+                <h1>
+                    <center>Export your books in Bibtext Format:</center>
+                </h1>
+            </header>
+            <div class="mainContent">
                 <p>To export your books in bibtext format, you have to build and use the following URL:
-                <br><br>
-                http://www.cs.ucy.ac.cy/projects/smartLib/scripts/exportUserBooks.php?user=<span
-                class="errorSmall">USERNAME</span>&pass=<span 
-                class="errorSmall">PASSWORD</span>
-                <br>and replace <span
-                class="errorSmall">USERNAME</span> and <span 
-                class="errorSmall">PASSWORD</span> with your SmartLib Credencials.
-                <!--<a class="button" target="_blank"
-				href="scripts/exportBooks.php" >Export your Books</a>   -->    
-                                
-            </p>
-			<br><br>
+                    <br><br>
+                    http://www.cs.ucy.ac.cy/projects/smartLib/scripts/exportUserBooks.php?user=<span
+                            class="errorSmall">USERNAME</span>&pass=<span
+                            class="errorSmall">PASSWORD</span>
+                    <br>and replace <span
+                            class="errorSmall">USERNAME</span> and <span
+                            class="errorSmall">PASSWORD</span> with your SmartLib Credencials.
+                    <!--<a class="button" target="_blank"
+                     href="scripts/exportBooks.php" >Export your Books</a>   -->
 
-		</article>
-			
-	</div>
-	
+                </p>
+                <br><br>
+            </div>
+        </article>
+
+    </div>
+
 
 </div>
 
 <footer class=clearfix>
-<?php include "scripts/footer.php" ?>
+    <?php include "scripts/footer.php" ?>
 
 </footer>
 

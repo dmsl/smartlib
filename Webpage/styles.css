@@ -678,11 +678,17 @@ article header h1 {
     float: left
 }
 
-article .mainContent {
+article .mainContentCentered {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+
+article .mainContent {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .comments {

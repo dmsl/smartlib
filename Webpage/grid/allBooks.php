@@ -117,13 +117,10 @@
         }
 
 
-        var timeoutHnd;
-
-
         $('#simpleSearchLoggedOut').submit(function () {
 
             doSearch();
-            // gridReload();
+
             return false;
         });
 
@@ -132,18 +129,29 @@
         $('#clearButtonID').click(function () {
             $("#search_cd_loggedOut").val("");
             doSearch();
-            // gridReload();
+
             return false;
         });
 
 
-// TODO TEST functionality
-//        $('#search_cd_loggedOut').onkeydown(function () {
-//
-//            if (timeoutHnd)
-//                clearTimeout(timeoutHnd)
-//            timeoutHnd = setTimeout(doSearch(), 200)
-//        });
+        var timeoutHnd;
+
+        $("#search-panel input").live("keydown", function (event) {
+
+            if (event.keyCode == 13) {
+                doSearch();
+            }
+
+            //Do some smart search every half second
+            else {
+
+                if (timeoutHnd)
+                    clearTimeout(timeoutHnd)
+                timeoutHnd = setTimeout(doSearch, 500)
+
+            }
+
+        });
 
 
         //Search in Grid
@@ -153,11 +161,6 @@
             //We will make search
             grid.jqGrid('setGridParam', {search:true});
 
-
-            //Clear search fields TODO move this outside
-// RM    $("#gs_title").val("");
-//    $("#gs_authors").val("");
-//    $("#gs_isbn").val("");
 
             var cd_mask = jQuery("#search_cd_loggedOut").val();
 

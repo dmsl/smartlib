@@ -49,13 +49,20 @@ include 'scripts/sessionInit.php';
 
     <!--    Include Scripts-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-    <link href=styles.css rel=stylesheet> </link>
+    <link href=styles.css rel=stylesheet>
+    </link>
     <!--    Include Extra headers-->
     <?php include 'scripts/gridHeader.php';
     include 'carousel/carouselHeader.php';  ?>
 
 
     <script src="scripts/loginScript.js"></script>
+
+
+    <script type='text/javascript' src='scripts/autocomplete/jquery.autocomplete.js'></script>
+    <link rel="stylesheet" type="text/css" href="scripts/autocomplete/jquery.autocomplete.css"/>
+
+
 </head>
 
 
@@ -69,14 +76,14 @@ include 'scripts/sessionInit.php';
 <!--Toast Messages -->
 <div class=clearfix>
     <div class="toast-message" id="notoast">No Errors Found</div>
-<div id=content>
+    <div id=content>
 
         <article>
             <!--            Show popular books at all times-->
             <header>
                 <h1>Popular Books</h1>
             </header>
-            <div class="mainContent">
+            <div class="mainContentCentered">
                 <!--                TODO put in carousel title on bottom of image-->
                 <ul id="mycarousel" class="jcarousel-skin-ie7">
                 </ul>
@@ -88,7 +95,7 @@ include 'scripts/sessionInit.php';
                 <header>
                     <h1>All Books</h1>
                 </header>
-                <div class="mainContent" id="booksLoggedIn" >
+                <div class="mainContentCentered" id="booksLoggedIn">
                     <?php include 'grid/allBooksLoggedIn.php'; ?>
                 </div>
                 <br>
@@ -98,7 +105,7 @@ include 'scripts/sessionInit.php';
                 <header>
                     <h1>All Books</h1>
                 </header>
-                <div class="mainContent" id="booksNotLoggedIn">
+                <div class="mainContentCentered" id="booksNotLoggedIn">
                     <?php include 'grid/allBooks.php'; ?>
                 </div>
                 <br>

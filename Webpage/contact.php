@@ -76,52 +76,53 @@ include 'scripts/sessionInit.php';
             <header>
                 <h1>Contact <?php echo _NAME; ?></h1>
             </header>
-            <p>
-                <aside>
-                    <h1>
-                        <center>Office Information</center>
-                    </h1>
-                    <strong>Address:</strong><br>
-                    <?php echo _ADDRESS; ?><br>
-                    <strong>Telephone: </strong><?php echo _TELEPHONE; ?>
-                    <br>                                        <?php if (defined("_FAX")) {
+            <div class="mainContent">
+                <p>
+                    <aside>
+                        <h1>
+                            <center>Office Information</center>
+                        </h1>
+                        <strong>Address:</strong><br>
+                        <?php echo _ADDRESS; ?><br>
+                        <strong>Telephone: </strong><?php echo _TELEPHONE; ?>
+                        <br>                                        <?php if (defined("_FAX")) {
 
-                    echo "<strong>Fax: </strong> " . _FAX . "<br>";
-                } ?>
+                        echo "<strong>Fax: </strong> " . _FAX . "<br>";
+                    } ?>
 
-                    <strong>Email:</strong><a target="_blank" href=
-                    <?php echo "\"mailto:" . _EMAIL . "\"";?>>
-                    <?php echo _EMAIL; ?></a>
-                </aside>
-            <form id="contact-form" action="scripts/contactSubmit.php" method="post"
-                  enctype="multipart/form-data">
-                <fieldset>
-                    <label><span class="text-form">Name:</span><input name="CONTname"
-                                                                      type="text"
-                                                                      value="<?php echo $_SESSION['CONTname'];  ?>"/>
-                    </label><br>
-                    <label><span class="text-form">Email:</span><input
-                            name="CONTemail" type="text"
-                            value="<?php echo $_SESSION['CONTemail'];  ?>"/> </label>
+                        <strong>Email:</strong><a target="_blank" href=
+                        <?php echo "\"mailto:" . _EMAIL . "\"";?>>
+                        <?php echo _EMAIL; ?></a>
+                    </aside>
+                <form id="contact-form" action="scripts/contactSubmit.php" method="post"
+                      enctype="multipart/form-data">
+                    <fieldset>
+                        <label><span class="text-form">Name:</span><input name="CONTname"
+                                                                          type="text"
+                                                                          value="<?php echo $_SESSION['CONTname'];  ?>"/>
+                        </label><br>
+                        <label><span class="text-form">Email:</span><input
+                                name="CONTemail" type="text"
+                                value="<?php echo $_SESSION['CONTemail'];  ?>"/> </label>
 
-                    <div class="wrapper">
-                        <label>
-                        <div class="text-form">Message:</div>
-                        <textarea cols=40 rows=7 name="CONTmessage"><?php
-                            echo $_SESSION['CONTmessage'];
-                            ?></textarea>
-                        </label>
-                    </div>
+                        <div class="wrapper">
+                            <label>
+                                <div class="text-form">Message:</div>
+                                <textarea cols=40 rows=7 name="CONTmessage"><?php
+                                    echo $_SESSION['CONTmessage'];
+                                    ?></textarea>
+                            </label>
+                        </div>
 
-                    <br>
-                    <a class="button" href="#"
-                       onClick="document.getElementById('contact-form').submit()">Send</a>
-                    <br><br><a class="button" href="scripts/resetContact.php"
-                        >Clear</a>
-                </fieldset>
-            </form>
+                        <br>
+                        <a class="button" href="#"
+                           onClick="document.getElementById('contact-form').submit()">Send</a>
+                        <br><br><a class="button" href="scripts/resetContact.php"
+                            >Clear</a>
+                    </fieldset>
+                </form>
 
-
+            </div>
         </article>
 
     </div>

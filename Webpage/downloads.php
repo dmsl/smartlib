@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /*
  This file is part of SmartLib Project.
@@ -51,7 +51,8 @@ include 'scripts/sessionInit.php';
 
     <!--    Include Scripts-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-    <link href=styles.css rel=stylesheet> </link>
+    <link href=styles.css rel=stylesheet>
+    </link>
     <!--    Include Extra headers-->
     <?php include 'scripts/gridHeader.php';
     include 'carousel/carouselHeader.php';  ?>
@@ -67,58 +68,62 @@ include 'scripts/sessionInit.php';
 <header id='topHeader'>
     <?php  include('scripts/header.php'); ?>
 </header>
+<div class="mainContent">
+    <!--Toast Messages -->
+    <div class=clearfix>
+        <div class="toast-message" id="notoast">No Errors Found</div>
+        <div id=content>
 
-<!--Toast Messages -->
-<div class=clearfix>
-    <div class="toast-message" id="notoast">No Errors Found</div>
-    <div id=content>
+            <article>
+                <header>
+                    <h1>Download SmartLib on your Smartphone or Tablet</h1>
+                </header>
+                <div class="mainContent">
+                    <p>
+                        SmartLib is available for Android and iOS Platform. Using SmartLib application you
+                        can have access to all activated libraries.<br>
+                        Additionally you can:<br>
+                        add books to your library, make them rentable or not, lent them,
+                        request books owned by other users, contact u users.<br>
+                        <a class="button" href="https://play.google.com"
+                                >Android</a><br><br>
+                        <a class="button" href="http://itunes.apple.com">iOS
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;</a> <br><br>
 
-        <article>
-			<header>	
-				<h1>Download SmartLib on your Smartphone or Tablet</h1>
-			</header>
-			<p>
-            SmartLib is available for Android and iOS Platform. Using SmartLib application you
-            can have access to all activated libraries.<br>
-            Additionally you can:<br>
-            add books to your library, make them rentable or not, lent them,
-            request books owned by other users, contact u users.<br>
-            <a class="button" href="https://play.google.com"
-									>Android</a><br><br>
-                               <a class="button" href="http://itunes.apple.com">iOS
-                               &nbsp;&nbsp;&nbsp;&nbsp;
-                               &nbsp;&nbsp;&nbsp;</a> <br><br>
-                                    
 
- 
-                                      <br>
-                                      <blockquote>
-										<img src="http://www.cs.ucy.ac.cy/projects/smartLib/images/qr.png"  alt="Smart QR Code"/>
-                                        </blockquote>
-                                        </p>
-			<header>
-				<h1>Setup your own Library</h1>
-			</header>
-			<p>
-           <strong>Requirements:</strong> PHP Server, MySQL Database.<br>
-            <strong>Optional:</strong> Mail Server, for users private intercomunication.<br>
-            Download the SmartLib Open Source Project from GitHub, and follow instructions
-            in readme file. Once the installation process completes, you have to wait
-            for your library's activation from SmartLib Database Administrator.
-			<br><span class="imageHandle">
-            <a href="https://github.com/dmsl/smartlib" target="_blank"><img weigth="50" src="images/github.png" alt="SmartLib Repository" ></a></br></span>	
-            </p>
-		</article>
-			
-	</div>
-	
+                        <br>
+                    <blockquote>
+                        <img src="http://www.cs.ucy.ac.cy/projects/smartLib/images/qr.png" alt="Smart QR Code"/>
+                    </blockquote>
+                    </p>
+                </div>
+                <header>
+                    <h1>Setup your own Library</h1>
+                </header>
+                <div class="mainContent">
+                    <p>
+                        <strong>Requirements:</strong> PHP Server, MySQL Database.<br>
+                        <strong>Optional:</strong> Mail Server, for users private intercomunication.<br>
+                        Download the SmartLib Open Source Project from GitHub, and follow instructions
+                        in readme file. Once the installation process completes, you have to wait
+                        for your library's activation from SmartLib Database Administrator.
+                        <br><span class="imageHandle">
+            <a href="https://github.com/dmsl/smartlib" target="_blank"><img weigth="50" src="images/github.png"
+                                                                            alt="SmartLib Repository"></a></br></span>
+                    </p>
+                </div>
+            </article>
 
-</div>
+        </div>
 
-<footer class=clearfix>
-<?php include "scripts/footer.php" ?>
 
-</footer>
+    </div>
+
+    <footer class=clearfix>
+        <?php include "scripts/footer.php" ?>
+
+    </footer>
 
 </body>
 </html>
