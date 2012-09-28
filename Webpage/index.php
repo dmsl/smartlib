@@ -54,11 +54,7 @@ include 'scripts/sessionInit.php';
     <!--    Include Extra headers-->
     <?php include 'scripts/gridHeader.php';
     include 'carousel/carouselHeader.php';  ?>
-
-
-    <script src="scripts/loginScript.js"></script>
-
-
+    <script src="scripts/mainScripts.js"></script>
     <script type='text/javascript' src='scripts/autocomplete/jquery.autocomplete.js'></script>
     <link rel="stylesheet" type="text/css" href="scripts/autocomplete/jquery.autocomplete.css"/>
 

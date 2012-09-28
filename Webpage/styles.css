@@ -70,6 +70,16 @@ header, nav, article, aside, footer, hgroup, section {
 }
 
 @font-face {
+    font-family: monospace;
+    src: url('fonts/UbuntuMono-R.ttf');
+}
+
+@font-face {
+    font-family: Sansation_Light;
+    src: url('fonts/Sansation_Light.ttf'), url('fonts/Sansation_Light.eot'); /* IE9+ */
+}
+
+@font-face {
     font-family: 'Colaborate-RegularRegular';
     src: url('fonts/ColabReg-webfont.eot');
     src: local('☺'), url('fonts/ColabReg-webfont.woff') format('woff'), url('fonts/ColabReg-webfont.ttf') format('truetype'), url('fonts/ColabReg-webfont.svg#webfont') format('svg');
@@ -101,6 +111,15 @@ p {
     margin-bottom: 18px;
     font-size: 16px;
     color: #000000;
+    font-family: sans;
+}
+
+p.left {
+    text-align: left;
+}
+
+p.center {
+    text-align: center;
 }
 
 strong {
@@ -126,11 +145,23 @@ a:active {
 }
 
 h1 {
-    font: 24px/36px Colaborate-RegularRegular, "Trebuchet MS", Arial, Helvetica, sans-serif
+    /*font: 24px/36px;*/
+    font-size: 2em;
+    font-family: ubuntuFonts;
+    padding-left: 2%;
+    /*Colaborate-RegularRegular, "Trebuchet MS", Arial, Helvetica, sans-serif*/
+}
+
+h1.centered {
+    text-align: center;
 }
 
 h3 {
     font: 24px/36px Colaborate-RegularRegular, "Trebuchet MS", Arial, Helvetica, sans-serif
+}
+
+h3.centered {
+    text-align: center;
 }
 
 .newLine {
@@ -339,13 +370,26 @@ nav#global ul li a:hover {
     /*margin-top: 10px;*/
 }
 
-#search-panel input {
+#search-panel input, #contact-panel input, textarea {
+    border-style: solid;
+    border-color: #a5a5a5;
     text-align: center;
     line-height: 20px;
     width: 15em;
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
+}
+
+#contact-panel textarea {
+    border-width: 2px;
+    text-align: left;
+    line-height: 20px;
+    width: 35em;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background-color: #f4f4f4;
 }
 
 #simpleSearchLoggedIn {
@@ -376,40 +420,64 @@ nav#global ul li a:hover {
 
 }
 
-/*#search-panel  #toggleSearchButton {*/
-/*position: relative;*/
-/*margin-top: 15px;*/
+#contact-panel label {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    color: #011633;
+    font-size: 1.4em;
+    padding-right: 10px;
+    font-family: monospace;
+    vertical-align: top;
+}
 
-/*}*/
+#contact-panel input, textarea {
+    margin-left: 10px;
+    resize: none;
+    /*display: block;*/
+}
 
 button {
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
-    /*background-color: #ffffff;*/
+    background-color: #ffffff;
     color: #555555;
     font-weight: bold;
     /*height:30px;*/
     text-decoration: none;
     vertical-align: middle;
+
+    line-height: 20px;
+    border-style: solid;
+    width: 9em;
 }
 
-.searchButton {
+button.searchButton {
+
     background: url(images/search.png);
     background-repeat: no-repeat;
     background-position: right;
-    width: 9em;
-    line-height: 20px;
-    border-style: solid;
+
 }
 
-.clearButton {
+.footerPusher {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin-top: 4em;
+}
+
+button.clearButton {
     background: url(images/clear.png);
     background-repeat: no-repeat;
     background-position: right;
-    width: 9em;
-    line-height: 20px;
-    border-style: solid;
+}
+
+button.sendButton {
+    background: url(images/send.png);
+    background-repeat: no-repeat;
+    background-position: right;
 }
 
 .toggleSearchButton {
@@ -433,7 +501,7 @@ button:hover {
 
 #top-panel #top-panel-title {
     color: #ffffff;
-    font-family: ubuntuFonts;
+    font-family: sansation_light;
     font-weight: normal;
     font-size: 2em;
     margin-right: auto;
@@ -509,6 +577,18 @@ input {
     color: #011633;
     font-size: 1.2em;
     text-align: center;
+}
+
+input::-webkit-input-placeholder {
+    color: #999;
+}
+
+input:-moz-placeholder {
+    color: #999;
+}
+
+input:-ms-input-placeholder {
+    color: #999;
 }
 
 #login-panel input::-webkit-input-placeholder {
@@ -687,8 +767,14 @@ article .mainContentCentered {
 
 article .mainContent {
     width: 90%;
+    margin-top: 15px;
     margin-left: auto;
     margin-right: auto;
+}
+
+article .mainContent#contactContent {
+    margin-left: 5%;
+
 }
 
 .comments {
@@ -702,7 +788,7 @@ article .mainContent {
     background-color: #011633;
     /*background-color: rgba(151, 0, 0, 0.4);*/
     border-radius: 10px;
-    -moz-border-radius: 10px;
+    -moz-border-radius: contactContent 10px;
     -webkit-border-radius: 10px;
     box-shadow: inset 0 0 10px rgba(50, 50, 50, 0.5);
     -moz-box-shadow: inset 0 0 10px rgba(50, 50, 50, 0.5);

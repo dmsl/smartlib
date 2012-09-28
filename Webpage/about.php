@@ -53,9 +53,7 @@ include 'scripts/sessionInit.php';
     <!--    Include Extra headers-->
     <?php include 'scripts/gridHeader.php';
     include 'carousel/carouselHeader.php';  ?>
-
-
-    <script src="scripts/loginScript.js"></script>
+    <script src="scripts/mainScripts.js"></script>
 </head>
 
 <body>

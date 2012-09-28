@@ -54,9 +54,7 @@ include 'scripts/sessionInit.php';
     <!--    Include Extra headers-->
     <?php include 'scripts/gridHeader.php';
     include 'carousel/carouselHeader.php';  ?>
-
-
-    <script src="scripts/loginScript.js"></script>
+    <script src="scripts/mainScripts.js "></script>
 </head>
 
 
@@ -76,12 +74,13 @@ include 'scripts/sessionInit.php';
             <header>
                 <h1>Contact <?php echo _NAME; ?></h1>
             </header>
-            <div class="mainContent">
-                <p>
-                    <aside>
-                        <h1>
-                            <center>Office Information</center>
-                        </h1>
+            <div class="mainContent" id="contactContent">
+
+                <!--                Contact Information-->
+                <aside>
+                    <h1 class="centered">Office Information</h1>
+
+                    <p class="left">
                         <strong>Address:</strong><br>
                         <?php echo _ADDRESS; ?><br>
                         <strong>Telephone: </strong><?php echo _TELEPHONE; ?>
@@ -93,34 +92,60 @@ include 'scripts/sessionInit.php';
                         <strong>Email:</strong><a target="_blank" href=
                         <?php echo "\"mailto:" . _EMAIL . "\"";?>>
                         <?php echo _EMAIL; ?></a>
-                    </aside>
-                <form id="contact-form" action="scripts/contactSubmit.php" method="post"
-                      enctype="multipart/form-data">
-                    <fieldset>
-                        <label><span class="text-form">Name:</span><input name="CONTname"
-                                                                          type="text"
-                                                                          value="<?php echo $_SESSION['CONTname'];  ?>"/>
-                        </label><br>
-                        <label><span class="text-form">Email:</span><input
-                                name="CONTemail" type="text"
-                                value="<?php echo $_SESSION['CONTemail'];  ?>"/> </label>
+                </aside>
+                <div id="contact-panel">
 
-                        <div class="wrapper">
-                            <label>
-                                <div class="text-form">Message:</div>
-                                <textarea cols=40 rows=7 name="CONTmessage"><?php
+                    <form id="contact-form" action="" onsubmit="contactFormSubmit(event); return false;"
+                          enctype="multipart/form-data">
+                        <fieldset>
+                            <label>&nbsp&nbsp&nbspName:
+                                <input name="CONTname" id="contact-form-Name"
+                                       type="text" autofocus="autofocus"
+                                       placeholder="Your name"
+                                       value="<?php
+                                       if ($_SESSION['loggedin' == 1]) {
+                                           if ($_SESSION['CONTname'] == "")
+                                               $_SESSION['CONTname'] = $_SESSION['name'];
+
+                                       }
+                                       echo $_SESSION['CONTname'];
+                                       ?>" required="required"/>
+                            </label><br>
+                            <label>&nbsp&nbspEmail:
+                                <input
+                                        name="CONTemail" type="email" id="contact-form-Email"
+                                        placeholder="me@example.com"
+                                        value="<?php
+                                        if ($_SESSION['loggedin' == 1]) {
+                                            if ($_SESSION['CONTemail'] == "")
+                                                $_SESSION['CONTemail'] = $_SESSION['email'];
+                                        }
+                                        echo $_SESSION['CONTemail'];
+                                        ?>" required="required"/></label>
+
+                            <br>
+                            <label>Message:
+                                <textarea cols=40 rows=7 name="CONTmessage"
+                                          id="contact-form-Message"
+                                          placeholder="Your message..."
+                                          required="required"
+                                        ><?php
                                     echo $_SESSION['CONTmessage'];
                                     ?></textarea>
                             </label>
-                        </div>
+                            <br>
+                            <button href="#" class="sendButton" type="submit"
+                                    >Send
+                            </button>
+                            <!--                               onClick="contactFormSubmit(event)"-->
+                            <button class="clearButton" href="#"
+                                    onclick="contactFormReset()"
+                                    >Clear
+                            </button>
+                        </fieldset>
+                    </form>
+                </div>
 
-                        <br>
-                        <a class="button" href="#"
-                           onClick="document.getElementById('contact-form').submit()">Send</a>
-                        <br><br><a class="button" href="scripts/resetContact.php"
-                            >Clear</a>
-                    </fieldset>
-                </form>
 
             </div>
         </article>
@@ -129,7 +154,7 @@ include 'scripts/sessionInit.php';
 
 
 </div>
-
+<div class="footerPusher"></div>
 <footer class=clearfix>
     <?php include "scripts/footer.php" ?>
 </footer>

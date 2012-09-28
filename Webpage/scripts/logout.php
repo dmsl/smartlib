@@ -35,21 +35,25 @@ Fax: +357-22-892701
 
 
 session_start();
-//TODO disconnect from DB!
 
 //Disconnect User (Email and Username will stay in session)
 $_SESSION['loggedin'] = "0";
 
-//Move to users page
-//header("Location: ".$_SESSION['currentPage']);
 $result = array(
     "result" => "1"
 );
 
+//Removed Logged In Data
+if ($_SESSION['CONTname'] == $_SESSION['name'])
+    $_SESSION['CONTname'] = "";
+
+if ($_SESSION['CONTemail'] == $_SESSION['email'])
+    $_SESSION['CONTemail'] = "";
+
 echo json_encode($result);
 die();
 
-	?>
+?>
 </body>
 </html>
 

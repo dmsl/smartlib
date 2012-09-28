@@ -38,7 +38,7 @@
             class="toggleSearchButton">Advanced Search
     </button>
     <div id="simpleSearchLoggedIn">
-        <input type="text" id="search_cd_loggedIn"/>
+        <input type="text" id="search_cd_loggedIn" autofocus="autofocus"/>
     </div>
     <button type="button" id="searchButtonID"
             class="searchButton">Search
@@ -225,7 +225,8 @@ jQuery(document).ready(function () {
                 //Replace form
                 $('#advancedSearchLoggedIn').replaceWith(
                         '<div id="simpleSearchLoggedIn">\
-                        <input type="text" class="input" id="search_cd_loggedIn"/>'
+                        <input type="text" class="input" id="search_cd_loggedIn" autofocus="autofocus" />\
+                        </div>'
                 );
 
 
@@ -270,7 +271,7 @@ jQuery(document).ready(function () {
                 $('#simpleSearchLoggedIn').replaceWith(
                         '<div id="advancedSearchLoggedIn">\
                         <label>&nbsp&nbspTitle: \
-                        <input type="text" class="input" id="advsearch_cd_loggedIn_title" /></label> \
+                        <input type="text" class="input" id="advsearch_cd_loggedIn_title" autofocus="autofocus"/></label> \
                         <label>Authors: \
                         <input type="text" class="input" id="advsearch_cd_loggedIn_authors" /></label> \
                         <label>&nbsp&nbspOwner: \

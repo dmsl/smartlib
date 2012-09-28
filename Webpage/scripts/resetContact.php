@@ -32,20 +32,23 @@ Tel: +357-22-892755
 Fax: +357-22-892701
 
 */
-	
+
 
 session_start();
 
-	$_SESSION['CONTmessage']		= 
-	$_SESSION['CONTname']		= 
+$_SESSION['CONTmessage'] = "";
+$_SESSION['CONTname'] = "";
 $_SESSION['CONTemail'] = "";
 
-	
 
-	
-	//Refresh the page
-	header("Location: ../contact.php"); 
-	
+//Refresh the page
+//	header("Location: ../contact.php");
+
+$result = array(
+    "result" => "1"
+);
+echo json_encode($result);
+die();
 
 
 ?>
