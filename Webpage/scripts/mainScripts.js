@@ -525,50 +525,77 @@ function getLoggedInBooksJqGrid() {
 // Submit Contact form
 function registerFormSubmit(ev) {
 
-
-// TODO
 //    //Gather new data
-//    var username = document.getElementById("register-form-username").value;
-//    var password = document.getElementById("register-form-password").value;
-//    var confPassword = document.getElementById("register-form-confPassword").value;
-//    var name = document.getElementById("register-form-name").value;
-//    var surname = document.getElementById("register-form-surname").value;
-//    var email = document.getElementById("register-form-email").value;
-//    var telephone = document.getElementById("register-form-telephone").value;
-//    var emailNotifications = document.getElementById("register-form-email-notifications").value;
-//    var appNotifications = document.getElementById("register-form-app-notifications").value;
-//
-//
-//    $_SESSION['REGusername'] = $_POST['username'];
-//    $_SESSION['REGpassword'] = $_POST['password'];
-//    $_SESSION['REGconfPassword']  = $_POST['confPassword'];
-//    $_SESSION['REGname']  = $_POST['name'];
-//    $_SESSION['REGsurname']  = $_POST['surname'];
-//    $_SESSION['REGemail']  = $_POST['email'];
-//    $_SESSION['REGtelephone']  = $_POST['telephone'];
-//    $_SESSION['REGappNotif']  = $_POST['appNotif'];
-//    $_SESSION['REGemailNotif']  = $_POST['emailNotif'];
-//
-//
-//
-//    var params = "username=" + username + "&password=" + password
-//        + "&=confPassword" + confPassword
-//            + "&=name" + name
-//            + "&=surname" + surname
-//            + "&=email" + email
-//            + "&=telephone" + telephone
-//            + "&=emailNotifications" + emailNotifications
-//            + "&=appNotifications" + appNotifications
-//        ;
-//
-//    runAPostWebpage("mobile/SQLregister.php", params);
+    var username = document.getElementById("register-form-username").value;
+    var password = document.getElementById("register-form-password").value;
+    var confPassword = document.getElementById("register-form-confPassword").value;
+    var name = document.getElementById("register-form-name").value;
+    var surname = document.getElementById("register-form-surname").value;
+    var email = document.getElementById("register-form-email").value;
+    var telephone = document.getElementById("register-form-telephone").value;
+    var emailNotifications = document.getElementById("register-form-email-notifications").value;
+    var appNotifications = document.getElementById("register-form-app-notifications").value;
+
+
+    //Some fields still empty
+    if (username == "" || password == "" || confPassword == ""
+        || name == "" || surname == "" || email == "" || telephone == "") {
+        showToastMessage("Please fill all required form fields", 0);
+        return false;
+    }
+
+    var hasError = false;
+    var msg = "";
+
+    if (!isEmailValid(email)) {
+        msg += "Invalid email address";
+        hasError = true;
+    }
+
+    if (!isTelephoneValid(telephone)) {
+        if (msg != "") msg += "</br>";
+
+        msg += "Invalid telephone number";
+        hasError = true;
+    }
+
+    if (password != confPassword) {
+        if (msg != "") msg += "</br>";
+        msg += "Passwords don't match";
+        hasError = true;
+    }
+
+    if (hasError) {
+        showToastMessage(msg, 0);
+        return false;
+    }
+
+
+    //Send post request
+
+    var params = "username=" + username + "&password=" + password
+        + "&confPassword=" + confPassword
+        + "&name=" + name
+        + "&surname=" + surname
+        + "&email=" + email
+        + "&telephone=" + telephone
+        + "&emailNotifications=" + emailNotifications
+        + "&appNotifications=" + appNotifications;
+
+    runAPostWebpage("mobile/SQLregister.php", params, switchToRegistrationSuccessPage);
 
     return false;
 }
 
 
+function switchToRegistrationSuccessPage() {
+    $("#register-panel").replaceWith('<div id="register-success"><p>bravo!</p></div>');
+
+}
+
+
 // Submit Contact form
-function contactFormSubmit(ev) {
+function contactFormSubmit() {
 
     //Gather new data
     var name = document.getElementById("contact-form-Name").value;
@@ -593,7 +620,7 @@ function contactFormSubmit(ev) {
     var params = "CONTname=" + name + "&CONTemail=" + email
         + "&CONTmessage=" + message;
 
-    runAPostWebpage("scripts/contactSubmit.php", params);
+    runAPostWebpage("scripts/contactSubmit.php", params, "");
 
     return false;
 }
@@ -642,9 +669,10 @@ function contactFormReset() {
 
 /* Runs a URL webpage with Post method
  * And show a toast message if error found
+ * and run a method if any
  *
  * */
-function runAPostWebpage(url, postdata) {
+function runAPostWebpage(url, postdata, successCallback) {
 
 
     var xmlhttp;
@@ -680,16 +708,13 @@ function runAPostWebpage(url, postdata) {
 
             showToastMessage(message, result);
 
-//            //User successfully logged in
-//            if (result == "1") {
-//                //Form send successfully
-//                showToastMessage(, 1);
-//
-//            }
-//           //Show Error
-//            else {
-//                showToastMessage(message, 0);
-//            }
+            //On success
+            if (result == 1) {
+                if (successCallback != "") {
+                    successCallback();
+                }
+            }
+
 
         }
 

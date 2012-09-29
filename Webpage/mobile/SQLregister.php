@@ -143,7 +143,7 @@ $queryFindUsernames = sprintf("SELECT username FROM SMARTLIB_USER WHERE username
     mysql_real_escape_string($_SESSION['REGusername']));
 
 
-//$usernameMatches = mysql_query("SELECT username FROM USER WHERE username='".$_SESSION['REGusername']."'");
+$usernameMatches = mysql_query($queryFindUsernames);
 $usernameMatchesNum = mysql_num_rows($usernameMatches);
 
 if ($usernameMatchesNum > 0) {
@@ -178,9 +178,22 @@ if ($_SESSION['regHasErrors'] == "0") {
         } else {
 
 //            printError(); TODO make it ajax! with reply
-            //Show user info and activation details with email!
-            header("Location: ../registerSuccess.php");
+
+            $msg = "Your account successfully created<br>" .
+                "Please Activate it using your email: <br>" . $_SESSION['REGemail'];
+
+
+            $result = array(
+                "result" => "1",
+                "message" => $msg
+            );
+
+            echo json_encode($result);
+            die();
         }
+        //Show user info and activation details with email!
+//            header("Location: ../registerSuccess.php");
+//        }
 
     }
 
