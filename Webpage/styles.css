@@ -399,6 +399,7 @@ nav#global ul li a:hover {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     background-color: #f4f4f4;
+    resize: none;
 }
 
 #simpleSearchLoggedIn {
@@ -449,16 +450,19 @@ nav#global ul li a:hover {
 #contact-panel input.error, #contact-panel textarea.error,
 #register-panel input.error, #register-panel textarea.error {
     border-color: #ff6347;
+    resize: none;
 }
 
 #contact-panel input.empty, #contact-panel textarea.empty,
 #register-panel input.empty, #register-panel textarea.empty {
     border-color: #ddd;
+    resize: none;
 }
 
 #contact-panel input.filled, #contact-panel textarea.filled,
 #register-panel input.filled, #register-panel textarea.filled {
     border-color: #555555;
+    resize: none;
 }
 
 button {
@@ -490,6 +494,10 @@ button.searchButton {
     height: auto !important;
     height: 100%;
     margin-top: 2em;
+}
+
+.footerPusher#bigger {
+    margin-top: 6em;
 }
 
 button.clearButton {

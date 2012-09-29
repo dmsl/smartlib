@@ -33,14 +33,65 @@ Fax: +357-22-892701
 
 */
 
-function inform($pError){
-	$loginError=1;
-	//Mark the error
-	$_SESSION['topTypeMsg']="err";
-	$_SESSION['topMsg']="Internal Error: ".$pError."</br>You can't use SmartLib right now</br>".
-	"Please check back later.";
-	
-	}
+function getCustom2ndURL()
+{
+
+    $len = strlen($_SERVER['REQUEST_URI']);
+    $fullURL = $_SERVER['REQUEST_URI'];
+    $found = 0;
+
+
+    for ($i = $len - 1; $i > 0; $i--) {
+
+
+        //Remove the last name of the URI
+        if ($fullURL[$i] == "/") {
+
+            $found = 1;
+
+            $urlResult = substr($fullURL, 0, $i);
+            break;
+        }
+
+    }
+
+
+    $len = strlen($urlResult);
+    $fullURL = $urlResult;
+    $found = 0;
+
+
+    for ($i = $len - 1; $i > 0; $i--) {
+
+
+        //Remove the last name of the URI
+        if ($fullURL[$i] == "/") {
+
+            $found = 1;
+
+            $urlResult = substr($fullURL, 0, $i + 1);
+            break;
+        }
+
+    }
+
+
+    if (!$found)
+        $urlResult = $_SERVER['REQUEST_URI'];
+
+    return $_SERVER['SERVER_NAME'] . $urlResult;
+
+}
+
+
+//function inform($pError){
+//	$loginError=1;
+//	//Mark the error
+//	$_SESSION['topTypeMsg']="err";
+//	$_SESSION['topMsg']="Internal Error: ".$pError."</br>You can't use SmartLib right now</br>".
+//	"Please check back later.";
+//
+//	}
 
 
 ?>

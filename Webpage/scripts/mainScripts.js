@@ -533,8 +533,8 @@ function registerFormSubmit(ev) {
     var surname = document.getElementById("register-form-surname").value;
     var email = document.getElementById("register-form-email").value;
     var telephone = document.getElementById("register-form-telephone").value;
-    var emailNotifications = document.getElementById("register-form-email-notifications").value;
-    var appNotifications = document.getElementById("register-form-app-notifications").value;
+    var emailNotifications = document.getElementById("register-form-email-notifications").checked;
+    var appNotifications = document.getElementById("register-form-app-notifications").checked;
 
 
     //Some fields still empty
@@ -579,18 +579,15 @@ function registerFormSubmit(ev) {
         + "&surname=" + surname
         + "&email=" + email
         + "&telephone=" + telephone
-        + "&emailNotifications=" + emailNotifications
-        + "&appNotifications=" + appNotifications;
+        + "&emailNotif=" + emailNotifications
+        + "&appNotif=" + appNotifications;
+//
+//    showToastMessage("&emailNotif=" + emailNotifications
+//        + "&appNotif=" + appNotifications,1);
 
-    runAPostWebpage("mobile/SQLregister.php", params, switchToRegistrationSuccessPage);
+    runAPostWebpage("mobile/SQLregister.php", params, switchToRegistrationSuccessPage, name);
 
     return false;
-}
-
-
-function switchToRegistrationSuccessPage() {
-    $("#register-panel").replaceWith('<div id="register-success"><p>bravo!</p></div>');
-
 }
 
 
@@ -672,7 +669,7 @@ function contactFormReset() {
  * and run a method if any
  *
  * */
-function runAPostWebpage(url, postdata, successCallback) {
+function runAPostWebpage(url, postdata, successCallback, param1) {
 
 
     var xmlhttp;
@@ -706,14 +703,15 @@ function runAPostWebpage(url, postdata, successCallback) {
 
             var message = jsonOBJ['message'];
 
-            showToastMessage(message, result);
-
             //On success
-            if (result == 1) {
-                if (successCallback != "") {
-                    successCallback();
-                }
+            if (result == "1" && successCallback != "") {
+//                if (successCallback != "") {
+                successCallback(param1);
+//                }
             }
+
+
+            showToastMessage(message, result);
 
 
         }
@@ -904,7 +902,35 @@ function updateFormFieldStatusConfirmPassword(that) {
 }
 
 
+function switchToRegistrationSuccessPage(name) {
+    $("article").replaceWith(
+        '<article>' +
+            '<header>' +
+            '<h1>' + name + ', welcome to SmartLib</h1>' +
+            '</header>' +
+            '<div class="mainContent" id="registerSuccess">' +
+            '<p>Thank you for registering to SmartLib.<br>' +
+            'Please check your email, and activate your account.<br><br>' +
+            'After activation, you will be able to scan your books using Smartphone application.<br>' +
+            'Also you can lent or return your books.' +
+            '</p></div><div class="footerPusher" id="bigger" ></div></article>');
+}
 
 
+//Switch from Register Success To Activation page
+function switchToActivationSuccessPage(name) {
+//Activation success page
+    $("article").replaceWith(
+        '<article>' +
+            '<header>' +
+            '<h1>' + name + ', your account is now activated!</h1>' +
+            '</header>' +
+            '<div class="mainContent" id="registerSuccess">' +
+            '<p>Thank you for registering to SmartLib.<br>' +
+            'Now you can login to webpage and Smartphone Application.<br><br>' +
+            'With Smartphone App, you can scan your books, lent them, edit them or delete them<br>' +
+            'Also you can lent from others, and search for books.' +
+            '</p></div><div class="footerPusher" id="bigger"  ></div></article>');
 
 
+}

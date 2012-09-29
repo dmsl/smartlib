@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 /*
@@ -38,23 +38,23 @@ Fax: +357-22-892701
 
 //android	
 $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
-if(stripos($ua,'android') !== false) { // && stripos($ua,'mobile') !== false) {
-  header('Location: https://play.google.com/');
-  die();
+if (stripos($ua, 'android') !== false) { // && stripos($ua,'mobile') !== false) {
+    header('Location: https://play.google.com/store/apps/details?id=cy.ac.ucy.pmpeis01.client.android');
+    die();
 }
 
 //ipad
-$isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
+$isiPad = (bool)strpos($_SERVER['HTTP_USER_AGENT'], 'iPad');
 
 //iphone
-$isiPhone = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPhone');
+$isiPhone = (bool)strpos($_SERVER['HTTP_USER_AGENT'], 'iPhone');
 
 //ipod
-$isiPod = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPod');
+$isiPod = (bool)strpos($_SERVER['HTTP_USER_AGENT'], 'iPod');
 
-if($isiPad||$isiPhone||$isiPod){
-	  header('http://itunes.apple.com/');
-  	die();
-	}
+if ($isiPad || $isiPhone || $isiPod) {
+    header('http://itunes.apple.com/');
+    die();
+}
 
 ?>

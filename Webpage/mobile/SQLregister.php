@@ -35,6 +35,7 @@ Fax: +357-22-892701
 
 session_start();
 require_once("../CREDENCIALS.php");
+include_once("scripts/genericFunctions.php");
 
 
 $_SESSION['isMobileDevice'] = 0;
@@ -62,6 +63,18 @@ $_SESSION['REGemail'] = $_POST['email'];
 $_SESSION['REGtelephone'] = $_POST['telephone'];
 $_SESSION['REGappNotif'] = $_POST['appNotif'];
 $_SESSION['REGemailNotif'] = $_POST['emailNotif'];
+
+//Workaround
+if ($_SESSION['REGappNotif'] == "true")
+    $_SESSION['REGappNotif'] = "on";
+else
+    $_SESSION['REGappNotif'] = "";
+
+if ($_SESSION['REGemailNotif'] == "true")
+    $_SESSION['REGemailNotif'] = "on";
+else
+    $_SESSION['REGemailNotif'] = "";
+
 
 //Save errors to inform user
 $_SESSION['regHasErrors'] = "0";
@@ -220,6 +233,7 @@ function printError()
     //Hide other info
 
     $_SESSION['regHasErrors'] = 0;
+
     echo json_encode($result);
     die();
 
@@ -262,6 +276,7 @@ function registerUserToDatabase()
 
     $allowRequests = 0;
 
+
     //User allow app Notifications
     if ($_SESSION['REGappNotif'] == "on") {
         //User allows Both Notifications
@@ -283,7 +298,7 @@ function registerUserToDatabase()
         mysql_real_escape_string($_SESSION['REGsurname']),
         mysql_real_escape_string($_SESSION['REGemail']),
         mysql_real_escape_string($_SESSION['REGtelephone']),
-        mysql_real_escape_string($_SESSION['allowRequests']),
+        $allowRequests,
         mysql_real_escape_string($activationCode)
     );
 
@@ -295,12 +310,11 @@ function registerUserToDatabase()
     //TODO change to the Orginization Name
     $strSubject = "SmartLib " . "UCY" . " Activation";
     $strHeader = "From: Smartlib UCY<smartlib@cs.ucy.ac.cy>";
-    $strMessage = "Hello " . $_SESSION['REGname'] . ",\nWelcome to the library of the moderm world.\n" .
-        "\n\nTo activate your account, enter the code below to the SmartLib Website or Smartphone App\n\n" .
-        "Activation Code: " . $activationCode . "\n\n" .
-        "or follow this link: !!! " . getCustomURL() .
-        "activateAccount.php?uLnk=yes&uLnkUsername=" . $_SESSION['REGusername'] .
-        "&activationCode=" . $activationCode . "</br>Thank you,\nSmartLib Team";
+    $strMessage = "Hello " . $_SESSION['REGname'] . ",\nWelcome to the library of the modern world.\n" .
+        "\n\nTo activate your account please follow this link: \n\n" .
+        getCustom2ndURL() .
+        "activate.php?uLnk=yes&uLnkUsername=" . $_SESSION['REGusername'] .
+        "&activationCode=" . $activationCode . "\n\nThank you,\nSmartLib Team";
 
 
     // @ = avoid showing error
