@@ -525,9 +525,8 @@ function getLoggedInBooksJqGrid() {
 // Submit Contact form
 function registerFormSubmit(ev) {
 
-    ev.target.checkValidity();
 
-
+// TODO
 //    //Gather new data
 //    var username = document.getElementById("register-form-username").value;
 //    var password = document.getElementById("register-form-password").value;
@@ -610,6 +609,15 @@ function registerFormReset() {
     $("#register-form").find('input:text, input').val("");
     $("#register-form-app-notifications").prop("checked", true);
     $("#register-form-email-notifications").prop("checked", false);
+
+    $("#register-form-username, #register-form-password," +
+        " #register-form-confPassword, #register-form-name," +
+        " #register-form-surname, #register-form-email, #register-form-telephone, " +
+        "#register-form-confPassword, register-form-password"
+    ).
+        each(function () {
+            updateFormFieldStatusSimple($(this))
+        });
 
 
 }
@@ -747,6 +755,15 @@ function isEmailValid(email) {
 }
 
 
+//Check if a telephone is valid
+function isTelephoneValid(tel) {
+
+    var reg = /^((\+[1-9]{3,4}|0[1-9]{4}|00[1-9]{3})\-?)?[0-9]{8,20}$/;
+
+    return (reg.test(tel));
+}
+
+
 //Updates the status according of forms fields to data filled
 function updateFormFieldStatusSimple(that) {
     //Something is filled
@@ -777,6 +794,90 @@ function updateFormFieldStatusEmail(that) {
     }
 
 }
+
+
+//Updates the status according of forms Email fields to data filled
+function updateFormFieldStatusTelephone(that) {
+    //If is empty
+    if ($(that).val() == "") {
+        $(that).addClass('empty').removeClass('filled').removeClass('error');
+    }
+    else {
+        //Check if its a valid email address
+        if (isTelephoneValid($(that).val())) {
+            $(that).addClass('filled').removeClass('empty').removeClass('error');
+        }
+        else {
+            $(that).addClass('error').removeClass('empty').removeClass('filled');
+        }
+
+    }
+
+}
+
+
+//Updates the status according of forms Password field
+function updateFormFieldStatusPassword(that) {
+
+    var pass = $(that).val();
+    var conf = $("#register-form-confPassword").val();
+
+    //If is empty
+    if (pass == "") {
+        //Mark empty
+        $(that).addClass('empty').removeClass('filled').removeClass('error');
+
+        //Confirmation is wrong
+        if (conf != "")
+            $("#register-form-confPassword").addClass('error').removeClass('empty').removeClass('filled');
+
+        return;
+    }
+
+
+    //Passwords match: mark filled
+    if (conf == pass) {
+        $(that).addClass('filled').removeClass('empty').removeClass('error');
+        $("#register-form-confPassword").addClass('filled').removeClass('empty').removeClass('error');
+        return;
+    }
+
+    //Conf isnt wrong yet
+    if (conf == "") return;
+
+    // Confirmation password is wrong
+    $("#register-form-confPassword").addClass('error').removeClass('empty').removeClass('filled');
+
+}
+
+
+//Updates the status according of forms Confirm Password field
+function updateFormFieldStatusConfirmPassword(that) {
+
+    var confPass = $(that).val();
+    //If is empty
+    if (confPass == "") {
+        $(that).addClass('empty').removeClass('filled').removeClass('error');
+        return;
+    }
+
+    var pass = $("#register-form-password").val();
+
+    //Password is filled
+    if (pass != "") {
+
+        if (confPass == pass) {
+            $(that).addClass('filled').removeClass('empty').removeClass('error');
+            return;
+        }
+
+
+    }
+    // Confirmation password is wrong
+    $(that).addClass('error').removeClass('empty').removeClass('filled');
+
+}
+
 
 
 

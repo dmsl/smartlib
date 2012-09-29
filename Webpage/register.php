@@ -63,7 +63,6 @@ if ($_SESSION['loggedin'] == 1) {
     <?php include 'scripts/gridHeader.php';
     include 'carousel/carouselHeader.php';  ?>
 
-    <script src="scripts/ieFixes.js"></script>
     <script src="scripts/mainScripts.js"></script>
 </head>
 
@@ -77,162 +76,206 @@ if ($_SESSION['loggedin'] == 1) {
 
 <!--Toast Messages -->
 <div class=clearfix>
-    <div class="toast-message" id="notoast">No Errors Found</div>
-    <div id=content>
+<div class="toast-message" id="notoast">No Errors Found</div>
+<div id=content>
 
-        <article>
-            <header>
-                <h1>Please fill up the Registration Form</h1>
-            </header>
-            <div class="mainContent" id="registrationForm">
-                <?php
-                //Suppose now there are now activation errors
-                unset($_SESSION['actMessage']);
-                //If there are errors, display them
-                if ($_SESSION['regHasErrors'] == 1) {
+    <article>
+        <header>
+            <h1>Please fill up the Registration Form</h1>
+        </header>
+        <div class="mainContent" id="registrationForm">
+            <?php
+            //Suppose now there are now activation errors
+            unset($_SESSION['actMessage']);
+            //If there are errors, display them
+            if ($_SESSION['regHasErrors'] == 1) {
 
-                    echo "<span class=\"p4Error\">Errors:</br><strong>";
+                echo "<span class=\"p4Error\">Errors:</br><strong>";
 
-                    echo $_SESSION['regMessage'];
+                echo $_SESSION['regMessage'];
 
-                    echo "</strong></br>";
+                echo "</strong></br>";
 
-                    //Assume errors may resolved in next try
-                    $_SESSION['regHasErrors'] = 0;
-                }
-                ?>
-                <!--TODO action-->
-
-
-                <div id="register-panel">
-                    <!--action="mobile/SQLregister.php" method="post"-->
-
-                    <form id="register-form" action=""
-                          onsubmit="javascript:registerFormSubmit(event); return false;"
-                          enctype="multipart/form-data">
-                        <fieldset>
-                            <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                Username:
-                                <input value="<?php
-                                echo $_SESSION['REGusername'];
-                                ?>"
-                                       id="register-form-username"
-                                       required="required" class="required"
-                                       name="username" type="text"/>
-                                <span class="required">*</span>
-                            </label>   </br>
-
-                            <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                Password:
-                                <input
-                                        id="register-form-password"
-                                        required="required" class="required"
-                                        name="password" type="password"/>
-                                <span class="required">*</span>
-                            </label></br>
+                //Assume errors may resolved in next try
+                $_SESSION['regHasErrors'] = 0;
+            }
+            ?>
+            <!--TODO action-->
 
 
-                            <label>
-                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                Confirm Password:
-                                <input
-                                        id="register-form-confPassword"
-                                        required="required" class="required"
-                                        name="confPassword" type="password"/>
-                                <span class="required">*</span>
-                            </label></br>
+            <div id="register-panel">
+                <!--action="mobile/SQLregister.php" method="post"-->
+
+                <div id="register-form">
+                    <fieldset>
+                        <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            Username:
+                            <input value="<?php
+                            echo $_SESSION['REGusername'];
+                            ?>"
+                                   id="register-form-username"
+                                   name="username" type="text"/>
+                            <span class="required">*</span>
+                        </label>   </br>
+
+                        <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            Password:
+                            <input
+                                    id="register-form-password"
+                                    name="password" type="password"/>
+                            <span class="required">*</span>
+                        </label></br>
 
 
-                            <label>
-                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                Name:</span>
-                                <input value="<?php
-                                echo $_SESSION['REGname'];
-                                ?>"
-                                       id="register-form-name"
-                                       required="required" class="required"
-                                       name="name" type="text"/>
-                                <span class="required">*</span>
-                            </label></br>
+                        <label>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            Confirm Password:
+                            <input
+                                    id="register-form-confPassword"
+                                    name="confPassword" type="password"/>
+                            <span class="required">*</span>
+                        </label></br>
 
 
-                            <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                Surname:</span>
-                                <input value="<?php
-                                echo $_SESSION['REGsurname'];
-                                ?>"
-                                       id="register-form-surname"
-                                       required="required" class="required"
-                                       name="surname" type="text"/>
-                                <span class="required">*</span>
-                            </label></br>
+                        <label>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            Name:</span>
+                            <input value="<?php
+                            echo $_SESSION['REGname'];
+                            ?>"
+                                   id="register-form-name"
+                                   name="name" type="text"/>
+                            <span class="required">*</span>
+                        </label></br>
 
 
-                            <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                Email:</span>
-                                <input value="<?php
-                                echo $_SESSION['REGemail'];
-                                ?>"
-                                       id="register-form-email"
-                                       required="required" class="required"
-                                       name="email" type="email"/>
-                                <span class="required">*</span>
-                            </label></br>
+                        <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            Surname:</span>
+                            <input value="<?php
+                            echo $_SESSION['REGsurname'];
+                            ?>"
+                                   id="register-form-surname"
+                                   name="surname" type="text"/>
+                            <span class="required">*</span>
+                        </label></br>
 
 
-                            <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                Telephone:</span>
-                                <input value="<?php
-                                echo $_SESSION['REGtelephone'];
-                                ?>"
-                                       placeholder="0000-99999999" id="register-form-telephone"
-                                       required="required" class="required"
-                                       name="telephone" type="text"/>
-                                <span class="required">*</span>
-                            </label></br>
+                        <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            Email:</span>
+                            <input value="<?php
+                            echo $_SESSION['REGemail'];
+                            ?>"
+                                   id="register-form-email"
+                                   name="email" type="email"/>
+                            <span class="required">*</span>
+                        </label></br>
 
 
-                            <label><span class="p4Black">Application Notifications:</span>
-                                <input name="appNotif" type="checkbox" checked="CHECKED"
-                                       id="register-form-app-notifications"
-                                        />
-                            </label></br>
-                            <label><span class="p4Black">&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            Telephone:</span>
+                            <input value="<?php
+                            echo $_SESSION['REGtelephone'];
+                            ?>"
+                                   placeholder="0000-99999999" id="register-form-telephone"
+                                   name="telephone" type="text"/>
+                            <span class="required">*</span>
+                        </label></br>
+
+
+                        <label><span class="p4Black">Application Notifications:</span>
+                            <input name="appNotif" type="checkbox" checked="CHECKED"
+                                   id="register-form-app-notifications"
+                                    />
+                        </label></br>
+                        <label><span class="p4Black">&nbsp&nbsp&nbsp&nbsp&nbsp
                             Email Notifications:</span>
-                                <input name="emailNotif" type="checkbox"
-                                       id="register-form-email-notifications"
-                                        />
-                            </label>
-                            </br></br></br>
+                            <input name="emailNotif" type="checkbox"
+                                   id="register-form-email-notifications"
+                                    />
+                        </label>
+                        </br></br></br>
 
 
-                            <!--                        <button href="#" class="sendButton"-->
-                            <!--                           onClick="document.getElementById('register-form').submit()">Submit</button>-->
+                        <!--                        <button href="#" class="sendButton"-->
+                        <!--                           onClick="document.getElementById('register-form').submit()">Submit</button>-->
 
-                            <button class="sendButton" type="submit"
-                                    >Submit
-                            </button>
-                            <button class="clearButton"
-                                    onclick="registerFormReset()"
-                                    type="button"
-                                    >Clear
-                            </button>
-
-                        </fieldset>
-                    </form>
+                        <button class="sendButton" type="submit"
+                                onclick="registerFormSubmit(event)"
+                                >Submit
+                        </button>
+                        <button class="clearButton"
+                                onclick="registerFormReset()"
+                                type="button"
+                                >Clear
+                        </button>
+                    </fieldset>
                 </div>
+                <script>
+                    //Initialize form fields
+                    $(document).ready(function () {
 
-                <br><br>
+                        $("#register-form-username, #register-form-password," +
+                                " #register-form-confPassword, #register-form-name, #register-form-surname").
+                                each(function () {
+                                    updateFormFieldStatusSimple($(this))
+                                });
+                        ;
+
+                        updateFormFieldStatusEmail($("#register-form-email"));
+
+                        updateFormFieldStatusTelephone($("#register-form-telephone"));
+
+
+                        updateFormFieldStatusConfirmPassword($("#register-form-confPassword"));
+
+                        updateFormFieldStatusPassword($("#register-form-password"));
+
+
+                        $("#register-form-username, #register-form-password," +
+                                " #register-form-confPassword, #register-form-name," +
+                                " #register-form-surname").keyup(function () {
+                                    //Something is filled
+                                    updateFormFieldStatusSimple(this);
+                                });
+
+                        $('#register-form-email').keyup(function () {
+                            //Something is filled
+                            updateFormFieldStatusEmail(this);
+                        });
+
+                        $('#register-form-telephone').keyup(function () {
+                            //Something is filled
+                            updateFormFieldStatusTelephone(this);
+                        });
+
+                        $('#register-form-confPassword').keyup(function () {
+                            //Something is filled
+                            updateFormFieldStatusConfirmPassword(this);
+                        });
+
+                        $('#register-form-password').keyup(function () {
+                            //Something is filled
+                            updateFormFieldStatusPassword(this);
+                        });
+
+
+                    });
+
+
+                </script>
             </div>
-        </article>
 
-    </div>
+            <br><br>
+        </div>
+    </article>
+
+</div>
 
 
 </div>

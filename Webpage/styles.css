@@ -446,15 +446,18 @@ nav#global ul li a:hover {
     /*display: block;*/
 }
 
-#contact-panel input.error, #contact-panel textarea.error {
+#contact-panel input.error, #contact-panel textarea.error,
+#register-panel input.error, #register-panel textarea.error {
     border-color: #ff6347;
 }
 
-#contact-panel input.empty, #contact-panel textarea.empty {
+#contact-panel input.empty, #contact-panel textarea.empty,
+#register-panel input.empty, #register-panel textarea.empty {
     border-color: #ddd;
 }
 
-#contact-panel input.filled, #contact-panel textarea.filled {
+#contact-panel input.filled, #contact-panel textarea.filled,
+#register-panel input.filled, #register-panel textarea.filled {
     border-color: #555555;
 }
 

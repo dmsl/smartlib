@@ -101,7 +101,7 @@ include 'scripts/sessionInit.php';
                     <div id="contact-form">
                         <fieldset>
                             <label>&nbsp&nbsp&nbspName:
-                                <input name="CONTname" id="contact-form-Name" class="empty"
+                                <input name="CONTname" id="contact-form-Name"
                                        type="text" autofocus="autofocus"
                                        placeholder="Your name"
                                        value="<?php
@@ -151,14 +151,9 @@ include 'scripts/sessionInit.php';
                         </fieldset>
                     </div>
                     <script>
-
-
-                        //Init status of form
+                        //Initialize form fields
                         $(document).ready(function () {
 
-
-
-                            //Initlialize form
                             $("#contact-form-Name, #contact-form-Email, #contact-form-Message").
                                     each(function () {
                                         updateFormFieldStatusSimple($(this))
@@ -180,8 +175,6 @@ include 'scripts/sessionInit.php';
 
 
                         });
-
-
                     </script>
                 </div>
 
