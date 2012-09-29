@@ -730,6 +730,54 @@ function runAPostWebpage(url, postdata, successCallback, param1) {
 
 
 //Runs a webpage with AJAX w/o showing a success message
+function runAWebpageForResult(url, params, callback) {
+
+    var xmlhttp;
+
+    //Make the request (IE7+, and browsers)
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    }
+    //For IE<=6
+    else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.open("POST", url, true);
+
+    //Send the proper header information along with the request
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send(params);
+
+
+    //When state changed
+    xmlhttp.onreadystatechange = function () {
+
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+            var result = xmlhttp.responseText.trim();
+
+            callback(result);
+        }
+
+        //Error Code
+        else if (xmlhttp.status == 404) {
+            return "Something went wrong";
+        }
+
+
+    }
+
+}
+
+function fillBibtexBooks(res) {
+    $('#bibtexBook').val(res);
+    //Resite bibtexbook
+    $('#bibtexBook').css({height:'15em'});
+}
+
+
+//Runs a webpage with AJAX and gets the result
 function runAWebpage(url) {
 
     var xmlhttp;
@@ -753,6 +801,7 @@ function runAWebpage(url) {
 
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
+
         }
 
         //Error Code
@@ -764,6 +813,7 @@ function runAWebpage(url) {
     }
 
 }
+
 
 ////////////
 //////////// Help functions

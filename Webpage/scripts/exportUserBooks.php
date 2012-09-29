@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 /*
@@ -35,158 +35,166 @@ Fax: +357-22-892701
 
 session_start();
 
+include ('../CREDENCIALS.php');
+include_once('genericFunctions.php');
+
 //Get username and password for user
 $pUsername = $_REQUEST['user'];
-$pPassword = $_REQUEST['pass'];
+//$pUsername = $_SESSION['username'];
+$pKey = $_REQUEST['mykey'];
 
-//Authenticate user
-authenticateUser($pUsername,$pPassword);
- 
+$mykey = md5(_MY_KEY);
+
+//9fef92839a85a6a8c657c35a641e37fb
+
+if ($pKey != $mykey) {
+    die();
+}
+
 //TODO this will be exported  URL for users export books!!!!
-  
-
-	$device="?device=web";
-	$username="&username=".$pUsername;
-	$mykey="&mykey=23f234trfv34";
-	
-	$buildURL= "http://".getCustom2ndURL()."mobile/getUserBooks.php".$device.$username.$mykey;
-	
-	
-	$json = file_get_contents($buildURL,0,null,null);
-	
-	$phpArray = json_decode($json);
-	
-	//Delete the first object (Info object: query result and book results number)
-	unset($phpArray[0]); 
-	
-	//Iterate over json objects
-	foreach($phpArray as $object => $jobj){
-		
-		//Iterate over Json fields
-	foreach($jobj as $key => $value){
-
-			if($key =='isbn'){
-				echo "@isbn {".$value.",<br>";
-				}
-			else if($key =='lang'){
-				echo "lang = {".$value."} } ,<br><br>";
-				}
-			else if($key!='imgURL' && $key!='status'){//Skip imgURL case
-				echo $key." = {".$value."},<br>"; 
-				}
-			}
-		}
-
-	?>
 
 
-<?php 
+$device = "?device=web";
+$username = "&username=" . $pUsername;
+$mykey = "&mykey=" . _MY_KEY;
 
-function authenticateUser($user, $pass){
-	
-	
-	require_once("../CREDENCIALS.php");
-	include ('../dbConnect.php');
+$buildURL = "http://" . getCustom2ndURL() . "mobile/getUserBooks.php" . $device . $username . $mykey;
 
-	
-	$salt = _SALT;
-	$pepper = _PEPPER;
-	// Put salt and pepper
-	$pass = $salt.$pass.$pepper;
-	
-	// Password Encryption
-	$pass = md5($pass);
-	
-	// just to be sure.
-	$user = mysql_real_escape_string($user);
-	
-	//Build the query string
-	$query = "SELECT * FROM SMARTLIB_USER WHERE username = '$user' AND password = '$pass'  LIMIT 1";
-	
-	//Execute the query
-	$result = mysql_query($query) or die();
+$json = file_get_contents($buildURL, 0, null, null);
 
-	
+$phpArray = json_decode($json);
 
-	//Username is correct
-	while($row = mysql_fetch_array($result)){
-		$resusername = $row['username']; 			// username from DB
-		$respassword = $row['password']; 			// password from DB
-		$reslevel = $row['level']; 					// level from DB
-	
-	}
+//Delete the first object (Info object: query result and book results number)
+unset($phpArray[0]);
 
-	
+//Iterate over json objects
+foreach ($phpArray as $object => $jobj) {
 
+    //Iterate over Json fields
+    foreach ($jobj as $key => $value) {
 
-	// Found User in Database
-	if ($respassword == $pass){	
-		
-		//If user not activated or banned		
-		if($reslevel<=0)
-			die();
-			
-		//Else execution will continue, and books if any will printed in bibtex format
-	
-	}
-	//Users credencials are wrong
-	else{
-		die();
-	}					
-		 
+        if ($key == 'isbn') {
+            echo "@isbn {" . $value . ",\n";
+        } else if ($key == 'lang') {
+            echo "\tlang = {" . $value . "} \n} ,\n\n";
+        } else if ($key != 'imgURL' && $key != 'status') { //Skip imgURL case
+            echo "\t" . $key . " = {" . $value . "},\n";
+        }
+    }
 }
 
-	
-	// CHECK CAN USE ALSO http://jsontoxml.utilities-online.info/
-function getCustom2ndURL(){
-
-	$len = strlen($_SERVER['REQUEST_URI']);
-	$fullURL=$_SERVER['REQUEST_URI'];
-	$found=0;
+?>
 
 
-	for( $i= $len-1; $i>0; $i--){
-		
-
-		//Remove the last name of the URI
-		if($fullURL[$i]=="/"){
-				
-			$found=1;
-				
-			$urlResult = substr($fullURL,0,$i);
-			break;
-		}
-
-	}
-	
-	
-	$len = strlen($urlResult);
-	$fullURL=$urlResult;
-	$found=0;
+<?php
 
 
-	for( $i= $len-1; $i>0; $i--){
-		
+//
+//function authenticateUser($user, $pass){
+//
+//
+//	require_once("../CREDENCIALS.php");
+//	include ('../dbConnect.php');
+//
+//
+//	$salt = _SALT;
+//	$pepper = _PEPPER;
+//	// Put salt and pepper
+//	$pass = $salt.$pass.$pepper;
+//
+//	// Password Encryption
+//	$pass = md5($pass);
+//
+//	// just to be sure.
+//	$user = mysql_real_escape_string($user);
+//
+//	//Build the query string
+//	$query = "SELECT * FROM SMARTLIB_USER WHERE username = '$user' AND password = '$pass'  LIMIT 1";
+//
+//	//Execute the query
+//	$result = mysql_query($query) or die();
+//
+//
+//
+//	//Username is correct
+//	while($row = mysql_fetch_array($result)){
+//		$resusername = $row['username']; 			// username from DB
+//		$respassword = $row['password']; 			// password from DB
+//		$reslevel = $row['level']; 					// level from DB
+//
+//	}
+//
+//
+//
+//
+//	// Found User in Database
+//	if ($respassword == $pass){
+//
+//		//If user not activated or banned
+//		if($reslevel<=0)
+//			die();
+//
+//		//Else execution will continue, and books if any will printed in bibtex format
+//
+//	}
+//	//Users credencials are wrong
+//	else{
+//		die();
+//	}
+//
+//}
 
-		//Remove the last name of the URI
-		if($fullURL[$i]=="/"){
-				
-			$found=1;
-				
-			$urlResult = substr($fullURL,0,$i+1);
-			break;
-		}
+//
+//	// CHECK CAN USE ALSO http://jsontoxml.utilities-online.info/
+//function getCustom2ndURL(){
+//
+//	$len = strlen($_SERVER['REQUEST_URI']);
+//	$fullURL=$_SERVER['REQUEST_URI'];
+//	$found=0;
+//
+//
+//	for( $i= $len-1; $i>0; $i--){
+//
+//
+//		//Remove the last name of the URI
+//		if($fullURL[$i]=="/"){
+//
+//			$found=1;
+//
+//			$urlResult = substr($fullURL,0,$i);
+//			break;
+//		}
+//
+//	}
+//
+//
+//	$len = strlen($urlResult);
+//	$fullURL=$urlResult;
+//	$found=0;
+//
+//
+//	for( $i= $len-1; $i>0; $i--){
+//
+//
+//		//Remove the last name of the URI
+//		if($fullURL[$i]=="/"){
+//
+//			$found=1;
+//
+//			$urlResult = substr($fullURL,0,$i+1);
+//			break;
+//		}
+//
+//	}
+//
+//
+//
+//	if(!$found)
+//		$urlResult = $_SERVER['REQUEST_URI'];
+//
+//	return $_SERVER['SERVER_NAME']. $urlResult;
+//
+//}
 
-	}
 
-
-
-	if(!$found)
-		$urlResult = $_SERVER['REQUEST_URI'];
-
-	return $_SERVER['SERVER_NAME']. $urlResult;
-
-}
-	
-	
-	?>
+?>

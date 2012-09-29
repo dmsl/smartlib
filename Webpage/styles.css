@@ -390,7 +390,7 @@ nav#global ul li a:hover {
     font-size: 1.0em;
 }
 
-#contact-panel textarea, #register-panel textarea {
+#contact-panel textarea, #register-panel textarea, .mainContent textarea {
     border-width: 2px;
     text-align: left;
     line-height: 20px;
@@ -400,6 +400,13 @@ nav#global ul li a:hover {
     -webkit-border-radius: 3px;
     background-color: #f4f4f4;
     resize: none;
+}
+
+.mainContent textarea#bibtexBook {
+    max-height: 30em;
+    height: 15em;
+    overflow: visible;
+    resize: vertical;
 }
 
 #simpleSearchLoggedIn {
@@ -498,6 +505,7 @@ button.searchButton {
 
 .footerPusher#bigger {
     margin-top: 6em;
+
 }
 
 button.clearButton {
