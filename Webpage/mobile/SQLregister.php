@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /*
  This file is part of SmartLib Project.
@@ -37,7 +37,7 @@ session_start();
 require_once("../CREDENCIALS.php");
 
 
-$_SESSION['isMobileDevice']=0;
+$_SESSION['isMobileDevice'] = 0;
 
 //Get the device
 $device = $_POST['device'];
@@ -47,267 +47,261 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 //Find out if we are on mobile device
-if($device=="android" || $device=="iOS"){
-	$_SESSION['isMobileDevice']=1;
+if ($device == "android" || $device == "iOS") {
+    $_SESSION['isMobileDevice'] = 1;
 }
 
 
-//TODO change those in POST!
 //Get data from Website or Smartphones
 $_SESSION['REGusername'] = $_POST['username'];
 $_SESSION['REGpassword'] = $_POST['password'];
-$_SESSION['REGconfPassword']  = $_POST['confPassword'];
-$_SESSION['REGname']  = $_POST['name'];
-$_SESSION['REGsurname']  = $_POST['surname'];
-$_SESSION['REGemail']  = $_POST['email'];
-$_SESSION['REGtelephone']  = $_POST['telephone'];
-$_SESSION['REGappNotif']  = $_POST['appNotif'];
-$_SESSION['REGemailNotif']  = $_POST['emailNotif'];
+$_SESSION['REGconfPassword'] = $_POST['confPassword'];
+$_SESSION['REGname'] = $_POST['name'];
+$_SESSION['REGsurname'] = $_POST['surname'];
+$_SESSION['REGemail'] = $_POST['email'];
+$_SESSION['REGtelephone'] = $_POST['telephone'];
+$_SESSION['REGappNotif'] = $_POST['appNotif'];
+$_SESSION['REGemailNotif'] = $_POST['emailNotif'];
 
 //Save errors to inform user
 $_SESSION['regHasErrors'] = "0";
 $_SESSION['regMessage'] = "";
 
 
+//Gather errors
+if ($_SESSION['REGusername'] == "") {
+    $_SESSION['errUsername'] = "1";
+    $_SESSION['regHasErrors'] = 1;
+    $_SESSION['regMessage'] .= "Username can't be empty</br>";
+} else if (strlen($_SESSION['REGusername']) > 15) {
+    $_SESSION['errUsername'] = "1";
+    $_SESSION['regHasErrors'] = 1;
+    $_SESSION['regMessage'] .= "Username can't exceed 15 characters</br>";
+} else
+    $_SESSION['errUsername'] = "";
 
-if($_SESSION['REGusername']==""){
-	$_SESSION['errUsername'] = "1";
-	$_SESSION['regHasErrors'] = 1;
-	$_SESSION['regMessage'].="Username can't be empty</br>";
-}
-else if  (strlen($_SESSION['REGusername'])>15){
-	$_SESSION['errUsername'] = "1";
-	$_SESSION['regHasErrors'] = 1;
-	$_SESSION['regMessage'].="Username can't exceed 15 characters</br>";
-}
-else
-	$_SESSION['errUsername'] = "";
+if ($_SESSION['REGpassword'] == "") {
+    $_SESSION['errPassword'] = "1";
+    $_SESSION['regHasErrors'] = 1;
+    $_SESSION['regMessage'] .= "Password can't be empty</br>";
+} else
+    $_SESSION['errPassword'] = "";
 
-if($_SESSION['REGpassword']==""){
-	$_SESSION['errPassword'] = "1";
-	$_SESSION['regHasErrors'] = 1;
-	$_SESSION['regMessage'].="Password can't be empty</br>";
-}
-else
-	$_SESSION['errPassword'] = "";
+if ($_SESSION['REGconfPassword'] == "") {
+    $_SESSION['errConfPassword'] = "1";
+    $_SESSION['regHasErrors'] = 1;
+    $_SESSION['regMessage'] .= "Password Confirmation can't be empty</br>";
+} else
+    $_SESSION['errConfPassword'] = "";
 
-if($_SESSION['REGconfPassword']==""){
-	$_SESSION['errConfPassword'] = "1";
-	$_SESSION['regHasErrors'] = 1;
-	$_SESSION['regMessage'].="Password Confirmation can't be empty</br>";
-}
-else
-	$_SESSION['errConfPassword'] = "";
+if ($_SESSION['REGpassword'] != $_SESSION['REGconfPassword']) {
+    $_SESSION['errMatchPassword'] = "1";
+    $_SESSION['regHasErrors'] = 1;
+    $_SESSION['regMessage'] .= "Password and Confirmation dont match</br>";
+} else
+    $_SESSION['errMatchPassword'] = "";
 
-if($_SESSION['REGpassword'] != $_SESSION['REGconfPassword']){
-	$_SESSION['errMatchPassword'] = "1";
-	$_SESSION['regHasErrors'] = 1;
-	$_SESSION['regMessage'].="Password and Confirmation dont match</br>";
-}
-else
-	$_SESSION['errMatchPassword'] = "";
+if ($_SESSION['REGname'] == "") {
+    $_SESSION['errName'] = "1";
+    $_SESSION['regHasErrors'] = 1;
+    $_SESSION['regMessage'] .= "Name cant be empty</br>";
+} else
+    $_SESSION['errName'] = "";
 
-if($_SESSION['REGname']==""){
-	$_SESSION['errName'] = "1";
-	$_SESSION['regHasErrors'] = 1;
-	$_SESSION['regMessage'].="Name cant be empty</br>";
-}
-else
-	$_SESSION['errName'] = "";
+if ($_SESSION['REGsurname'] == "") {
+    $_SESSION['errSurname'] = "1";
+    $_SESSION['regHasErrors'] = 1;
+    $_SESSION['regMessage'] .= "Surname cant be empty</br>";
+} else
+    $_SESSION['errSurname'] = "";
 
-if($_SESSION['REGsurname']==""){
-	$_SESSION['errSurname'] = "1";
-	$_SESSION['regHasErrors'] = 1;
-	$_SESSION['regMessage'].="Surname cant be empty</br>";
-}
-else
-	$_SESSION['errSurname'] = "";
+if ($_SESSION['REGemail'] == "") {
+    $_SESSION['errEmail'] = "1";
+    $_SESSION['regHasErrors'] = 1;
+    $_SESSION['regMessage'] .= "Email cant be empty</br>";
+} else if (!isEmailCorrect($_SESSION['REGemail'])) {
+    $_SESSION['errEmail'] = "1";
+    $_SESSION['regHasErrors'] = 1;
+    $_SESSION['regMessage'] .= "Email Address is Wrong</br>";
+} else
+    $_SESSION['errEmail'] = "";
 
-if($_SESSION['REGemail']==""){
-	$_SESSION['errEmail'] = "1";
-	$_SESSION['regHasErrors'] = 1;
-	$_SESSION['regMessage'].="Email cant be empty</br>";
-}
-else if(!isEmailCorrect($_SESSION['REGemail'])){
-	$_SESSION['errEmail'] = "1";
-	$_SESSION['regHasErrors'] = 1;
-	$_SESSION['regMessage'].="Email Address is Wrong</br>";
-}
-	
-else
-	$_SESSION['errEmail'] = "";
-
-if($_SESSION['REGtelephone']==""){
-	$_SESSION['errTelephone'] = "1";
-	$_SESSION['regHasErrors'] = 1;
-	$_SESSION['regMessage'].="Telephone cant be empty</br>";
-	//TODO telephone check or telephone input!
-}
-else
-	$_SESSION['errTelephone'] = "";
-
+if ($_SESSION['REGtelephone'] == "") {
+    $_SESSION['errTelephone'] = "1";
+    $_SESSION['regHasErrors'] = 1;
+    $_SESSION['regMessage'] .= "Telephone cant be empty</br>";
+} else
+    $_SESSION['errTelephone'] = "";
 
 
 //Connect to database
 include('../dbConnect.php');
 
 
-
-
 // Check username uniqueness
-$queryFindUsernames= sprintf("SELECT username FROM SMARTLIB_USER WHERE username='%s'",
-		mysql_real_escape_string($_SESSION['REGusername']));
+$queryFindUsernames = sprintf("SELECT username FROM SMARTLIB_USER WHERE username='%s'",
+    mysql_real_escape_string($_SESSION['REGusername']));
 
 
 //$usernameMatches = mysql_query("SELECT username FROM USER WHERE username='".$_SESSION['REGusername']."'");
 $usernameMatchesNum = mysql_num_rows($usernameMatches);
 
-if($usernameMatchesNum > 0){
-	$_SESSION['errUsername'] = "1";
-	$_SESSION['regHasErrors'] = 1;
-	$_SESSION['regMessage'].="Username already registered</br>";
+if ($usernameMatchesNum > 0) {
+    $_SESSION['errUsername'] = "1";
+    $_SESSION['regHasErrors'] = 1;
+    $_SESSION['regMessage'] .= "Username already registered</br>";
 }
 
 
-
 // Check email uniqueness
-$emailMatches = mysql_query("SELECT email FROM SMARTLIB_USER WHERE email='".$_SESSION['REGemail']."'");
+$emailMatches = mysql_query("SELECT email FROM SMARTLIB_USER WHERE email='" . $_SESSION['REGemail'] . "'");
 $emailMatchesNum = mysql_num_rows($emailMatches);
 
-if($emailMatchesNum > 0){
-	//TODO smthng else: You are already registered/Reset your password!
-	$_SESSION['errEmail'] = "1";
-	$_SESSION['regHasErrors']=1;
-	$_SESSION['regMessage'].="Email already registered</br>";
-	//TODO show info where email account is activated or not!
+//Already registered email
+if ($emailMatchesNum > 0) {
+    $_SESSION['errEmail'] = "1";
+    $_SESSION['regHasErrors'] = 1;
+    $_SESSION['regMessage'] .= "Email already registered</br>";
 }
 
 
 //Registration Input was correct
-if($_SESSION['regHasErrors'] == "0"){
-	//Register user to database
-	registerUserToDatabase();
-		
-	//Check if registration mail send successfully
-	if($_SESSION['regHasErrors'] == "0"){
-		if($_SESSION['isMobileDevice']){
-			mobileSendLoginSuccess();
-		}
-		else{
-			//Show user info and activation details with email!
-			header("Location: ../registerSuccess.php");
-		}
+if ($_SESSION['regHasErrors'] == "0") {
 
-	}
-		
+    //Register user to database
+    registerUserToDatabase();
+
+    //Registration completed
+    if ($_SESSION['regHasErrors'] == "0") {
+        if ($_SESSION['isMobileDevice']) {
+            mobileSendLoginSuccess();
+        } else {
+
+//            printError(); TODO make it ajax! with reply
+            //Show user info and activation details with email!
+            header("Location: ../registerSuccess.php");
+        }
+
+    }
+
 }
 
 //Registration Info is wrong
-if($_SESSION['regHasErrors'] != "0"){
+if ($_SESSION['regHasErrors'] != "0") {
 
-	if($_SESSION['isMobileDevice']){
-		mobileSendLoginError();
-	}
-	else{
-		header("Location: ../register.php");
-	}
+    if ($_SESSION['isMobileDevice']) {
+        mobileSendLoginError();
+    } else {
+        printError();
+//        header("Location: ../register.php");
+    }
+
+}
+
+function printError()
+{
+    $result = array(
+        "result" => "0",
+        "message" => $_SESSION['regMessage']
+    );
+    //Hide other info
+
+    $_SESSION['regHasErrors'] = 0;
+    echo json_encode($result);
+    die();
 
 }
 
 
 //Functions
 //Generates the Activation Code
-function generateActivationCode() {
-	$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+function generateActivationCode()
+{
+    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-	$size = strlen( $chars );
-	for( $i = 0; $i < 10; $i++ ) {
-		$str .= $chars[ rand( 0, $size - 1 ) ];
-	}
+    $str = "";
 
-	return $str;
+    $size = strlen($chars);
+    for ($i = 0; $i < 10; $i++) {
+        $str .= $chars[rand(0, $size - 1)];
+    }
+
+    return $str;
 }
 
 //Registers a user to Database
-function registerUserToDatabase(){
+function registerUserToDatabase()
+{
 
-	//Generate User's Activation Code
-	$activationCode = generateActivationCode();
+    //Generate User's Activation Code
+    $activationCode = generateActivationCode();
 
-	//Increase protection
-	$salt = _SALT;
-	$pepper = _PEPPER;
+    //Increase protection
+    $salt = _SALT;
+    $pepper = _PEPPER;
 
-	$encPassword = $_SESSION['REGpassword'];
-	// Put salt&pepper on password
-	$encPassword = $salt.$encPassword.$pepper;
+    $encPassword = $_SESSION['REGpassword'];
+    // Put salt&pepper on password
+    $encPassword = $salt . $encPassword . $pepper;
 
-	// Password Encryption
-	$encPassword = md5($encPassword);
+    // Password Encryption
+    $encPassword = md5($encPassword);
 
-	$allowRequests=0;
+    $allowRequests = 0;
 
-	//User allow app Notifications
-	if($_SESSION['REGappNotif']=="on"){
-		//User allows Both Notifications
-		if($_SESSION['REGemailNotif']=="on"){
-			$allowRequests=3;
-		}
-		//User wants only App notifications
-		else $allowRequests=1;
-	}
-	//User wants only Email notifications
-	else if($_SESSION['REGemailNotif']=="on"){
-		$allowRequests=2;
-	}
-	//User wont share its books
-	else $allowRequests=0;
+    //User allow app Notifications
+    if ($_SESSION['REGappNotif'] == "on") {
+        //User allows Both Notifications
+        if ($_SESSION['REGemailNotif'] == "on") {
+            $allowRequests = 3;
+        } //User wants only App notifications
+        else $allowRequests = 1;
+    } //User wants only Email notifications
+    else if ($_SESSION['REGemailNotif'] == "on") {
+        $allowRequests = 2;
+    } //User wont share its books
+    else $allowRequests = 0;
 
-	$queryInsertUser= sprintf("INSERT INTO SMARTLIB_USER (username, password, name, surname, email,"
-	."telephone,allowRequests,activationCode) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s')",
-			mysql_real_escape_string($_SESSION['REGusername']),
-			mysql_real_escape_string($encPassword),
-			mysql_real_escape_string($_SESSION['REGname']),
-			mysql_real_escape_string($_SESSION['REGsurname']),
-			mysql_real_escape_string($_SESSION['REGemail']),
-			mysql_real_escape_string($_SESSION['REGtelephone']),
-			mysql_real_escape_string($_SESSION['allowRequests']),
-			mysql_real_escape_string($activationCode)
-			);
-	
-	//Insert User to database
-	$insert = mysql_query($queryInsertUser) or dbError(mysql_error());
+    $queryInsertUser = sprintf("INSERT INTO SMARTLIB_USER (username, password, name, surname, email,"
+            . "telephone,allowRequests,activationCode) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s')",
+        mysql_real_escape_string($_SESSION['REGusername']),
+        mysql_real_escape_string($encPassword),
+        mysql_real_escape_string($_SESSION['REGname']),
+        mysql_real_escape_string($_SESSION['REGsurname']),
+        mysql_real_escape_string($_SESSION['REGemail']),
+        mysql_real_escape_string($_SESSION['REGtelephone']),
+        mysql_real_escape_string($_SESSION['allowRequests']),
+        mysql_real_escape_string($activationCode)
+    );
+
+    //Insert User to database
+    $insert = mysql_query($queryInsertUser) or dbError(mysql_error());
 
 
-	$strTo = $_SESSION['REGemail'];
-	//TODO change to the Orginization Name
-	$strSubject = "SmartLib " . "UCY" . " Activation";
-	$strHeader = "From: Smartlib UCY<smartlib@cs.ucy.ac.cy>";
-	$strMessage = "Hello ". $_SESSION['REGname'] .",\nWelcome to the library of the moderm world.\n".
-			"\n\nTo activate your account, enter the code below to the SmartLib Website or Smartphone App\n\n".
-			"Activation Code: " .$activationCode ."\n\n".
-			"or follow this link: !!! " . getCustomURL() .
-			"activateAccount.php?uLnk=yes&uLnkUsername=" . $_SESSION['REGusername'].
-			"&activationCode=".$activationCode . "</br>Thank you,\nSmartLib Team"
-			;
-				
-				
-				
-				
+    $strTo = $_SESSION['REGemail'];
+    //TODO change to the Orginization Name
+    $strSubject = "SmartLib " . "UCY" . " Activation";
+    $strHeader = "From: Smartlib UCY<smartlib@cs.ucy.ac.cy>";
+    $strMessage = "Hello " . $_SESSION['REGname'] . ",\nWelcome to the library of the moderm world.\n" .
+        "\n\nTo activate your account, enter the code below to the SmartLib Website or Smartphone App\n\n" .
+        "Activation Code: " . $activationCode . "\n\n" .
+        "or follow this link: !!! " . getCustomURL() .
+        "activateAccount.php?uLnk=yes&uLnkUsername=" . $_SESSION['REGusername'] .
+        "&activationCode=" . $activationCode . "</br>Thank you,\nSmartLib Team";
 
 
-			// @ = avoid showing error
-			//$flgSend = ;
+    // @ = avoid showing error
+    //$flgSend = ;
 
-			if(@mail($strTo,$strSubject,$strMessage,$strHeader))
-			{
-			}
-			else{
-				$_SESSION['errEmail'] = "1";
-				$_SESSION['regHasErrors']="1";
-				$_SESSION['regMessage'].="Email address is invalid!</br>";
+    if (@mail($strTo, $strSubject, $strMessage, $strHeader)) {
+    } else {
+        $_SESSION['errEmail'] = "1";
+        $_SESSION['regHasErrors'] = "1";
+        $_SESSION['regMessage'] .= "Email address is invalid!</br>";
 
-			}
+        printError();
+
+    }
 
 
 }
@@ -316,144 +310,155 @@ function registerUserToDatabase(){
 
 //Returns the URL user is, without include the last page in the URL path
 
-function getCustomURL(){
+function getCustomURL()
+{
 
-	$len = strlen($_SERVER['REQUEST_URI']);
+    $len = strlen($_SERVER['REQUEST_URI']);
 
-	for( $i= $len-1; $i>0; $i--){
-		//Remove the last name of the URI
-		if($_SERVER['REQUEST_URI'][$i]=="/"){
-				
-			$found=1;
-				
-			$urlResult = substr($_SERVER['REQUEST_URI'],0,$i+1);
-			break;
-		}
+    for ($i = $len - 1; $i > 0; $i--) {
+        //Remove the last name of the URI
+        if ($_SERVER['REQUEST_URI'][$i] == "/") {
 
-	}
+            $found = 1;
 
-	if(!$found)
-		$urlResult = $_SERVER['REQUEST_URI'];
+            $urlResult = substr($_SERVER['REQUEST_URI'], 0, $i + 1);
+            break;
+        }
 
-	return $_SERVER['SERVER_NAME']. $urlResult;
+    }
+
+    if (!$found)
+        $urlResult = $_SERVER['REQUEST_URI'];
+
+    return $_SERVER['SERVER_NAME'] . $urlResult;
 
 }
-
 
 
 //Checks if the email is correct
-function isEmailCorrect($email){
-	// First, we check that there's one @ symbol,
-	// and that the lengths are right.
-	if (!ereg("^[^@]{1,64}@[^@]{1,255}$", $email)) {
-		// Email invalid because wrong number of characters
-		// in one section or wrong number of @ symbols.
-		return false;
-	}
-	// Split it into sections to make life easier
-	$email_array = explode("@", $email);
-	$local_array = explode(".", $email_array[0]);
-	for ($i = 0; $i < sizeof($local_array); $i++) {
-		if
-		(!ereg("^(([A-Za-z0-9!#$%&'*+/=?^_`{|}~-][A-Za-z0-9!#$%&
+function isEmailCorrect($email)
+{
+    // First, we check that there's one @ symbol,
+    // and that the lengths are right.
+    if (!ereg("^[^@]{1,64}@[^@]{1,255}$", $email)) {
+        // Email invalid because wrong number of characters
+        // in one section or wrong number of @ symbols.
+        return false;
+    }
+    // Split it into sections to make life easier
+    $email_array = explode("@", $email);
+    $local_array = explode(".", $email_array[0]);
+    for ($i = 0; $i < sizeof($local_array); $i++) {
+        if
+        (!ereg("^(([A-Za-z0-9!#$%&'*+/=?^_`{|}~-][A-Za-z0-9!#$%&
 				↪'*+/=?^_`{|}~\.-]{0,63})|(\"[^(\\|\")]{0,62}\"))$",
-				$local_array[$i])) {
-			return false;
-		}
-	}
-	// Check if domain is IP. If not,
-	// it should be valid domain name
-	if (!ereg("^\[?[0-9\.]+\]?$", $email_array[1])) {
-		$domain_array = explode(".", $email_array[1]);
-		if (sizeof($domain_array) < 2) {
-			return false; // Not enough parts to domain
-		}
-		for ($i = 0; $i < sizeof($domain_array); $i++) {
-			if
-			(!ereg("^(([A-Za-z0-9][A-Za-z0-9-]{0,61}[A-Za-z0-9])|
+            $local_array[$i])
+        ) {
+            return false;
+        }
+    }
+    // Check if domain is IP. If not,
+    // it should be valid domain name
+    if (!ereg("^\[?[0-9\.]+\]?$", $email_array[1])) {
+        $domain_array = explode(".", $email_array[1]);
+        if (sizeof($domain_array) < 2) {
+            return false; // Not enough parts to domain
+        }
+        for ($i = 0; $i < sizeof($domain_array); $i++) {
+            if
+            (!ereg("^(([A-Za-z0-9][A-Za-z0-9-]{0,61}[A-Za-z0-9])|
 					↪([A-Za-z0-9]+))$",
-					$domain_array[$i])) {
-				return false;
-			}
-		}
-	}
-	return true;
+                $domain_array[$i])
+            ) {
+                return false;
+            }
+        }
+    }
+    return true;
 
 }
 
 //Mobile Device Functions
 // Sends error to mobile device using JSON Object Format
-function mobileSendLoginError(){
-	//Convert HTML New Line to Java New Line
-	$javaMSG=$_SESSION['regMessage'];
-	$oldNL = "</br>";
-	$newNL = "\n";
+function mobileSendLoginError()
+{
+    //Convert HTML New Line to Java New Line
+    $javaMSG = $_SESSION['regMessage'];
+    $oldNL = "</br>";
+    $newNL = "\n";
 
-	$i = 1;
-	$tmpOldStrLength = strlen($oldNL);
-	while (($offset = strpos($javaMSG, $oldNL, $offset)) !== false) {
-		$javaMSG = substr_replace($javaMSG, $newNL, $offset, $tmpOldStrLength);
-	}
+    $offset = 0;
+    $i = 1;
+    $tmpOldStrLength = strlen($oldNL);
+    while (($offset = strpos($javaMSG, $oldNL, $offset)) !== false) {
+        $javaMSG = substr_replace($javaMSG, $newNL, $offset, $tmpOldStrLength);
+    }
 
 
-	$result = array(
-			"result"=>"0",
-			"message"=>$javaMSG
-	);
-	//Encode Answer
-	echo json_encode($result);
+    $result = array(
+        "result" => "0",
+        "message" => $javaMSG
+    );
+    //Encode Answer
+    echo json_encode($result);
 
-	die();
+    die();
 }
 
 //Mobile Device Functions
 // Sends error to mobile device using JSON Object Format
-function mobileSendLoginSuccess(){
-	$result = array(
-			"result"=>"1"
-	);
-	//Encode Answer
-	echo json_encode($result);
+function mobileSendLoginSuccess()
+{
+    $result = array(
+        "result" => "1"
+    );
+    //Encode Answer
+    echo json_encode($result);
 
-	die();
+    die();
 }
 
 
 // TODO Sends error to mobile device using JSON Object Format
-function mobileSendDatabaseError(){
-	$result[] = array(
-			"result"=>"-11"
-	);
-	//Encode Answer
-	echo json_encode($result);
+function mobileSendDatabaseError()
+{
+    $result[] = array(
+        "result" => "-11"
+    );
+    //Encode Answer
+    echo json_encode($result);
 
-	die();
+    die();
 }
-
-
-
-
-
-
 
 
 // Database Error
-function dbError($pError){
+function dbError($pError)
+{
 
-	if($_SESSION['isMobileDevice']){
-		//Inform Mobile Device about database Error
-		mobileSendDatabaseError();
-	}
+    if ($_SESSION['isMobileDevice']) {
+        //Inform Mobile Device about database Error
+        mobileSendDatabaseError();
+    }
 
-	//if there is DB Error, inform user and move him back
-	inform($pError);
+    //if there is DB Error, inform user and move him back
+    //inform($pError);
 
-	header("Location: ../index.php");
-	die();
+    $result = array(
+        "result" => "0",
+        "message" => "Database Error :("
+    );
+    //Hide other info
+
+    $_SESSION['regHasErrors'] = 0;
+    echo json_encode($result);
+    die();
+
+
+    //header("Location: ../index.php");
+//    die();
 
 }
-
-
 
 
 ?>

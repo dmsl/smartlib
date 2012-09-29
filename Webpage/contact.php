@@ -55,6 +55,7 @@ include 'scripts/sessionInit.php';
     <?php include 'scripts/gridHeader.php';
     include 'carousel/carouselHeader.php';  ?>
     <script src="scripts/mainScripts.js "></script>
+
 </head>
 
 
@@ -94,12 +95,13 @@ include 'scripts/sessionInit.php';
                         <?php echo _EMAIL; ?></a>
                 </aside>
                 <div id="contact-panel">
-
-                    <form id="contact-form" action="" onsubmit="contactFormSubmit(event); return false;"
-                          enctype="multipart/form-data">
+                    <!--action="" method="post"
+                    onsubmit="javascript:contactFormSubmit(event); return false;"
+                    enctype="multipart/form-data"-->
+                    <div id="contact-form">
                         <fieldset>
                             <label>&nbsp&nbsp&nbspName:
-                                <input name="CONTname" id="contact-form-Name"
+                                <input name="CONTname" id="contact-form-Name" class="empty"
                                        type="text" autofocus="autofocus"
                                        placeholder="Your name"
                                        value="<?php
@@ -109,7 +111,8 @@ include 'scripts/sessionInit.php';
 
                                        }
                                        echo $_SESSION['CONTname'];
-                                       ?>" required="required"/>
+                                       ?>"/>
+                                <span class="required">*</span>
                             </label><br>
                             <label>&nbsp&nbspEmail:
                                 <input
@@ -121,29 +124,65 @@ include 'scripts/sessionInit.php';
                                                 $_SESSION['CONTemail'] = $_SESSION['email'];
                                         }
                                         echo $_SESSION['CONTemail'];
-                                        ?>" required="required"/></label>
+                                        ?>"/>
+                                <span class="required">*</span></label>
 
                             <br>
-                            <label>Message:
+                            <label>Message:&nbsp
+                                <span class="required">*</span></label>
+                            <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                 <textarea cols=40 rows=7 name="CONTmessage"
                                           id="contact-form-Message"
                                           placeholder="Your message..."
-                                          required="required"
-                                        ><?php
-                                    echo $_SESSION['CONTmessage'];
-                                    ?></textarea>
+                                "
+                                ><?php
+                                echo $_SESSION['CONTmessage'];
+                                ?></textarea>
                             </label>
                             <br>
-                            <button href="#" class="sendButton" type="submit"
+                            <button class="sendButton" type="button"
+                                    onclick="contactFormSubmit(event)"
                                     >Send
                             </button>
-                            <!--                               onClick="contactFormSubmit(event)"-->
-                            <button class="clearButton" href="#"
+                            <button class="clearButton" type="button"
                                     onclick="contactFormReset()"
                                     >Clear
                             </button>
                         </fieldset>
-                    </form>
+                    </div>
+                    <script>
+
+
+                        //Init status of form
+                        $(document).ready(function () {
+
+
+
+                            //Initlialize form
+                            $("#contact-form-Name, #contact-form-Email, #contact-form-Message").
+                                    each(function () {
+                                        updateFormFieldStatusSimple($(this))
+                                    });
+                            ;
+
+                            updateFormFieldStatusEmail($("#contact-form-Email"));
+
+
+                            $('#contact-form-Name, #contact-form-Message ').keyup(function () {
+                                //Something is filled
+                                updateFormFieldStatusSimple(this);
+                            });
+
+                            $('#contact-form-Email').keyup(function () {
+                                //Something is filled
+                                updateFormFieldStatusEmail(this);
+                            });
+
+
+                        });
+
+
+                    </script>
                 </div>
 
 

@@ -36,31 +36,30 @@ Fax: +357-22-892701
 
 session_start();
 
-	$_SESSION['REGusername']		= 
-	$_SESSION['REGpassword']		= 
-	$_SESSION['REGconfPassword']	=
-	$_SESSION['REGname']			= 
-	$_SESSION['REGsurname']			= 
-	$_SESSION['REGemail']			= 
-	$_SESSION['REGtelephone']		= 
-	$_SESSION['REGappNotif']		=
-	$_SESSION['REGemailNotif']		= 
-	$_SESSION['regHasErrors'] =
-	$_SESSION['regMessage'] = 
-	$_SESSION['errUsername'] =
-	$_SESSION['errPassword'] =
-	$_SESSION['errConfPassword'] =
-	$_SESSION['errMatchPassword'] =
-	$_SESSION['errName'] =
-	$_SESSION['errSurname'] =
-	$_SESSION['errEmail'] =
-	$_SESSION['errTelephone'] = ""
-	;
+$_SESSION['REGusername'] =
+$_SESSION['REGpassword'] =
+$_SESSION['REGconfPassword'] =
+$_SESSION['REGname'] =
+$_SESSION['REGsurname'] =
+$_SESSION['REGemail'] =
+$_SESSION['REGtelephone'] =
+$_SESSION['REGappNotif'] =
+$_SESSION['REGemailNotif'] =
+$_SESSION['regHasErrors'] =
+$_SESSION['regMessage'] =
+$_SESSION['errUsername'] =
+$_SESSION['errPassword'] =
+$_SESSION['errConfPassword'] =
+$_SESSION['errMatchPassword'] =
+$_SESSION['errName'] =
+$_SESSION['errSurname'] =
+$_SESSION['errEmail'] =
+$_SESSION['errTelephone'] = "";
 
-	
-	//Refresh the page
-	header("Location: ../register.php"); 
-	
+die();
+
+//Refresh the page
+//	header("Location: ../register.php");
 
 
 ?>

@@ -383,6 +383,13 @@ nav#global ul li a:hover {
     -webkit-border-radius: 3px;
 }
 
+/*Required fields*/
+.required {
+    font-family: monospace;
+    color: #a5a5a5;
+    font-size: 1.0em;
+}
+
 #contact-panel textarea, #register-panel textarea {
     border-width: 2px;
     text-align: left;
@@ -439,6 +446,18 @@ nav#global ul li a:hover {
     /*display: block;*/
 }
 
+#contact-panel input.error, #contact-panel textarea.error {
+    border-color: #ff6347;
+}
+
+#contact-panel input.empty, #contact-panel textarea.empty {
+    border-color: #ddd;
+}
+
+#contact-panel input.filled, #contact-panel textarea.filled {
+    border-color: #555555;
+}
+
 button {
     border-radius: 3px;
     -moz-border-radius: 3px;
@@ -449,7 +468,7 @@ button {
     /*height:30px;*/
     text-decoration: none;
     vertical-align: middle;
-
+    border-color: #ddd;
     line-height: 20px;
     border-style: solid;
     width: 9em;
@@ -467,7 +486,7 @@ button.searchButton {
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin-top: 4em;
+    margin-top: 2em;
 }
 
 button.clearButton {
@@ -593,6 +612,10 @@ input:-ms-input-placeholder {
     color: #999;
 }
 
+.hasPlaceholder {
+    color: #999;
+}
+
 #login-panel input::-webkit-input-placeholder {
     color: #999;
 }
@@ -656,7 +679,7 @@ input:-ms-input-placeholder {
 
 .toast-message {
     position: fixed;
-    top: 90px;
+    top: 92px;
     left: 50%;
     width: 20em;
     margin-left: -10em;
@@ -665,6 +688,8 @@ input:-ms-input-placeholder {
     background-image: url("images/close_icon.png");
     background-repeat: no-repeat;
     background-position: right;
+    font-family: ubuntuFonts;
+    /*font-weight: 700;*/
 
     padding: 2px 0;
     text-align: center;
@@ -687,10 +712,12 @@ input:-ms-input-placeholder {
 #error {
     background-color: #ff6347;
     display: none;
+    color: #000000;
 }
 
 #info {
-    background-color: green;
+    background-color: #008b8b;
+    color: #ffffff;
     display: none;
 
 }

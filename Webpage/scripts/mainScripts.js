@@ -356,8 +356,6 @@ function asyncLogout() {
                     window.location.reload();
                 }
 
-                //TODO SYNC THE PHP SESSION!!!!
-
 
             }
             // Weird error
@@ -525,14 +523,72 @@ function getLoggedInBooksJqGrid() {
 
 
 // Submit Contact form
-function contactFormSubmit(ev) {
+function registerFormSubmit(ev) {
 
     ev.target.checkValidity();
+
+
+//    //Gather new data
+//    var username = document.getElementById("register-form-username").value;
+//    var password = document.getElementById("register-form-password").value;
+//    var confPassword = document.getElementById("register-form-confPassword").value;
+//    var name = document.getElementById("register-form-name").value;
+//    var surname = document.getElementById("register-form-surname").value;
+//    var email = document.getElementById("register-form-email").value;
+//    var telephone = document.getElementById("register-form-telephone").value;
+//    var emailNotifications = document.getElementById("register-form-email-notifications").value;
+//    var appNotifications = document.getElementById("register-form-app-notifications").value;
+//
+//
+//    $_SESSION['REGusername'] = $_POST['username'];
+//    $_SESSION['REGpassword'] = $_POST['password'];
+//    $_SESSION['REGconfPassword']  = $_POST['confPassword'];
+//    $_SESSION['REGname']  = $_POST['name'];
+//    $_SESSION['REGsurname']  = $_POST['surname'];
+//    $_SESSION['REGemail']  = $_POST['email'];
+//    $_SESSION['REGtelephone']  = $_POST['telephone'];
+//    $_SESSION['REGappNotif']  = $_POST['appNotif'];
+//    $_SESSION['REGemailNotif']  = $_POST['emailNotif'];
+//
+//
+//
+//    var params = "username=" + username + "&password=" + password
+//        + "&=confPassword" + confPassword
+//            + "&=name" + name
+//            + "&=surname" + surname
+//            + "&=email" + email
+//            + "&=telephone" + telephone
+//            + "&=emailNotifications" + emailNotifications
+//            + "&=appNotifications" + appNotifications
+//        ;
+//
+//    runAPostWebpage("mobile/SQLregister.php", params);
+
+    return false;
+}
+
+
+// Submit Contact form
+function contactFormSubmit(ev) {
 
     //Gather new data
     var name = document.getElementById("contact-form-Name").value;
     var email = document.getElementById("contact-form-Email").value;
     var message = document.getElementById("contact-form-Message").value;
+
+
+    //Check if user filled data
+    if (name == "" || email == "" || message == "") {
+        showToastMessage("Please fill all all form fields", 0);
+        return false;
+    }
+
+
+    //Check email
+    if (!isEmailValid(email)) {
+        showToastMessage("Invalid email address", 0);
+        return false;
+    }
 
 
     var params = "CONTname=" + name + "&CONTemail=" + email
@@ -544,18 +600,34 @@ function contactFormSubmit(ev) {
 }
 
 
-// TODO Reset contact form
+// Reset register form
+function registerFormReset() {
+
+    //Clear PHP data
+    runAWebpage("scripts/resetRegister.php");
+
+
+    $("#register-form").find('input:text, input').val("");
+    $("#register-form-app-notifications").prop("checked", true);
+    $("#register-form-email-notifications").prop("checked", false);
+
+
+}
+
+
+// Reset contact form
 function contactFormReset() {
 
+
+
+    //Clear PHP data
     runAWebpage("scripts/resetContact.php");
 
-    $("#contact-form-Name").val("");
-    $("#contact-form-Email").val("");
-    $("#contact-form-Message").val("");
-
-//    $("#contact-form-Name")._refreshValue();
-//    $("#contact-form-Email")._refreshValue();
-//    $("#contact-form-Message")._refreshValue();
+    $("#contact-form").find('input:text, input, textarea').val("");
+    $("#contact-form-Name, #contact-form-Email, #contact-form-Message").
+        each(function () {
+            updateFormFieldStatusSimple($(this))
+        });
 
 }
 
@@ -661,3 +733,52 @@ function runAWebpage(url) {
     }
 
 }
+
+////////////
+//////////// Help functions
+////////////
+
+//Check if a email is valid
+function isEmailValid(email) {
+
+    var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+    return (reg.test(email));
+}
+
+
+//Updates the status according of forms fields to data filled
+function updateFormFieldStatusSimple(that) {
+    //Something is filled
+    if ($(that).val() != "") {
+        $(that).addClass('filled').removeClass('empty');
+    }
+    else {
+        $(that).addClass('empty').removeClass('filled');
+    }
+
+}
+
+//Updates the status according of forms Email fields to data filled
+function updateFormFieldStatusEmail(that) {
+    //If is empty
+    if ($(that).val() == "") {
+        $(that).addClass('empty').removeClass('filled').removeClass('error');
+    }
+    else {
+        //Check if its a valid email address
+        if (isEmailValid($(that).val())) {
+            $(that).addClass('filled').removeClass('empty').removeClass('error');
+        }
+        else {
+            $(that).addClass('error').removeClass('empty').removeClass('filled');
+        }
+
+    }
+
+}
+
+
+
+
+
