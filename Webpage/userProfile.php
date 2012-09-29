@@ -111,18 +111,6 @@ if ($_SESSION['loggedin'] == 0) {
                     var params = "user=" + user + "&mykey=0a05bb77edad7395da818f361f8115a2";
                     runAWebpageForResult("scripts/exportUserBooks.php", params, fillBibtexBooks);
                 </script>
-                <!--                    <br><br>-->
-                <!--                    http://www.cs.ucy.ac.cy/projects/smartLib/scripts/exportUserBooks.php?user=<span-->
-                <!--                            class="errorSmall">USERNAME</span>&pass=<span-->
-                <!--                            class="errorSmall">PASSWORD</span>-->
-                <!--                    <br>and replace <span-->
-                <!--                            class="errorSmall">USERNAME</span> and <span-->
-                <!--                            class="errorSmall">PASSWORD</span> with your SmartLib Credencials.-->
-                <!--                    <!--<a class="button" target="_blank"-->
-                <!--                     href="scripts/exportBooks.php" >Export your Books</a>   -->
-
-
-                <!--                <br><br-->
                 <br><br>
             </div>
         </article>
