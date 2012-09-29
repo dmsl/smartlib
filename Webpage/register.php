@@ -199,7 +199,7 @@ if ($_SESSION['loggedin'] == 1) {
                                    id="register-form-email-notifications"
                                     />
                         </label>
-                        </br></br></br>
+                        </br>
 
 
                         <!--                        <button href="#" class="sendButton"-->
