@@ -1,6 +1,5 @@
 <?php
 
-////////// PLEASE FILL ALL BELOW INFORMATION ////////////
 
 // The name of the database
 define('DB_NAME', '');
