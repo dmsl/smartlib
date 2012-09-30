@@ -85,14 +85,10 @@ if ($_SESSION['loggedin'] == 0) {
             <header>
                 <h1><?php echo $_SESSION['name']?>, your books</h1>
             </header>
-            <div class="mainContent">
-                <p>
-                <center>
-                    <?php include 'grid/userBooks.php'; ?></center>
-
-                <br><br>
-                </p>
+            <div class="mainContentCentered" id="booksLoggedIn">
+                <?php include 'grid/userBooks.php'; ?>
             </div>
+            <br><br>
             <header>
                 <h1>
                     Your books in Bibtex Format:

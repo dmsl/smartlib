@@ -58,11 +58,6 @@
     </tr>
 </table>
 <div id="allBooksLoggedInPager"></div>
-<!--<div id="filter" style="margin-left:30%;display:none">Search Invoices</div>-->
-
-
-
-
 
 
 
@@ -70,7 +65,6 @@
 
 jQuery(document).ready(function () {
 
-//    enableSearchFunctionality();
 
 
     // Grid Table
@@ -118,21 +112,6 @@ jQuery(document).ready(function () {
             }
         ],
 
-////            TODO is this necessary?
-//        jsonReader:{
-//            imgURL:"imgURL",
-//            title:"title",
-//            authors:"authors",
-//            publishedYear:"publishedYear",
-//            pageCount:"pageCount",
-//            owners:"owners",
-//            status:"status",
-//            lang:"lang",
-//            isbn:"isbn"
-//        },
-
-        //	editurl: "server.php",
-
         rowNum:5,
 
 
@@ -155,48 +134,6 @@ jQuery(document).ready(function () {
     //Attach a pager
     jQuery("#allBooksLoggedInList").jqGrid('navGrid', '#allBooksLoggedInPager',
             {edit:false, add:false, del:false, search:false, refresh:false});
-
-
-//    // Grid Table
-//    //Add clear button to Navigation TODO MOVE THIS CLEAR BUTTON!
-//    jQuery("#allBooksLoggedInList").jqGrid('navButtonAdd', "#allBooksLoggedInPager", {caption:"Clear", title:"Clear Search", buttonicon:'ui-icon-refresh',
-//        onClickButton:function () {
-//
-//
-//            var grid = $("#allBooksLoggedInList");
-//
-//            grid.jqGrid('setGridParam', {search:false});
-//
-//            grid.jqGrid('setGridParam', { postData:{ filters:null} });
-//
-//            //Clear search fields TODO move this outside
-//            $("#gs_title").val("");
-//            $("#gs_authors").val("");
-//            $("#gs_isbn").val("");
-//
-//
-//            var postData = grid.jqGrid('getGridParam', 'postData');
-//
-//
-//            $.extend(postData, {filters:""});
-//            // for singe search you should replace the line with
-//            // $.extend(postData,{searchField:"",searchString:"",searchOper:""});
-//
-//            grid.trigger("reloadGrid", [
-//                {page:1}
-//            ]);
-//
-//        }
-//    });
-
-    //TODO Grid Table TODO is the INLINE SEARCH Move this!!
-//    jQuery("#allBooksLoggedInList").jqGrid('filterToolbar');
-
-
-    /*	TODO CHECK FOR RM!
-    jQuery("#allBooksLoggedInList").jqGrid('navGrid','#allBooksLoggedInPager',{edit:false,add:false,del:false,search:true});
-
-    */
 
 
     function imageFunction(cellvalue, options, rowObject) {
@@ -362,19 +299,6 @@ jQuery(document).ready(function () {
     });
 
 
-//
-//            .autocomplete("../scripts/autocomplete/getUsernameList.php", {
-//        width: 260,
-//        matchContains: true,
-//        //mustMatch: true,
-//        //minChars: 0,
-//        //multiple: true,
-//        //highlight: false,
-//        //multipleSeparator: ",",
-//        selectFirst: false
-//    });
-
-
     var timeoutHnd;
 
     $("#search-panel input").live("keydown", function (event) {
@@ -503,14 +427,6 @@ jQuery(document).ready(function () {
 
         }
     }
-
-//TODO FIX THIS WHEN SEARCH FINISHED!
-//    	$('#search').submit(function () {
-//            gridReload();
-//
-////    				jQuery("#allBooksLoggedInList").jqGrid('setGridParam',{url:"server.php?page=1&limit=10&searchString="+ cd_mask  +"&rows=10"}).trigger("reloadGrid");
-////    		return false;
-//    	});
 
 
 }); //END OF DOCUMENT READY FUNCTION

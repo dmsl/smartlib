@@ -1,6 +1,7 @@
 <?php
 require_once "config.php";
 
+
 $q = strtolower($_GET["q"]);
 if (!$q) return;
 
