@@ -646,7 +646,6 @@ function registerFormReset() {
 
 }
 
-
 // Reset contact form
 function contactFormReset() {
 
@@ -705,9 +704,7 @@ function runAPostWebpage(url, postdata, successCallback, param1) {
 
             //On success
             if (result == "1" && successCallback != "") {
-//                if (successCallback != "") {
                 successCallback(param1);
-//                }
             }
 
 
@@ -836,6 +833,14 @@ function isTelephoneValid(tel) {
     return (reg.test(tel));
 }
 
+//Check if a URL is valid
+function isURLValid(url) {
+
+    var reg = /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i;
+
+    return (reg.test(url));
+}
+
 
 //Updates the status according of forms fields to data filled
 function updateFormFieldStatusSimple(that) {
@@ -888,6 +893,25 @@ function updateFormFieldStatusTelephone(that) {
 
 }
 
+
+//Updates the status according of forms Email fields to data filled
+function updateFormFieldStatusURL(that) {
+    //If is empty
+    if ($(that).val() == "") {
+        $(that).addClass('empty').removeClass('filled').removeClass('error');
+    }
+    else {
+        //Check if its a valid email address
+        if (isURLValid($(that).val())) {
+            $(that).addClass('filled').removeClass('empty').removeClass('error');
+        }
+        else {
+            $(that).addClass('error').removeClass('empty').removeClass('filled');
+        }
+
+    }
+
+}
 
 //Updates the status according of forms Password field
 function updateFormFieldStatusPassword(that) {

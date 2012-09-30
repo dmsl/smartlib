@@ -95,9 +95,6 @@ include 'scripts/sessionInit.php';
                         <?php echo _EMAIL; ?></a>
                 </aside>
                 <div id="contact-panel">
-                    <!--action="" method="post"
-                    onsubmit="javascript:contactFormSubmit(event); return false;"
-                    enctype="multipart/form-data"-->
                     <div id="contact-form">
                         <fieldset>
                             <label>&nbsp&nbsp&nbspName:
@@ -158,7 +155,7 @@ include 'scripts/sessionInit.php';
                                     each(function () {
                                         updateFormFieldStatusSimple($(this))
                                     });
-                            ;
+
 
                             updateFormFieldStatusEmail($("#contact-form-Email"));
 

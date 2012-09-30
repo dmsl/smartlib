@@ -122,6 +122,13 @@ p.center {
     text-align: center;
 }
 
+p.info {
+    display: inline;
+    font-size: 0.8em;
+    color: #a5a5a5;
+    font-family: monospace;
+}
+
 strong {
     font-weight: bold
 }
@@ -372,7 +379,7 @@ nav#global ul li a:hover {
     /*margin-top: 10px;*/
 }
 
-#search-panel input, #contact-panel input, textarea, #register-panel input, textarea {
+#search-panel input, #contact-panel input, textarea, #register-panel input, textarea, #install-panel input {
     border-style: solid;
     border-color: #a5a5a5;
     text-align: center;
@@ -437,7 +444,7 @@ nav#global ul li a:hover {
 
 }
 
-#contact-panel label, #register-panel label {
+#contact-panel label, #register-panel label, #install-panel label {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -448,26 +455,29 @@ nav#global ul li a:hover {
     vertical-align: top;
 }
 
-#contact-panel input, textarea #register-panel input {
+#contact-panel input, textarea #register-panel input, #install-panel input {
     margin-left: 10px;
     resize: none;
     /*display: block;*/
 }
 
 #contact-panel input.error, #contact-panel textarea.error,
-#register-panel input.error, #register-panel textarea.error {
+#register-panel input.error, #register-panel textarea.error,
+#install-panel input.error {
     border-color: #ff6347;
     resize: none;
 }
 
 #contact-panel input.empty, #contact-panel textarea.empty,
-#register-panel input.empty, #register-panel textarea.empty {
+#register-panel input.empty, #register-panel textarea.empty,
+#install-panel input.empty {
     border-color: #ddd;
     resize: none;
 }
 
 #contact-panel input.filled, #contact-panel textarea.filled,
-#register-panel input.filled, #register-panel textarea.filled {
+#register-panel input.filled, #register-panel textarea.filled,
+#install-panel input.filled {
     border-color: #555555;
     resize: none;
 }
@@ -813,7 +823,11 @@ article .mainContentCentered {
     text-align: center;
 }
 
-article .mainContent {
+/*article .installContent p {*/
+/*font-size: 1.5em;*/
+/*}*/
+
+article .mainContent, article  .installContent {
     width: 90%;
     margin-top: 15px;
     margin-left: auto;
