@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 /*
@@ -37,76 +37,67 @@ Fax: +357-22-892701
 session_start();
 
 
-include ('../CREDENCIALS.php');
+include ('../CONFIG.php');
 //Connect to database
 include ('../dbConnect.php');
 
 //Get the key
 $pKey = $_REQUEST['mykey'];
 
-$mykey=_MY_KEY;
+$mykey = _MY_KEY;
 
 
-if($pKey!=$mykey)
-	die();
-
-
+if ($pKey != $mykey)
+    die();
 
 
 printAllBooks();
 
 
+function printAllBooks()
+{
 
 
-
-
-function printAllBooks(){
-	
-
-
-
- 	$queryAllBooks = sprintf(
- 			"SELECT BI.isbn, BI.title, BI.authors, BI.publishedYear, 
+    $queryAllBooks = sprintf(
+        "SELECT BI.isbn, BI.title, BI.authors, BI.publishedYear,
 BI.pageCount, BI.dateOfInsert, 
 BI.imgURL, BI.lang 
 FROM SMARTLIB_BOOK_INFO BI 
 ;"
- 	);
+    );
 
 
-	//Find Unique ID of Book Info
-	$result = mysql_query($queryAllBooks) or dbError(mysql_error());
+    //Find Unique ID of Book Info
+    $result = mysql_query($queryAllBooks) or dbError(mysql_error());
 
-	
-/*if(!($_SESSION['web']==1)){
 
-	$row_set[] = array(
-			"result"=>"1",
-	);
-}
-*/
-	while($row = mysql_fetch_row($result))//RM was assoc for no duplicate infos
-	{
-		//Each row, has 8 columns with data fetched from database
-		//isbn, title, authors, publishedYear, pageCount, dateOfInsert, imgURL, lang 
-		echo "@isbn {". $row[0].", <br>".
-		"title = {".$row[1]."}, <br>".
-		"author = {".$row[2]."}, <br>".
-		"publishedYear = {".$row[3]."}, <br>".
-		"pageCount = {".$row[4]."}, <br>".
-		"dateOfInsert = {".$row[5]."}, <br>".
-		//REMOVED img: "imgURL = {}, ".
-		"lang = {".$row[7]."} } ,<br>";
+    /*if(!($_SESSION['web']==1)){
 
-		echo "<br>";
-		//OLD..rm?
-		$row_set[] = $row;
-	}
+        $row_set[] = array(
+                "result"=>"1",
+        );
+    }
+    */
+    while ($row = mysql_fetch_row($result)) //RM was assoc for no duplicate infos
+    {
+        //Each row, has 8 columns with data fetched from database
+        //isbn, title, authors, publishedYear, pageCount, dateOfInsert, imgURL, lang
+        echo "@isbn {" . $row[0] . ", <br>" .
+            "title = {" . $row[1] . "}, <br>" .
+            "author = {" . $row[2] . "}, <br>" .
+            "publishedYear = {" . $row[3] . "}, <br>" .
+            "pageCount = {" . $row[4] . "}, <br>" .
+            "dateOfInsert = {" . $row[5] . "}, <br>" .
+            //REMOVED img: "imgURL = {}, ".
+            "lang = {" . $row[7] . "} } ,<br>";
+
+        echo "<br>";
+        //OLD..rm?
+        $row_set[] = $row;
+    }
 //	echo json_encode($row_set);
 
 }
-
-
 
 
 // Sends error to mobile device: Book dont exists in Google API
@@ -123,53 +114,42 @@ FROM SMARTLIB_BOOK_INFO BI
 */
 
 
-
-
 // TODO Sends error to mobile device using JSON Object Format
-function mobileSendDatabaseError(){
-	$result[] = array(
-			"result"=>"-11"
-	);
-	//Encode Answer
-	echo json_encode($result);
+function mobileSendDatabaseError()
+{
+    $result[] = array(
+        "result" => "-11"
+    );
+    //Encode Answer
+    echo json_encode($result);
 
-	die();
+    die();
 }
-
-
-
-
-
-
 
 
 // Database Error
-function dbError($pError){
-	
-	//TODO SEND BIXTEXT ERROR!
+function dbError($pError)
+{
 
-	if($_SESSION['isMobileDevice']){
-		//Inform Mobile Device about database Error
-		mobileSendDatabaseError();
-	}
+    //TODO SEND BIXTEXT ERROR!
 
-	//if there is DB Error, inform user and move him back
-	inform($pError);
+    if ($_SESSION['isMobileDevice']) {
+        //Inform Mobile Device about database Error
+        mobileSendDatabaseError();
+    }
+
+    //if there is DB Error, inform user and move him back
+    inform($pError);
 
 
-	if($_SESSION['currentPage']==""){
-		$_SESSION['currentPage']="index.php";
-	}
+    if ($_SESSION['currentPage'] == "") {
+        $_SESSION['currentPage'] = "index.php";
+    }
 
-	header("Location: ".$_SESSION['currentPage']);
-	die();
+    header("Location: " . $_SESSION['currentPage']);
+    die();
 
 }
-
-
-
-
-
 
 
 ?>

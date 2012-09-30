@@ -34,36 +34,32 @@ Fax: +357-22-892701
 */
 
 
-require_once("CREDENCIALS.php");
+require_once("CONFIG.php");
 //Connect to Database
 include('dbConnect.php');
 // TODO change this NOTIFICATION like method!
 //Check if we have message to display to user
-if(isset($_SESSION['topTypeMsg'])){
-	//There is something wrong in the site
-	if($_SESSION['topTypeMsg']=="err"){
-		echo "<strong class= \"errorTopMsg\">".$_SESSION['topMsg']."</br> </strong>";
-		}
-	else if($_SESSION['topTypeMsg']=="info"){
-		echo "<strong class= \"infoTopMsg\">".$_SESSION['topMsg']."</br> </strong>";
-		}
-		
-		//Unset those messages for no future re-show
-		unset($_SESSION['topTypeMsg']);
-	
-	}
+if (isset($_SESSION['topTypeMsg'])) {
+    //There is something wrong in the site
+    if ($_SESSION['topTypeMsg'] == "err") {
+        echo "<strong class= \"errorTopMsg\">" . $_SESSION['topMsg'] . "</br> </strong>";
+    } else if ($_SESSION['topTypeMsg'] == "info") {
+        echo "<strong class= \"infoTopMsg\">" . $_SESSION['topMsg'] . "</br> </strong>";
+    }
 
+    //Unset those messages for no future re-show
+    unset($_SESSION['topTypeMsg']);
 
-
+}
 
 
 //Save the Page we are currently at
-$_SESSION['currentPage'] =  'http'.
-							(empty($_SERVER['HTTPS'])?'':'s').
-							'://'.$_SERVER['SERVER_NAME'].
-							$_SERVER['REQUEST_URI'];
+$_SESSION['currentPage'] = 'http' .
+    (empty($_SERVER['HTTPS']) ? '' : 's') .
+    '://' . $_SERVER['SERVER_NAME'] .
+    $_SERVER['REQUEST_URI'];
 
-		
+
 ?>
 
 

@@ -37,7 +37,7 @@ Fax: +357-22-892701
 
 //CHECK FOR MOBILE
 session_start();
-require_once("../CREDENCIALS.php");
+require_once("../CONFIG.php");
 
 //Connect to database
 include ('../dbConnect.php');
@@ -114,31 +114,27 @@ if ($respassword == $password) {
 
     //Mark session as logged in on Website
     if (!$_SESSION['isMobileDevice']) {
-        if($reslevel>=1){
+        if ($reslevel >= 1) {
             $_SESSION['loggedin'] = "1";
 
-        //Store user data on session
-        $_SESSION['email'] = $resemail;
-        $_SESSION['username'] = $resusername;
-        $_SESSION['name'] = $resname;
-        $_SESSION['surname'] = $ressurname;
-        $_SESSION['telephone'] = $restelephone;
-        $_SESSION['allowRequests'] = $resallowRequests;
-        $_SESSION['level'] = $reslevel;
-        }
-
-
-
-        else{
+            //Store user data on session
+            $_SESSION['email'] = $resemail;
+            $_SESSION['username'] = $resusername;
+            $_SESSION['name'] = $resname;
+            $_SESSION['surname'] = $ressurname;
+            $_SESSION['telephone'] = $restelephone;
+            $_SESSION['allowRequests'] = $resallowRequests;
+            $_SESSION['level'] = $reslevel;
+        } else {
             $_SESSION['loggedin'] = "0";
-    }
+        }
 
     }
 
 
     //Send Login Info to Mobile Device
-        mobileSendLoginData($resusername, $resname, $ressurname,
-            $resemail, $restelephone, $resallowRequests, $reslevel);
+    mobileSendLoginData($resusername, $resname, $ressurname,
+        $resemail, $restelephone, $resallowRequests, $reslevel);
 
 //    } //If its a regular PC
 
@@ -248,9 +244,9 @@ else {
     //If user is from webpage, mark as loggout
     if (!$_SESSION['isMobileDevice']) {
         $_SESSION['loggedin'] = "0";
-        }
+    }
 
-        mobileSendLoginError();
+    mobileSendLoginError();
 //    } else {
 //        // Inform the user about wrong username or password
 //        $_SESSION['loggedin'] = "0";
@@ -311,7 +307,7 @@ function dbError($pError)
     }
 
     //TODO mod change inform in other file (included!)
-    echo  $_SESSION['topTypeMsg'].$_SESSION['topMsg'];
+    echo  $_SESSION['topTypeMsg'] . $_SESSION['topMsg'];
     //header("Location: ".$_SESSION['currentPage']);
     die();
 
@@ -380,7 +376,7 @@ function webSendLoginError()
     }
 
 
-    echo   $_SESSION['topTypeMsg'].$_SESSION['topMsg'];
+    echo   $_SESSION['topTypeMsg'] . $_SESSION['topMsg'];
 //	header("Location: ".$_SESSION['currentPage']);
     die();
 

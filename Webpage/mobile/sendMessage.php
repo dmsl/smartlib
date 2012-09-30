@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /*
  This file is part of SmartLib Project.
@@ -33,18 +33,17 @@ Fax: +357-22-892701
 */
 
 session_start();
-require_once("../CREDENCIALS.php");
-$_SESSION['isMobileDevice']=0;
+require_once("../CONFIG.php");
+$_SESSION['isMobileDevice'] = 0;
 
 //Get the device, ISBN & Username Owner, & Username Destination
 $device = $_REQUEST['device'];
-$pUsername = $_REQUEST['username'];//person who wants to take his requests
-$pDestination = $_REQUEST['destination'];//person who wants to take his requests
-$message = $_REQUEST['message'];//person who wants to take his requests
+$pUsername = $_REQUEST['username']; //person who wants to take his requests
+$pDestination = $_REQUEST['destination']; //person who wants to take his requests
+$message = $_REQUEST['message']; //person who wants to take his requests
 
 
-
-$_SESSION['message'] =  str_replace("\n", "<br>", $message);
+$_SESSION['message'] = str_replace("\n", "<br>", $message);
 
 $_SESSION['destName'] = "";
 $_SESSION['destEmail'] = "";
@@ -62,19 +61,18 @@ $_SESSION['appQR'] = "http://www.cs.ucy.ac.cy/projects/smartLib/images/qr.png";
 
 
 //User owner, will lent this book to User Destination
-$_SESSION['UsernameID']="";
-
+$_SESSION['UsernameID'] = "";
 
 
 //Find out if we are on mobile device
-if($device=="android" || $device=="iOS"){
-	if($device=="android")
-		$_SESSION['app']="Android";
-	else if($device=="iOS")
-		$_SESSION['app']="iOS";
-	
-	
-	$_SESSION['isMobileDevice']=1;
+if ($device == "android" || $device == "iOS") {
+    if ($device == "android")
+        $_SESSION['app'] = "Android";
+    else if ($device == "iOS")
+        $_SESSION['app'] = "iOS";
+
+
+    $_SESSION['isMobileDevice'] = 1;
 }
 
 
@@ -86,254 +84,215 @@ if($device=="android" || $device=="iOS"){
 //Connect to database
 include ('../dbConnect.php');
 
-if($_SESSION['isMobileDevice']){
+if ($_SESSION['isMobileDevice']) {
 
 
+    if ($_SESSION['message'] == "" || ($pUsername == $pDestination)) {
+        mobileSendWeirdError();
+    }
 
-if($_SESSION['message']==""|| ($pUsername==$pDestination))
-{
-	mobileSendWeirdError();
-}
+    //Find User ID of Destination User
+    findMyID($pUsername);
+    findDestinationData($pDestination);
 
-	//Find User ID of Destination User
-	findMyID($pUsername);
-	findDestinationData($pDestination);
-
-	//SEND EMAIL
-	sendEmail();
-
+    //SEND EMAIL
+    sendEmail();
 
 
 }
-
-
-
-
 
 
 /** Check if book already requested
  *
- * */ 
-function sendEmail(){
-	
-	
-	$destName=mysql_real_escape_string($_SESSION['destName']);
-	$senderName=mysql_real_escape_string($_SESSION['senderName']);
-	
-	// SMARTLIB ADMIN MAIL
-	$strTo =  $_SESSION['destEmail'].PHP_EOL;
+ * */
+function sendEmail()
+{
 
-	$strHeader = "Content-type: text/html; charset=iso-8859-1\r\n";
-	$strHeader .= "From: SmartLib "._NAME." <"._EMAIL.">";
-	
-	//Build Email
-	$strSubject = "SmartLib Message From ".$senderName;
-	$strMessage = "Hello <i>". $destName."</i>,<br>"
-	."SmartLib User <i>".$senderName.
-	"</i> left a message for you:".
-	"<br><br><strong><i>".mysql_real_escape_string($_SESSION['message']).
-	"</i></strong><br><br></br>".$senderName." used ".$_SESSION['app']." Application".
-	"<br><img src=\"".$_SESSION['appQR']."\" alt=\"Download Application\"/>".
-	
-	"<br>"."<i><span style=\"color:#424242\"><font size=\"-1\">SmartLib "
-	._NAME."<br>"._ADDRESS."</i></font></span>"
-	;
-	
 
-	
-	//Send email
-	// @ = avoid showing error
-	$flgSend = @mail($strTo,$strSubject,$strMessage,$strHeader);
-	
-	if(!$flgSend)
-	{
-		//Show error to user
-		mobileSendMailServerError();
-	}
-	else{
-		//Show info to user
-		mobileSendSuccess();
-	}
+    $destName = mysql_real_escape_string($_SESSION['destName']);
+    $senderName = mysql_real_escape_string($_SESSION['senderName']);
+
+    // SMARTLIB ADMIN MAIL
+    $strTo = $_SESSION['destEmail'] . PHP_EOL;
+
+    $strHeader = "Content-type: text/html; charset=iso-8859-1\r\n";
+    $strHeader .= "From: SmartLib " . _NAME . " <" . _EMAIL . ">";
+
+    //Build Email
+    $strSubject = "SmartLib Message From " . $senderName;
+    $strMessage = "Hello <i>" . $destName . "</i>,<br>"
+        . "SmartLib User <i>" . $senderName .
+        "</i> left a message for you:" .
+        "<br><br><strong><i>" . mysql_real_escape_string($_SESSION['message']) .
+        "</i></strong><br><br></br>" . $senderName . " used " . $_SESSION['app'] . " Application" .
+        "<br><img src=\"" . $_SESSION['appQR'] . "\" alt=\"Download Application\"/>" .
+
+        "<br>" . "<i><span style=\"color:#424242\"><font size=\"-1\">SmartLib "
+        . _NAME . "<br>" . _ADDRESS . "</i></font></span>";
+
+
+    //Send email
+    // @ = avoid showing error
+    $flgSend = @mail($strTo, $strSubject, $strMessage, $strHeader);
+
+    if (!$flgSend) {
+        //Show error to user
+        mobileSendMailServerError();
+    } else {
+        //Show info to user
+        mobileSendSuccess();
+    }
 
 
 }
-
 
 
 /** Finds User ID of User that wants to send mail
  *
  * */
-function findDestinationData($pUser){
+function findDestinationData($pUser)
+{
 
-	
-	$queryFindUser= sprintf("SELECT name, email, allowRequests  FROM SMARTLIB_USER WHERE username='%s'",
-			mysql_real_escape_string($pUser));
 
-	// Find Unique ID of User
-	$result = mysql_query($queryFindUser) or dbError(mysql_error());
+    $queryFindUser = sprintf("SELECT name, email, allowRequests  FROM SMARTLIB_USER WHERE username='%s'",
+        mysql_real_escape_string($pUser));
 
-	//Get book ID and its status
-	if(mysql_num_rows($result) > 0){
-	
-		$row = mysql_fetch_row($result);
-	
-		$_SESSION['destName'] = $row[0];
-		$_SESSION['destEmail'] = $row[1];
-		$allowRequests = $row[2];
-	}
-	//Use dont owns this book
-	else{
-		//User dont have this book
-		mobileSendWeirdError();
-	}
-	
-	if(!($allowRequests=="2" || $allowRequests=="3"))
-	{
-		mobileSendMailDontAccepts();
-	}
-	
- 
+    // Find Unique ID of User
+    $result = mysql_query($queryFindUser) or dbError(mysql_error());
+
+    //Get book ID and its status
+    if (mysql_num_rows($result) > 0) {
+
+        $row = mysql_fetch_row($result);
+
+        $_SESSION['destName'] = $row[0];
+        $_SESSION['destEmail'] = $row[1];
+        $allowRequests = $row[2];
+    } //Use dont owns this book
+    else {
+        //User dont have this book
+        mobileSendWeirdError();
+    }
+
+    if (!($allowRequests == "2" || $allowRequests == "3")) {
+        mobileSendMailDontAccepts();
+    }
+
+
 }
-
-
 
 
 /** Finds Info about User that will receive email
  *
  * */
-function findMyID($pUser){
-	
-	$queryFindUser= sprintf("SELECT name FROM SMARTLIB_USER WHERE username='%s'",
-			mysql_real_escape_string($pUser));
-	
+function findMyID($pUser)
+{
+
+    $queryFindUser = sprintf("SELECT name FROM SMARTLIB_USER WHERE username='%s'",
+        mysql_real_escape_string($pUser));
 
 
 // Find Unique ID of User
-	$result = mysql_query($queryFindUser) or dbError(mysql_error());
+    $result = mysql_query($queryFindUser) or dbError(mysql_error());
 
 
-	//Get book ID and its status
-	if(mysql_num_rows($result) > 0){
-	
-		$row = mysql_fetch_row($result);
-	
-		$_SESSION['senderName'] = $row[0];
-	
-	}
-	//Use dont owns this book
-	else{
-		//User dont have this book
-		mobileSendMailServerError();
-	}
+    //Get book ID and its status
+    if (mysql_num_rows($result) > 0) {
+
+        $row = mysql_fetch_row($result);
+
+        $_SESSION['senderName'] = $row[0];
+
+    } //Use dont owns this book
+    else {
+        //User dont have this book
+        mobileSendMailServerError();
+    }
 }
-
-
-
 
 
 // Previously requested
-function mobileSendSuccess(){
+function mobileSendSuccess()
+{
 
-	$row = array(
-			"result"=>"1",
-	);
+    $row = array(
+        "result" => "1",
+    );
 
-	//Encode Answer
-	echo json_encode($row);
+    //Encode Answer
+    echo json_encode($row);
 
-	die();
+    die();
 }
-
-
-
 
 
 // Previously requested
-function mobileSendMailDontAccepts(){
-	
-	$row = array(
-			"result"=>"0",
-	);
+function mobileSendMailDontAccepts()
+{
 
-	//Encode Answer
-	echo json_encode($row);
+    $row = array(
+        "result" => "0",
+    );
 
-	die();
+    //Encode Answer
+    echo json_encode($row);
+
+    die();
 }
-
-
-
-
-
-
-
-
 
 
 // Sends error to mobile device: Book dont exists in Google API
-function mobileSendWeirdError(){
-	
-	$row = array(
-			"result"=>"-12",
-	);
-	
-	//Encode Answer
-	echo json_encode($row);
+function mobileSendWeirdError()
+{
+
+    $row = array(
+        "result" => "-12",
+    );
+
+    //Encode Answer
+    echo json_encode($row);
 
 
-	die();
+    die();
 }
-
-
-
-
 
 
 // TODO Sends error to mobile device using JSON Object Format
-function mobileSendMailServerError(){
-	$row = array(
-			"result"=>"-1",
-	);
-	
-	//Encode Answer
-	echo json_encode($row);
+function mobileSendMailServerError()
+{
+    $row = array(
+        "result" => "-1",
+    );
 
-	
-	die();
+    //Encode Answer
+    echo json_encode($row);
+
+
+    die();
 }
-
-
-
-
-
-
 
 
 // Database Error
-function dbError($pError){
+function dbError($pError)
+{
 
-	if($_SESSION['isMobileDevice']){
-		//Inform Mobile Device about database Error
-		mobileSendDatabaseError();
-	}
+    if ($_SESSION['isMobileDevice']) {
+        //Inform Mobile Device about database Error
+        mobileSendDatabaseError();
+    }
 
-	//if there is DB Error, inform user and move him back
-	inform($pError);
+    //if there is DB Error, inform user and move him back
+    inform($pError);
 
 
-	if($_SESSION['currentPage']==""){
-		$_SESSION['currentPage']="index.php";
-	}
+    if ($_SESSION['currentPage'] == "") {
+        $_SESSION['currentPage'] = "index.php";
+    }
 
-	header("Location: ".$_SESSION['currentPage']);
-	die();
+    header("Location: " . $_SESSION['currentPage']);
+    die();
 
 }
-
-
-
-
-
 
 
 ?>

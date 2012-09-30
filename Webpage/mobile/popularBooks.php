@@ -45,7 +45,7 @@ $pKey = $_REQUEST['mykey'];
 $_SESSION['UserID'] = "";
 $_SESSION['web'] = "0";
 
-require_once("../CREDENCIALS.php");
+require_once("../CONFIG.php");
 $mykey = _MY_KEY;
 
 //Find out if we are on mobile device

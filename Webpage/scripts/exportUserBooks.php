@@ -35,7 +35,7 @@ Fax: +357-22-892701
 
 session_start();
 
-include ('../CREDENCIALS.php');
+include ('../CONFIG.php');
 include_once('genericFunctions.php');
 
 //Get username and password for user

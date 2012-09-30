@@ -1,4 +1,4 @@
-    <?php
+<?php
 /*
     This file is part of SmartLib Project.
     
@@ -29,56 +29,55 @@
     Tel: +357-22-892755
     Fax: +357-22-892701
 */
-    
-    
-    
-require_once("CREDENCIALS.php");
+
+
+require_once("CONFIG.php");
 include ('scripts/genericFunctions.php');
 
-$loginError=0;
-
+$loginError = 0;
 
 
 //Get the DB Connection from Session
-$dbconnect=$_SESSION['dbconnection'];
+$dbconnect = $_SESSION['dbconnection'];
 
- if(!mysql_ping($_SESSION['dbconnection'])) {
-	connectToDB();
+if (!mysql_ping($_SESSION['dbconnection'])) {
+    connectToDB();
 }
-
 
 
 // ################ Functions ################
 
 // ################ Connect to Database
-function connectToDB(){
-	/******
- * CHANGE those values below to your database host address,
-* usernamee & password for database, and the database name.
-*****/
+function connectToDB()
+{
+    /******
+     * CHANGE those values below to your database host address,
+     * usernamee & password for database, and the database name.
+     *****/
 
-	// Connect & Select database
-	$dbconnect = mysql_pconnect(DB_HOST, DB_USER, DB_PASSWORD) or connectError(mysql_error());
-	$_SESSION['dbconnection']=$dbconnect;//Save connection to Session
+    // Connect & Select database
+    $dbconnect = mysql_pconnect(DB_HOST, DB_USER, DB_PASSWORD) or connectError(mysql_error());
+    $_SESSION['dbconnection'] = $dbconnect; //Save connection to Session
 
-	if(!$loginError){
-	//Select Database
-	mysql_select_db(DB_NAME, $_SESSION['dbconnection']) or dbError(mysql_error());
-	}
+    if (!$loginError) {
+        //Select Database
+        mysql_select_db(DB_NAME, $_SESSION['dbconnection']) or dbError(mysql_error());
+    }
 }
-	
+
 // ################ Disconnect from Database
-function reconnectToDB(){
-   mysql_close($_SESSION['dbconnection']);
-   connectToDB();
+function reconnectToDB()
+{
+    mysql_close($_SESSION['dbconnection']);
+    connectToDB();
 }
 
-function connectError($pError){
-	$loginError=1;
-	//$_SESSION['dbError']=1;
-	inform($pError);
-	}
-	
+function connectError($pError)
+{
+    $loginError = 1;
+    //$_SESSION['dbError']=1;
+    inform($pError);
+}
 
 
 ?>

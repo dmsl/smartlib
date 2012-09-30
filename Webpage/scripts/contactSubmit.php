@@ -34,7 +34,7 @@ Fax: +357-22-892701
 
 
 session_start();
-require_once("../CREDENCIALS.php");
+require_once("../CONFIG.php");
 
 $_SESSION['CONTmessage'] = $_REQUEST['CONTmessage'];
 $_SESSION['CONTname'] = $_REQUEST['CONTname'];

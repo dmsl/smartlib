@@ -1,5 +1,5 @@
 <?php
-require_once("../../CREDENCIALS.php");
+require_once("../../CONFIG.php");
 $host_name = DB_HOST;
 $user_name = DB_USER;
 $pass_word = DB_PASSWORD;
