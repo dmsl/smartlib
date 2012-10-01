@@ -1,41 +1,20 @@
- This file is part of SmartLib Project.
+How to setup your own SmartLib Directions:
 
-    SmartLib is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+1. Download and Extract Webpage Source code
 
-    SmartLib is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+2. Upload extracted source to your FTP Server, and give appropriate permissions:
+    a. 0755 to all files
+    b. 0777 to CONFIG.PHP (in the root folder), so automated installation can proceed
 
-    You should have received a copy of the GNU General Public License
-    along with SmartLib.  If not, see <http://www.gnu.org/licenses/>.
-    
-    
-	Author: Paschalis Mpeis
+3. Go to your domain/INSTALL , and follow instructions
 
-	Affiliation:
-	Data Management Systems Laboratory 
-	Dept. of Computer Science 
-	University of Cyprus 
-	P.O. Box 20537 
-	1678 Nicosia, CYPRUS 
-	Web: http://dmsl.cs.ucy.ac.cy/
-	Email: dmsl@cs.ucy.ac.cy
-	Tel: +357-22-892755
-	Fax: +357-22-892701
-	
-===========================================================================
-===========================================================================
+4. Restore permissions of CONFIG.PHP to 0755.
 
-Setup your own SmartLib Directions:
+5. Change your logos in images/ directory
 
-1. Open CREDENCIALS.php, and fill the fields according to description given.
-
-2. Using your browser, go to: your_url/INSTALL/initLibrary.php
-. this procedure will submit your library to the SmartLib Central Library
-. your library must be approved from SmartLib's Database Administrator
-. After aproovment your library can be selected and be fully functional from Smarptone Applications
-
+What this procedure does:
+.checks your connection to your database
+.creates tables to your database
+.creates a configuration file with parameters chosen to build your library
+.enrolls your library to SmartLib Central database
+..your library will be available as a login option from Smartphones and Tablets
