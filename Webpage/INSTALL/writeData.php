@@ -36,8 +36,9 @@ $filename = "../CONFIG.php";
 
 
 //
-$fw = fopen($filename, 'w') or showError('Dont have permissions on /CONFIG.php to save data<br>'
-    . 'Please change permissions temporarily to 0777 and try again');
+$fw = fopen($filename, 'w') or showError('Dont have permissions on CONFIG.php to save data.<br>' .
+    'CONFIG.php is on the root of your installation<br>'
+    . 'Please change its permissions temporarily to 0777 and try again');
 
 
 $data = <<< ALLDATA
@@ -100,13 +101,43 @@ to file Config.php. <br>'
 // close file
 fclose($fw);
 
+
+// Connect & Select database
+$dbconnect = mysql_pconnect($dbhost, $dbuser, $dbpass) or showError(mysql_error());
+
+//Select Database
+mysql_select_db($dbname, $dbconnect) or showError(mysql_error());
+
+// Create new tables
+$sql = explode(";", file_get_contents('CREATE_DATABASE.sql')); //
+
+foreach ($sql as $query)
+    mysql_query($query);
+
+
 $result = array(
     "result" => "1",
-    "message" => "Configuration Files Saved Successfully"
+    "message" => "Configuration Files Saved Successfully<br>" .
+        "Database Successfully Initialized"
 );
 
 echo json_encode($result);
 die;
+
+
+//$fp = file('CREATE_DATABASE.sql', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+//$query = '';
+//foreach ($fp as $line) {
+//    if ($line != '' && strpos($line, '--') === false) {
+//        $query .= $line;
+//        if (substr($query, -1) == ';') {
+//            mysql_query($query) or showError("Error while initializing database:<br>" . mysql_error());
+//            $query = '';
+//        }
+//    }
+//}
+//
+//
 
 
 function showError($msg)
@@ -121,28 +152,6 @@ function showError($msg)
     die;
 
 }
-
-
-include('../dbConnect.php');
-
-// Create new tables
-
-$fp = file('CREATE_DATABASE.sql', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-$query = '';
-foreach ($fp as $line) {
-    if ($line != '' && strpos($line, '--') === false) {
-        $query .= $line;
-        if (substr($query, -1) == ';') {
-            mysql_query($query) or showError("Error while initializing database:<br>" . mysql_error());
-            $query = '';
-        }
-    }
-}
-
-
-
-
-
 
 
 ?>

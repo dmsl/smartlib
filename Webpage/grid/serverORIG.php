@@ -30,7 +30,7 @@
     
     
     -->
- <?php
+<?php
 include("dbconfig.php");
 // coment the above lines if php 5
 //include("JSON.php");
@@ -42,10 +42,12 @@ $page = $_REQUEST['page']; // get the requested page
 $limit = $_REQUEST['rows']; // get how many rows we want to have into the grid
 $sidx = $_REQUEST['sidx']; // get index row - i.e. user click to sort
 $sord = $_REQUEST['sord']; // get the direction
-if(!$sidx) $sidx =1;
+if (!$sidx) $sidx = 1;
 
-$totalrows = isset($_REQUEST['totalrows']) ? $_REQUEST['totalrows']: false;
-if($totalrows) {$limit = $totalrows;}
+$totalrows = isset($_REQUEST['totalrows']) ? $_REQUEST['totalrows'] : false;
+if ($totalrows) {
+    $limit = $totalrows;
+}
 
 // search options
 // IMPORTANT NOTE!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -54,113 +56,109 @@ if($totalrows) {$limit = $totalrows;}
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 $wh = "";
 $searchOn = Strip($_REQUEST['_search']);
-if($searchOn=='true') {
-	$fld = Strip($_REQUEST['searchField']);
-	if( $fld=='id' || $fld =='invdate' || $fld=='name' || $fld=='amount' || $fld=='tax' || $fld=='total' || $fld=='note' ) {
-		$fldata = Strip($_REQUEST['searchString']);
-		$foper = Strip($_REQUEST['searchOper']);
-		// costruct where
-		$wh .= " AND ".$fld;
-		switch ($foper) {
-			case "bw":
-				$fldata .= "%";
-				$wh .= " LIKE '".$fldata."'";
-				break;
-			case "eq":
-				if(is_numeric($fldata)) {
-					$wh .= " = ".$fldata;
-				} else {
-					$wh .= " = '".$fldata."'";
-				}
-				break;
-			case "ne":
-				if(is_numeric($fldata)) {
-					$wh .= " <> ".$fldata;
-				} else {
-					$wh .= " <> '".$fldata."'";
-				}
-				break;
-			case "lt":
-				if(is_numeric($fldata)) {
-					$wh .= " < ".$fldata;
-				} else {
-					$wh .= " < '".$fldata."'";
-				}
-				break;
-			case "le":
-				if(is_numeric($fldata)) {
-					$wh .= " <= ".$fldata;
-				} else {
-					$wh .= " <= '".$fldata."'";
-				}
-				break;
-			case "gt":
-				if(is_numeric($fldata)) {
-					$wh .= " > ".$fldata;
-				} else {
-					$wh .= " > '".$fldata."'";
-				}
-				break;
-			case "ge":
-				if(is_numeric($fldata)) {
-					$wh .= " >= ".$fldata;
-				} else {
-					$wh .= " >= '".$fldata."'";
-				}
-				break;
-			case "ew":
-				$wh .= " LIKE '%".$fldata."'";
-				break;
-			case "ew":
-				$wh .= " LIKE '%".$fldata."%'";
-				break;
-			default :
-				$wh = "";
-		}
-	}
+if ($searchOn == 'true') {
+    $fld = Strip($_REQUEST['searchField']);
+    if ($fld == 'id' || $fld == 'invdate' || $fld == 'name' || $fld == 'amount' || $fld == 'tax' || $fld == 'total' || $fld == 'note') {
+        $fldata = Strip($_REQUEST['searchString']);
+        $foper = Strip($_REQUEST['searchOper']);
+        // costruct where
+        $wh .= " AND " . $fld;
+        switch ($foper) {
+            case "bw":
+                $fldata .= "%";
+                $wh .= " LIKE '" . $fldata . "'";
+                break;
+            case "eq":
+                if (is_numeric($fldata)) {
+                    $wh .= " = " . $fldata;
+                } else {
+                    $wh .= " = '" . $fldata . "'";
+                }
+                break;
+            case "ne":
+                if (is_numeric($fldata)) {
+                    $wh .= " <> " . $fldata;
+                } else {
+                    $wh .= " <> '" . $fldata . "'";
+                }
+                break;
+            case "lt":
+                if (is_numeric($fldata)) {
+                    $wh .= " < " . $fldata;
+                } else {
+                    $wh .= " < '" . $fldata . "'";
+                }
+                break;
+            case "le":
+                if (is_numeric($fldata)) {
+                    $wh .= " <= " . $fldata;
+                } else {
+                    $wh .= " <= '" . $fldata . "'";
+                }
+                break;
+            case "gt":
+                if (is_numeric($fldata)) {
+                    $wh .= " > " . $fldata;
+                } else {
+                    $wh .= " > '" . $fldata . "'";
+                }
+                break;
+            case "ge":
+                if (is_numeric($fldata)) {
+                    $wh .= " >= " . $fldata;
+                } else {
+                    $wh .= " >= '" . $fldata . "'";
+                }
+                break;
+            case "ew":
+                $wh .= " LIKE '%" . $fldata . "'";
+                break;
+            case "ew":
+                $wh .= " LIKE '%" . $fldata . "%'";
+                break;
+            default :
+                $wh = "";
+        }
+    }
 }
 
 
-
-
-
-switch ($examp) {
-   case
-		break;
-}
+//switch ($examp) {
+//   case
+//		break;
+//}
 
 
 mysql_close($db);
 
 function Strip($value)
 {
-	if(get_magic_quotes_gpc() != 0)
-  	{
-    	if(is_array($value))  
-			if ( array_is_associative($value) )
-			{
-				foreach( $value as $k=>$v)
-					$tmp_val[$k] = stripslashes($v);
-				$value = $tmp_val; 
-			}				
-			else  
-				for($j = 0; $j < sizeof($value); $j++)
-        			$value[$j] = stripslashes($value[$j]);
-		else
-			$value = stripslashes($value);
-	}
-	return $value;
+    if (get_magic_quotes_gpc() != 0) {
+        if (is_array($value))
+            if (array_is_associative($value)) {
+                foreach ($value as $k => $v)
+                    $tmp_val[$k] = stripslashes($v);
+                $value = $tmp_val;
+            } else
+                for ($j = 0; $j < sizeof($value); $j++)
+                    $value[$j] = stripslashes($value[$j]);
+        else
+            $value = stripslashes($value);
+    }
+    return $value;
 }
-function array_is_associative ($array)
+
+function array_is_associative($array)
 {
-    if ( is_array($array) && ! empty($array) )
-    {
-        for ( $iterator = count($array) - 1; $iterator; $iterator-- )
-        {
-            if ( ! array_key_exists($iterator, $array) ) { return true; }
+    if (is_array($array) && !empty($array)) {
+        for ($iterator = count($array) - 1; $iterator; $iterator--) {
+            if (!array_key_exists($iterator, $array)) {
+                return true;
+            }
         }
-        return ! array_key_exists(0, $array);
+        return !array_key_exists(0, $array);
     }
     return false;
 }
+
 ?>

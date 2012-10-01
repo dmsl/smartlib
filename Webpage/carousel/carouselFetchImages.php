@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /*
  This file is part of SmartLib Project.
@@ -33,54 +33,51 @@ Fax: +357-22-892701
 
 */
 
+require_once("../CONFIG.php");
+
 // Array indexes are 0-based, jCarousel positions are 1-based.
 $first = max(0, intval($_GET['first']) - 1);
-$last  = max($first + 1, intval($_GET['last']) - 1);
+$last = max($first + 1, intval($_GET['last']) - 1);
 
 $length = $last - $first + 1;
 
 // ---
 //Get Popular Books
 
-	//URL for the Google Books API
-	$device="?device=web";
-	$mykey="&mykey=23f234trfv34";
-	
-	$buildURL= "http://".getCustom2ndURL()."mobile/popularBooks.php".$device.$mykey;
+//URL for the Google Books API
+$device = "?device=web";
+$mykey = "&mykey=" . _MY_KEY;
 
-	$json = file_get_contents($buildURL,0,null,null);
-	$data = json_decode($json);
+$buildURL = "http://" . getCustom2ndURL() . "mobile/popularBooks.php" . $device . $mykey;
 
-
-	//Found results
-
-	$isbns=array();
- 	$images=array();
-	$titles=array();
-	
-		//Get ISBN-13 Code of book
-		foreach ($data as $item) {
-
-	
-			$img_url= $item->imgURL;
-			
-
-			if($img_url=="images/nocover.png"){
-				$img_url= "http://". getCustom2ndURL()."images/nocover.png";
-				}
-				array_push($images, htmlspecialchars($img_url));
-				array_push($isbns, $item->isbn);
-				array_push($titles, htmlspecialchars($item->title));
-	
-			}
+$json = file_get_contents($buildURL, 0, null, null);
+$data = json_decode($json);
 
 
-		
+//Found results
+
+$isbns = array();
+$images = array();
+$titles = array();
+
+//Get ISBN-13 Code of book
+foreach ($data as $item) {
 
 
+    $img_url = $item->imgURL;
 
 
-$total    = count($images);
+    if ($img_url == "images/nocover.png") {
+        $img_url = "http://" . getCustom2ndURL() . "images/nocover.png";
+    }
+    array_push($images, htmlspecialchars($img_url));
+    array_push($isbns, $item->isbn);
+    array_push($titles, htmlspecialchars($item->title));
+
+}
+
+
+$total = count($images);
 
 $selectedImg = array_slice($images, $first, $length);
 $selectedIsbn = array_slice($isbns, $first, $length);
@@ -100,70 +97,70 @@ foreach ($selectedImg as $img) {
 }
 
 foreach ($selectedIsbn as $isbns) {
-	echo '  <isbn>' . $isbns . '</isbn>';
+    echo '  <isbn>' . $isbns . '</isbn>';
 }
 foreach ($selectedTitles as $titles) {
-	echo '  <title>' . $titles . '</title>';
+    echo '  <title>' . $titles . '</title>';
 }
 
 
 echo '</data>';
 
 
-	
 //Returns the URL user is, without include the last page in the URL path
-function xmlspecialchars($text) {
-   return str_replace('&#039;', '&apos;', htmlspecialchars($text, ENT_QUOTES));
+function xmlspecialchars($text)
+{
+    return str_replace('&#039;', '&apos;', htmlspecialchars($text, ENT_QUOTES));
 }
 
 
-function getCustom2ndURL(){
+function getCustom2ndURL()
+{
 
-	$len = strlen($_SERVER['REQUEST_URI']);
-	$fullURL=$_SERVER['REQUEST_URI'];
-	$found=0;
-
-
-	for( $i= $len-1; $i>0; $i--){
-		
-
-		//Remove the last name of the URI
-		if($fullURL[$i]=="/"){
-				
-			$found=1;
-				
-			$urlResult = substr($fullURL,0,$i);
-			break;
-		}
-
-	}
-	
-	
-	$len = strlen($urlResult);
-	$fullURL=$urlResult;
-	$found=0;
+    $len = strlen($_SERVER['REQUEST_URI']);
+    $fullURL = $_SERVER['REQUEST_URI'];
+    $found = 0;
 
 
-	for( $i= $len-1; $i>0; $i--){
-		
-
-		//Remove the last name of the URI
-		if($fullURL[$i]=="/"){
-				
-			$found=1;
-				
-			$urlResult = substr($fullURL,0,$i+1);
-			break;
-		}
-
-	}
+    for ($i = $len - 1; $i > 0; $i--) {
 
 
+        //Remove the last name of the URI
+        if ($fullURL[$i] == "/") {
 
-	if(!$found)
-		$urlResult = $_SERVER['REQUEST_URI'];
+            $found = 1;
 
-	return $_SERVER['SERVER_NAME']. $urlResult;
+            $urlResult = substr($fullURL, 0, $i);
+            break;
+        }
+
+    }
+
+
+    $len = strlen($urlResult);
+    $fullURL = $urlResult;
+    $found = 0;
+
+
+    for ($i = $len - 1; $i > 0; $i--) {
+
+
+        //Remove the last name of the URI
+        if ($fullURL[$i] == "/") {
+
+            $found = 1;
+
+            $urlResult = substr($fullURL, 0, $i + 1);
+            break;
+        }
+
+    }
+
+
+    if (!$found)
+        $urlResult = $_SERVER['REQUEST_URI'];
+
+    return $_SERVER['SERVER_NAME'] . $urlResult;
 
 }
 
