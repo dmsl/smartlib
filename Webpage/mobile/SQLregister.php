@@ -39,6 +39,7 @@ include_once("scripts/genericFunctions.php");
 
 
 $_SESSION['isMobileDevice'] = 0;
+$_SESSION['foundLevel'] = 0;
 
 //Get the device
 $device = $_POST['device'];
@@ -150,6 +151,19 @@ if ($_SESSION['REGtelephone'] == "") {
 //Connect to database
 include('../dbConnect.php');
 
+//Check if is the first User (= Admin/Owner)
+
+$queryFirstUser = sprintf("SELECT username FROM SMARTLIB_USER");
+$allUsernames = mysql_query($queryFirstUser);
+$allUsernamesNum = mysql_num_rows($allUsernames);
+
+
+//User level is admin
+if ($allUsernamesNum == 0) {
+    $_SESSION['foundLevel'] = "3";
+} else {
+    $_SESSION['foundLevel'] = "0";
+}
 
 // Check username uniqueness
 $queryFindUsernames = sprintf("SELECT username FROM SMARTLIB_USER WHERE username='%s'",
@@ -192,8 +206,17 @@ if ($_SESSION['regHasErrors'] == "0") {
 
 //            printError(); TODO make it ajax! with reply
 
-            $msg = "Your account successfully created<br>" .
-                "Please Activate it using your email: <br>" . $_SESSION['REGemail'];
+            $msg = "";
+
+            if ($_SESSION['foundLevel'] == "3") {
+                $msg = "Your administrator/owner account successfully created<br>" .
+                    " No activation threw email needed for this account.<br>" .
+                    "All other accounts must be activated using their email address given.";
+            } else {
+                $msg = "Your account successfully created<br>" .
+                    "Please Activate it using your email: <br>" . $_SESSION['REGemail'];
+
+            }
 
 
             $result = array(
@@ -291,7 +314,7 @@ function registerUserToDatabase()
     else $allowRequests = 0;
 
     $queryInsertUser = sprintf("INSERT INTO SMARTLIB_USER (username, password, name, surname, email,"
-            . "telephone,allowRequests,activationCode) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s')",
+            . "telephone,allowRequests,activationCode, level) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s')",
         mysql_real_escape_string($_SESSION['REGusername']),
         mysql_real_escape_string($encPassword),
         mysql_real_escape_string($_SESSION['REGname']),
@@ -299,34 +322,64 @@ function registerUserToDatabase()
         mysql_real_escape_string($_SESSION['REGemail']),
         mysql_real_escape_string($_SESSION['REGtelephone']),
         $allowRequests,
-        mysql_real_escape_string($activationCode)
+        mysql_real_escape_string($activationCode),
+        $_SESSION['foundLevel']
     );
 
     //Insert User to database
     $insert = mysql_query($queryInsertUser) or dbError(mysql_error());
 
 
-    $strTo = $_SESSION['REGemail'];
-    //TODO change to the Orginization Name
-    $strSubject = "SmartLib " . "UCY" . " Activation";
-    $strHeader = "From: Smartlib UCY<smartlib@cs.ucy.ac.cy>";
-    $strMessage = "Hello " . $_SESSION['REGname'] . ",\nWelcome to the library of the modern world.\n" .
-        "\n\nTo activate your account please follow this link: \n\n" .
-        getCustom2ndURL() .
-        "activate.php?uLnk=yes&uLnkUsername=" . $_SESSION['REGusername'] .
-        "&activationCode=" . $activationCode . "\n\nThank you,\nSmartLib Team";
+    //Library has a email server
+    if ($_SESSION['foundLevel'] == "3") {
+
+        $strTo = $_SESSION['REGemail'];
+        $strSubject = "SmartLib " . "UCY" . " Activation";
+        $strHeader = "From: Smartlib UCY<" . _EMAIL . ">";
+        $strMessage = "Hello " . $_SESSION['REGname'] . ",\nWelcome to the library of the modern world.\n" .
+            "\n\nTo activate your account please follow this link: \n\n" .
+            getCustom2ndURL() .
+            "activate.php?uLnk=yes&uLnkUsername=" . $_SESSION['REGusername'] .
+            "&activationCode=" . $activationCode . "\n\nThank you,\nSmartLib Team";
 
 
-    // @ = avoid showing error
-    //$flgSend = ;
+        // @ = avoid showing error
+        //$flgSend = ;
 
-    if (@mail($strTo, $strSubject, $strMessage, $strHeader)) {
+        if (@mail($strTo, $strSubject, $strMessage, $strHeader)) {
+        } else {
+            $_SESSION['errEmail'] = "1";
+            $_SESSION['regHasErrors'] = "1";
+            $_SESSION['regMessage'] .= "Email address is invalid!</br>";
+
+            printError();
+
+        }
     } else {
-        $_SESSION['errEmail'] = "1";
-        $_SESSION['regHasErrors'] = "1";
-        $_SESSION['regMessage'] .= "Email address is invalid!</br>";
 
-        printError();
+        $strTo = $_SESSION['REGemail'];
+        //TODO change to the Orginization Name
+        $strSubject = "SmartLib " . "UCY" . " Activation";
+        $strHeader = "From: Smartlib UCY<" . _EMAIL . ">";
+        $strMessage = "Hello " . $_SESSION['REGname'] . ",\nWelcome to the library of the modern world.\n" .
+            "\n\nTo activate your account please follow this link: \n\n" .
+            getCustom2ndURL() .
+            "activate.php?uLnk=yes&uLnkUsername=" . $_SESSION['REGusername'] .
+            "&activationCode=" . $activationCode . "\n\nThank you,\nSmartLib Team";
+
+
+        // @ = avoid showing error
+        //$flgSend = ;
+
+        if (@mail($strTo, $strSubject, $strMessage, $strHeader)) {
+        } else {
+            $_SESSION['errEmail'] = "1";
+            $_SESSION['regHasErrors'] = "1";
+            $_SESSION['regMessage'] .= "Email address is invalid!</br>";
+
+            printError();
+
+        }
 
     }
 

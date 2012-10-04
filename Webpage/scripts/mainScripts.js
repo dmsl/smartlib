@@ -187,10 +187,13 @@ function asyncLogin() {
             if (_loginResult == "1") {
 
                 // User successfully logged in, and everything is okay!
-                if (_level == "1" || _level == "2") {
+                if (_level >= "1") {
                     //Admin logged in!
                     if (_level == "2") {
                         showToastMessage("Welcome ADMIN.", 1);
+                    }
+                    else if (_level == "3") {
+                        showToastMessage("Welcome ADMIN/OWNER.", 1);
                     }
 
 
@@ -520,6 +523,37 @@ function getLoggedInBooksJqGrid() {
 //        });
 //
 
+
+
+
+
+
+
+// Submit Contact form
+function makeUserAdmin(ev) {
+
+//    //Gather new data
+    var admin = document.getElementById("makeadmin-form-username").value;
+
+
+    //Some fields still empty
+    if (admin == "") {
+        showToastMessage("Please fill all required form fields", 0);
+        return false;
+    }
+
+    //Send post request
+
+    var params = "newadminuser=" + admin;
+    ;
+//runA
+//    showToastMessage("&emailNotif=" + emailNotifications
+//        + "&appNotif=" + appNotifications,1);
+
+    runAPostWebpage("mobile/makeAdmin.php", params, "", "");
+
+    return false;
+}
 
 
 // Submit Contact form

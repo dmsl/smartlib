@@ -62,8 +62,9 @@ if ($_SESSION['loggedin'] == 0) {
     <link href=styles.css rel=stylesheet>
     </link>
     <!--    Include Extra headers-->
-    <?php include 'scripts/gridHeader.php';
-    include 'carousel/carouselHeader.php';  ?>
+    <?php include 'scripts/gridHeader.php'; ?>
+    <script type='text/javascript' src='scripts/autocomplete/jquery.autocomplete.js'></script>
+    <link rel="stylesheet" type="text/css" href="scripts/autocomplete/jquery.autocomplete.css"/>
 
     <script src="scripts/mainScripts.js"></script>
 </head>
@@ -111,7 +112,8 @@ if ($_SESSION['loggedin'] == 0) {
             </div>
             <?php
             //If user is admin
-            if ($_SESSION['level'] == 2) {
+            if ($_SESSION['level'] >= 2) {
+
                 ?>
                 <header>
                     <h1>
@@ -126,6 +128,53 @@ if ($_SESSION['loggedin'] == 0) {
                     <br><br>
                 </div>
                 <?php
+
+                if ($_SESSION['level'] == 3) {
+                    //Aditionally show Owner Panel
+                    ?>
+                    <header>
+                        <h1>
+                            Owner Panel
+                        </h1>
+                    </header>
+                    <div class="mainContent">
+                        <p>To make another user Admin enter its username below:</p>
+
+                        <div id="register-panel">
+                            <div id="makeadmin-form">
+                                <fieldset>
+                                    <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                        Username:
+                                        <input value="" value=""
+                                               id="makeadmin-form-username" autocomplete="false"
+                                                />
+                                        <span class="required">*</span>
+                                    </label>
+                                    </br>
+                                    <button class="sendButton" type="submit"
+                                            onclick="makeUserAdmin(event)"
+                                            >Submit
+                                    </button>
+                                </fieldset>
+                            </div>
+                            <script>
+                                $("#makeadmin-form-username").autocomplete("scripts/autocomplete/getUsernameList.php"
+
+
+                                        , {
+                                            matchContains:true,
+//                    minLength: 2,
+                                            selectFirst:false
+
+                                        });
+                            </script>
+                            <br><br>
+                        </div>
+                    </div>
+                    <?php
+
+                }
             }
             ?>
 

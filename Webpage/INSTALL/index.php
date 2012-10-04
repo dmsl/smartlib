@@ -507,11 +507,12 @@ function switchToFinished() {
             Please make sure you change the permissions back to "755" for safety.\
             Also on images folder you can change the existing images to your own logos<br><br>\
     You will informed by email, about activation progress of your library.<br><br>\
-    For now, you can visit your SmartLib\'s Webpage<br>\
+    For now, you create the first library account, which will be administrator/owner\
+    account.<br> To visit your SmartLib\'s Webpage<br>\
     <div id="install-form4"><br><br>\
             <a href="../" target="_parent" class="nodec">\
             <button class="sendButton" type="button"\
-            >Go to Homepage\
+            >Click Here\
             </button></a>\
             </div>');
 }

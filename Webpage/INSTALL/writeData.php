@@ -31,7 +31,6 @@ $orgurl = $_POST['orgurl'];
 $key = $_POST['key'];
 $pepper = $_POST['pepper'];
 $salt = $_POST['salt'];
-//TODO CHANGE THIS TO ../CONFIG!
 $filename = "../CONFIG.php";
 
 
@@ -56,7 +55,6 @@ define('DB_DSN','mysql:host='.DB_HOST.';dbname='.DB_NAME);
 define('DB_USER', '$dbuser');
 // Db password
 define('DB_PASSWORD', '$dbpass');
-
 //Full name of library
 define('_FULL_NAME', '$libname');
 //Organization full name

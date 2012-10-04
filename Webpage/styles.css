@@ -741,7 +741,7 @@ input:-ms-input-placeholder {
 
 .toast-message {
     position: fixed;
-    top: 92px;
+    top: 105px;
     left: 50%;
     width: 20em;
     margin-left: -10em;
