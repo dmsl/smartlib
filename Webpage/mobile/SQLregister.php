@@ -204,7 +204,6 @@ if ($_SESSION['regHasErrors'] == "0") {
             mobileSendLoginSuccess();
         } else {
 
-//            printError(); TODO make it ajax! with reply
 
             $msg = "";
 
@@ -334,8 +333,8 @@ function registerUserToDatabase()
     if ($_SESSION['foundLevel'] == "3") {
 
         $strTo = $_SESSION['REGemail'];
-        $strSubject = "SmartLib " . "UCY" . " Activation";
-        $strHeader = "From: Smartlib UCY<" . _EMAIL . ">";
+        $strSubject = "SmartLib " . _NAME . " Activation";
+        $strHeader = "From: Smartlib " . _NAME . " <" . _EMAIL . ">";
         $strMessage = "Hello " . $_SESSION['REGname'] . ",\nWelcome to the library of the modern world.\n" .
             "\n\nTo activate your account please follow this link: \n\n" .
             getCustom2ndURL() .
@@ -359,8 +358,8 @@ function registerUserToDatabase()
 
         $strTo = $_SESSION['REGemail'];
         //TODO change to the Orginization Name
-        $strSubject = "SmartLib " . "UCY" . " Activation";
-        $strHeader = "From: Smartlib UCY<" . _EMAIL . ">";
+        $strSubject = "SmartLib " . _NAME . "  Activation";
+        $strHeader = "From: Smartlib " . _NAME . " <" . _EMAIL . ">";
         $strMessage = "Hello " . $_SESSION['REGname'] . ",\nWelcome to the library of the modern world.\n" .
             "\n\nTo activate your account please follow this link: \n\n" .
             getCustom2ndURL() .
@@ -465,6 +464,7 @@ function mobileSendLoginError()
     //Convert HTML New Line to Java New Line
     $javaMSG = $_SESSION['regMessage'];
     $oldNL = "</br>";
+    ;
     $newNL = "\n";
 
     $offset = 0;
