@@ -37,6 +37,35 @@ blockquote {
     quotes: "" ""
 }
 
+* {
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+#wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -80px; /* size of the footer */
+}
+
+#push {
+    height: 80px;
+}
+
+/* FOOTER */
+footer {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80px;
+
+}
+
 header, nav, article, aside, footer, hgroup, section {
     display: block
 }
@@ -367,6 +396,10 @@ nav#global ul li a:hover {
 
 }
 
+#top-panel {
+    line-height: 60px;
+}
+
 /*Search Panel*/
 #search-panel {
     width: 100%;
@@ -471,7 +504,7 @@ nav#global ul li a:hover {
 #contact-panel input.empty, #contact-panel textarea.empty,
 #register-panel input.empty, #register-panel textarea.empty,
 #install-panel input.empty {
-    border-color: #ddd;
+    border-color: #9f9f9f;
     resize: none;
 }
 
@@ -492,7 +525,7 @@ button {
     /*height:30px;*/
     text-decoration: none;
     vertical-align: middle;
-    border-color: #ddd;
+    border-color: #9f9f9f;
     line-height: 20px;
     border-style: solid;
     width: 9em;
@@ -545,7 +578,7 @@ button.sendButton {
 
 button:hover {
     color: #011633;
-    border-color: #a5a5a5;
+    border-color: #555555;
     /*background-color: ;*/
 }
 
@@ -1057,7 +1090,7 @@ aside section:last-child {
 }
 
 #qrcode {
-    margin-top: 25px;
+    /*margin-top: 25px;*/
     text-align: left;
     width: 120px;
     height: 120px;
@@ -1067,7 +1100,7 @@ aside section:last-child {
     margin-bottom: 25px;
     position: absolute;
     right: 10%;
-    top: 28%;
+    /*top: 28%;*/
     cursor: url("images/qrcursor.cur"), wait;
 
     /*
@@ -1251,14 +1284,6 @@ aside section:last-child {
     /*-o-transform: scale(1.1);*/
     /*-moz-transform: scale(1.1);*/
     /*-webkit-transform: scale(1.1);*/
-}
-
-/* FOOTER */
-footer {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-
 }
 
 footer section {

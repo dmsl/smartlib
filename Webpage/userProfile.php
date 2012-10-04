@@ -109,6 +109,26 @@ if ($_SESSION['loggedin'] == 0) {
                 </script>
                 <br><br>
             </div>
+            <?php
+            //If user is admin
+            if ($_SESSION['level'] == 2) {
+                ?>
+                <header>
+                    <h1>
+                        Administrator Panel
+                    </h1>
+                </header>
+                <div class="mainContent">
+                    <p>To include all library books in a webpage enter the following URL:</p>
+                    <textarea id="bibtexAllBooks" style="height: auto; width: 100%; ">http://www.cs.ucy.ac.cy/projects/smartLib/scripts/exportBooks.php?mykey=0a05bb77edad7395da818f361f8115a2
+                    </textarea>
+
+                    <br><br>
+                </div>
+                <?php
+            }
+            ?>
+
         </article>
 
     </div>

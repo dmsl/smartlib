@@ -47,7 +47,7 @@ $pKey = $_REQUEST['mykey'];
 $mykey = _MY_KEY;
 
 
-if ($pKey != $mykey)
+if ($pKey != md5($mykey))
     die();
 
 

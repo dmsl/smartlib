@@ -78,6 +78,9 @@ include 'scripts/sessionInit.php';
                     <h1>Download SmartLib on your Smartphone or Tablet</h1>
                 </header>
                 <div class="mainContent" id="downloadsDevices">
+                    <img id="qrcode" src="http://www.cs.ucy.ac.cy/projects/smartLib/images/qr.png"
+                         alt="Smart QR Code"/>
+
                     <p>
                         SmartLib is available for Android and iOS Platform. Using SmartLib application you
                         can have access to all activated libraries.<br>
@@ -95,13 +98,7 @@ include 'scripts/sessionInit.php';
                            href="http://itunes.apple.com" target="_blank">
                             <button class="sendButton">iOS</button>
                         </a> <br>
-
-
                         <br>
-                        <!--                    <blockquote>-->
-                        <img id="qrcode" src="http://www.cs.ucy.ac.cy/projects/smartLib/images/qr.png"
-                             alt="Smart QR Code"/>
-                        <!--                    </blockquote>-->
                     </p>
                 </div>
                 <header>
@@ -143,11 +140,9 @@ include 'scripts/sessionInit.php';
 
 
 </div>
-
 <footer class=clearfix>
     <?php include "scripts/footer.php" ?>
 
 </footer>
-
 </body>
 </html>
