@@ -10,4 +10,7 @@ How to setup your own SmartLib Directions:
 
 4. Restore permissions of CONFIG.PHP to 0755.
 
-5. Change your logos in images directory
+5. Register the first user
+(will be the OWNER user -- full privileges: can create admin's)
+
+6. Change your logos in images directory

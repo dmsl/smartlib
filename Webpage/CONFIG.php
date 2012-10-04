@@ -12,7 +12,6 @@ define('DB_DSN', 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME);
 define('DB_USER', '');
 // Db password
 define('DB_PASSWORD', '');
-
 //Full name of library
 define('_FULL_NAME', 'Library Name');
 //Organization full name
