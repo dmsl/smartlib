@@ -51,6 +51,14 @@
 
     jQuery(document).ready(function () {
 
+        var windowSpace = $(window).height();
+
+        var recordNum = 5;
+
+        //Show more records
+        if (windowSpace > 1000) {
+            recordNum = 10;
+        }
 
         jQuery("#allBooksList").jqGrid({
 
@@ -92,7 +100,7 @@
 
             //	editurl: "server.php",
 
-            rowNum:5,
+            rowNum:recordNum,
 
             //	rowList:[10,20],
 

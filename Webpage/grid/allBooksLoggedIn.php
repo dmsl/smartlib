@@ -71,6 +71,15 @@ jQuery(document).ready(function () {
     var tmpUsername;
     var tmpIsbn;
 
+    var windowSpace = $(window).height();
+
+    var recordNum = 5;
+
+    //Show more records
+    if (windowSpace > 1000) {
+        recordNum = 10;
+    }
+
 
     // Grid Table
     jQuery("#allBooksLoggedInList").jqGrid({
@@ -117,7 +126,7 @@ jQuery(document).ready(function () {
             }
         ],
 
-        rowNum:5,
+        rowNum:recordNum,
 
 
         sortname:'title',
