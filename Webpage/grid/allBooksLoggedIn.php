@@ -160,9 +160,13 @@ jQuery(document).ready(function () {
                 opacity:'0.0'
             }, "normal");
 
+
             $(".toggleSearchButton").animate({
-                top:'+=65px'
+                top:'+=60px'
             }, "slow", function () {
+
+                //Change css
+                $('#search-panel').css({top:'-20px', marginBottom:"20px"});
 
                 //Replace form
                 $('#advancedSearchLoggedIn').replaceWith(
@@ -206,8 +210,13 @@ jQuery(document).ready(function () {
 
 
             $(".toggleSearchButton").animate({
-                top:'-=65px'
+                top:'-=40px'
             }, "slow", function () {
+
+                //Change css
+                $('#search-panel').css({top:'0px', marginBottom:"10px"});
+
+                $(".toggleSearchButton").css({ top:'-=20px'});
 
                 //Replace form TODO CHECK
                 $('#simpleSearchLoggedIn').replaceWith(

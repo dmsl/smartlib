@@ -50,7 +50,7 @@ function toggleLoginButton() {
 
         //Activate Login Link
         $('#login-panel-submit').replaceWith(
-            '<button type="submit" onclick="asyncLogin()"   id="login-panel-submit-filled" href=""  ' +
+            '<button class="loginButton" type="submit" onclick="asyncLogin()"   id="login-panel-submit-filled" href=""  ' +
                 ' >Login</button>');
 
 
@@ -210,7 +210,7 @@ function asyncLogin() {
 
                     //Login button
                     $('#login-panel-submit-filled').replaceWith(
-                        '<button type="submit" onclick="asyncLogout()"   id="login-panel-submit-logout" href=""  ' +
+                        '<button type="submit" onclick="asyncLogout()"  class="logoutButton"   id="login-panel-submit-logout" href=""  ' +
                             ' >Logout' + '</button>');
 
 

@@ -31,7 +31,7 @@
     
     -->
 
-<div id="search-panel">
+<div id="search-panel" style="top: 10px;">
     <form id="simpleSearchLoggedOut" action="#" method="post">
         <input type="text" class="input" id="search_cd_loggedOut"/>
 

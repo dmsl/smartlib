@@ -99,7 +99,7 @@ include 'scripts/sessionInit.php';
                         <fieldset>
                             <label>&nbsp&nbsp&nbspName:
                                 <input name="CONTname" id="contact-form-Name"
-                                       type="text" autofocus="autofocus"
+                                       type="text"
                                        placeholder="Your name"
                                        value="<?php
                                        if ($_SESSION['loggedin' == 1]) {
@@ -183,7 +183,7 @@ include 'scripts/sessionInit.php';
 
 
 </div>
-<div class="footerPusher"></div>
+<br>
 <footer class=clearfix>
     <?php include "scripts/footer.php" ?>
 </footer>

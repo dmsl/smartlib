@@ -405,19 +405,31 @@ nav#global ul li a:hover {
     width: 100%;
     text-align: center;
     font-size: 1.5em;
-    background-color: #ffffff;
-    color: #ddd;
+    background-color: transparent;
+    color: #DDD;
     line-height: 45px;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
+    position: relative;
+    top: -20px;
+    /*width: 100%;*/
+    /*text-align: center;*/
+    /*font-size: 1.5em;*/
+    /*background-color: #ffffff;*/
+    /*color: #ddd;*/
+    /*line-height: 45px;*/
+    /*margin-bottom: 35px;*/
     /*margin-top: 10px;*/
 }
 
-#search-panel input, #contact-panel input, textarea, #register-panel input, textarea, #install-panel input {
+#search-panel input, #contact-panel input, textarea,
+#register-panel input, textarea, #install-panel input, #login-panel input {
     border-style: solid;
     border-color: #a5a5a5;
     text-align: center;
     line-height: 20px;
     width: 15em;
+    padding-top: 3px;
+    padding-bottom: 0px;
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -529,6 +541,7 @@ button {
     line-height: 20px;
     border-style: solid;
     width: 9em;
+    margin-bottom: 5px;
 }
 
 button.searchButton {
@@ -557,6 +570,26 @@ button.clearButton {
     background-position: right;
 }
 
+button.logoutButton {
+    background: url(images/logout.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: #305FA1;
+    /*color: #011633;*/
+    color: #ffffff;
+
+}
+
+button.loginButton {
+    background: url(images/send.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: #305FA1;
+    /*color: #011633;*/
+    color: #ffffff;
+
+}
+
 button.sendButton {
     background: url(images/send.png);
     background-repeat: no-repeat;
@@ -582,6 +615,14 @@ button:hover {
     /*background-color: ;*/
 }
 
+button.logoutButton:hover, button.loginButton:hover {
+    /*color: #011633;*/
+    color: #ffffff;
+    border-color: #ffffff;
+    background-color: #387ec9;
+    /*background-color: ;*/
+}
+
 #top-panel #top-panel-title {
     color: #ffffff;
     font-family: sansation_light;
@@ -599,7 +640,7 @@ button:hover {
     display: inline-block;
     position: relative;
     left: 88%;
-    top: -85px;
+    top: -95px;
 
     margin-right: auto;
     /*background-color: #011633;*/
@@ -649,16 +690,18 @@ input {
     -webkit-border-radius: 7px;
     background-color: #f4f4f4;
     color: #011633;
+    margin-bottom: 5px;
 }
 
 /* todo */
 #login-panel input {
     line-height: 20px;
-    width: 8em;
+    margin-bottom: 5px;
+    width: 9em;
     display: block;
-    background-color: #f4f4f4;
-    color: #011633;
-    font-size: 1.2em;
+    /*background-color: #f4f4f4;*/
+    /*color: #011633;*/
+    /*font-size: 1.2em;*/
     text-align: center;
 }
 
@@ -707,35 +750,37 @@ input:-ms-input-placeholder {
 
 /*#login-panel-submit-filled */
 #login-panel #login-panel-submit-filled {
-    line-height: 20px;
-    width: 8em;
+    /*line-height: 20px;*/
+    width: 9.3em;
 
-    display: block;
-    color: #305FA1;
-    font-weight: bold;
-    background-color: transparent;
+    /*display: block;*/
+    /*color: #305FA1;*/
+    /*font-weight: bold;*/
+    /*background-color: transparent;*/
     /*left: 2.5em;*/
     /*top:50px;*/
     position: absolute;
-    font-size: 1.3em;
-    border: none;
+    top: 60px;
+    left: 0px;
+    /*font-size: 1.3em;*/
+    /*border: none;*/
 
 }
 
 #login-panel #login-panel-submit-logout {
     line-height: 20px;
-    width: 8em;
+    /*width: 8em;*/
 
     display: block;
-    color: tomato;
-    font-weight: bold;
-    background-color: transparent;
+    /*color: tomato;*/
+    /*font-weight: bold;*/
+    /*background-color: transparent;*/
     /*left: 2.5em;*/
     /*top:50px;*/
-    left: -0.5em;
-    position: absolute;
-    font-size: 1.5em;
-    border: none;
+    /*left: -0.5em;*/
+    /*position: absolute;*/
+    /*font-size: 1.5em;*/
+    /*border: none;*/
 
 }
 
