@@ -40,31 +40,19 @@ if ($_SESSION['loggedin'] == 1) {
 
 
 
-    <div id="login-panel">
-<div id='login-panel-loggedin'>
-    <?php  echo $_SESSION['name'];; ?>
+<div id="login-panel">
+    <div id='login-panel-loggedin'>
+        <?php  echo $_SESSION['name'];; ?>
     </div>
 
 
-
-
-<button type="submit" onclick="asyncLogout()"
-       id="login-panel-submit-logout" href="" >Logout</button>
+    <button type="submit" class="logoutButton" onclick="asyncLogout()"
+            id="login-panel-submit-logout" href="">Logout
+    </button>
 
 </div>
 
-<!-- TODO RM-->
-<!--<form id="search-widget" action="" method="post" enctype="multipart/form-data">-->
-<!--    <fieldset>-->
-<!--        <center><strong>Welcome, --><?php
-//            echo $_SESSION['name'];
-//            ?><!--</strong></center>-->
-<!--        <h3>-->
-<!--            <center><a href="scripts/logout.php" class="textHandle">Logout</a><br/></center>-->
-<!--        </h3>-->
-<!---->
-<!--    </fieldset>-->
-<!--</form>-->
+
 
 <?php
 
