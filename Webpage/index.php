@@ -55,8 +55,7 @@ include 'scripts/sessionInit.php';
     <?php include 'scripts/gridHeader.php';
     include 'carousel/carouselHeader.php';  ?>
     <script src="scripts/mainScripts.js"></script>
-    <script type='text/javascript' src='scripts/autocomplete/jquery.autocomplete.js'></script>
-    <link rel="stylesheet" type="text/css" href="scripts/autocomplete/jquery.autocomplete.css"/>
+    <script type="text/javascript" src="scripts/autocomplete/jquery-ui-1.8.24.autocomplete.min.js"></script>
 
 
 </head>

@@ -1,27 +1,37 @@
 <?php
-require_once "config.php";
 
-$title = $_GET["title"];
-$authors = $_GET["authors"];
+include('../../dbConnect.php');
+
 $isbn = $_GET["isbn"];
+$authors = $_GET["authors"];
+$title = $_GET["title"];
 
-$q = strtolower($_GET["q"]);
-if (!$q) return;
+$term = $_GET["term"];
+if (!$term) return;
 
 $extra = "";
 
 if ($title != "")
-    $extra .= " AND title LIKE '%$title%' ";
+    $extra .= " AND title LIKE '%$title%'";
 if ($authors != "")
-    $extra .= " AND authors LIKE '%authors%'";
+    $extra .= " AND authors LIKE '%$authors%' ";
 if ($isbn != "")
     $extra .= " AND isbn LIKE '%$isbn%' ";
 
-$sql = "select DISTINCT username as username from SMARTLIB_USER where username LIKE '%$q%' $extra";
+$sql = "select DISTINCT username as username " .
+    " from SMARTLIB_USER U, SMARTLIB_BOOK_INFO BI, SMARTLIB_BOOK B " .
+    " where U.U_ID=B.U_ID AND B.BI_ID=BI.BI_ID " .
+    "AND username LIKE '%$term%' $extra  LIMIT 10";
+
 
 $rsd = mysql_query($sql);
-while ($rs = mysql_fetch_array($rsd)) {
-    $cname = $rs['username'];
-    echo "$cname\n";
+
+for ($x = 0, $numrows = mysql_num_rows($rsd); $x < $numrows; $x++) {
+    $row = mysql_fetch_assoc($rsd);
+    $usernames[$x] = array("value" => $row["username"]);
 }
+//return result
+echo json_encode($usernames);
+
+
 ?>
