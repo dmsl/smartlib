@@ -136,7 +136,7 @@
         return '<div id="capslide_img_cont' + isbn + '" class="ic_container">' +
                 '<a href="http://books.google.com/books?vid=isbn' + isbn + '" target="_blank"  class="carouselImage">' +
                 '<img src="' + url + '" width="130" height="170" alt="' + title + '" id="' + isbn + '"' +
-                ' title="' + title + '"/></a>' +
+                '"/></a>' +
                 '<div class="ic_caption">\
                     <h3>' + title + '</h3>\
         <p class="ic_text" ></p>\

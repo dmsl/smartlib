@@ -68,23 +68,24 @@ require_once("../CONFIG.php");
                 <textarea id="pluginBook" style="width: 700px;">
                     <link <?php
                         echo 'href="' . _LIB_URL . '/scripts/smartPlugin.css"';
-                        ?> rel=stylesheet/>
+                        ?> rel=stylesheet></link>
                     <script <?php
                         echo 'src="' . _LIB_URL . '/scripts/mainScripts.js"';
                         ?>></script>
                     <div id="smartlibPlugin">
                         <div class="smartlibTitle">
-                            <a href= <?php echo '"' . _LIB_URL . '";';?> target="_blank"> Smartlib Books</a>
+                            <a href= <?php echo '"' . _LIB_URL . '"';?> target="_blank"> Smartlib Books</a>
                         </div>
                         <div id="smartlib_books"></div>
                     </div>
 
+                    <!--Change style of SmartLib Plugin -->
                     <style>
-                            /* Change style of SmartLib Plugin */
+
                         #smartlibPlugin {
                             /* Width of plugin, and maximum height */
                             width: 300px;
-                            max-height: 500px;
+                            max-height: 300px;
                         }
 
                         .smartlibTitle {

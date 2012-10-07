@@ -191,33 +191,10 @@
 
 
         function gridReload() {
-            //  var nm_mask = jQuery("#item_nm").val();
-//        var cd_mask = jQuery("#search_cd_loggedOut").val();
-            //_search=false&nd=1348742622373&rows=5&page=1&sidx=title&sord=asc
-
-
-            //jQuery("#allBooksList").jqGrid('setGridParam', {url:"grid/server.php?q=allbooks"}).trigger("reloadGrid");
-//   jQuery("#s3list").jqGrid('setGridParam', {url:"grid/server.php?q=allbooksloggedin&_search=true&page=1&limit=10&searchString=" + cd_mask + "&rows=10"}).trigger("reloadGrid");
-            //jQuery("#s3list").jqGrid('setGridParam',{url:"server.php?page=1&limit=10&searchString="+ cd_mask + "nm_mask="+nm_mask ,page:1}).trigger("reloadGrid");
 
             $('#allBooksList').trigger("reloadGrid");
-//
-//        $('#allBooksPager').trigger("reloadPager");
+
         }
-
-
-        //	function doSearch(ev){
-//		if(timeoutHnd)
-//			clearTimeout(timeoutHnd)
-//		timeoutHnd = setTimeout(gridReload,500)
-//	}
-//
-//
-//
-//	function gridReload(){
-//		var cd_mask = jQuery("#search_cd_loggedOut").val();
-//		jQuery("#allBooksList").jqGrid('setGridParam',{url:"server.php?page=1&limit=10&searchString="+ cd_mask  +"&rows=10"}).trigger("reloadGrid");
-//	}
 
 
         function formatAuthors(cellvalue, options, cellObject) {
@@ -231,12 +208,15 @@
         }
 
 
-//	$('#search').submit(function () {
-//		
-//				jQuery("#allBooksList").jqGrid('setGridParam',{url:"server.php?page=1&limit=10&searchString="+ cd_mask  +"&rows=10"}).trigger("reloadGrid");
-//		return false;
-//	});
+        var val = $("#search_cd_loggedOut").val().trim();
+        if (val.length) {
 
+            setTimeout(function () {
+                $('#simpleSearchLoggedOut').submit();
+//                $('#searchButtonID').click();
+            }, 500);
+
+        }
 
     });//End of document load
 

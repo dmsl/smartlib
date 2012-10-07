@@ -161,6 +161,7 @@ jQuery(document).ready(function () {
 
     var isAdv = 0;
 
+
     //Toggle Search modes
     $('.toggleSearchButton').click(function () {
 
@@ -247,69 +248,6 @@ jQuery(document).ready(function () {
                 );
 
 
-//                jQuery(document).ready(function($){
-//                    $('#advsearch_cd_loggedIn_owner').autocomplete({source:'../scripts/autocomplete/getUsernameList.php'
-//                            +'?q='+$('#advsearch_cd_loggedIn_owner').text(), minLength:1});
-//                });
-
-//                $("#advsearch_cd_loggedIn_owner").autocomplete("scripts/autocomplete/getUsernameList.php"
-//                        + "?title=" + $('#advsearch_cd_loggedIn_title').text()
-//                        + "&authors=" + $('#advsearch_cd_loggedIn_authors').text()
-//                        + "&isbn=" + $('#advsearch_cd_loggedIn_isbn').text()
-//
-//                        , {
-//                            matchContains:true,
-////                    minLength: 2,
-//                            selectFirst:false,
-//                            select:function (event, ui) {
-//                                $(this).val(ui.item.label);
-//                                doAdvancedSearch();
-//                            }
-//                        });
-//TODO RM : after auto comp choose: flash! done! RMRMRM
-//                $('#advsearch_cd_loggedIn_owner').result(function (event, data, formatted) {
-//                    doAdvancedSearch();
-//                });
-
-
-// TODO FIX
-//                jQuery(document).ready(function ($) {
-//                    $('#advsearch_cd_loggedIn_authors').autocomplete({source:'scripts/autocomplete/getUsernameList.php'
-//                            + '?q=' + $('#advsearch_cd_loggedIn_authors').text(), minLength:2});
-//                });
-////                $("#advsearch_cd_loggedIn_authors").autocomplete("scripts/autocomplete/getAuthorsNameList.php", {
-//                    matchContains:true,
-//                    width:200,
-//                    minLength:4,
-//                    selectFirst:false,
-//                    select:function (event, ui) {
-//                        $(this).val(ui.item.label);
-//                        doAdvancedSearch();
-//                    }
-//                });
-
-
-//                $('#advsearch_cd_loggedIn_authors').result(function (event, data, formatted) {
-//                    doAdvancedSearch();
-//                });
-//
-//                $("#advsearch_cd_loggedIn_title").autocomplete("scripts/autocomplete/getBookTitleList.php", {
-//                    matchContains:true,
-//                    width:200,
-//                    minLength:4,
-//                    selectFirst:false,
-//                    select:function (event, ui) {
-//                        $(this).val(ui.item.label);
-//                        doAdvancedSearch();
-//                    }
-//                });
-
-//
-//                $('#advsearch_cd_loggedIn_title').result(function (event, data, formatted) {
-//                    doAdvancedSearch();
-//                });
-
-
                 //Toggle button to Simple
                 $('.toggleSearchButton').html("Simple Search");
 
@@ -337,6 +275,9 @@ jQuery(document).ready(function () {
 
 
     var timeoutHnd;
+
+
+//    });
 
     $("#search-panel input").live("keydown", function (event) {
 
@@ -394,7 +335,7 @@ jQuery(document).ready(function () {
 
 
         if (event.keyCode == 13) {
-            doSearch();
+            doSearch(isAdv);
         }
 
         //Do some smart search every half second
@@ -402,62 +343,11 @@ jQuery(document).ready(function () {
 
             if (timeoutHnd)
                 clearTimeout(timeoutHnd)
-            timeoutHnd = setTimeout(doSearch, 500)
+            timeoutHnd = setTimeout(doSearch(isAdv), 500)
 
         }
 
     });
-
-
-    //Do an Advanced or a simple search
-    function doSearch() {
-        if (isAdv) {
-            doAdvancedSearch();
-        }
-        else {
-            doSimpleSearch();
-        }
-    }
-
-
-    //Advanced Search
-    function doAdvancedSearch() {
-
-        var grid = $('#allBooksLoggedInList');
-        grid.jqGrid('setGridParam', {search:true});
-
-        var cd_title = jQuery('#advsearch_cd_loggedIn_title').val();
-        var cd_authors = jQuery('#advsearch_cd_loggedIn_authors').val();
-        var cd_owner = jQuery('#advsearch_cd_loggedIn_owner').val();
-        var cd_isbn = jQuery('#advsearch_cd_loggedIn_isbn').val();
-
-        var postData = grid.jqGrid('getGridParam', 'postData');
-        $.extend(postData, {
-            title:cd_title,
-            authors:cd_authors,
-            username:cd_owner,
-            isbn:cd_isbn
-        });
-
-        gridReload();
-
-    }
-
-
-    //Simple Search
-    function doSimpleSearch() {
-
-        var grid = $('#allBooksLoggedInList');
-        grid.jqGrid('setGridParam', {search:true});
-
-        var cd_mask = jQuery('#search_cd_loggedIn').val();
-
-        var postData = grid.jqGrid('getGridParam', 'postData');
-        $.extend(postData, {searchString:cd_mask});
-
-        gridReload();
-
-    }
 
 
     //Clear the search
@@ -482,9 +372,10 @@ jQuery(document).ready(function () {
 
 
     $('#searchButtonID').click(function () {
-        doSearch();
+        doSearch(isAdv);
 
     });
+
 
     function gridReload() {
         $('#allBooksLoggedInList').trigger("reloadGrid");
@@ -516,6 +407,80 @@ jQuery(document).ready(function () {
                 return 'Other - NA'
 
         }
+    }
+
+
+//Do an Advanced or a simple search
+    function doSearch(isAdv) {
+        if (isAdv) {
+            doAdvancedSearch();
+        }
+        else {
+            doSimpleSearch();
+        }
+    }
+
+
+//Advanced Search
+    function doAdvancedSearch() {
+
+        var grid = $('#allBooksLoggedInList');
+        grid.jqGrid('setGridParam', {search:true});
+
+        var cd_title = jQuery('#advsearch_cd_loggedIn_title').val();
+        var cd_authors = jQuery('#advsearch_cd_loggedIn_authors').val();
+        var cd_owner = jQuery('#advsearch_cd_loggedIn_owner').val();
+        var cd_isbn = jQuery('#advsearch_cd_loggedIn_isbn').val();
+
+        var postData = grid.jqGrid('getGridParam', 'postData');
+        $.extend(postData, {
+            title:cd_title,
+            authors:cd_authors,
+            username:cd_owner,
+            isbn:cd_isbn
+        });
+
+        gridReload();
+
+    }
+
+
+//Simple Search
+    function doSimpleSearch() {
+
+        var grid = $('#allBooksLoggedInList');
+        grid.jqGrid('setGridParam', {search:true});
+
+        var cd_mask = jQuery('#search_cd_loggedIn').val();
+
+        var postData = grid.jqGrid('getGridParam', 'postData');
+        $.extend(postData, {searchString:cd_mask});
+
+        gridReload();
+
+    }
+
+    function doSimpleInitSearch(val) {
+
+        var grid = $('#allBooksLoggedInList');
+        grid.jqGrid('setGridParam', {search:true});
+
+        var postData = grid.jqGrid('getGridParam', 'postData');
+        $.extend(postData, {searchString:val});
+
+        gridReload();
+
+
+    }
+
+
+    var val = $("#search_cd_loggedIn").val().trim();
+    if (val.length) {
+
+        setTimeout(function () {
+            $('#searchButtonID').click();
+        }, 500);
+
     }
 
 

@@ -122,7 +122,8 @@ if ($_SESSION['loggedin'] == 0) {
                 require_once("CONFIG.php"); ?>
                 <link <?php
                     echo 'href="' . _LIB_URL . '/scripts/smartPlugin.css"';
-                    ?>   rel=stylesheet/>
+                    ?>   rel=stylesheet>
+                </link>
 
                 <script <?php
                     echo 'src="' . _LIB_URL . '/scripts/mainScripts.js"';
@@ -147,7 +148,7 @@ if ($_SESSION['loggedin'] == 0) {
                     #smartlibPlugin {
                         /*        Width of plugin, and maximum height */
                         width: 300px;
-                        max-height: 500px;
+                        max-height: 300px;
                     }
                 </style>
                 <script>

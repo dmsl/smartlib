@@ -29,7 +29,6 @@
 
 /*All books of smartlib */
 .smartlib_books {
-    text-align: center;
     font-size: 15px;
     width: 98%;
     margin-left: auto;
@@ -41,6 +40,7 @@
 
 /* A book of smartlib */
 .smartlib_book {
+    text-align: center;
     padding-left: 5px;
     padding-right: 5px;
     border-style: solid;

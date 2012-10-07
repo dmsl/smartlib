@@ -110,8 +110,6 @@ include 'scripts/sessionInit.php';
                 <?php } ?>
         </article>
     </div>
-
-
 </div>
 
 <footer class="clearfix">
