@@ -761,7 +761,7 @@ function runAPostWebpage(url, postdata, successCallback, param1) {
 
 
 //Runs a webpage with AJAX w/o showing a success message
-function runAWebpageForResult(url, params, callback) {
+function runAWebpageForResult(url, params, callback, extraParams) {
 
     var xmlhttp;
 
@@ -788,7 +788,7 @@ function runAWebpageForResult(url, params, callback) {
 
             var result = xmlhttp.responseText.trim();
 
-            callback(result);
+            callback(result, extraParams);
         }
 
         //Error Code
@@ -801,9 +801,43 @@ function runAWebpageForResult(url, params, callback) {
 
 }
 
+function fillPluginBooks(res, pLiburl) {
+
+//        <!--        <div class="smartlib_book">body-->
+//        <!--            <div class="smartlib_book_title">Another book with a super very long extraordinary title</div>-->
+//        <!--            <a href="" target="_blank">-->
+//        <!--                <img src="http://www.cs.ucy.ac.cy/projects/smartLib/images/logo.png" height="20px">-->
+//        <!--            </a>-->
+//        <!--        </div>-->
+
+
+    var jsonOBJ = eval('(' + res + ')');
+
+    var result = "";
+
+
+    for (var i = 1, len = jsonOBJ.length; i < len; ++i) {
+        //Get object
+        var book = jsonOBJ[i];
+
+        result += '<div class="smartlib_book">' +
+            '<div class="smartlib_book_title">' + book['title'] + '</div>' +
+            '<a href="' + pLiburl + '?isbn=' + book['isbn'] + '" target="_blank">' +
+            '<img src="' + pLiburl + '/images/logo.png" height="20px">' +
+            '</a></div>';
+
+
+    }
+
+    $('#smartlib_books').html(result);
+
+
+}
+
+
 function fillBibtexBooks(res) {
     $('#bibtexBook').val(res);
-    //Resite bibtexbook
+    //Resize bibtexbook
     $('#bibtexBook').css({height:'15em'});
 }
 

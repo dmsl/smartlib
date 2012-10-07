@@ -31,6 +31,9 @@ Fax: +357-22-892701
 
 
 */
+
+$bookISBN = $_GET['isbn'];
+
 session_start();
 include 'scripts/sessionInit.php';
 

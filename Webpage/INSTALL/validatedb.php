@@ -1,11 +1,5 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: paschalis
- * Date: 9/30/12
- * Time: 7:41 PM
- * To change this template use File | Settings | File Templates.
- */
+
 
 $host = $_POST['host'];
 $username = $_POST['username'];

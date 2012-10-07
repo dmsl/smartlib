@@ -456,7 +456,8 @@ function saveDataToFile() {
             + "&dbpass=" + dbpassword + "&libname=" + libfullname + "&libshortname=" + libshortname +
             "&orgname=" + orgname + "&addr1=" + addr1 + "&addr2=" + addr2 + "&addr3=" + addr3 +
             "&town=" + town + "&country=" + country + "&telephone=" + telephone +
-            "&fax=" + fax + "&email=" + email + "&depturl=" + depturl + "&orgurl=" + orgurl +
+            "&fax=" + fax + "&email=" + email + "&depturl=" + depturl + "&orgurl=" + orgurl
+            + "&liburl=" + liburl +
             "&key=" + key + "&pepper=" + pepper + "&salt=" + salt;
 
 

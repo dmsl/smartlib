@@ -80,7 +80,7 @@ jQuery(document).ready(function () {
         url:'grid/server.php?q=userbooks',
 
         height:"auto",
-//width:"auto",
+        width:"auto",
         datatype:"json",
         shrinktofit:false,
 
@@ -166,7 +166,7 @@ jQuery(document).ready(function () {
             }, "normal");
 
             $("#toggleSearchButton").animate({
-                top:'+=60px'
+                top:'+=65px'
             }, "slow", function () {
 
                 //Change css
@@ -213,7 +213,7 @@ jQuery(document).ready(function () {
 
 
             $("#toggleSearchButton").animate({
-                top:'-=40px'
+                top:'-=45px'
             }, "slow", function () {
 
                 //Change css

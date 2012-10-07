@@ -44,13 +44,15 @@ blockquote {
 html,
 body {
     height: 100%;
+    min-width: 900px;
 }
 
 #wrapper {
-    min-height: 100%;
+    min-width: 100%;
+    min-width: 900px;
     height: auto !important;
     height: 100%;
-    margin: 0 auto -80px; /* size of the footer */
+    margin: 0 auto -80px; /* TODO implement this!! size of the footer */
 }
 
 #push {
@@ -60,6 +62,7 @@ body {
 /* FOOTER */
 footer {
     width: 90%;
+    min-width: 900px;
     margin-left: auto;
     margin-right: auto;
     height: 80px;
@@ -108,17 +111,18 @@ header, nav, article, aside, footer, hgroup, section {
     src: url('fonts/Sansation_Light.ttf'), url('fonts/Sansation_Light.eot'); /* IE9+ */
 }
 
-@font-face {
-    font-family: 'Colaborate-RegularRegular';
-    src: url('fonts/ColabReg-webfont.eot');
-    src: local('☺'), url('fonts/ColabReg-webfont.woff') format('woff'), url('fonts/ColabReg-webfont.ttf') format('truetype'), url('fonts/ColabReg-webfont.svg#webfont') format('svg');
-}
+/*TODO RM this*/
+/*@font-face {*/
+/*font-family: 'Colaborate-RegularRegular';*/
+/*src: url('fonts/ColabReg-webfont.eot');*/
+/*src: local('☺'), url('fonts/ColabReg-webfont.woff') format('woff'), url('fonts/ColabReg-webfont.ttf') format('truetype'), url('fonts/ColabReg-webfont.svg#webfont') format('svg');*/
+/*}*/
 
-@font-face {
-    font-family: 'HighlandGothicLightFLFRegular';
-    src: url('fonts/HighlandGothicLightFLF-webfont.eot');
-    src: local('☺'), url('fonts/HighlandGothicLightFLF-webfont.woff') format('woff'), url('fonts/HighlandGothicLightFLF-webfont.ttf') format('truetype'), url('fonts/HighlandGothicLightFLF-webfont.svg#webfont') format('svg');
-}
+/*@font-face {*/
+/*font-family: 'HighlandGothicLightFLFRegular';*/
+/*src: url('fonts/HighlandGothicLightFLF-webfont.eot');*/
+/*src: local('☺'), url('fonts/HighlandGothicLightFLF-webfont.woff') format('woff'), url('fonts/HighlandGothicLightFLF-webfont.ttf') format('truetype'), url('fonts/HighlandGothicLightFLF-webfont.svg#webfont') format('svg');*/
+/*}*/
 
 /* TYPOGRAPHY */
 html {
@@ -127,6 +131,7 @@ html {
 
 body {
     width: 99%;
+    min-width: 900px;
     height: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -326,6 +331,7 @@ nav#global {
     /*-webkit-border-top-left-radius: 5px;*/
 
     width: 99%;
+    min-width: 900px;
     margin-left: auto;
     margin-right: auto;
 
@@ -386,6 +392,7 @@ nav#global ul li a:hover {
 
 #top-panel, #search-panel {
     width: 99%;
+    min-width: 900px;
     margin-left: auto;
     margin-right: auto;
     text-align: right;
@@ -403,6 +410,7 @@ nav#global ul li a:hover {
 /*Search Panel*/
 #search-panel {
     width: 100%;
+    min-width: 900px;
     text-align: center;
     font-size: 1.5em;
     background-color: transparent;
@@ -454,7 +462,7 @@ nav#global ul li a:hover {
     resize: none;
 }
 
-.mainContent textarea#bibtexBook {
+.mainContent textarea#bibtexBook, .mainContent textarea#pluginBook {
     max-height: 30em;
     height: 15em;
     overflow: visible;
@@ -541,7 +549,7 @@ button {
     line-height: 20px;
     border-style: solid;
     width: 9em;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
 }
 
 button.searchButton {
@@ -553,7 +561,8 @@ button.searchButton {
 }
 
 .footerPusher {
-    min-height: 100%;
+    min-width: 100%;
+    min-width: 900px;
     height: auto !important;
     height: 100%;
     margin-top: 2em;
@@ -762,6 +771,7 @@ input:-ms-input-placeholder {
     position: absolute;
     top: 60px;
     left: 0px;
+    margin-top: 3px;
     /*font-size: 1.3em;*/
     /*border: none;*/
 
@@ -840,6 +850,7 @@ input:-ms-input-placeholder {
 /* MAIN  size tou grizou!*/
 #content {
     width: 95%;
+    min-width: 900px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2px;
@@ -874,6 +885,7 @@ article header {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     width: 100%;
+    min-width: 900px;
     color: #ffffff;
     height: 40px;
     /*margin-bottom: 5px;*/
@@ -896,6 +908,7 @@ article header h1 {
 
 article .mainContentCentered {
     width: 90%;
+    min-width: 900px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -907,6 +920,7 @@ article .mainContentCentered {
 
 article .mainContent, article  .installContent {
     width: 90%;
+    min-width: 900px;
     margin-top: 15px;
     margin-left: auto;
     margin-right: auto;
@@ -914,12 +928,14 @@ article .mainContent, article  .installContent {
 
 article .mainContent#downloadsDevices {
     width: 70%;
+    min-width: 900px;
     margin-left: 5%;
     margin-right: 20%;
 }
 
 article .mainContent#registrationForm {
     width: 70%;
+    min-width: 900px;
     margin-left: 5%;
 }
 

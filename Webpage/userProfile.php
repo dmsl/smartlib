@@ -46,7 +46,7 @@ if ($_SESSION['loggedin'] == 0) {
 ?>
 
 <!DOCTYPE html>
-<html lang=en>
+<html lang=en xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 
 <!--        Head         -->
 <head>
@@ -63,8 +63,6 @@ if ($_SESSION['loggedin'] == 0) {
     </link>
     <!--    Include Extra headers-->
     <?php include 'scripts/gridHeader.php'; ?>
-    <script type='text/javascript' src='scripts/autocomplete/jquery.autocomplete.js'></script>
-    <link rel="stylesheet" type="text/css" href="scripts/autocomplete/jquery.autocomplete.css"/>
 
     <script src="scripts/mainScripts.js"></script>
 </head>
@@ -90,13 +88,13 @@ if ($_SESSION['loggedin'] == 0) {
                 <?php include 'grid/userBooks.php'; ?>
             </div>
             <br><br>
+
             <header>
                 <h1>
-                    Your books in Bibtex Format:
+                    Your books exported in Bibtex Format:
                 </h1>
             </header>
             <div class="mainContent">
-                <p>Take your books, in Bibtex format and include them on your webpage:</p>
                 <textarea id="bibtexBook"></textarea>
                 <?php
                 echo '<script>' .
@@ -106,10 +104,75 @@ if ($_SESSION['loggedin'] == 0) {
 
                 <script>
                     var params = "user=" + user + "&mykey=" + <?php echo "'" . md5(_MY_KEY) . "'" ?>;
-                    runAWebpageForResult("scripts/exportUserBooks.php", params, fillBibtexBooks);
+                    runAWebpageForResult("scripts/exportBooks.php", params, fillBibtexBooks);
                 </script>
                 <br><br>
             </div>
+
+
+            <header>
+                <h1>
+                    Use Smartlib Plugin
+                </h1>
+            </header>
+            <div class="mainContent">
+
+
+                <?php
+                require_once("CONFIG.php"); ?>
+                <link <?php
+                    echo 'href="' . _LIB_URL . '/scripts/smartPlugin.css"';
+                    ?>   rel=stylesheet/>
+
+                <script <?php
+                    echo 'src="' . _LIB_URL . '/scripts/mainScripts.js"';
+                    ?> ></script>
+                <div id="smartlibPlugin">
+                    <div class="smartlibTitle">
+                        <a href=
+
+                           <?php
+                           echo '"' . _LIB_URL . '";';
+                           ?>
+                                   target="_blank">
+                        Smartlib Books
+                        </a>
+                    </div>
+                    <div id="smartlib_books">
+                    </div>
+                </div>
+
+                <style>
+                        /* Change style of SmartLib Plugin */
+                    #smartlibPlugin {
+                        /*        Width of plugin, and maximum height */
+                        width: 300px;
+                        max-height: 500px;
+                    }
+                </style>
+                <script>
+                    //Enter your username here
+
+                    <?php echo 'var user ="' . $_SESSION['username'] . '"'; ?>
+
+                    var params = "type=json" + "&user=" + user + "&mykey=" + <?php echo "'" . md5(_MY_KEY) . "'" ?>;
+
+                    runAWebpageForResult(<?php
+                    echo '"' . _LIB_URL . '/scripts/exportBooks.php"';
+                    ?>, params, fillPluginBooks, <?php echo '"' . _LIB_URL . '"'; ?> );
+                </script>
+                <br>
+                <a href="scripts/smartlibPlugin.php" target="_blank"
+                   style="text-decoration: none; border: none;">
+                    <button class="sendButton">Get Code</button>
+                </a>
+
+                <br><br>
+            </div>
+
+
+
+
             <?php
             //If user is admin
             if ($_SESSION['level'] >= 2) {
@@ -121,9 +184,15 @@ if ($_SESSION['loggedin'] == 0) {
                     </h1>
                 </header>
                 <div class="mainContent">
-                    <p>To fetch all library books in bibtext format, enter the following URL:</p>
+                    <p>To export all Library in bibtext format, enter the following URL:</p>
                     <textarea id="bibtexAllBooks" style="height: auto; width: 100%; ">http://www.cs.ucy.ac.cy/projects/smartLib/scripts/exportBooks.php?mykey=0a05bb77edad7395da818f361f8115a2</textarea>
+                    <br><br>
 
+                    <p>To use SmartLib plugin for Library:</p>
+                    <a href="scripts/smartlibPlugin.php?showallbooks=1" target="_blank"
+                       style="text-decoration: none; border: none;">
+                        <button class="sendButton">Get Code</button>
+                    </a>
                     <br><br>
                 </div>
                 <?php
@@ -142,9 +211,7 @@ if ($_SESSION['loggedin'] == 0) {
                         <div id="register-panel">
                             <div id="makeadmin-form">
                                 <fieldset>
-                                    <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                        Username:
+                                    <label>Username:
                                         <input value="" value=""
                                                id="makeadmin-form-username" autocomplete="false"
                                                 />

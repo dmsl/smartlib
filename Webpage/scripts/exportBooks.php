@@ -41,8 +41,14 @@ include ('../CONFIG.php');
 //Connect to database
 include ('../dbConnect.php');
 
+include_once('genericFunctions.php');
+
 //Get the key
 $pKey = $_REQUEST['mykey'];
+//Get username and password for user
+$pUsername = $_REQUEST['user'];
+
+$pType = $_REQUEST['type'];
 
 $mykey = _MY_KEY;
 
@@ -50,11 +56,58 @@ $mykey = _MY_KEY;
 if ($pKey != md5($mykey))
     die();
 
+//Export User Books
+if ($pUsername != '') {
+    printUserBooks($pUsername, $pType);
+} //Export AllBooks
+else {
+    printAllBooks($pType);
+}
 
-printAllBooks();
+
+function printUserBooks($pUsername, $type)
+{
+    $device = "?device=web";
+    $username = "&username=" . $pUsername;
+    $mykey = "&mykey=" . _MY_KEY;
+
+    $buildURL = "http://" . getCustom2ndURL() . "mobile/getUserBooks.php" . $device . $username . $mykey;
+
+    $json = file_get_contents($buildURL, 0, null, null);
+
+    $phpArray = json_decode($json);
+
+    // Print books in JSON
+    if ($type == "json") {
+        echo $json;
+    } //Print books in bibtex
+    else {
+
+        //Delete the first object (Info object: query result and book results number)
+        unset($phpArray[0]);
+
+        //Iterate over json objects
+        foreach ($phpArray as $object => $jobj) {
+
+            //Iterate over Json fields
+            foreach ($jobj as $key => $value) {
+
+                if ($key == 'isbn') {
+                    echo "@isbn {" . $value . ",\n";
+                } else if ($key == 'lang') {
+                    echo "\tlang = {" . $value . "} \n} ,\n\n";
+                } else if ($key != 'imgURL' && $key != 'status') { //Skip imgURL case
+                    echo "\t" . $key . " = {" . $value . "},\n";
+                }
+            }
+        }
+    }
 
 
-function printAllBooks()
+}
+
+
+function printAllBooks($pType)
 {
 
 
@@ -78,40 +131,37 @@ FROM SMARTLIB_BOOK_INFO BI
         );
     }
     */
-    while ($row = mysql_fetch_row($result)) //RM was assoc for no duplicate infos
-    {
-        //Each row, has 8 columns with data fetched from database
-        //isbn, title, authors, publishedYear, pageCount, dateOfInsert, imgURL, lang
-        echo "@isbn {" . $row[0] . ", <br>" .
-            "title = {" . $row[1] . "}, <br>" .
-            "author = {" . $row[2] . "}, <br>" .
-            "publishedYear = {" . $row[3] . "}, <br>" .
-            "pageCount = {" . $row[4] . "}, <br>" .
-            "dateOfInsert = {" . $row[5] . "}, <br>" .
-            //REMOVED img: "imgURL = {}, ".
-            "lang = {" . $row[7] . "} } ,<br>";
 
-        echo "<br>";
-        //OLD..rm?
-        $row_set[] = $row;
+    if ($pType == "json") {
+
+        while ($row = mysql_fetch_assoc($result)) {
+            $row_set[] = $row;
+        }
+        echo json_encode($row_set);
+
+    } else {
+        while ($row = mysql_fetch_row($result)) //RM was assoc for no duplicate infos
+        {
+            //Each row, has 8 columns with data fetched from database
+            //isbn, title, authors, publishedYear, pageCount, dateOfInsert, imgURL, lang
+            echo "@isbn {" . $row[0] . ", <br>" .
+                "title = {" . $row[1] . "}, <br>" .
+                "author = {" . $row[2] . "}, <br>" .
+                "publishedYear = {" . $row[3] . "}, <br>" .
+                "pageCount = {" . $row[4] . "}, <br>" .
+                "dateOfInsert = {" . $row[5] . "}, <br>" .
+                //REMOVED img: "imgURL = {}, ".
+                "lang = {" . $row[7] . "} } ,<br>";
+
+            echo "<br>";
+
+        }
     }
-//	echo json_encode($row_set);
+
+
+//
 
 }
-
-
-// Sends error to mobile device: Book dont exists in Google API
-/*function mobileSendWeirdError(){
-	$result[] = array(
-			"result"=>"-12"
-	);
-	//Encode Answer
-	echo json_encode($result);
-
-	die();
-}
-
-*/
 
 
 // TODO Sends error to mobile device using JSON Object Format

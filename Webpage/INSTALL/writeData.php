@@ -26,6 +26,7 @@ $country = $_POST['country'];
 $telephone = $_POST['telephone'];
 $fax = $_POST['fax'];
 $email = $_POST['email'];
+$liburl = $_POST['liburl'];
 $depturl = $_POST['depturl'];
 $orgurl = $_POST['orgurl'];
 $key = $_POST['key'];
@@ -78,6 +79,8 @@ define('_EMAIL', '$email');
 define('_DEPARTMENT_URL', '$depturl');
 //Organization URL
 define('_ORGANIZATION_URL', '$orgurl');
+//Library URL
+define('_LIB_URL', '$liburl');
 //Key defined for safety in some webpages
 define('_MY_KEY', '$key');
 

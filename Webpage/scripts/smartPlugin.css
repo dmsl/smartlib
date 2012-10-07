@@ -1,0 +1,72 @@
+#smartlibPlugin {
+    border: 2px;
+    border-style: solid;
+    border-color: #000000;
+    width: 300px;
+    padding-bottom: 5px;
+    font-family: sans-serif;
+    max-height: 400px;
+    overflow: auto;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    color: #000000;
+    padding: 5px;
+
+}
+
+#smartlibPlugin a {
+    text-decoration: none;
+}
+
+.smartlibTitle {
+    text-align: center;
+    display: block;
+    font-size: 20px;
+    margin-bottom: 5px;
+
+}
+
+/*All books of smartlib */
+.smartlib_books {
+    text-align: center;
+    font-size: 15px;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    vertical-align: middle;
+
+}
+
+/* A book of smartlib */
+.smartlib_book {
+    padding-left: 5px;
+    padding-right: 5px;
+    border-style: solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px;
+    border-bottom-style: ridge;
+    border-color: #a9a9a9;
+    padding-bottom: 3px;
+}
+
+.smartlib_book .smartlib_book_title {
+    display: inline;
+}
+
+.smartlib_book a {
+    display: inline;
+    text-decoration: none;
+    border: none;
+}
+
+/*.smartlib_book a img {*/
+/*text-decoration: none;*/
+/*border: none*/
+/*}*/
+
+
+

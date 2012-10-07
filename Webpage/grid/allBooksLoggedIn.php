@@ -38,7 +38,11 @@
             class="toggleSearchButton">Advanced Search
     </button>
     <div id="simpleSearchLoggedIn">
-        <input type="text" id="search_cd_loggedIn" value="" autofocus="autofocus"/>
+        <input type="text" id="search_cd_loggedIn"
+            <?php
+            echo 'value="' . $bookISBN . '"'
+            ?>
+               autofocus="autofocus"/>
     </div>
     <button type="button" id="searchButtonID"
             class="searchButton">Search
@@ -87,7 +91,7 @@ jQuery(document).ready(function () {
         datatype:"json",
         mtype:"POST",
         height:"auto",
-        //width:"auto",
+        width:"auto",
 
         shrinktofit:false,
         autowidth:true,
@@ -171,7 +175,7 @@ jQuery(document).ready(function () {
 
 
             $(".toggleSearchButton").animate({
-                top:'+=60px'
+                top:'+=65px'
             }, "slow", function () {
 
                 //Change css
@@ -219,7 +223,7 @@ jQuery(document).ready(function () {
 
 
             $(".toggleSearchButton").animate({
-                top:'-=40px'
+                top:'-=45px'
             }, "slow", function () {
 
                 //Change css

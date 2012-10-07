@@ -36,6 +36,8 @@ define('_EMAIL', 'xxxxxx@xxxxxxxxxx');
 define('_DEPARTMENT_URL', 'http://www.');
 //Organization URL
 define('_ORGANIZATION_URL', 'http://www.');
+//Library URL
+define('_LIB_URL', 'http://www.');
 //Key defined for safety in some webpages
 define('_MY_KEY', '1234');
 

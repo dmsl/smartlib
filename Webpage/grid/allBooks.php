@@ -33,7 +33,9 @@
 
 <div id="search-panel" style="top: 10px;">
     <form id="simpleSearchLoggedOut" action="#" method="post">
-        <input type="text" class="input" id="search_cd_loggedOut"/>
+        <input type="text" class="input" <?php
+            echo 'value="' . $bookISBN . '"'
+            ?> id="search_cd_loggedOut"/>
 
         <button type="submit" value="" class="searchButton">Search</button>
 
@@ -59,6 +61,12 @@
         if (windowSpace > 1000) {
             recordNum = 10;
         }
+
+
+        if ($("#search_cd_loggedOut").val() != "") {
+            doSearch();
+        }
+
 
         jQuery("#allBooksList").jqGrid({
 
@@ -163,7 +171,7 @@
 
 
         //Search in Grid
-        function doSearch(ev) {
+        function doSearch() {
 
             var grid = $("#allBooksList");
             //We will make search
