@@ -77,11 +77,11 @@ jQuery(document).ready(function () {
 
     var windowSpace = $(window).height();
 
-    var recordNum = 5;
+    var recordNum = 10;
 
     //Show more records
     if (windowSpace > 1000) {
-        recordNum = 10;
+        recordNum = 20;
     }
 
 
