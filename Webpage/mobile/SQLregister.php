@@ -337,7 +337,7 @@ function registerUserToDatabase()
         $strHeader = "From: Smartlib " . _NAME . " <" . _EMAIL . ">";
         $strMessage = "Hello " . $_SESSION['REGname'] . ",\nWelcome to the library of the modern world.\n" .
             "\n\nTo activate your account please follow this link: \n\n" .
-            getCustom2ndURL() .
+            _LIB_URL .
             "activate.php?uLnk=yes&uLnkUsername=" . $_SESSION['REGusername'] .
             "&activationCode=" . $activationCode . "\n\nThank you,\nSmartLib Team";
 
@@ -357,12 +357,11 @@ function registerUserToDatabase()
     } else {
 
         $strTo = $_SESSION['REGemail'];
-        //TODO change to the Orginization Name
         $strSubject = "SmartLib " . _NAME . "  Activation";
         $strHeader = "From: Smartlib " . _NAME . " <" . _EMAIL . ">";
         $strMessage = "Hello " . $_SESSION['REGname'] . ",\nWelcome to the library of the modern world.\n" .
             "\n\nTo activate your account please follow this link: \n\n" .
-            getCustom2ndURL() .
+            _LIB_URL .
             "activate.php?uLnk=yes&uLnkUsername=" . $_SESSION['REGusername'] .
             "&activationCode=" . $activationCode . "\n\nThank you,\nSmartLib Team";
 

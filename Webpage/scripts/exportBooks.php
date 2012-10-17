@@ -71,7 +71,7 @@ function printUserBooks($pUsername, $type)
     $username = "&username=" . $pUsername;
     $mykey = "&mykey=" . _MY_KEY;
 
-    $buildURL = "http://" . getCustom2ndURL() . "mobile/getUserBooks.php" . $device . $username . $mykey;
+    $buildURL = _LIB_URL . "mobile/getUserBooks.php" . $device . $username . $mykey;
 
     $json = file_get_contents($buildURL, 0, null, null);
 

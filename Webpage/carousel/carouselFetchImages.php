@@ -48,7 +48,7 @@ $length = $last - $first + 1;
 $device = "?device=web";
 $mykey = "&mykey=" . _MY_KEY;
 
-$buildURL = "http://" . getCustom2ndURL() . "mobile/popularBooks.php" . $device . $mykey;
+$buildURL = _LIB_URL . "/mobile/popularBooks.php" . $device . $mykey;
 
 $json = file_get_contents($buildURL, 0, null, null);
 $data = json_decode($json);

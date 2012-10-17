@@ -803,14 +803,6 @@ function runAWebpageForResult(url, params, callback, extraParams) {
 
 function fillPluginBooks(res, pLiburl) {
 
-//        <!--        <div class="smartlib_book">body-->
-//        <!--            <div class="smartlib_book_title">Another book with a super very long extraordinary title</div>-->
-//        <!--            <a href="" target="_blank">-->
-//        <!--                <img src="http://www.cs.ucy.ac.cy/projects/smartLib/images/logo.png" height="20px">-->
-//        <!--            </a>-->
-//        <!--        </div>-->
-
-
     var jsonOBJ = eval('(' + res + ')');
 
     var result = "";

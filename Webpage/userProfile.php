@@ -104,7 +104,7 @@ if ($_SESSION['loggedin'] == 0) {
 
                 <script>
                     var params = "user=" + user + "&mykey=" + <?php echo "'" . md5(_MY_KEY) . "'" ?>;
-                    runAWebpageForResult("scripts/exportBooks.php", params, fillBibtexBooks);
+                    runAWebpageForResult("/scripts/exportBooks.php", params, fillBibtexBooks);
                 </script>
                 <br><br>
             </div>
@@ -152,15 +152,11 @@ if ($_SESSION['loggedin'] == 0) {
                     }
                 </style>
                 <script>
-                    //Enter your username here
-
                     <?php echo 'var user ="' . $_SESSION['username'] . '"'; ?>
 
                     var params = "type=json" + "&user=" + user + "&mykey=" + <?php echo "'" . md5(_MY_KEY) . "'" ?>;
 
-                    runAWebpageForResult(<?php
-                    echo '"' . _LIB_URL . '/scripts/exportBooks.php"';
-                    ?>, params, fillPluginBooks, <?php echo '"' . _LIB_URL . '"'; ?> );
+                    runAWebpageForResult("/scripts/exportBooks.php", params, fillPluginBooks, <?php echo '"' . _LIB_URL . '"'; ?> );
                 </script>
                 <br>
                 <a href="scripts/smartlibPlugin.php" target="_blank"
@@ -186,7 +182,8 @@ if ($_SESSION['loggedin'] == 0) {
                 </header>
                 <div class="mainContent">
                     <p>To export all Library in bibtext format, enter the following URL:</p>
-                    <textarea id="bibtexAllBooks" style="height: auto; width: 100%; ">http://www.cs.ucy.ac.cy/projects/smartLib/scripts/exportBooks.php?mykey=0a05bb77edad7395da818f361f8115a2</textarea>
+                    <textarea id="bibtexAllBooks" style="height: auto; width: 100%; "><?php echo _LIB_URL;?>
+                        scripts/exportBooks.php?mykey=0a05bb77edad7395da818f361f8115a2</textarea>
                     <br><br>
 
                     <p>To use SmartLib plugin for Library:</p>
