@@ -36,9 +36,10 @@ session_start();
 $_SESSION['isMobileDevice'] = 0;
 
 //Get the device, ISBN & Username
-$device = $_POST['device'];
-$pISBN = $_POST['isbn'];
-$pUsername = $_POST['username'];
+$device = $_REQUEST['device'];
+$pISBN = $_REQUEST['isbn'];
+$pUsername = $_REQUEST['username'];
+
 
 $_SESSION['UserID'] = "";
 $_SESSION['BookInfoID'] = "";
@@ -73,7 +74,6 @@ if ($_SESSION['isMobileDevice']) {
     //URL for the Google Books API
     $buildURL = $URL . $question . $Qisbn . $pISBN . $pasqKey;
 
-
     $json = file_get_contents($buildURL, 0, null, null);
     $data = json_decode($json);
 
@@ -100,6 +100,12 @@ if ($_SESSION['isMobileDevice']) {
             if ($foundISBN13) break;
 
 
+        }
+
+        //Workaround: if google API has problem, fill the isbn!
+        if ($book_ISBN == "") {
+            // TODO: report weird problem to Google?
+            $book_ISBN = $pISBN;
         }
 
 
@@ -225,6 +231,7 @@ function addBookToDatabase($ISBN, $title, $authors, $publishedYear,
             mysql_real_escape_string($language)
         );
 
+
         $insertBookInfo = mysql_query($queryInsertStr) or dbError(mysql_error());
 
         //Get the just generated BookInfoID
@@ -232,6 +239,7 @@ function addBookToDatabase($ISBN, $title, $authors, $publishedYear,
 
         $_SESSION['BookInfoID'] = mysql_result($result, 0);
     }
+
 
     //Create entry for Book between Book Info ID, and User ID
     $insertBook
@@ -354,32 +362,6 @@ function mobileSendSuccess()
 
     die();
 }
-
-
-//Returns the URL user is, without include the last page in the URL path
-//
-//function getCustomURL(){
-//
-//	$len = strlen($_SERVER['REQUEST_URI']);
-//
-//	for( $i= $len-1; $i>0; $i--){
-//		//Remove the last name of the URI
-//		if($_SERVER['REQUEST_URI'][$i]=="/"){
-//
-//			$found=1;
-//
-//			$urlResult = substr($_SERVER['REQUEST_URI'],0,$i+1);
-//			break;
-//		}
-//
-//	}
-//
-//	if(!$found)
-//		$urlResult = $_SERVER['REQUEST_URI'];
-//
-//	return $_SERVER['SERVER_NAME']. $urlResult;
-//
-//}
 
 
 //
