@@ -36,9 +36,9 @@ session_start();
 $_SESSION['isMobileDevice'] = 0;
 
 //Get the device, ISBN & Username
-$device = $_REQUEST['device'];
-$pISBN = $_REQUEST['isbn'];
-$pUsername = $_REQUEST['username'];
+$device = $_POST['device'];
+$pISBN = $_POST['isbn'];
+$pUsername = $_POST['username'];
 
 
 $_SESSION['UserID'] = "";
