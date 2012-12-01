@@ -133,6 +133,7 @@ jQuery(document).ready(function () {
             var cd_mask = jQuery("#search_cd_loggedOut").val();
 
             resultRecords = grid.jqGrid('getGridParam', 'reccount');
+
             if (cd_mask == "") {
                 //Hide no results message
                 $('#search-no-results-found')
@@ -258,7 +259,7 @@ jQuery(document).ready(function () {
         grid.jqGrid('setGridParam', {search:true});
 
 
-        var cd_mask = jQuery("#search_cd_loggedOut").val();
+        var cd_mask = $("#search_cd_loggedOut").val();
 
         if (cd_mask == '') {
             //If nothing to search

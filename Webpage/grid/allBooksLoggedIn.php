@@ -51,29 +51,32 @@
             class="clearButton">Clear
     </button>
 </div>
-
-
-
-
-
-<table id="allBooksLoggedInList">
-    <tr>
-        <td/>
-    </tr>
-</table>
-<div id="allBooksLoggedInPager"></div>
-
+<br>
+<div id="search-no-results-found">No results found.</div>
+<div id="search-panel-div" style="display: none;">
+    <table id="allBooksLoggedInList"></table>
+    <!--<table id="allBooksLoggedInList">-->
+    <!--    <tr>-->
+    <!--        <td/>-->
+    <!--    </tr>-->
+    <!--</table>-->
+    <div id="allBooksLoggedInPager"></div>
+</div>
 
 
 <script type="text/javascript">
 
 jQuery(document).ready(function () {
 
-
+    var resultRecords = '0';
     var tmpTitle;
     var tmpAuthors;
     var tmpUsername;
     var tmpIsbn;
+    var isAdv = 0;
+
+
+    var timeoutHnd;
 
     var windowSpace = $(window).height();
 
@@ -132,7 +135,6 @@ jQuery(document).ready(function () {
 
         rowNum:recordNum,
 
-
         sortname:'title',
 
         viewrecords:true,
@@ -141,7 +143,90 @@ jQuery(document).ready(function () {
 
 
         pager:'#allBooksLoggedInPager',
-        gridview:true
+
+        gridview:true,
+
+        gridComplete:function () {
+
+
+            var gridDiv = $('#search-panel-div');
+            var grid = $('#allBooksLoggedInList');
+
+            resultRecords = grid.jqGrid('getGridParam', 'reccount');
+
+            var cd_mask = $("#search_cd_loggedIn").val();
+
+//            showToastMessage("MSG: " + cd_mask + " recs: " + resultRecords,1);
+
+
+            //TODO DIV THIS IN SIMPLE & ADVANCED!
+
+            //Re run search from here! CHECK
+
+            if (cd_mask == "") {
+                //Hide no results message
+                $('#search-no-results-found')
+                        .slideUp(500)
+                        .animate(
+                        { opacity:0 },
+                        { queue:false, duration:300 }
+                );
+
+                //Hide table
+                gridDiv
+                        .css('opacity', 1)
+                        .slideUp(300)
+                        .animate(
+                        { opacity:0 },
+                        { queue:false, duration:500 }
+                );
+            }
+            else if (resultRecords == '0') {
+
+                //Hide table
+                gridDiv
+                        .css('opacity', 1)
+                        .slideUp(300)
+                        .animate(
+                        { opacity:0 },
+                        { queue:false, duration:500 }
+                );
+
+                //Show no results message
+                $('#search-no-results-found')
+                        .css('opacity', 0)
+                        .slideDown(500)
+                        .animate(
+                        { opacity:1 },
+                        { queue:false, duration:500 }
+                );
+
+            }
+            else {
+                //Hide no results message
+                $('#search-no-results-found')
+                        .slideUp(500)
+                        .animate(
+                        { opacity:0 },
+                        { queue:false, duration:300 }
+                );
+
+                //Show results
+                grid.jqGrid('setGridWidth', $(window).width() / 1.2, true);
+
+                gridDiv
+                        .css('opacity', 0)
+                        .slideDown(500)
+                        .animate(
+                        { opacity:1 },
+                        { queue:false, duration:500 }
+                );
+
+                //MOVED POST FROM HERE
+            }
+        }
+
+
 
 
     });
@@ -155,9 +240,6 @@ jQuery(document).ready(function () {
     function imageFunction(cellvalue, options, rowObject) {
         return  "<img src='" + cellvalue + "' width='80px' height='80px' />";
     }
-
-
-    var isAdv = 0;
 
 
     //Toggle Search modes
@@ -174,7 +256,7 @@ jQuery(document).ready(function () {
 
 
             $(".toggleSearchButton").animate({
-                top:'+=65px'
+                top:'+=80px'
             }, "slow", function () {
 
                 //Change css
@@ -222,7 +304,7 @@ jQuery(document).ready(function () {
 
 
             $(".toggleSearchButton").animate({
-                top:'-=45px'
+                top:'-=60px'
             }, "slow", function () {
 
                 //Change css
@@ -272,76 +354,71 @@ jQuery(document).ready(function () {
     });
 
 
-    var timeoutHnd;
-
-
-//    });
-
-    $("#search-panel input").live("keydown", function (event) {
-
-
-        tmpTitle = jQuery('#advsearch_cd_loggedIn_title').val();
-        tmpAuthors = jQuery('#advsearch_cd_loggedIn_authors').val();
-        tmpUsername = jQuery('#advsearch_cd_loggedIn_owner').val();
-        tmpIsbn = jQuery('#advsearch_cd_loggedIn_isbn').val();
-
-        //Set autocomplete for owner
-        $("#advsearch_cd_loggedIn_owner").autocomplete(
-                {
-                    source:"scripts/autocomplete/getUsernameList.php" + "?title=" + tmpTitle
-                            + "&authors=" + tmpAuthors
-                            + "&isbn=" + tmpIsbn,
-                    minLength:1,
-                    select:function (event, ui) {
-                        $(this).val(ui.item.label);
-                        doAdvancedSearch();
-                    }
-
-                }
-        );
-
-        //Set autocomplete for title
-        $("#advsearch_cd_loggedIn_title").autocomplete(
-                {
-                    source:"scripts/autocomplete/getBookTitleList.php" + "?username=" + tmpUsername
-                            + "&authors=" + tmpAuthors
-                            + "&isbn=" + tmpIsbn,
-                    minLength:1,
-                    select:function (event, ui) {
-                        $(this).val(ui.item.label);
-                        doAdvancedSearch();
-                    }
-
-                }
-        );
-
-
-        //Set autocomplete for Authors
-        $("#advsearch_cd_loggedIn_authors").autocomplete(
-                {
-                    source:"scripts/autocomplete/getAuthorsNameList.php" + "?username=" + tmpUsername
-                            + "&title=" + tmpTitle
-                            + "&isbn=" + tmpIsbn,
-                    minLength:1,
-                    select:function (event, ui) {
-                        $(this).val(ui.item.label);
-                        doAdvancedSearch();
-                    }
-
-                }
-        );
+    $("#search-panel input").live("keyup", function (event) {
 
 
         if (event.keyCode == 13) {
-            doSearch(isAdv);
+            if (isAdv) {
+                tmpTitle = jQuery('#advsearch_cd_loggedIn_title').val();
+                tmpAuthors = jQuery('#advsearch_cd_loggedIn_authors').val();
+                tmpUsername = jQuery('#advsearch_cd_loggedIn_owner').val();
+                tmpIsbn = jQuery('#advsearch_cd_loggedIn_isbn').val();
+
+                //Set autocomplete for owner
+                $("#advsearch_cd_loggedIn_owner").autocomplete(
+                        {
+                            source:"scripts/autocomplete/getUsernameList.php" + "?title=" + tmpTitle
+                                    + "&authors=" + tmpAuthors
+                                    + "&isbn=" + tmpIsbn,
+                            minLength:1,
+                            select:function (event, ui) {
+                                $(this).val(ui.item.label);
+                                doAdvancedSearch();
+                            }
+
+                        }
+                );
+
+                //Set autocomplete for title
+                $("#advsearch_cd_loggedIn_title").autocomplete(
+                        {
+                            source:"scripts/autocomplete/getBookTitleList.php" + "?username=" + tmpUsername
+                                    + "&authors=" + tmpAuthors
+                                    + "&isbn=" + tmpIsbn,
+                            minLength:1,
+                            select:function (event, ui) {
+                                $(this).val(ui.item.label);
+                                doAdvancedSearch();
+                            }
+
+                        }
+                );
+
+
+                //Set autocomplete for Authors
+                $("#advsearch_cd_loggedIn_authors").autocomplete(
+                        {
+                            source:"scripts/autocomplete/getAuthorsNameList.php" + "?username=" + tmpUsername
+                                    + "&title=" + tmpTitle
+                                    + "&isbn=" + tmpIsbn,
+                            minLength:1,
+                            select:function (event, ui) {
+                                $(this).val(ui.item.label);
+                                doAdvancedSearch();
+                            }
+
+                        }
+                );
+            }
+            else {
+                doSearch(isAdv);
+            }
+
         }
-
-        //Do some smart search every half second
         else {
-
             if (timeoutHnd)
-                clearTimeout(timeoutHnd)
-            timeoutHnd = setTimeout(doSearch(isAdv), 500)
+                clearTimeout(timeoutHnd);
+            timeoutHnd = setTimeout(doSearch(isAdv), 10000000000);
 
         }
 
@@ -410,6 +487,8 @@ jQuery(document).ready(function () {
 
 //Do an Advanced or a simple search
     function doSearch(isAdv) {
+
+
         if (isAdv) {
             doAdvancedSearch();
         }
@@ -446,19 +525,48 @@ jQuery(document).ready(function () {
 //Simple Search
     function doSimpleSearch() {
 
-        var grid = $('#allBooksLoggedInList');
+
+        var gridDiv = $('#search-panel-div');
+        var grid = $("#allBooksLoggedInList");
+
+        //We will make search
         grid.jqGrid('setGridParam', {search:true});
 
-        var cd_mask = jQuery('#search_cd_loggedIn').val();
+        var cd_mask = $("#search_cd_loggedIn").val();
 
-        var postData = grid.jqGrid('getGridParam', 'postData');
-        $.extend(postData, {searchString:cd_mask});
 
-        gridReload();
+        if (cd_mask == '') {
+            //If nothing to search
+            //Hide no results message
+            $('#search-no-results-found')
+                    .slideUp(500)
+                    .animate(
+                    { opacity:0 },
+                    { queue:false, duration:300 }
+            );
+            // hide jqGrid
+            gridDiv
+                    .css('opacity', 1)
+                    .slideUp(300)
+                    .animate(
+                    { opacity:0 },
+                    { queue:false, duration:500 }
+            );
+
+        }
+        else {
+            //Run query
+            var postData = grid.jqGrid('getGridParam', 'postData');
+            $.extend(postData, {searchString:cd_mask});
+
+            gridReload();
+        }
+
 
     }
 
     function doSimpleInitSearch(val) {
+
 
         var grid = $('#allBooksLoggedInList');
         grid.jqGrid('setGridParam', {search:true});

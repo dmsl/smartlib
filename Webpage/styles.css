@@ -529,7 +529,9 @@ nav#global ul li a:hover {
 
 #search-panel  #toggleSearchButton {
     position: relative;
-    top: 70px;
+    top: 80px;
+    height: 31px;
+    width: 35em;
 
 }
 
@@ -539,10 +541,7 @@ nav#global ul li a:hover {
 
 /*Make Search buttons bigger*/
 #search-panel button {
-    /*height: 30px;*/
     height: 31px;
-    /*line-height: 20px;*/
-    /*height: 25px;*/
 }
 
 #contact-panel label, #register-panel label, #install-panel label {
@@ -598,6 +597,7 @@ button {
     border-style: solid;
     width: 9em;
     margin-bottom: 3px;
+    height: 31px;
 }
 
 button.searchButton {
