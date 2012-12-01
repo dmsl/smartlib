@@ -76,8 +76,6 @@ jQuery(document).ready(function () {
     var isAdv = 0;
 
 
-    var timeoutHnd;
-
     var windowSpace = $(window).height();
 
     var recordNum = 10;
@@ -353,6 +351,7 @@ jQuery(document).ready(function () {
 
     });
 
+    var timeoutHnd;
 
     $("#search-panel input").live("keyup", function (event) {
 
@@ -418,7 +417,9 @@ jQuery(document).ready(function () {
         else {
             if (timeoutHnd)
                 clearTimeout(timeoutHnd);
-            timeoutHnd = setTimeout(doSearch(isAdv), 10000000000);
+            timeoutHnd = setTimeout(function () {
+                doSearch(isAdv);
+            }, 500);
 
         }
 
