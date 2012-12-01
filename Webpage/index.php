@@ -75,39 +75,35 @@ include 'scripts/sessionInit.php';
 <div class=clearfix>
     <div class="toast-message" id="notoast">No Errors Found</div>
     <div id=content>
-
         <article>
-            <!--            Show popular books at all times-->
-            <header>
-                <h1>Popular Books</h1>
-            </header>
-            <div class="mainContentCentered">
-                <!--                TODO put in carousel title on bottom of image-->
-                <ul id="mycarousel" class="jcarousel-skin-ie7">
-                </ul>
-            </div>
-
             <?php //User is logged in
             if ($_SESSION['loggedin'] == 1) {
                 ?>
-                <header>
-                    <h1>All Books</h1>
+                <header class="no-background">
+                    <h1 class="search-books-title">Book Search</h1>
                 </header>
                 <div class="mainContentCentered" id="booksLoggedIn">
                     <?php include 'grid/allBooksLoggedIn.php'; ?>
                 </div>
                 <br>
-
                 <?php } else { ?>
-
-                <header>
-                    <h1>All Books</h1>
+                <header class="no-background">
+                    <h1 class="search-books-title">Book Search</h1>
                 </header>
                 <div class="mainContentCentered" id="booksNotLoggedIn">
                     <?php include 'grid/allBooks.php'; ?>
                 </div>
                 <br>
                 <?php } ?>
+            <!--            Show popular books at all times-->
+            <header>
+                <h1>Latest Additions</h1>
+            </header>
+            <div class="mainContentCentered">
+                <!--                TODO put in carousel title on bottom of image-->
+                <ul id="mycarousel" class="jcarousel-skin-ie7">
+                </ul>
+            </div>
         </article>
     </div>
 </div>

@@ -199,7 +199,7 @@ h1 {
     /*Colaborate-RegularRegular, "Trebuchet MS", Arial, Helvetica, sans-serif*/
 }
 
-h1.centered {
+h1 .centered {
     text-align: center;
 }
 
@@ -211,8 +211,9 @@ h3.centered {
     display: block
 }
 
-/*TODO FIX THIS is thead text form in contact*/
+/*TODO FIX THIS is thread text form in contact*/
 .text-form {
+    float: left;
     float: left;
     display: block;
     font-size: 14px;
@@ -429,18 +430,53 @@ nav#global ul li a:hover {
     /*margin-top: 10px;*/
 }
 
+#search-panel input {
+    text-align: left;
+    padding-left: 10px;
+    /*line-height: 20px;*/
+    height: 25px;
+}
+
+#contact-panel input, textarea,
+#register-panel input, textarea, #install-panel input, #login-panel input {
+    text-align: center;
+    line-height: 16px;
+    height: 20px;
+
+}
+
 #search-panel input, #contact-panel input, textarea,
 #register-panel input, textarea, #install-panel input, #login-panel input {
     border-style: solid;
     border-color: #a5a5a5;
-    text-align: center;
-    line-height: 20px;
     width: 15em;
     padding-top: 3px;
     padding-bottom: 0px;
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
+}
+
+/* No results found in Search*/
+#search-no-results-found {
+    height: 40px;
+    line-height: 40px;
+    width: 27em;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+    text-align: center;
+    font-size: 1.4em;
+    font-family: ubuntuFonts;
+    color: #011633;
+    background-color: #eaeaea;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #9f9f9f;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+
 }
 
 /*Required fields*/
@@ -495,6 +531,18 @@ nav#global ul li a:hover {
     position: relative;
     top: 70px;
 
+}
+
+#search-panel-table {
+    position: relative;
+}
+
+/*Make Search buttons bigger*/
+#search-panel button {
+    /*height: 30px;*/
+    height: 31px;
+    /*line-height: 20px;*/
+    /*height: 25px;*/
 }
 
 #contact-panel label, #register-panel label, #install-panel label {
@@ -849,7 +897,7 @@ input:-ms-input-placeholder {
 
 /* MAIN  size tou grizou!*/
 #content {
-    width: 95%;
+    /*width: 95%;*/
     min-width: 900px;
     margin-left: auto;
     margin-right: auto;
@@ -888,22 +936,30 @@ article header {
     min-width: 900px;
     color: #ffffff;
     height: 40px;
-    /*margin-bottom: 5px;*/
     background-color: #305FA1;
-    /*box-shadow: inset 0 -35px 35px -18px #B5C7C6;
-        /*background-image: -moz-linear-gradient(top, #0081ac, #305FA1);
-        background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #0081ac),color-stop(1, #305FA1));
-    */
+
+}
+
+article header.no-background {
+    background-color: #ffffff;
 }
 
 article header h1 {
     line-height: 40px;
     /* article title */
     margin-left: 30px;
+
+}
+
+article header h1.search-books-title {
+    float: none;
+    text-align: center;
+    background-color: #ffffff;
+    color: #011633;
 }
 
 article header h1 {
-    float: left
+    float: left;
 }
 
 article .mainContentCentered {

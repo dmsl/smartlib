@@ -37,7 +37,7 @@ Fax: +357-22-892701
 require_once("CONFIG.php");
 //Connect to Database
 include('dbConnect.php');
-// TODO change this NOTIFICATION like method!
+
 //Check if we have message to display to user
 if (isset($_SESSION['topTypeMsg'])) {
     //There is something wrong in the site

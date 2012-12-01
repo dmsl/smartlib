@@ -45,179 +45,280 @@
     </form>
 </div>
 
-<table id="allBooksList"></table>
+<div id="search-no-results-found">No results found.</div>
+<div id="search-panel-div" style="display: none;">
 
-<div id="allBooksPager"></div>
+    <table id="allBooksList"></table>
+    <div id="allBooksPager"></div>
+</div>
 
 <script type="text/javascript">
 
-    jQuery(document).ready(function () {
+//Records got
+var resultRecords = '0';
 
-        var windowSpace = $(window).height();
+jQuery(document).ready(function () {
 
-        var recordNum = 10;
+    var windowSpace = $(window).height();
 
-        //Show more records
-        if (windowSpace > 1000) {
-            recordNum = 20;
-        }
+    var recordNum = 10;
 
-
-        if ($("#search_cd_loggedOut").val() != "") {
-            doSearch();
-        }
+    //Show more records
+    if (windowSpace > 1000) {
+        recordNum = 20;
+    }
 
 
-        jQuery("#allBooksList").jqGrid({
-
-            url:'grid/server.php?q=allbooks&rows=5',
-            mtype:"POST",
-            height:"auto",
-//width:"auto",
-            datatype:"json",
-            shrinktofit:false,
-            autowidth:true,
-
-            colNames:['Cover', 'Title', 'Authors', 'Published', 'Pages', 'Language', 'ISBN'],
-
-            colModel:[
-
-                {name:'imgURL', index:'imgURL', width:80, align:"center", search:false, editoptions:{readonly:true}, formatter:imageFunction,
-                    sortable:false},
-
-                {name:'title', index:'title', width:200, align:"center",
-                    cellattr:function (rowId, tv, rawObject, cm, rdata) {
-                        return 'style="white-space: normal;"'
-                    } },
-
-                {name:'authors', index:'authors', width:100, align:"center", formatter:formatAuthors,
-                    cellattr:function (rowId, tv, rawObject, cm, rdata) {
-                        return 'style="white-space: normal;"'
-                    } },
-
-                {name:'publishedYear', index:'publishedYear', width:70, align:"center",
-                    sortable:false},
-
-                {name:'pageCount', index:'pageCount', width:70, align:"center", search:false, sortable:false},
-
-                {name:'lang', index:'lang', width:70, align:"center", search:false, editable:false, sortable:false }    ,
-
-                {name:'isbn', index:'isbn', width:160, align:"center"
-                }
-            ],
-
-            //	editurl: "server.php",
-
-            rowNum:recordNum,
-
-            //	rowList:[10,20],
-
-            pager:'#allBooksPager',
-
-            sortname:'title',
-
-            viewrecords:true,
-
-            sortorder:"asc"
-
-            //	caption: "Library Books"
-
-        });
-
-        jQuery("#allBooksList").jqGrid('navGrid', '#allBooksPager', {edit:false, add:false, del:false, search:false,
-            refresh:false});
+    if ($("#search_cd_loggedOut").val() != "") {
+        doSearch();
+    }
 
 
-        function imageFunction(cellvalue, options, rowObject) {
-            return  "<img src='" + cellvalue + "' width='80px' height='80px' />";
-        }
+    jQuery("#allBooksList").jqGrid({
 
+        url:'grid/server.php?q=allbooks&rows=5',
+        mtype:"POST",
+        height:"auto",
+//            width:"auto",
+        datatype:"json",
+        shrinktofit:false,
+//            autowidth:true,
 
-        $('#simpleSearchLoggedOut').submit(function () {
+        colNames:['Cover', 'Title', 'Authors', 'Published', 'Pages', 'Language', 'ISBN'],
 
-            doSearch();
+        colModel:[
 
-            return false;
-        });
+            {name:'imgURL', index:'imgURL', width:80, align:"center", search:false, editoptions:{readonly:true}, formatter:imageFunction,
+                sortable:false},
 
+            {name:'title', index:'title', width:200, align:"center",
+                cellattr:function (rowId, tv, rawObject, cm, rdata) {
+                    return 'style="white-space: normal;"'
+                } },
 
-        //Clear the search
-        $('#clearButtonID').click(function () {
-            $("#search_cd_loggedOut").val("");
-            doSearch();
+            {name:'authors', index:'authors', width:100, align:"center", formatter:formatAuthors,
+                cellattr:function (rowId, tv, rawObject, cm, rdata) {
+                    return 'style="white-space: normal;"'
+                } },
 
-            return false;
-        });
+            {name:'publishedYear', index:'publishedYear', width:70, align:"center",
+                sortable:false},
 
+            {name:'pageCount', index:'pageCount', width:70, align:"center", search:false, sortable:false},
 
-        var timeoutHnd;
+            {name:'lang', index:'lang', width:70, align:"center", search:false, editable:false, sortable:false }    ,
 
-        $("#search-panel input").live("keydown", function (event) {
-
-            if (event.keyCode == 13) {
-                doSearch();
+            {name:'isbn', index:'isbn', width:100, align:"center"
             }
+        ],
 
-            //Do some smart search every half second
-            else {
+        //	editurl: "server.php",
 
-                if (timeoutHnd)
-                    clearTimeout(timeoutHnd)
-                timeoutHnd = setTimeout(doSearch, 500)
+        rowNum:recordNum,
 
-            }
+        //	rowList:[10,20],
 
-        });
+        pager:'#allBooksPager',
 
+        sortname:'title',
 
-        //Search in Grid
-        function doSearch() {
+        viewrecords:true,
 
-            var grid = $("#allBooksList");
-            //We will make search
-            grid.jqGrid('setGridParam', {search:true});
+        sortorder:"asc",
 
+        gridComplete:function () {
+            var gridDiv = $('#search-panel-div');
+            var grid = $('#allBooksList');
 
             var cd_mask = jQuery("#search_cd_loggedOut").val();
 
+            resultRecords = grid.jqGrid('getGridParam', 'reccount');
+            if (cd_mask == "") {
+                //Hide no results message
+                $('#search-no-results-found')
+                        .slideUp(500)
+                        .animate(
+                        { opacity:0 },
+                        { queue:false, duration:300 }
+                );
+
+                //Hide table
+                gridDiv
+                        .css('opacity', 1)
+                        .slideUp(300)
+                        .animate(
+                        { opacity:0 },
+                        { queue:false, duration:500 }
+                );
+            }
+            else if (resultRecords == '0') {
+
+                //Hide table
+                gridDiv
+                        .css('opacity', 1)
+                        .slideUp(300)
+                        .animate(
+                        { opacity:0 },
+                        { queue:false, duration:500 }
+                );
+
+                //Show no results message
+                $('#search-no-results-found')
+                        .css('opacity', 0)
+                        .slideDown(500)
+                        .animate(
+                        { opacity:1 },
+                        { queue:false, duration:500 }
+                );
+
+            }
+            else {
+                //Hide no results message
+                $('#search-no-results-found')
+                        .slideUp(500)
+                        .animate(
+                        { opacity:0 },
+                        { queue:false, duration:300 }
+                );
+
+                //Show results
+                grid.jqGrid('setGridWidth', $(window).width() / 1.2, true);
+
+                gridDiv
+                        .css('opacity', 0)
+                        .slideDown(500)
+                        .animate(
+                        { opacity:1 },
+                        { queue:false, duration:500 }
+                );
+
+                //MOVED POST FROM HERE
+            }
+
+        }
+
+        //	caption: "Library Books"
+
+    });
+
+    jQuery("#allBooksList").jqGrid('navGrid', '#allBooksPager', {edit:false, add:false, del:false, search:false,
+        refresh:false});
+
+
+    function imageFunction(cellvalue, options, rowObject) {
+        return  "<img src='" + cellvalue + "' width='80px' height='80px' />";
+    }
+
+
+    $('#simpleSearchLoggedOut').submit(function () {
+
+        doSearch();
+
+        return false;
+    });
+
+
+    //Clear the search
+    $('#clearButtonID').click(function () {
+        $("#search_cd_loggedOut").val("");
+        doSearch();
+
+        return false;
+    });
+
+
+    var timeoutHnd;
+
+    $("#search-panel input").live("keydown", function (event) {
+
+        if (event.keyCode == 13) {
+            doSearch();
+        }
+
+        //Do some smart search every half second
+        else {
+
+            if (timeoutHnd)
+                clearTimeout(timeoutHnd)
+            timeoutHnd = setTimeout(doSearch, 500)
+
+        }
+
+    });
+
+
+    //Search in Grid
+    function doSearch() {
+
+
+        var gridDiv = $('#search-panel-div');
+
+        var grid = $("#allBooksList");
+        //We will make search
+        grid.jqGrid('setGridParam', {search:true});
+
+
+        var cd_mask = jQuery("#search_cd_loggedOut").val();
+
+        if (cd_mask == '') {
+            //If nothing to search
+            //Hide no results message
+            $('#search-no-results-found')
+                    .slideUp(500)
+                    .animate(
+                    { opacity:0 },
+                    { queue:false, duration:300 }
+            );
+            // hide jqGrid
+            gridDiv
+                    .css('opacity', 1)
+                    .slideUp(300)
+                    .animate(
+                    { opacity:0 },
+                    { queue:false, duration:500 }
+            );
+
+        }
+        else {
+            //Run query
             var postData = grid.jqGrid('getGridParam', 'postData');
             $.extend(postData, {searchString:cd_mask});
 
-
             gridReload();
-
-
         }
 
 
-        function gridReload() {
-
-            $('#allBooksList').trigger("reloadGrid");
-
-        }
+    }
 
 
-        function formatAuthors(cellvalue, options, cellObject) {
+    function gridReload() {
 
-            return  cellvalue.replace(new RegExp(", "), ",</br>")
-        }
+        $('#allBooksList').trigger("reloadGrid");
 
-
-        function unformatAuthors(cellValue, options, cellObject) {
-            return $(cellObject.html()).attr("originalValue");
-        }
+    }
 
 
-        var val = $("#search_cd_loggedOut").val().trim();
-        if (val.length) {
+    function formatAuthors(cellvalue, options, cellObject) {
 
-            setTimeout(function () {
-                $('#simpleSearchLoggedOut').submit();
+        return  cellvalue.replace(new RegExp(", "), ",</br>")
+    }
+
+
+    function unformatAuthors(cellValue, options, cellObject) {
+        return $(cellObject.html()).attr("originalValue");
+    }
+
+
+    var val = $("#search_cd_loggedOut").val().trim();
+    if (val.length) {
+
+        setTimeout(function () {
+            $('#simpleSearchLoggedOut').submit();
 //                $('#searchButtonID').click();
-            }, 500);
+        }, 500);
 
-        }
+    }
 
-    });//End of document load
+});//End of document load
 
 </script>

@@ -143,13 +143,11 @@ jQuery(document).ready(function () {
         pager:'#allBooksLoggedInPager',
         gridview:true
 
-//            caption: "All BOoks"
-
 
     });
 
     // Grid Table
-    //Attach a pager
+    // Attach a pager
     jQuery("#allBooksLoggedInList").jqGrid('navGrid', '#allBooksLoggedInPager',
             {edit:false, add:false, del:false, search:false, refresh:false});
 

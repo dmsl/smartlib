@@ -68,7 +68,7 @@ foreach ($data as $item) {
 
 
     if ($img_url == "images/nocover.png") {
-        $img_url = "http://" . getCustom2ndURL() . "images/nocover.png";
+        $img_url = _LIB_URL . "images/nocover.png";
     }
     array_push($images, htmlspecialchars($img_url));
     array_push($isbns, $item->isbn);
