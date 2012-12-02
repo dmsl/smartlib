@@ -825,20 +825,22 @@ input:-ms-input-placeholder {
 
 }
 
+.jqgrid {
+    width: 80px;
+    height: 80px;
+    margin-top: auto;
+    margin-bottom: auto;
+    border: 3px solid #B5C7C6;
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+}
+
 #login-panel #login-panel-submit-logout {
     line-height: 20px;
     /*width: 8em;*/
 
     display: block;
-    /*color: tomato;*/
-    /*font-weight: bold;*/
-    /*background-color: transparent;*/
-    /*left: 2.5em;*/
-    /*top:50px;*/
-    /*left: -0.5em;*/
-    /*position: absolute;*/
-    /*font-size: 1.5em;*/
-    /*border: none;*/
 
 }
 
