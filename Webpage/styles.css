@@ -953,7 +953,7 @@ article header h1 {
 
 }
 
-article header h1.search-books-title {
+article header h1.no-background-centered {
     float: none;
     text-align: center;
     background-color: #ffffff;

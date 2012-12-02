@@ -80,30 +80,33 @@ include 'scripts/sessionInit.php';
             if ($_SESSION['loggedin'] == 1) {
                 ?>
                 <header class="no-background">
-                    <h1 class="search-books-title">Book Search</h1>
+                    <h1 class="no-background-centered">Book Search</h1>
                 </header>
                 <div class="mainContentCentered" id="booksLoggedIn">
                     <?php include 'grid/allBooksLoggedIn.php'; ?>
                 </div>
-                <br>
                 <?php } else { ?>
                 <header class="no-background">
-                    <h1 class="search-books-title">Book Search</h1>
+                    <h1 class="no-background-centered">Book Search</h1>
                 </header>
                 <div class="mainContentCentered" id="booksNotLoggedIn">
                     <?php include 'grid/allBooks.php'; ?>
                 </div>
-                <br>
                 <?php } ?>
             <!--            Show popular books at all times-->
-            <header>
-                <h1>Latest Additions</h1>
+            <br>
+            <br>
+            <header class="no-background">
+                <h1 class="no-background-centered">Latest Additions</h1>
             </header>
             <div class="mainContentCentered">
                 <!--                TODO put in carousel title on bottom of image-->
                 <ul id="mycarousel" class="jcarousel-skin-ie7">
                 </ul>
             </div>
+            <br>
+            <br>
+            <br>
         </article>
     </div>
 </div>
