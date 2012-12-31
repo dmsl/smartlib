@@ -106,8 +106,8 @@ if ($_SESSION['loggedin'] == 0) {
                     var params = "user=" + user + "&mykey=" + <?php echo "'" . md5(_MY_KEY) . "'" ?>;
                     runAWebpageForResult(
                     <?php
-                    echo 'src="' . _LIB_URL . '/scripts/exportBooks.php"';
-                    ?>, params, fillBibtexBooks);
+                    echo '"' . _LIB_URL . '/scripts/exportBooks.php"'; ?>,
+                            params, fillBibtexBooks);
                 </script>
                 <br><br>
             </div>
@@ -159,7 +159,10 @@ if ($_SESSION['loggedin'] == 0) {
 
                     var params = "type=json" + "&user=" + user + "&mykey=" + <?php echo "'" . md5(_MY_KEY) . "'" ?>;
 
-                    runAWebpageForResult("/scripts/exportBooks.php", params, fillPluginBooks, <?php echo '"' . _LIB_URL . '"'; ?> );
+                    runAWebpageForResult(
+                    <?php
+                    echo '"' . _LIB_URL . '/scripts/exportBooks.php' . '"'; ?>,
+                            params, fillPluginBooks, <?php echo '"' . _LIB_URL . '"'; ?> );
                 </script>
                 <br>
                 <a href="scripts/smartlibPlugin.php" target="_blank"
