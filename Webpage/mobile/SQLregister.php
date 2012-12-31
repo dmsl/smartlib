@@ -42,11 +42,11 @@ $_SESSION['isMobileDevice'] = 0;
 $_SESSION['foundLevel'] = 0;
 
 //Get the device
-$device = $_POST['device'];
+$device = $_GET['device'];
 
 //Get username and password from our form (login.php)
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = $_GET['username'];
+$password = $_GET['password'];
 
 //Find out if we are on mobile device
 if ($device == "android" || $device == "iOS") {
@@ -55,15 +55,15 @@ if ($device == "android" || $device == "iOS") {
 
 
 //Get data from Website or Smartphones
-$_SESSION['REGusername'] = $_POST['username'];
-$_SESSION['REGpassword'] = $_POST['password'];
-$_SESSION['REGconfPassword'] = $_POST['confPassword'];
-$_SESSION['REGname'] = $_POST['name'];
-$_SESSION['REGsurname'] = $_POST['surname'];
-$_SESSION['REGemail'] = $_POST['email'];
-$_SESSION['REGtelephone'] = $_POST['telephone'];
-$_SESSION['REGappNotif'] = $_POST['appNotif'];
-$_SESSION['REGemailNotif'] = $_POST['emailNotif'];
+$_SESSION['REGusername'] = $_GET['username'];
+$_SESSION['REGpassword'] = $_GET['password'];
+$_SESSION['REGconfPassword'] = $_GET['confPassword'];
+$_SESSION['REGname'] = $_GET['name'];
+$_SESSION['REGsurname'] = $_GET['surname'];
+$_SESSION['REGemail'] = $_GET['email'];
+$_SESSION['REGtelephone'] = $_GET['telephone'];
+$_SESSION['REGappNotif'] = $_GET['appNotif'];
+$_SESSION['REGemailNotif'] = $_GET['emailNotif'];
 
 //Workaround
 if ($_SESSION['REGappNotif'] == "true")
@@ -144,6 +144,10 @@ if ($_SESSION['REGtelephone'] == "") {
     $_SESSION['errTelephone'] = "1";
     $_SESSION['regHasErrors'] = 1;
     $_SESSION['regMessage'] .= "Telephone cant be empty</br>";
+} else if (!isTelephoneCorrect($_SESSION['REGtelephone'])) {
+    $_SESSION['errTelephone'] = "1";
+    $_SESSION['regHasErrors'] = 1;
+    $_SESSION['regMessage'] .= "Telephone Number format is Wrong</br>";
 } else
     $_SESSION['errTelephone'] = "";
 
@@ -226,9 +230,6 @@ if ($_SESSION['regHasErrors'] == "0") {
             echo json_encode($result);
             die();
         }
-        //Show user info and activation details with email!
-//            header("Location: ../registerSuccess.php");
-//        }
 
     }
 
@@ -238,10 +239,9 @@ if ($_SESSION['regHasErrors'] == "0") {
 if ($_SESSION['regHasErrors'] != "0") {
 
     if ($_SESSION['isMobileDevice']) {
-        mobileSendLoginError();
+        mobileSendRegisterError();
     } else {
         printError();
-//        header("Location: ../register.php");
     }
 
 }
@@ -413,6 +413,18 @@ function getCustomURL()
 }
 
 
+function isTelephoneCorrect($telephone)
+{
+    if (!ereg("^((\+[1-9]{3,4}|0[1-9]{4}|00[1-9]{3})\-?)?[0-9]{8,20}$", $telephone)) {
+        // Email invalid because wrong number of characters
+        // in one section or wrong number of @ symbols.
+        return false;
+    } // else if($telephone=="")
+    // TODO Check if its correct!   return false;
+    else
+        return true;
+}
+
 //Checks if the email is correct
 function isEmailCorrect($email)
 {
@@ -458,7 +470,7 @@ function isEmailCorrect($email)
 
 //Mobile Device Functions
 // Sends error to mobile device using JSON Object Format
-function mobileSendLoginError()
+function mobileSendRegisterError()
 {
     //Convert HTML New Line to Java New Line
     $javaMSG = $_SESSION['regMessage'];
@@ -520,9 +532,6 @@ function dbError($pError)
         mobileSendDatabaseError();
     }
 
-    //if there is DB Error, inform user and move him back
-    //inform($pError);
-
     $result = array(
         "result" => "0",
         "message" => "Database Error :("
@@ -532,10 +541,6 @@ function dbError($pError)
     $_SESSION['regHasErrors'] = 0;
     echo json_encode($result);
     die();
-
-
-    //header("Location: ../index.php");
-//    die();
 
 }
 

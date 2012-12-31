@@ -100,7 +100,7 @@ include 'scripts/sessionInit.php';
             <br>
             <br>
             <header class="no-background">
-                <h1 class="no-background-centered">Latest Additions Test WW</h1>
+                <h1 class="no-background-centered">Latest Additions</h1>
             </header>
             <div class="mainContentCentered">
                 <!--                TODO put in carousel title on bottom of image-->
