@@ -104,7 +104,10 @@ if ($_SESSION['loggedin'] == 0) {
 
                 <script>
                     var params = "user=" + user + "&mykey=" + <?php echo "'" . md5(_MY_KEY) . "'" ?>;
-                    runAWebpageForResult("/scripts/exportBooks.php", params, fillBibtexBooks);
+                    runAWebpageForResult(
+                    <?php
+                    echo 'src="' . _LIB_URL . '/scripts/exportBooks.php"';
+                    ?>, params, fillBibtexBooks);
                 </script>
                 <br><br>
             </div>
