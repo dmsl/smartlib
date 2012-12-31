@@ -48,7 +48,9 @@ include 'scripts/sessionInit.php';
     <meta name="description" content="SmartLib : Library of Modern World"/>
     <meta name="keywords" content="smartLib, smart, library, books, ucy,
     university of cyprus, university, cyprus, cs"/>
-    <title>SmartLib</title>
+  <meta name="application-name" content="SmartLib"/> 
+<meta name="msapplication-TileColor" content="#58595B"/> 
+<meta name="msapplication-TileImage" content="85e99689-494c-4398-abb2-2bf0547a3bcf.png"/>  <title>SmartLib</title>
     <link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
     <!--    Include Scripts-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
