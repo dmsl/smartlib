@@ -48,9 +48,10 @@ include 'scripts/sessionInit.php';
     <meta name="description" content="SmartLib : Library of Modern World"/>
     <meta name="keywords" content="smartLib, smart, library, books, ucy,
     university of cyprus, university, cyprus, cs"/>
-  <meta name="application-name" content="SmartLib"/> 
-<meta name="msapplication-TileColor" content="#58595B"/> 
-<meta name="msapplication-TileImage" content="85e99689-494c-4398-abb2-2bf0547a3bcf.png"/>  <title>SmartLib</title>
+    <meta name="application-name" content="SmartLib"/>
+    <meta name="msapplication-TileColor" content="#58595B"/>
+    <meta name="msapplication-TileImage" content="85e99689-494c-4398-abb2-2bf0547a3bcf.png"/>
+    <title>SmartLib</title>
     <link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
     <!--    Include Scripts-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
@@ -99,7 +100,7 @@ include 'scripts/sessionInit.php';
             <br>
             <br>
             <header class="no-background">
-                <h1 class="no-background-centered">Latest Additions</h1>
+                <h1 class="no-background-centered">Latest Additions Test WW</h1>
             </header>
             <div class="mainContentCentered">
                 <!--                TODO put in carousel title on bottom of image-->
