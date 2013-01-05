@@ -44,9 +44,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="User Books (X)"
+        android:layout_marginBottom="5dp"
+        android:text="User Books"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+        <TextView
+        android:id="@+id/textViewShowingCachedCopy"
+        style="@style/errorDirection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:text="@string/showingACachedCopy"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="15sp"
+        android:visibility="gone" />
+
+    
+    <ProgressBar
+        android:id="@+id/progressBarFetchMyBooks"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
     <LinearLayout
         android:id="@+id/linearLayoutSelectedBooks"
         android:layout_width="match_parent"

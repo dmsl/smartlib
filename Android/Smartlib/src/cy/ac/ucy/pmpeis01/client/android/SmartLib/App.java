@@ -37,6 +37,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -48,8 +49,13 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.util.TypedValue;
@@ -58,14 +64,14 @@ import android.widget.TextView;
 import com.actionbarsherlock.view.Menu;
 
 import cy.ac.ucy.pmpeis01.client.android.R;
-import cy.ac.ucy.pmpeis01.client.android.ImageLoader.ImageLoader;
-import cy.ac.ucy.pmpeis01.client.android.history.HistoryManager;
+import cy.ac.ucy.pmpeis01.client.android.Cache.ImageLoader;
 
 public class App extends Application {
 
 	static final String TAG = App.class.getSimpleName();
 
 	// ////////////////////// DEFINES
+	public static final String ExtrasForPreferencesActivity = "extras_for_preferencesActivity";
 	public static final String ExtrasForCaptureActivity = "extras_for_editCaptureActivity";
 	public static final String ExtrasForEditBookActivity = "extras_for_editBookActivity";
 
@@ -176,6 +182,8 @@ public class App extends Application {
 
 	public Library library = null;
 
+	public static String lang;
+
 	boolean registerSuccess = false;
 
 	DeviceType deviceType = DeviceType.NotSpecified;
@@ -187,11 +195,12 @@ public class App extends Application {
 	/** User who tries to register to a SmartLib */
 	User registerUser = null;
 
+	public static boolean refreshLang = false;
+
 	public static final String DEVICE_ANDROID = "android";
 
 	public static final int GENERAL_NO_INTERNET = -20;
 
-	
 	// public static final int MENU_SEARCH_BOOKS = 0;
 	// SUMMER REMOVED
 	// Access history within all application
@@ -201,15 +210,76 @@ public class App extends Application {
 
 	public Book selectedBook;
 
-	public Bitmap bitmap;
+//	public Bitmap loginLogoBitmap;
+	
+	public Drawable loginLogoDrawable;
 
 	private static final String MASTER_URL = "http://www.cs.ucy.ac.cy/projects/smartLib";
 	private static final String getLibrariesPath = "/MASTER/getLibraries.php";
 
 	public static boolean torchState = false;
 
+	public static String[] entries = new String[2];
+	public static String[] strValues = new String[] { "en", "el" };
+
+	// entries[0] = new String(getString(R.string.english));
+	// entries[1] = new String(getString(R.string.greek));
+	// strValues[0] = new String("en");
+	// strValues[1] = new String("el");
+
 	public enum CaptureMode {
 		Insert, LentReturn, SmartMode, notSet
+
+	}
+
+	@Override
+	public void onCreate() {
+		super.onCreate();
+
+		// Save language preferences
+		App.lang = Locale.getDefault().getISO3Language().substring(0, 2);
+
+		updateLanguage(this);
+
+		entries[0] = new String(getString(R.string.english));
+		entries[1] = new String(getString(R.string.greek));
+
+	}
+
+	public static void updateLanguage(Context ctx) {
+
+		// Change locale
+		Locale locale = new Locale(App.lang);
+		Locale.setDefault(locale);
+		Configuration config = new Configuration();
+		config.locale = locale;
+		ctx.getResources().updateConfiguration(config,
+		ctx.getResources().getDisplayMetrics());
+
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+
+		super.onConfigurationChanged(newConfig);
+		updateLanguage(this);
+	}
+
+	/**
+	 * Find out if we should change locale
+	 * 
+	 * @param newLang
+	 */
+	public static boolean shouldChangeLocale(String newLang) {
+		// Get default locale
+		if (!App.lang.equals(newLang)) {
+
+			refreshLang = true;
+		} else {
+			refreshLang = false;
+		}
+
+		return refreshLang;
 
 	}
 
@@ -424,7 +494,8 @@ public class App extends Application {
 	 * @param pTimestamp
 	 * @return
 	 */
-	public static String makeTimeStampHumanReadble(String pTimestamp) {
+	public static String makeTimeStampHumanReadble(Context context,
+			String pTimestamp) {
 
 		try {
 
@@ -432,8 +503,8 @@ public class App extends Application {
 					"yyyy-MM-dd HH:mm:ss");
 			java.util.Date lFromDate1 = datetimeFormatter1.parse(pTimestamp);
 
-			CharSequence humansTime = DateUtils
-					.getRelativeTimeSpanString(lFromDate1.getTime());
+			CharSequence humansTime = DateUtils.getRelativeTimeSpanString(
+					context, lFromDate1.getTime());
 
 			return humansTime.toString();
 		}

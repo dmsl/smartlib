@@ -49,22 +49,21 @@
         android:layout_marginBottom="0dp"
         android:layout_marginTop="0dp"
         android:text="LibName"
-        android:textSize="25dp" />
+        android:textSize="25sp" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
+<!-- CHECK: was below: android:layout_weight="0" FIXME scale of image-->
+
         <ImageView
             android:id="@+id/imageViewLibraryLogo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_weight="0"
+            android:layout_width="130dp"
+            android:layout_height="105dp"
+            android:adjustViewBounds="false"
             android:clickable="false"
-            android:maxHeight="150dp"
-            android:maxWidth="150dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/default_lib_logo" />
+            android:src="@drawable/default_library" />
 
         <TextView
             android:id="@+id/textViewLibraryLocation"

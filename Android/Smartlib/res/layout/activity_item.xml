@@ -41,6 +41,7 @@
 
 
     <LinearLayout
+        android:baselineAligned="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal" >
@@ -58,6 +59,7 @@
                 android:layout_height="70dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
+                android:contentDescription="@string/bookInfo"
                 android:scaleType="centerCrop"
                 android:src="@drawable/nocover" />
 
@@ -84,7 +86,7 @@
                 android:text="owner"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#ff33b5e5"
-                android:textSize="25dp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:typeface="normal" />
 
@@ -167,7 +169,7 @@
         android:text="title of book"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ff33b5e5"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textViewActivityItemAuthors"
@@ -175,6 +177,6 @@
         android:layout_height="wrap_content"
         android:gravity="top|center_horizontal"
         android:text="John John, John"
-        android:textSize="13dp" />
+        android:textSize="13sp" />
 
 </LinearLayout>

@@ -326,7 +326,6 @@ function asyncLogout() {
                     '<div id="login-panel">\
                     <input type="text" name="username" placeholder="Username"\
                     autocomplete="off"\
-                    autofocus="autofocus"\
                     id="loginUsernameField"\
                     onkeyup="toggleLoginButton()"\
                     />\

@@ -63,6 +63,8 @@
 
 jQuery(document).ready(function () {
 
+
+    var grid = $('#allBooksLoggedInList');
     var resultRecords = '0';
     var tmpTitle;
     var tmpAuthors;
@@ -78,6 +80,19 @@ jQuery(document).ready(function () {
     //Show more records
     if (windowSpace > 1000) {
         recordNum = 20;
+    }
+
+    // Searches with URL of index page. eg index?ISBN=123
+    var searchedOutside = 0;
+
+    // If search field is filled, do search
+    if ($("#search_cd_loggedIn").val() != "") {
+        searchedOutside = 1;
+
+        timeoutHnd = setTimeout(function () {
+            doSearch(isAdv);
+        }, 10);
+
     }
 
 
@@ -143,7 +158,7 @@ jQuery(document).ready(function () {
 
 
             var gridDiv = $('#search-panel-div');
-            var grid = $('#allBooksLoggedInList');
+
 
             resultRecords = grid.jqGrid('getGridParam', 'reccount');
 
@@ -170,15 +185,26 @@ jQuery(document).ready(function () {
                         { queue:false, duration:500 }
                 );
 
-                //Show no results message
-                $('#search-no-results-found')
-                        .css('opacity', 0)
-                        .slideDown(500)
-                        .animate(
-                        { opacity:1 },
-                        { queue:false, duration:500 }
-                );
 
+                //Show no results message in all cases except when outside search is made
+                if (!searchedOutside || searchedOutside == 2) {
+
+                    //Show no results message
+                    $('#search-no-results-found')
+                            .css('opacity', 0)
+                            .slideDown(500)
+                            .animate(
+                            { opacity:1 },
+                            { queue:false, duration:500 }
+                    );
+                }
+
+
+                //Force a search
+                if (searchedOutside == 1) {
+                    searchedOutside = 2;
+                    doSimpleSearch();
+                }
             }
             else {
                 //Hide no results message
@@ -355,7 +381,7 @@ jQuery(document).ready(function () {
                     //Set autocomplete for owner
                     $("#advsearch_cd_loggedIn_owner").autocomplete(
                             {
-                                source:"scripts/autocomplete/getUsernameList.php" + "?title=" + tmpTitle
+                                source:"scripts/autocomplete/getUsernameList.php" + "?titl;e=" + tmpTitle
                                         + "&authors=" + tmpAuthors
                                         + "&isbn=" + tmpIsbn,
                                 minLength:1,
@@ -448,11 +474,6 @@ jQuery(document).ready(function () {
     });
 
 
-    function gridReload() {
-        $('#allBooksLoggedInList').trigger("reloadGrid");
-    }
-
-
 // Format authors to be seperated with comma
     function formatAuthors(cellvalue, options, cellObject) {
 
@@ -518,8 +539,6 @@ jQuery(document).ready(function () {
             grid.jqGrid('setGridParam', { 'datatype':'json' });
             grid.jqGrid('setGridParam', {search:true});
 
-            //TODO ERROR IS HERE! previous post data are found
-
             //Run query
             var postData = grid.jqGrid('getGridParam', 'postData');
             $.extend(postData, {
@@ -548,10 +567,9 @@ jQuery(document).ready(function () {
 
         var cd_mask = $("#search_cd_loggedIn").val();
 
+
         if (cd_mask == '') {
-
             initSearchResults();
-
         }
         else {
             //We will make search
@@ -560,11 +578,7 @@ jQuery(document).ready(function () {
 
             //Run query
             var postData = grid.jqGrid('getGridParam', 'postData');
-            $.extend(postData, {searchString:cd_mask,
-                title:'',
-                authors:'',
-                username:'',
-                isbn:''});
+            $.extend(postData, {searchString:cd_mask});
 
             gridReload();
 
@@ -594,6 +608,11 @@ jQuery(document).ready(function () {
                 { opacity:0 },
                 { queue:false, duration:500 }
         );
+    }
+
+
+    function gridReload() {
+        $('#allBooksLoggedInList').trigger("reloadGrid");
     }
 
 

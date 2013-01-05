@@ -203,7 +203,7 @@ public class EditBookActivity extends SherlockActivity {
 		bookPageCount.setText(Integer.valueOf(app.selectedBook.pageCount)
 				.toString());
 		bookDateOfInsert.setText(App
-				.makeTimeStampHumanReadble(app.selectedBook.dateOfInsert));
+				.makeTimeStampHumanReadble(getApplicationContext(),app.selectedBook.dateOfInsert));
 		bookLanguage.setText(app.selectedBook.lang);
 
 
@@ -469,7 +469,14 @@ public class EditBookActivity extends SherlockActivity {
 
 	@Override
 	protected void onResume() {
-		super.onResume();
+		//Set library's logo as ActionBar Icon
+		App.imageLoader.DisplayActionBarIcon(app.library.getImageURL(),
+				getApplicationContext(), getSupportActionBar());
+		
+	    if (App.refreshLang) {
+	        refresh();
+	    }
+	    super.onResume();
 
 		getStatusDefaultValue();
 
@@ -977,6 +984,17 @@ public class EditBookActivity extends SherlockActivity {
 
 
 
+	/**Refresh activity's language
+	 * 
+	 */
+	private void refresh() {
+		App.refreshLang=false;
+	    finish();
+	    Intent myIntent = new Intent(EditBookActivity.this, EditBookActivity.class);
+	    startActivity(myIntent);
+	}
+	
+	
 
 
 

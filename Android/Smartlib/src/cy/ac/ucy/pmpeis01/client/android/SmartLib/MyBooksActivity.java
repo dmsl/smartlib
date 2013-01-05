@@ -34,8 +34,14 @@ package cy.ac.ucy.pmpeis01.client.android.SmartLib;
 
 
 
-import java.security.Timestamp;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -44,7 +50,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -55,6 +60,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,7 +68,6 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
-import cy.ac.ucy.pmpeis01.client.android.CaptureActivity;
 import cy.ac.ucy.pmpeis01.client.android.PreferencesActivity;
 import cy.ac.ucy.pmpeis01.client.android.R;
 
@@ -91,7 +96,11 @@ public class MyBooksActivity extends SherlockActivity {
 
 	Boolean					isItemChecked	= false;
 
-	String isbnParam=null;
+	String					isbnParam		= null;
+
+	private ProgressBar			progressBarFetchMyBooks;
+
+
 
 
 
@@ -102,50 +111,43 @@ public class MyBooksActivity extends SherlockActivity {
 		app = (App) getApplication();
 		setContentView(R.layout.activity_my_books);
 
-		
-
 		app.selectedBook = null;
-		
+
 		// Get arguments, to find out if isbns where send as parameters
 		final Bundle extras = getIntent().getExtras();
 
 		try{
-			isbnParam = extras
-					.getString(App.ExtrasForMyBooksActivityISBN);
+			isbnParam = extras.getString(App.ExtrasForMyBooksActivityISBN);
 		}
 		catch (Exception e){
-			isbnParam=null;
+			isbnParam = null;
 		}
 
-
-
 		listViewMyBooks = (ListView) findViewById(R.id.listViewBooksOfUser);
-
-
 
 		textViewMyBooksTitle = (TextView) findViewById(R.id.textViewMyBooksTitle);
 
 		linearLayoutSelectedBooks = (LinearLayout) findViewById(R.id.linearLayoutSelectedBooks);
+		progressBarFetchMyBooks = (ProgressBar) findViewById(R.id.progressBarFetchMyBooks);
 
-		textViewMyBooksTitle.setText(app.user.name + " Books (?)");
 
+		if (App.lang.equals("en")){
+			textViewMyBooksTitle.setText(app.user.name + " "
+					+ getString(R.string.books));
+		}
+		else if (App.lang.equals("el")){
+			textViewMyBooksTitle.setText(getString(R.string.books) + " "
+					+ app.user.name);
+		}
 
 		arralArrayListUserBooks = new ArrayList<Book>();
 
 		textViewMyBookSelected = (TextView) findViewById(R.id.textViewMyBooksSelectedBook);
 
-
-
-
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
 		// Get user books
 		new AsyncTaskGetMyBooks().execute();
-
-
-
-
 
 		listViewMyBooks.setOnItemClickListener(new OnItemClickListener() {
 
@@ -168,15 +170,8 @@ public class MyBooksActivity extends SherlockActivity {
 				//
 				// textViewMyBookSelected.setText(selectedBook.title);
 
-
 			}
 		});
-
-
-
-
-
-
 
 	}
 
@@ -184,10 +179,15 @@ public class MyBooksActivity extends SherlockActivity {
 
 
 
-
-
 	@Override
 	protected void onResume() {
+		// Set library's logo as ActionBar Icon
+		App.imageLoader.DisplayActionBarIcon(app.library.getImageURL(),
+				getApplicationContext(), getSupportActionBar());
+
+		if (App.refreshLang){
+			refresh();
+		}
 		super.onResume();
 
 		linearLayoutSelectedBooks.setVisibility(View.GONE);
@@ -199,8 +199,6 @@ public class MyBooksActivity extends SherlockActivity {
 		// Recreate the menu
 		invalidateOptionsMenu();
 	}
-
-
 
 
 
@@ -221,12 +219,9 @@ public class MyBooksActivity extends SherlockActivity {
 						MenuItem.SHOW_AS_ACTION_IF_ROOM
 								| MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
-		
 		menu.add(Menu.NONE, App.MENU_LIBRARY_SETTINGS, Menu.NONE,
-				app.library.name)
-				.setIcon(R.drawable.ic_menu_account_list)
-				.setShowAsActionFlags(
-						MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+				app.library.name).setIcon(R.drawable.ic_menu_account_list)
+				.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 		return true;
 	}
 
@@ -238,20 +233,20 @@ public class MyBooksActivity extends SherlockActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case android.R.id.home:
-				if(isbnParam!=null){
+				if (isbnParam != null){
 					onBackPressed();
 				}
 				else{
-				NavUtils.navigateUpFromSameTask(this);
+					NavUtils.navigateUpFromSameTask(this);
 				}
 				return true;
 			case App.MENU_LIBRARY_SETTINGS:{
 				Intent myIntent = new Intent(MyBooksActivity.this,
-				 LibPreferences.class);
+						LibPreferences.class);
 				MyBooksActivity.this.startActivity(myIntent);
 
 			}
-			return true;
+				return true;
 			case App.MENU_GLOBAL_SETTINGS:{
 				Intent myIntent = new Intent(MyBooksActivity.this,
 						PreferencesActivity.class);
@@ -268,7 +263,6 @@ public class MyBooksActivity extends SherlockActivity {
 
 			}
 				return true;
-
 
 		}
 		return super.onOptionsItemSelected(item);
@@ -293,15 +287,8 @@ public class MyBooksActivity extends SherlockActivity {
 
 		}
 
-
 		return true;
 	}
-
-
-
-
-
-
 
 	/**
 	 * Get User's Books
@@ -309,16 +296,66 @@ public class MyBooksActivity extends SherlockActivity {
 	 * @author paschalis
 	 * 
 	 */
-	private class AsyncTaskGetMyBooks extends
-			AsyncTask<Void, Integer, JSONArray> {
+	private class AsyncTaskGetMyBooks extends AsyncTask<Void, Integer, String> {
+
+		String	cachedMyBooksURI;
+
+		File		cachedMyBooks;
+
+		TextView	textViewCachedCopyMsg;
+
+
+
 
 
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			// progressBarLentButton.setVisibility(View.VISIBLE);
-			// buttonLentBook.setVisibility(View.INVISIBLE);
-			// buttonLentBook.setEnabled(false);
+
+
+			progressBarFetchMyBooks.setVisibility(View.VISIBLE);
+			// Open previous cache
+			cachedMyBooksURI = App.imageLoader.getCacheDirectory() + "/mb" + app.user.username.hashCode();
+			cachedMyBooks = new File(cachedMyBooksURI);
+
+			// Show cached data until new data is fetched
+			if (cachedMyBooks.exists()){
+				textViewCachedCopyMsg = (TextView) findViewById(R.id.textViewShowingCachedCopy);
+				textViewCachedCopyMsg.setVisibility(View.VISIBLE);
+
+				// Make progress bar smaller
+				progressBarFetchMyBooks.setScaleX(0.5f);
+				progressBarFetchMyBooks.setScaleY(0.5f);
+
+				String cachedData = "";
+				// Read data from file
+				try{
+					BufferedReader in = new BufferedReader(new FileReader(
+							cachedMyBooks));
+					String str;
+					while ((str = in.readLine()) != null)
+						cachedData += str;
+					in.close();
+				}
+				catch (IOException e){
+					Log.e(TAG, e.toString());
+				}
+
+				// Parse and show cached data
+				parseAndShowData(cachedData, false);
+
+			}
+			else{
+				// Wait for new data
+				try{
+					// Create the file
+					cachedMyBooks.createNewFile();
+				}
+				catch (IOException e){
+					Log.e(TAG, e.toString());
+				}
+
+			}
 
 		}
 
@@ -327,12 +364,7 @@ public class MyBooksActivity extends SherlockActivity {
 
 
 		@Override
-		protected JSONArray doInBackground(Void... v) {
-
-			JSONArray result = null;
-
-			// int returnResult = App.GENERAL_NO_INTERNET;
-
+		protected String doInBackground(Void... v) {
 
 			ArrayList<NameValuePair> parameters = new ArrayList<NameValuePair>();
 			// Say that we are mobile (Android Device)
@@ -347,6 +379,69 @@ public class MyBooksActivity extends SherlockActivity {
 			String resultStr = App.executePHPScript(
 					app.getLibrary_getUserBooks_URL(), parameters);
 
+			// Save result to cache
+			if (resultStr != null){
+				try{
+
+
+					FileWriter fw;
+
+					fw = new FileWriter(cachedMyBooks.getAbsoluteFile());
+					BufferedWriter bw = new BufferedWriter(fw);
+
+					bw.write(resultStr);
+					bw.close();
+
+				}
+				catch (IOException e){
+					Log.e(TAG, e.toString());
+				}
+
+			}
+
+			return resultStr;
+
+		}
+
+
+
+
+
+		@Override
+		protected void onPostExecute(String resultStr) {
+			if (resultStr != null){
+
+				// If cached copy was showing, hide the message because
+				// content now becomes live
+				if (textViewCachedCopyMsg != null){
+					textViewCachedCopyMsg.setVisibility(View.GONE);
+
+					// Reset cached books
+					arralArrayListUserBooks.clear();
+				}
+
+				// Parse and Show Data
+				parseAndShowData(resultStr, true);
+
+				// Hide progress bar
+				progressBarFetchMyBooks.setVisibility(View.GONE);
+			}
+			else{
+				Toast.makeText(getApplicationContext(),
+						R.string.msgFailedDownloadData,
+						Toast.LENGTH_SHORT).show();
+				progressBarFetchMyBooks.setVisibility(View.GONE);
+			}
+
+		}
+
+
+
+
+
+		private void parseAndShowData(String resultStr, boolean liveData) {
+			JSONArray result = null;
+
 			// Parse Result (JSON Obj)
 			if (resultStr != null){
 				try{
@@ -357,161 +452,208 @@ public class MyBooksActivity extends SherlockActivity {
 				catch (JSONException e){
 					Log.e(TAG, "Error parsing data " + e.toString());
 
-
 				}
 
 
-			}
 
+				int returnFromJson = App.GENERAL_NO_INTERNET;
 
-			return result;
+				try{
+					returnFromJson = result.getJSONObject(0).getInt(
+							"result");
 
-		}
+				}
+				catch (Exception e1){
+					returnFromJson = App.BOOKS_OF_USER_NO_BOOKS;
+				}
 
-
-
-
-
-		@Override
-		protected void onPostExecute(JSONArray result) {
-
-			int returnFromJson = App.GENERAL_NO_INTERNET;
-
-			try{
-				returnFromJson = result.getJSONObject(0).getInt("result");
-
-			}
-			catch (Exception e1){
-				returnFromJson = App.BOOKS_OF_USER_NO_BOOKS;
-			}
-
-			switch (returnFromJson) {
-				case App.GENERAL_SUCCESSFULL:
-					// Save all books to array
-
-					try{
-						app.user.totalBooks = result.getJSONObject(0)
-								.getInt("booksNum");
-
-						textViewMyBooksTitle.setText(app.user.name
-								+ " Books (" + app.user.totalBooks
-								+ ")");
-					}
-					catch (Exception e){
-
-					}
-
-
-
-					for (int i = 1; i < result.length(); i++){
+				switch (returnFromJson) {
+					case App.GENERAL_SUCCESSFULL:
+						// Save all books to array
 
 						try{
+							app.user.totalBooks = result
+									.getJSONObject(0).getInt(
+											"booksNum");
 
-							JSONObject row;
 
-							Book book = new Book();
 
-							row = result.getJSONObject(i);
-
-							String isbn = row.getString("isbn");
-							
-							//If isbn passed as parameter, drop all other books
-							if(isbnParam!=null){
-								if(!isbn.equals(isbnParam))
-									continue;
+							if (App.lang.equals("en")){
+								textViewMyBooksTitle
+										.setText(app.user.name
+												+ " "
+												+ getString(R.string.books)
+												+ " ("
+												+ app.user.totalBooks
+												+ ")");
 							}
-							
-							String title = row.getString("title");
-							String authors = row.getString("authors");
-							int publishedYear = row
-									.getInt("publishedYear");
-							int pageCount = row.getInt("pageCount");
+							else{
+								textViewMyBooksTitle
+										.setText(getString(R.string.books)
+												+ " "
+												+ app.user.name
+												+ " ("
+												+ app.user.totalBooks
+												+ ")");
+							}
 
-							String dateOfInsert = row
-									.getString("dateOfInsert");
-							String imgURL = row.getString("imgURL");
-							String lang = row.getString("lang");
-							int bookStatus = row.getInt("status");
-
-							book.isbn = isbn;
-							book.title = title;
-							book.authors = authors;
-							book.publishedYear = publishedYear;
-							book.pageCount = pageCount;
-							book.dateOfInsert = dateOfInsert;
-							book.imgURL = imgURL;
-							book.lang = lang;
-							book.status = bookStatus;
-
-
-							// Insert book to array
-							arralArrayListUserBooks.add(book);
 						}
-						catch (JSONException e){
+						catch (Exception e){
+
 						}
 
+						for (int i = 1; i < result.length(); i++){
+
+							try{
+
+								JSONObject row;
+
+								Book book = new Book();
+
+								row = result.getJSONObject(i);
+
+								String isbn = row.getString("isbn");
+
+								// If isbn passed as parameter, drop all
+								// other books
+								if (isbnParam != null){
+									if (!isbn.equals(isbnParam))
+										continue;
+								}
+
+								String title = row.getString("title");
+								String authors = row
+										.getString("authors");
+								int publishedYear = row
+										.getInt("publishedYear");
+								int pageCount = row.getInt("pageCount");
+
+								String dateOfInsert = row
+										.getString("dateOfInsert");
+								String imgURL = row.getString("imgURL");
+								String lang = row.getString("lang");
+								int bookStatus = row.getInt("status");
+
+								book.isbn = isbn;
+								book.title = title;
+								book.authors = authors;
+								book.publishedYear = publishedYear;
+								book.pageCount = pageCount;
+								book.dateOfInsert = dateOfInsert;
+								book.imgURL = imgURL;
+								book.lang = lang;
+								book.status = bookStatus;
+
+								// Insert book to array
+								arralArrayListUserBooks.add(book);
+							}
+							catch (JSONException e){
+							}
+
+						}
+
+						bookInfoAdapter = new AdapterBookInfo(
+								MyBooksActivity.this,
+								R.layout.book_item,
+								arralArrayListUserBooks, false);
+
+						// Show list
+						listViewMyBooks.setAdapter(bookInfoAdapter);
+
+						break;
+					case App.GENERAL_NO_INTERNET:
+						if (liveData){
+							// TODO refresh button, and call again
+							// asynctask
+							// from
+							// refresh button
+						}
+						else{
+							Toast.makeText(MyBooksActivity.this,
+									R.string.failedToLoadCachedData,
+									Toast.LENGTH_LONG).show();
+						}
+
+						break;
+					case App.BOOKS_OF_USER_NO_BOOKS:
+
+						if (liveData){
+							Toast.makeText(MyBooksActivity.this,
+									R.string.msgYouHaveNoBooksSoFar,
+									Toast.LENGTH_LONG).show();
+
+							Handler handler = new Handler();
+							handler.postDelayed(new Runnable() {
+
+								@Override
+								public void run() {
+									MyBooksActivity.this.finish();
+								}
+							}, App.DELAY_TWO_SEC);
+						}
+						else{
+							Toast.makeText(MyBooksActivity.this,
+									R.string.failedToLoadCachedData,
+									Toast.LENGTH_LONG).show();
+						}
 
 
-					}
+						break;
 
-
-
-					bookInfoAdapter = new AdapterBookInfo(
-							MyBooksActivity.this, R.layout.book_item,
-							arralArrayListUserBooks,false);
-
-					// Show list
-					listViewMyBooks.setAdapter(bookInfoAdapter);
-
-					break;
-				case App.GENERAL_NO_INTERNET:
-					// TODO refresh button, and call again asynctask from
-					// refresh button
-					break;
-				case App.BOOKS_OF_USER_NO_BOOKS:
-
-					Toast.makeText(MyBooksActivity.this,
-							R.string.msgYouHaveNoBooksSoFar,
-							Toast.LENGTH_LONG).show();
-
-					Handler handler = new Handler();
-					handler.postDelayed(new Runnable() {
-
-						@Override
-						public void run() {
+					case App.GENERAL_WEIRD_ERROR:
+						if (liveData){
+							Toast.makeText(MyBooksActivity.this,
+									R.string.reportThisToDev,
+									Toast.LENGTH_LONG).show();
 							MyBooksActivity.this.finish();
 						}
-					}, App.DELAY_TWO_SEC);
+						else{
+							Toast.makeText(MyBooksActivity.this,
+									R.string.failedToLoadCachedData,
+									Toast.LENGTH_LONG).show();
+						}
 
+						break;
+					case App.GENERAL_DATABASE_ERROR:
+						if (liveData){
+							Toast.makeText(MyBooksActivity.this,
+									R.string.reportThisToDev,
+									Toast.LENGTH_LONG).show();
+							MyBooksActivity.this.finish();
 
-					break;
+						}
+						else{
+							Toast.makeText(MyBooksActivity.this,
+									R.string.failedToLoadCachedData,
+									Toast.LENGTH_LONG).show();
+						}
 
-				case App.GENERAL_WEIRD_ERROR:
-					Toast.makeText(MyBooksActivity.this,
-							R.string.reportThisToDev,
-							Toast.LENGTH_LONG).show();
-					MyBooksActivity.this.finish();
-					break;
-				case App.GENERAL_DATABASE_ERROR:
-					Toast.makeText(MyBooksActivity.this,
-							R.string.reportThisToDev,
-							Toast.LENGTH_LONG).show();
-					MyBooksActivity.this.finish();
-					break;
-				default:
-					break;
+						break;
+					default:
+						break;
+				}
 			}
-
-
-
-
-
-
-
-
 
 
 		}
 	}
+
+
+
+
+
+	/**
+	 * Refresh activity's language
+	 * 
+	 */
+	private void refresh() {
+		App.refreshLang = false;
+		finish();
+		Intent myIntent = new Intent(MyBooksActivity.this,
+				MyBooksActivity.class);
+		startActivity(myIntent);
+	}
+
+
 
 }

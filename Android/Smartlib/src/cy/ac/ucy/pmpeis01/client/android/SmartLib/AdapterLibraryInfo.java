@@ -45,7 +45,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import cy.ac.ucy.pmpeis01.client.android.R;
-import cy.ac.ucy.pmpeis01.client.android.ImageLoader.ImageLoader;
+import cy.ac.ucy.pmpeis01.client.android.Cache.ImageLoader;
 
 
 

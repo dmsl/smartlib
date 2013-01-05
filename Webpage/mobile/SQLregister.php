@@ -42,11 +42,11 @@ $_SESSION['isMobileDevice'] = 0;
 $_SESSION['foundLevel'] = 0;
 
 //Get the device
-$device = $_GET['device'];
+$device = $_POST['device'];
 
 //Get username and password from our form (login.php)
-$username = $_GET['username'];
-$password = $_GET['password'];
+$username = $_POST['username'];
+$password = $_POST['password'];
 
 //Find out if we are on mobile device
 if ($device == "android" || $device == "iOS") {
@@ -55,15 +55,15 @@ if ($device == "android" || $device == "iOS") {
 
 
 //Get data from Website or Smartphones
-$_SESSION['REGusername'] = $_GET['username'];
-$_SESSION['REGpassword'] = $_GET['password'];
-$_SESSION['REGconfPassword'] = $_GET['confPassword'];
-$_SESSION['REGname'] = $_GET['name'];
-$_SESSION['REGsurname'] = $_GET['surname'];
-$_SESSION['REGemail'] = $_GET['email'];
-$_SESSION['REGtelephone'] = $_GET['telephone'];
-$_SESSION['REGappNotif'] = $_GET['appNotif'];
-$_SESSION['REGemailNotif'] = $_GET['emailNotif'];
+$_SESSION['REGusername'] = $_POST['username'];
+$_SESSION['REGpassword'] = $_POST['password'];
+$_SESSION['REGconfPassword'] = $_POST['confPassword'];
+$_SESSION['REGname'] = $_POST['name'];
+$_SESSION['REGsurname'] = $_POST['surname'];
+$_SESSION['REGemail'] = $_POST['email'];
+$_SESSION['REGtelephone'] = $_POST['telephone'];
+$_SESSION['REGappNotif'] = $_POST['appNotif'];
+$_SESSION['REGemailNotif'] = $_POST['emailNotif'];
 
 //Workaround
 if ($_SESSION['REGappNotif'] == "true")

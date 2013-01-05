@@ -31,11 +31,10 @@
     
     
     -->
-    
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" xmlns:android1="http://schemas.android.com/apk/res/android">
 
     <TextView
         android:id="@+id/textViewPopularBooks"
@@ -43,18 +42,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginTop="15dp"
-        android:text="Popular Books"
+        android:text="@string/latestAdditions"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:visibility="visible" />
+    
+    
+        <TextView
+        android:id="@+id/textViewShowingCachedCopy"
+        style="@style/errorDirection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android1:layout_marginTop="0dp"
+        android:text="@string/showingACachedCopy"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android1:textSize="15sp"
+        android1:visibility="gone" />
 
+    
     <ProgressBar
         android:id="@+id/progressBarFetchPopularBooks"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
+    
+
 
     <ListView
         android:id="@+id/listViewBookResults"

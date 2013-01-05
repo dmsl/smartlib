@@ -57,9 +57,16 @@
         android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
         android:textAllCaps="false"
-        android:textOff="@string/lightOff"
-        android:textOn="@string/lightOn"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:background="@drawable/toggle_flash"
+        android:layout_margin="10dp"
+        android:textOn=""
+        android:textOff=""
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:layout_centerVertical="true"
+        />
+
 
     <!-- or the whole camera ??? Black Dim of the camera output -->
 
@@ -291,7 +298,7 @@
         android:shadowRadius="3"
 
         android:textColor="#FFFFFF"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:visibility="invisible" />
 
     <TextView
@@ -306,6 +313,6 @@
         android:shadowRadius="3"
         android:text="@string/msgScannerDefaultMessage"
         android:textColor="#FFFFFF"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
 </FrameLayout>

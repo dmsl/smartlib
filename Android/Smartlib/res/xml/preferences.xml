@@ -30,7 +30,7 @@
 
 
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/menu_settings">
 
   <PreferenceCategory android:title="@string/preferences_actions_title">
     <CheckBoxPreference
@@ -61,6 +61,8 @@
         android:key="preferences_auto_focus"
         android:defaultValue="true"
         android:title="@string/preferences_auto_focus_title"/>
+    <ListPreference android:key="preferences_language" android:title="..."/>
+    <Preference android:title="@string/clearCache" android:summary="@string/clearCacheSummary" android:key="preferences_clear_cache"/>
 
   </PreferenceCategory>
 </PreferenceScreen>

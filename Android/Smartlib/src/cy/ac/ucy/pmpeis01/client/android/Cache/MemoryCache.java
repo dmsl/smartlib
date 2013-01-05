@@ -30,7 +30,7 @@
 
  */
 
-package cy.ac.ucy.pmpeis01.client.android.ImageLoader;
+package cy.ac.ucy.pmpeis01.client.android.Cache;
 
 import java.util.Collections;
 import java.util.Iterator;

@@ -38,6 +38,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.graphics.Shader.TileMode;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -88,6 +89,7 @@ public class MainActivity extends SherlockActivity {
 		app = (App) getApplication();
 
 		setContentView(R.layout.activity_main);
+		
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		try {
@@ -177,7 +179,7 @@ public class MainActivity extends SherlockActivity {
 				@Override
 				public void onClick(View v) {
 					Intent myIntent = new Intent(MainActivity.this,
-							BookSearch.class);
+							BookSearchActivity.class);
 					MainActivity.this.startActivity(myIntent);
 				}
 			});
@@ -199,7 +201,7 @@ public class MainActivity extends SherlockActivity {
 				@Override
 				public void onClick(View v) {
 					Intent myIntent = new Intent(MainActivity.this,
-							PopularBooksActivity.class);
+							LatestAdditionsActivity.class);
 					MainActivity.this.startActivity(myIntent);
 				}
 			});
@@ -315,5 +317,29 @@ public class MainActivity extends SherlockActivity {
 		String imgURL;
 
 	}
+	
+	@Override
+	protected void onResume() {
+		//Set library's logo as ActionBar Icon
+		App.imageLoader.DisplayActionBarIcon(app.library.getImageURL(),
+				getApplicationContext(), getSupportActionBar());
+		
+	    if (App.refreshLang) {
+	        refresh();
+	    }
+	    super.onResume();
+	}
+
+	/**Refresh activity's language
+	 * 
+	 */
+	private void refresh() {
+		App.refreshLang=false;
+	    finish();
+	    Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
+	    startActivity(myIntent);
+	}
+	
+	
 
 }

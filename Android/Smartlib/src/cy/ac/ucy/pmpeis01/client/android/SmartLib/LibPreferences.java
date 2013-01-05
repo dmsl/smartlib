@@ -31,6 +31,8 @@
  */
 
 package cy.ac.ucy.pmpeis01.client.android.SmartLib;
+import com.actionbarsherlock.app.SherlockPreferenceActivity;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -46,7 +48,7 @@ import android.preference.PreferenceScreen;
 import cy.ac.ucy.pmpeis01.client.android.R;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.EditBookActivity.AsyncTaskReturnABook;
  
-public class LibPreferences extends PreferenceActivity implements
+public class LibPreferences extends SherlockPreferenceActivity implements
 SharedPreferences.OnSharedPreferenceChangeListener
 {
  
@@ -60,8 +62,14 @@ SharedPreferences.OnSharedPreferenceChangeListener
  
     @Override
     public void onCreate(Bundle aSavedState) {
+    	
+    	
 	    
 	    app = (App) getApplication();
+	    
+		//Set library's logo as ActionBar Icon
+		App.imageLoader.DisplayActionBarIcon(app.library.getImageURL(),
+				getApplicationContext(), getSupportActionBar());
 
         super.onCreate(aSavedState);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);

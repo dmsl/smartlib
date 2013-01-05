@@ -612,7 +612,14 @@ public class RegisterActivity extends SherlockActivity {
 
 	@Override
 	protected void onResume() {
-		super.onResume();
+		//Set library's logo as ActionBar Icon
+		App.imageLoader.DisplayActionBarIcon(app.library.getImageURL(),
+				getApplicationContext(), getSupportActionBar());
+		
+	    if (App.refreshLang) {
+	        refresh();
+	    }
+	    super.onResume();
 
 		if (app.registerSuccess == true){
 			// Make it false, and go back
@@ -967,6 +974,20 @@ public class RegisterActivity extends SherlockActivity {
 
 	}
 
+	
+
+
+	/**Refresh activity's language
+	 * 
+	 */
+	private void refresh() {
+		App.refreshLang=false;
+	    finish();
+	    Intent myIntent = new Intent(RegisterActivity.this, RegisterActivity.class);
+	    startActivity(myIntent);
+	}
+	
+	
 
 
 

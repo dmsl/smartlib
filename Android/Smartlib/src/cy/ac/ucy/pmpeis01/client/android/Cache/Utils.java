@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- 
+/*
  This file is part of SmartLib Project.
 
     SmartLib is free software: you can redistribute it and/or modify
@@ -15,7 +14,6 @@
     You should have received a copy of the GNU General Public License
     along with SmartLib.  If not, see <http://www.gnu.org/licenses/>.
     
-    
 	Author: Paschalis Mpeis
 
 	Affiliation:
@@ -28,30 +26,31 @@
 	Email: dmsl@cs.ucy.ac.cy
 	Tel: +357-22-892755
 	Fax: +357-22-892701
-    
-    
-    -->
-    
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        style="@style/titleLibraryName"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
-        
-<!-- Fragment to display Titles & Articles (dynamically!) -->
+	
 
-        <FrameLayout
-            android:id="@+id/title_layout_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+ */
 
-        </FrameLayout>
 
-<FrameLayout
-    android:id="@+id/fragment_container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+package cy.ac.ucy.pmpeis01.client.android.Cache;
 
-</FrameLayout>
+import java.io.InputStream;
+import java.io.OutputStream;
 
-  </LinearLayout>
+public class Utils {
+    public static void CopyStream(InputStream is, OutputStream os)
+    {
+        final int buffer_size=1024;
+        try
+        {
+            byte[] bytes=new byte[buffer_size];
+            for(;;)
+            {
+              int count=is.read(bytes, 0, buffer_size);
+              if(count==-1)
+                  break;
+              os.write(bytes, 0, count);
+            }
+        }
+        catch(Exception ex){}
+    }
+}

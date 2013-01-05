@@ -127,7 +127,7 @@ public class Library {
 	/**
 	 * @return the Image URL
 	 */
-	String getImageURL(){
+	public String getImageURL(){
 		return URL+imageURL;
 	}
 	

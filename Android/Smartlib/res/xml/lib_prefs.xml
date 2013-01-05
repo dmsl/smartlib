@@ -30,10 +30,10 @@
 
 
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/menu_settings">
 
     <CheckBoxPreference
         android:key="lib_prefs_remember_credencials"
-        android:title="Remember Credencials" />
+        android:title="@string/rememberCredentials" />
 
 </PreferenceScreen>

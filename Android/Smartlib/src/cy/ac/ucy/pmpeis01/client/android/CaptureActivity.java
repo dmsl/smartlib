@@ -40,6 +40,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.EnumSet;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -56,6 +57,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -104,6 +106,7 @@ import cy.ac.ucy.pmpeis01.client.android.SmartLib.Library;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.MainActivity;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.MyBooksActivity;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.RegisterActivity;
+import cy.ac.ucy.pmpeis01.client.android.SmartLib.StartActivity;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.LentBookActivity.DataClassLentABook;
 import cy.ac.ucy.pmpeis01.client.android.camera.CameraManager;
 import cy.ac.ucy.pmpeis01.client.android.history.HistoryActivity;
@@ -240,6 +243,18 @@ public final class CaptureActivity extends SherlockActivity implements
 		super.onCreate(icicle);
 
 		app = (App) getApplication();
+		
+		// Force change to chosen locale
+		Locale locale = new Locale(App.lang); 
+        Locale.setDefault(locale);
+		Configuration config = new Configuration();
+		config.locale = locale;
+		getBaseContext().getResources()
+				.updateConfiguration(
+						config,
+						getBaseContext().getResources()
+								.getDisplayMetrics());
+		
 
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -300,10 +315,31 @@ public final class CaptureActivity extends SherlockActivity implements
 
 		// TODO FUTURE showHelpOnFirstLaunch();
 	}
+	
+	
+	
+	/**Refresh activity's language
+	 * 
+	 */
+	private void refresh() {
+		App.refreshLang=false;
+	    finish();
+	    Intent myIntent = new Intent(CaptureActivity.this, CaptureActivity.class);
+	    startActivity(myIntent);
+	}
+	
+	
 
 	@Override
 	protected void onResume() {
-		super.onResume();
+		//Set library's logo as ActionBar Icon
+		App.imageLoader.DisplayActionBarIcon(app.library.getImageURL(),
+				getApplicationContext(), getSupportActionBar());
+		
+		 if (App.refreshLang) {
+		        refresh();
+		    }
+		    super.onResume();
 
 		// long previousScannedBooks = App.historyManager.historyItemsNumber();
 		// SUMMER CHANGED
@@ -351,7 +387,6 @@ public final class CaptureActivity extends SherlockActivity implements
 		viewfinderView.setCameraManager(cameraManager);
 
 		resultView = findViewById(R.id.result_view);
-		// statusView = (TextView) findViewById(R.id.status_view);
 
 		handler = null;
 		lastResult = null;
@@ -671,12 +706,17 @@ public final class CaptureActivity extends SherlockActivity implements
 		case App.MENU_GLOBAL_SETTINGS: {
 			Intent myIntent = new Intent(CaptureActivity.this,
 					PreferencesActivity.class);
+			
+			// Open Options in Capture Mode (Language options disabled)
+			myIntent.putExtra(App.ExtrasForPreferencesActivity,
+					true);
 
 			CaptureActivity.this.startActivity(myIntent);
 		}
 			break;
 
-		// SUMMER CHANGEX
+
+		// SUMMER CHANGE
 		// case App.MENU_ADD_BOOKS_ID:
 		// //TODO make this AFTER EVERY SCAN!!
 		// // Add books to database
@@ -831,7 +871,7 @@ public final class CaptureActivity extends SherlockActivity implements
 		ImageView barcodeImageView = (ImageView) findViewById(R.id.barcode_image_view);
 		if (barcode == null) {
 			barcodeImageView.setImageBitmap(BitmapFactory.decodeResource(
-					getResources(), R.drawable.launcher_icon));
+					getResources(), R.drawable.ic_launcher));
 		} else {
 			barcodeImageView.setImageBitmap(barcode);
 		}

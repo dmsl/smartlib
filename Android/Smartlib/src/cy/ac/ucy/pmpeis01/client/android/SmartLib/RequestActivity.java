@@ -130,7 +130,7 @@ public class RequestActivity extends SherlockActivity {
 
 		username.setText(dataClassActivities.username);
 
-		date.setText(App.makeTimeStampHumanReadble(dataClassActivities.date));
+		date.setText(App.makeTimeStampHumanReadble(getApplicationContext(),dataClassActivities.date));
 
 		// Set Ack Status strings
 		ExpandableAdapterActivityInfo.setStatusString(
@@ -1051,6 +1051,28 @@ public class RequestActivity extends SherlockActivity {
 
 	
 	
+	
+	@Override
+	protected void onResume() {
+		//Set library's logo as ActionBar Icon
+		App.imageLoader.DisplayActionBarIcon(app.library.getImageURL(),
+				getApplicationContext(), getSupportActionBar());
+		
+	    if (App.refreshLang) {
+	        refresh();
+	    }
+	    super.onResume();
+	}
+
+	/**Refresh activity's language
+	 * 
+	 */
+	private void refresh() {
+		App.refreshLang=false;
+	    finish();
+	    Intent myIntent = new Intent(RequestActivity.this, RequestActivity.class);
+	    startActivity(myIntent);
+	}
 	
 	
 	

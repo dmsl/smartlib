@@ -50,7 +50,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:enabled="false"
-        android:text="@string/login"/>
+        android:text="@string/login"
+        />
 
           <android.support.v7.widget.Space
           android:id="@+id/space2"
@@ -66,7 +67,7 @@
           android:layout_marginTop="0dp"
           android:enabled="false"
           android:text="@string/selectLibrary"
-          android:textSize="25dp" />
+          />
 
       <RelativeLayout
           android:layout_width="wrap_content"
@@ -78,15 +79,13 @@
 
           <ImageView
               android:id="@+id/imageViewLoginLibraryLogo"
-              android:layout_width="150dp"
-              android:layout_height="150dp"
-
+              android:layout_width="130dp"
+              android:layout_height="105dp"
               android:clickable="false"
               android:contentDescription="@string/libraryLogo"
-              android:maxHeight="150dp"
-              android:maxWidth="150dp"
-              android:scaleType="fitXY"
-              android:src="@drawable/choose_library" />
+              android:maxHeight="120dp"
+              android:maxWidth="200dp"
+              android:src="@drawable/default_library" />
 
           <TextView
               android:id="@+id/textViewLoginLibraryLocation"
@@ -133,7 +132,7 @@
               android:paddingLeft="10dp"
               android:paddingRight="10dp"
               android:textAppearance="?android:attr/textAppearanceMedium"
-              android:textSize="17dp"
+              android:textSize="17sp"
               android:typeface="normal" />
 
       </RelativeLayout>
@@ -148,7 +147,7 @@
               style="@style/direction"
               android:enabled="false"
               android:text="@string/username"
-              />
+               />
 
           <EditText
               android:id="@+id/editTextLoginUsername"
@@ -161,16 +160,12 @@
               android:enabled="false"
                 />
           
-               
-             
-
           <TextView
               android:id="@+id/textViewDirectionLoginPassword"
               style="@style/direction"
               android:enabled="false"
-              android:text="@string/password" 
+              android:text="@string/password"
               />
-          
 
           <EditText
               android:id="@+id/editTextLoginPassword"

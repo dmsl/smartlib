@@ -82,7 +82,7 @@
                 android:maxHeight="150dp"
                 android:maxWidth="150dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/choose_library" />
+                android:src="@drawable/default_library" />
 
             <TextView
                 android:id="@+id/textViewLibraryLocation"

@@ -34,27 +34,21 @@ package cy.ac.ucy.pmpeis01.client.android.SmartLib;
 
 
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.widget.EditText;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
 import cy.ac.ucy.pmpeis01.client.android.PreferencesActivity;
 import cy.ac.ucy.pmpeis01.client.android.R;
-import cy.ac.ucy.pmpeis01.client.android.ImageLoader.ImageLoader;
+import cy.ac.ucy.pmpeis01.client.android.Cache.ImageLoader;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.App.DeviceType;
 import cy.ac.ucy.pmpeis01.client.android.history.HistoryActivity;
-import cy.ac.ucy.pmpeis01.client.android.history.HistoryManager;
 
 
 
@@ -94,7 +88,7 @@ public class StartActivity extends SherlockFragmentActivity implements
 //		App.historyManager = new HistoryManager(this);
 //		App.historyManager.trimHistory();
 		
-		app.imageLoader = new ImageLoader(StartActivity.this);
+		App.imageLoader = new ImageLoader(StartActivity.this);
 
 		app = (App) getApplication();
 
@@ -133,9 +127,10 @@ public class StartActivity extends SherlockFragmentActivity implements
 		// if we are on XL or L device, set it
 		else{
 			app.deviceType = DeviceType.Large;
+			//If its a Tablet, do nothing!
 		}
 
-		// If its a Tablet, do nothing!
+		
 
 	}
 
@@ -184,7 +179,7 @@ public class StartActivity extends SherlockFragmentActivity implements
 
 
 	/*
-	 * Handle menu interraction
+	 * Handle menu interaction
 	 * 
 	 * (non-Javadoc)
 	 * 
@@ -235,11 +230,14 @@ public class StartActivity extends SherlockFragmentActivity implements
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 
-		// If library is selected, show register option
+		// If library is selected, change menu options
 		if (isLibrarySelected){
 			menu.findItem(R.id.itemClearLogin).setVisible(true);
 			menu.findItem(R.id.itemRegister).setVisible(true);
-			menu.findItem(App.MENU_START_ACTIVITY_REFRESH).setVisible(false);
+			
+			//Hide refresh only on regular devices(Smartphones)
+			if(app.deviceType.equals(DeviceType.Regular))
+				menu.findItem(App.MENU_START_ACTIVITY_REFRESH).setVisible(false);
 		}
 		else{
 			menu.findItem(R.id.itemClearLogin).setVisible(false);
@@ -259,6 +257,24 @@ public class StartActivity extends SherlockFragmentActivity implements
 		return true;
 	}
 
+	
+	@Override
+	protected void onResume() {
+	    if (App.refreshLang) {
+	        refresh();
+	    }
+	    super.onResume();
+	}
+
+	/**Refresh activity's language
+	 * 
+	 */
+	private void refresh() {
+		App.refreshLang=false;
+	    finish();
+	    Intent myIntent = new Intent(StartActivity.this, StartActivity.class);
+	    startActivity(myIntent);
+	}
 	
 	
 

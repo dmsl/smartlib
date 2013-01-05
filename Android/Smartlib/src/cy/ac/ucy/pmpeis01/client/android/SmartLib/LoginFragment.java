@@ -46,6 +46,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -282,9 +283,14 @@ public class LoginFragment extends SherlockFragment {
 			// Show logo
 			App.imageLoader.DisplayImage(lib.getImageURL(), loginLogo);
 
-			//Save bitma in app 
+			//Save bitmap in app 
 			loginLogo.buildDrawingCache();
-		      app.bitmap = loginLogo.getDrawingCache();
+			
+			// Save Library logo as drawable in app
+			app.loginLogoDrawable = new BitmapDrawable(
+					getResources(),
+					loginLogo.getDrawingCache());
+			
 			
 			
 			enableLoginForm();
@@ -556,7 +562,7 @@ public class LoginFragment extends SherlockFragment {
 					break;
 				case LOGIN_WRONG_CREDENCIALS:
 					textViewLoginMessage
-							.setText(R.string.msgLoginWrongCredencials);
+							.setText(R.string.msgLoginWrongCredentials);
 					break;
 				case LOGIN_NOT_ACTIVATED:
 					textViewLoginMessage.setText(getActivity().getString(

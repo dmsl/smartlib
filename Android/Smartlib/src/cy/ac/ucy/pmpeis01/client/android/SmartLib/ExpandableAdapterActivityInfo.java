@@ -157,7 +157,7 @@ public class ExpandableAdapterActivityInfo extends BaseExpandableListAdapter {
 
 		username.setText(activityData.username);
 
-		date.setText(App.makeTimeStampHumanReadble(activityData.date));
+		date.setText(App.makeTimeStampHumanReadble(context,activityData.date));
 
 		//Set Ack Status strings
 			setStatusString(activityData.acknowledge,acknowledge,acknowledgeTitle);

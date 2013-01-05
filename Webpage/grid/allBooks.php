@@ -35,7 +35,7 @@
     <form id="simpleSearchLoggedOut" action="#" method="post">
         <input type="text" class="input" <?php
             echo 'value="' . $bookISBN . '"'
-            ?> id="search_cd_loggedOut"/>
+            ?> id="search_cd_loggedOut" autofocus="autofocus"/>
 
         <button type="submit" value="" class="searchButton">Search</button>
 
@@ -68,9 +68,12 @@ jQuery(document).ready(function () {
         recordNum = 20;
     }
 
+    // Searches with URL of index page. eg index?ISBN=123
+    var searchedOutside = 0;
 
+    // If search field is filled, do search
     if ($("#search_cd_loggedOut").val() != "") {
-        doSearch();
+        searchedOutside = 1;
     }
 
 
@@ -79,9 +82,10 @@ jQuery(document).ready(function () {
         url:'grid/server.php?q=allbooks&rows=5',
         mtype:"POST",
         height:"auto",
-//            width:"auto",
-        datatype:"json",
+
+        datatype:"local",
         shrinktofit:false,
+        //            width:"auto",
 //            autowidth:true,
 
         colNames:['Cover', 'Title', 'Authors', 'Published', 'Pages', 'Language', 'ISBN'],
@@ -108,7 +112,7 @@ jQuery(document).ready(function () {
 
             {name:'lang', index:'lang', width:70, align:"center", search:false, editable:false, sortable:false }    ,
 
-            {name:'isbn', index:'isbn', width:100, align:"center"
+            {name:'isbn', index:'isbn', width:100, align:"left"
             }
         ],
 
@@ -163,14 +167,24 @@ jQuery(document).ready(function () {
                         { queue:false, duration:500 }
                 );
 
-                //Show no results message
-                $('#search-no-results-found')
-                        .css('opacity', 0)
-                        .slideDown(500)
-                        .animate(
-                        { opacity:1 },
-                        { queue:false, duration:500 }
-                );
+
+                //Show no results message in all cases except when outside search is made
+                if (!searchedOutside || searchedOutside == 2) {
+                    //Show no results message
+                    $('#search-no-results-found')
+                            .css('opacity', 0)
+                            .slideDown(500)
+                            .animate(
+                            { opacity:1 },
+                            { queue:false, duration:500 }
+                    );
+                }
+
+                // Increase search outside val.
+                if (searchedOutside) {
+                    searchedOutside = 2;
+                }
+
 
             }
             else {
@@ -193,12 +207,10 @@ jQuery(document).ready(function () {
                         { queue:false, duration:500 }
                 );
 
-                //MOVED POST FROM HERE
             }
 
         }
 
-        //	caption: "Library Books"
 
     });
 
@@ -223,6 +235,21 @@ jQuery(document).ready(function () {
     $('#clearButtonID').click(function () {
         $("#search_cd_loggedOut").val("");
         doSearch();
+
+        var grid = $('#allBooksList');
+
+        //Not searching anymore
+        grid.jqGrid('setGridParam', {search:false});
+
+
+        //Clear filters
+        var postData = grid.jqGrid('getGridParam', 'postData');
+        $.extend(postData, {filters:""});
+
+        grid.jqGrid('setGridParam', { 'datatype':'local' });
+
+
+        initSearchResults();
 
         return false;
     });
@@ -251,43 +278,30 @@ jQuery(document).ready(function () {
     //Search in Grid
     function doSearch() {
 
-
         var gridDiv = $('#search-panel-div');
-
         var grid = $("#allBooksList");
         //We will make search
         grid.jqGrid('setGridParam', {search:true});
 
-
         var cd_mask = $("#search_cd_loggedOut").val();
 
         if (cd_mask == '') {
-            //If nothing to search
-            //Hide no results message
-            $('#search-no-results-found')
-                    .slideUp(500)
-                    .animate(
-                    { opacity:0 },
-                    { queue:false, duration:300 }
-            );
-            // hide jqGrid
-            gridDiv
-                    .css('opacity', 1)
-                    .slideUp(300)
-                    .animate(
-                    { opacity:0 },
-                    { queue:false, duration:500 }
-            );
+
+            initSearchResults();
 
         }
         else {
+            //We will make search
+            grid.jqGrid('setGridParam', { 'datatype':'json' });
+            grid.jqGrid('setGridParam', {search:true});
+
             //Run query
             var postData = grid.jqGrid('getGridParam', 'postData');
             $.extend(postData, {searchString:cd_mask});
 
             gridReload();
-        }
 
+        }
 
     }
 
@@ -312,13 +326,36 @@ jQuery(document).ready(function () {
 
     var val = $("#search_cd_loggedOut").val().trim();
     if (val.length) {
-
         setTimeout(function () {
             $('#simpleSearchLoggedOut').submit();
-//                $('#searchButtonID').click();
         }, 500);
 
     }
+
+
+    /**
+     * Initializes Search Results:
+     * removes all results or no-results message
+     * */
+    function initSearchResults() {
+        //Hide no results message
+        $('#search-no-results-found')
+                .slideUp(500)
+                .animate(
+                { opacity:0 },
+                { queue:false, duration:300 }
+        );
+
+        //Hide table
+        $('#search-panel-div')
+                .css('opacity', 1)
+                .slideUp(300)
+                .animate(
+                { opacity:0 },
+                { queue:false, duration:500 }
+        );
+    }
+
 
 });//End of document load
 

@@ -46,13 +46,16 @@
         android:layout_height="fill_parent"
         android:layout_weight="0.8"
         android:background="@android:color/darker_gray"
+        android:gravity="center_vertical|center_horizontal"
         android:orientation="vertical"
         android:overScrollMode="ifContentScrolls" >
 
         <TextView
             style="@style/title2"
             android:layout_gravity="center_horizontal"
-            android:text="@string/chooseLibrary" />
+            android:text="@string/chooseLibrary"
+            android:textAllCaps="false"
+            android:textSize="20sp" />
 
         <fragment
             android:id="@+id/choose_library_fragment"

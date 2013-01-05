@@ -52,7 +52,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import cy.ac.ucy.pmpeis01.client.android.R;
-import cy.ac.ucy.pmpeis01.client.android.ImageLoader.ImageLoader;
+import cy.ac.ucy.pmpeis01.client.android.Cache.ImageLoader;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.Book.DataClassUser;
 
 
@@ -161,7 +161,7 @@ public class AdapterBookInfo extends ArrayAdapter<Book> {
 				.toString());
 		bookPageCount.setText(Integer.valueOf(bookInfo.pageCount).toString());
 		bookDateOfInsert
-				.setText(App.makeTimeStampHumanReadble(bookInfo.dateOfInsert));
+				.setText(App.makeTimeStampHumanReadble(getContext(),bookInfo.dateOfInsert));
 		bookLanguage.setText(bookInfo.lang);
 
 		setBookStatusMessage(bookInfo.status, bookInfo.owners, bookStatusMsg);

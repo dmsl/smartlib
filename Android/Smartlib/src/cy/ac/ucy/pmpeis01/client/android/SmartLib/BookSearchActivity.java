@@ -42,24 +42,34 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Service;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
-import cy.ac.ucy.pmpeis01.client.android.CaptureActivity;
 import cy.ac.ucy.pmpeis01.client.android.PreferencesActivity;
 import cy.ac.ucy.pmpeis01.client.android.R;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.Book.DataClassUser;
@@ -68,26 +78,52 @@ import cy.ac.ucy.pmpeis01.client.android.SmartLib.Book.DataClassUser;
 
 
 
+public class BookSearchActivity extends SherlockActivity {
 
-
-public class PopularBooksActivity extends SherlockActivity {
-
-	private static final String	TAG			= PopularBooksActivity.class
+	private static final String	TAG			= BookSearchActivity.class
 												.getSimpleName();
+
+	LinearLayout				linearLayoutSearchLayout;
+
+	EditText					editTextSearchKeyword;
+
+	Spinner					spinnerColumnSelect;
+
+	Button					buttonSearch;
+
+	ProgressBar				progressBarSearchButton;
 
 	ListView					listViewBookResults;
 
-	Boolean					isItemChecked	= false;
+	TextView					textViewSearchResults;
 
 	App						app;
 
-	ProgressBar				progressBarFetchPopularBooks;
+	ArrayList<Book>			searchResultBooks;
+
+	DataClassSearch			dataClassSearch;
+
+
+	Boolean					isItemChecked	= false;
+
 
 	boolean					openedEditBook	= false;
 
-	ArrayList<Book>			popularBooksResult;
+	/** Whether user is making search or just watching results */
+	boolean					isMakingSearch	= true;
+
+	ArrayAdapter<CharSequence>	adapterSearchColumns;
 
 	ArrayAdapter<Book>			adapterBookResults;
+
+
+
+	class DataClassSearch {
+
+		String	column;
+
+		String	keyword;
+	}
 
 
 
@@ -96,17 +132,79 @@ public class PopularBooksActivity extends SherlockActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_popular_books);
+		setContentView(R.layout.activity_book_search);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		app = (App) getApplication();
 
-		popularBooksResult = new ArrayList<Book>();
-
-		progressBarFetchPopularBooks = (ProgressBar) findViewById(R.id.progressBarFetchPopularBooks);
-
+		linearLayoutSearchLayout = (LinearLayout) findViewById(R.id.linearLayoutSearchLayout);
+		editTextSearchKeyword = (EditText) findViewById(R.id.editTextSearchKeyword);
+		spinnerColumnSelect = (Spinner) findViewById(R.id.spinnerSearchSelectColumn);
+		buttonSearch = (Button) findViewById(R.id.buttonSearchBookSearch);
+		progressBarSearchButton = (ProgressBar) findViewById(R.id.progressBarSearchSearchButton);
 		listViewBookResults = (ListView) findViewById(R.id.listViewBookResults);
+
+		textViewSearchResults = (TextView) findViewById(R.id.textViewSearchSearchResults);
+
+		// Create adapter for the Spinner
+		adapterSearchColumns = ArrayAdapter.createFromResource(this,
+				R.array.ArraySearchColumns,
+				android.R.layout.simple_spinner_item);
+		// Specify the layout to use when the list of choices appears
+		adapterSearchColumns
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// Apply the adapter to the spinner
+
+		spinnerColumnSelect.setAdapter(adapterSearchColumns);
+
 		isItemChecked = false;
+		
+		editTextSearchKeyword.addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count){}
+			
+			
+			
+			
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+					if(s.length()==0){
+						buttonSearch.setEnabled(false);
+					}
+					else{
+						buttonSearch.setEnabled(true);
+					}
+				
+			}
+		});
+
+		// When button is pressed
+		buttonSearch.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				dataClassSearch = new DataClassSearch();
+				dataClassSearch.column = getResources().getStringArray(
+						R.array.ArraySearchColumnValues)[spinnerColumnSelect
+						.getSelectedItemPosition()];
+				dataClassSearch.keyword = editTextSearchKeyword.getText()
+						.toString();
+
+				// Re-init results
+				searchResultBooks = new ArrayList<Book>();
+
+				new AsyncTaskBookSearch().execute(dataClassSearch);
+			}
+		});
+
+
 		// When results is chosen
 		listViewBookResults.setOnItemClickListener(new OnItemClickListener() {
 
@@ -133,7 +231,7 @@ public class PopularBooksActivity extends SherlockActivity {
 			}
 		});
 
-		new AsyncTaskPopularBooks().execute();
+
 
 	}
 
@@ -141,17 +239,20 @@ public class PopularBooksActivity extends SherlockActivity {
 
 
 
-
 	@Override
 	protected void onResume() {
+		// Set library's logo as ActionBar Icon
+		App.imageLoader.DisplayActionBarIcon(app.library.getImageURL(),
+				getApplicationContext(), getSupportActionBar());
+
 		super.onResume();
 
 		if (openedEditBook){
 
 			adapterBookResults.clear();
-			// if (dataClassPopular != null){
-			new AsyncTaskPopularBooks().execute();
-			// }
+			if (dataClassSearch != null){
+				new AsyncTaskBookSearch().execute(dataClassSearch);
+			}
 
 
 			openedEditBook = false;// restore this value
@@ -169,6 +270,28 @@ public class PopularBooksActivity extends SherlockActivity {
 
 
 
+	@Override
+	public boolean onKeyUp(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_SEARCH){
+			linearLayoutSearchLayout.setVisibility(View.VISIBLE);
+			isMakingSearch = true;
+			invalidateOptionsMenu();
+
+			editTextSearchKeyword.setFocusable(true);
+			editTextSearchKeyword.requestFocus();
+
+
+
+			return true;
+		}
+		else{
+			return super.onKeyUp(keyCode, event);
+		}
+	}
+
+
+
+
 
 
 	@Override
@@ -181,24 +304,35 @@ public class PopularBooksActivity extends SherlockActivity {
 						MenuItem.SHOW_AS_ACTION_IF_ROOM
 								| MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
+		menu.add(Menu.NONE, App.MENU_SEARCH_SEARCH_BOOKS, Menu.FIRST,
+				R.string.search)
+				.setIcon(R.drawable.ic_menu_search_holo_light)
+				.setVisible(false)
+				.setShowAsAction(
+						MenuItem.SHOW_AS_ACTION_IF_ROOM);
+
+		menu.add(Menu.NONE, App.MENU_CLEAR, Menu.FIRST, R.string.clear)
+				.setIcon(R.drawable.ic_menu_close_clear_cancel)
+				.setVisible(false)
+				.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+
 
 		menu.add(Menu.NONE, App.MENU_GLOBAL_SETTINGS, Menu.NONE,
 				R.string.menu_settings)
 				.setIcon(R.drawable.ic_menu_settings_holo_light)
 				.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-	
-		
+
+
+
 		menu.add(Menu.NONE, App.MENU_LIBRARY_SETTINGS, Menu.NONE,
-				app.library.name)
-				.setIcon(R.drawable.ic_menu_account_list)
-				.setShowAsActionFlags(
-						MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+				app.library.name).setIcon(R.drawable.ic_menu_account_list)
+				.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+
+
+
 
 		return true;
 	}
-
-
-
 
 
 
@@ -210,22 +344,43 @@ public class PopularBooksActivity extends SherlockActivity {
 			case android.R.id.home:
 				NavUtils.navigateUpFromSameTask(this);
 				return true;
-
-			case App.MENU_GLOBAL_SETTINGS:{
-				Intent myIntent = new Intent(PopularBooksActivity.this,
-						PreferencesActivity.class);
-				PopularBooksActivity.this.startActivity(myIntent);
+			case App.MENU_LIBRARY_SETTINGS:{
+				Intent myIntent = new Intent(BookSearchActivity.this,
+						LibPreferences.class);
+				BookSearchActivity.this.startActivity(myIntent);
 
 			}
 				return true;
-			case App.MENU_LIBRARY_SETTINGS:{
-				Intent myIntent = new Intent(PopularBooksActivity.this,
-				 LibPreferences.class);
-				PopularBooksActivity.this.startActivity(myIntent);
+			case App.MENU_GLOBAL_SETTINGS:{
+				Intent myIntent = new Intent(BookSearchActivity.this,
+						PreferencesActivity.class);
+				BookSearchActivity.this.startActivity(myIntent);
 
 			}
+				return true;
 
-			return true;
+			case App.MENU_SEARCH_SEARCH_BOOKS:{
+				linearLayoutSearchLayout.setVisibility(View.VISIBLE);
+				isMakingSearch = true;
+				invalidateOptionsMenu();
+
+				// Show on screen keyboard
+				InputMethodManager imm = (InputMethodManager) this
+						.getSystemService(Service.INPUT_METHOD_SERVICE);
+				editTextSearchKeyword.requestFocus();
+				imm.showSoftInput(editTextSearchKeyword, 0);
+
+			}
+				return true;
+
+			case App.MENU_CLEAR:{
+
+				// Clear EditText data
+				editTextSearchKeyword.setText("");
+
+			}
+				return true;
+
 			case App.MENU_MY_BOOKS_BOOK_SELECTED:{
 				// If user owns that book, open edit book
 				if (app.selectedBook.status != App.BOOK_STATE_USER_DONT_OWNS){
@@ -241,7 +396,7 @@ public class PopularBooksActivity extends SherlockActivity {
 					}
 
 
-					Intent intent = new Intent(PopularBooksActivity.this,
+					Intent intent = new Intent(BookSearchActivity.this,
 							EditBookActivity.class);
 
 					intent.putExtra(
@@ -264,7 +419,7 @@ public class PopularBooksActivity extends SherlockActivity {
 
 
 
-					Intent intent = new Intent(PopularBooksActivity.this,
+					Intent intent = new Intent(BookSearchActivity.this,
 							WatchBookActivity.class);
 
 					intent.putExtra(
@@ -289,6 +444,14 @@ public class PopularBooksActivity extends SherlockActivity {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 
+		if (isMakingSearch){
+			menu.findItem(App.MENU_SEARCH_SEARCH_BOOKS).setVisible(false);
+			menu.findItem(App.MENU_CLEAR).setVisible(true);
+		}
+		else{
+			menu.findItem(App.MENU_SEARCH_SEARCH_BOOKS).setVisible(true);
+			menu.findItem(App.MENU_CLEAR).setVisible(false);
+		}
 
 		// If library is selected, show register option
 		if (isItemChecked){
@@ -315,8 +478,16 @@ public class PopularBooksActivity extends SherlockActivity {
 
 		}
 
+
+
 		return true;
 	}
+
+
+
+
+
+
 
 
 
@@ -327,16 +498,17 @@ public class PopularBooksActivity extends SherlockActivity {
 	 * @author paschalis
 	 * 
 	 */
-	private class AsyncTaskPopularBooks extends
-			AsyncTask<Void, Integer, JSONArray> {
+	private class AsyncTaskBookSearch extends
+			AsyncTask<DataClassSearch, Integer, JSONArray> {
 
 
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-
-			progressBarFetchPopularBooks.setVisibility(View.VISIBLE);
-
+			// Disable Search Pane
+			linearLayoutSearchLayout.setEnabled(false);
+			buttonSearch.setVisibility(View.GONE);
+			progressBarSearchButton.setVisibility(View.VISIBLE);
 
 		}
 
@@ -345,7 +517,7 @@ public class PopularBooksActivity extends SherlockActivity {
 
 
 		@Override
-		protected JSONArray doInBackground(Void... data) {
+		protected JSONArray doInBackground(DataClassSearch... data) {
 
 			JSONArray result = null;
 
@@ -362,9 +534,20 @@ public class PopularBooksActivity extends SherlockActivity {
 					.getUsername()));
 
 
+			// If user also selected a column
+			if (data[0].column != ""){
+				parameters.add(new BasicNameValuePair("column",
+						data[0].column));
+			}
+
+			parameters.add(new BasicNameValuePair("keyword", data[0].keyword));
+
+
+
+
 			// Execute PHP Script
 			String resultStr = App.executePHPScript(
-					app.getLibrary_getPopularBooks_URL(), parameters);
+					app.getLibrary_getSearch_URL(), parameters);
 
 			// Parse Result (JSON Obj)
 			if (resultStr != null){
@@ -394,7 +577,9 @@ public class PopularBooksActivity extends SherlockActivity {
 		@Override
 		protected void onPostExecute(JSONArray result) {
 
-			progressBarFetchPopularBooks.setVisibility(View.GONE);
+			linearLayoutSearchLayout.setEnabled(true);
+			buttonSearch.setVisibility(View.VISIBLE);
+			progressBarSearchButton.setVisibility(View.GONE);
 
 			int returnFromJson = App.GENERAL_NO_INTERNET;
 
@@ -407,14 +592,33 @@ public class PopularBooksActivity extends SherlockActivity {
 				returnFromJson = App.BOOKS_OF_USER_NO_BOOKS;
 			}
 
-		
-
 			switch (returnFromJson) {
 				case App.GENERAL_SUCCESSFULL:
+					// Hide search pane & show results
+					linearLayoutSearchLayout.setVisibility(View.GONE);
+					textViewSearchResults.setVisibility(View.VISIBLE);
+
+					// Is viewing results now!
+					isMakingSearch = false;
+					invalidateOptionsMenu();
+
 					// Save all books to array
 
+					try{
 
-					Log.e(TAG, "result: " + result.length());
+						textViewSearchResults
+								.setText(getString(R.string.results)
+										+ " ("
+										+ result.getJSONObject(0)
+												.getInt("booksNum")
+										+ ")");
+
+					}
+					catch (Exception e){
+
+					}
+
+
 
 					for (int i = 1; i < result.length(); i++){
 
@@ -451,7 +655,7 @@ public class PopularBooksActivity extends SherlockActivity {
 								}
 
 							}
-							// Add book + his first owner
+							// Add book + his first onwer
 							else{
 
 								String title = row.getString("title");
@@ -464,7 +668,6 @@ public class PopularBooksActivity extends SherlockActivity {
 								String dateOfInsert = row
 										.getString("dateOfInsert");
 								String imgURL = row.getString("imgURL");
-								
 								String lang = row.getString("lang");
 
 
@@ -489,10 +692,8 @@ public class PopularBooksActivity extends SherlockActivity {
 									book.status = App.BOOK_STATE_USER_DONT_OWNS;
 								}
 
-								
-
 								// Insert book to array
-								popularBooksResult.add(book);
+								searchResultBooks.add(book);
 
 							}
 
@@ -500,7 +701,6 @@ public class PopularBooksActivity extends SherlockActivity {
 
 						}
 						catch (JSONException e){
-							Log.e(TAG, e.toString());
 						}
 
 
@@ -509,9 +709,15 @@ public class PopularBooksActivity extends SherlockActivity {
 
 
 					adapterBookResults = new AdapterBookInfo(
-							PopularBooksActivity.this
+							BookSearchActivity.this
 									.getApplicationContext(),
-							R.layout.book_item, popularBooksResult, true);
+							R.layout.book_item, searchResultBooks, true);
+
+					// Hide on screen keyboard
+					InputMethodManager imm = (InputMethodManager) BookSearchActivity.this
+							.getSystemService(Service.INPUT_METHOD_SERVICE);
+					imm.hideSoftInputFromWindow(
+							editTextSearchKeyword.getWindowToken(), 0);
 
 					// Show list
 					listViewBookResults.setAdapter(adapterBookResults);
@@ -524,22 +730,20 @@ public class PopularBooksActivity extends SherlockActivity {
 
 				case App.BOOKS_OF_USER_NO_BOOKS:
 
-					Toast.makeText(PopularBooksActivity.this,
-							R.string.noPopularBooksFound,
+					Toast.makeText(BookSearchActivity.this,
+							R.string.msgNoResultsFound,
 							Toast.LENGTH_LONG).show();
 					break;
 
 				case App.GENERAL_WEIRD_ERROR:
-					Toast.makeText(PopularBooksActivity.this,
+					Toast.makeText(BookSearchActivity.this,
 							R.string.msgWeirdError, Toast.LENGTH_LONG)
 							.show();
-					PopularBooksActivity.this.finish();
 					break;
 				case App.GENERAL_DATABASE_ERROR:
-					Toast.makeText(PopularBooksActivity.this,
+					Toast.makeText(BookSearchActivity.this,
 							R.string.msgDatabaseError, Toast.LENGTH_LONG)
 							.show();
-					PopularBooksActivity.this.finish();
 					break;
 				default:
 					break;
@@ -561,13 +765,14 @@ public class PopularBooksActivity extends SherlockActivity {
 
 
 
+
 	/**
 	 * @param pISBN
 	 *             to check if book exists
 	 * @return true if book exists, otherwise false
 	 */
 	Book bookExists(String pISBN) {
-		for (Book b : popularBooksResult){
+		for (Book b : searchResultBooks){
 			if (b.isbn.equals(pISBN)) return b;
 		}
 		return null;

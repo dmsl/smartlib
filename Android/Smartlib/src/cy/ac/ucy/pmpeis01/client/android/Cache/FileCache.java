@@ -30,19 +30,19 @@
 
  */
 
-package cy.ac.ucy.pmpeis01.client.android.ImageLoader;
+package cy.ac.ucy.pmpeis01.client.android.Cache;
 
 import java.io.File;
 import android.content.Context;
 
 public class FileCache {
     
-    private File cacheDir;
+    File cacheDir;
     
     public FileCache(Context context){
         //Find the dir to save cached images
         if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED))
-            cacheDir=new File(android.os.Environment.getExternalStorageDirectory(),".SmartLib/Cache");
+            cacheDir=new File(android.os.Environment.getExternalStorageDirectory(),"Android/data/SmartLib/Cache");
         else
             cacheDir=context.getCacheDir();
         if(!cacheDir.exists())

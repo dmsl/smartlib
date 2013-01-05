@@ -5,7 +5,7 @@
     SmartLib is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+    (at your option) any later version.f
 
     SmartLib is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -188,7 +188,7 @@
     <string name="app_name">SmartLib</string>
     <string name="hello_world">Hello World!\\nHello World!</string>
     <string name="title_activity_main">Welcome</string>
-    <string name="chooseLibrary">Please choose library</string>
+    <string name="chooseLibrary">Choose library</string>
     <string name="login">Login</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
@@ -207,7 +207,7 @@
     <string name="application">Application</string>
     <string name="submit">Submit</string>
     <string name="title_activity_register">Register</string>
-    <string name="msgLoginWrongCredencials">Wrong username or password.</string>
+    <string name="msgLoginWrongCredentials">Wrong username or password.</string>
     <string name="msgLoginCantReachServer">Cant reach server.</string>
     <string name="msgLoginAccountNotActivated">Account not activated.\nCheck your email: </string>
     <string name="msgLoginUserBanned">You are banned from SmartLib.\nContact: </string>
@@ -231,10 +231,10 @@
     <string name="bookSearch">Book Search</string>
     <string name="myBooks">My Books</string>
     <string name="activities">Activities</string>
-    <string name="popularBooks">Popular Books</string>
+    <string name="latestAdditions">Latest Additions</string>
     <string name="light">Light</string>
-    <string name="lightOn">Light ON</string>
-    <string name="lightOff">Light Off</string>
+    <string name="lightOn">Light OFF</string>
+    <string name="lightOff">Light On</string>
     <string name="msgNotISBNCode">This isn\'t ISBN Code</string>
     <string name="scannedBooks">Scanned Books</string>
     <string name="previouslyScannedBooks">Previously Scanned Books</string>
@@ -291,6 +291,7 @@
     <string name="pages_">Pages:</string>
     <string name="inserted_">Inserted:</string>
     <string name="language_">Language:</string>
+    <string name="language">Language</string>
     <string name="selectedBook_">Selected Book:</string>
     <string name="editBook">Edit Book</string>
     <string name="edit">Edit</string>
@@ -329,7 +330,8 @@
     <string name="msgPickBookOwner_">Pick Book Owner:</string>
     <string name="msgRequestSend">Request Send to</string>
     <string name="msgDontAcceptRequests">Dont accept Requests</string>
-    <string name="msgFailedContactWebpage">Failed To Contact Webpage</string>
+    <string name="msgFailedDownloadData">Failed to download data</string>
+    <string name="msgFailedContactWebpage">Failed to contact webpage</string>
     <string name="msgReportThisTo_">Report this to:</string>
     <string name="msgSomethingWentWrongPlsContact">Something went Wrong. Please contact</string>
     <string name="msgAlreadyRequestedTo">Check your Activities.\nYou have already requested to</string>
@@ -351,9 +353,9 @@
     <string name="msgErrorApplicationReport">Application Error.\nPlease report this to developer.</string>
     <string name="reportThisToDev">Please report this to developer.</string>
     <string name="succesfullyDeletedRequest">Successfully Deleted Request</string>
-    <string name="title_activity_popular_books">Popular Books</string>
-    <string name="noPopularBooksFound">No Popular Books Found</string>
-    <string name="title_activity_send_message">SendMessageActivity</string>
+    <string name="title_activity_latest_additions">Latest Additions</string>
+    <string name="noLatestAdditionsFound">No latest additions found</string>
+    <string name="title_activity_send_message">Send Message</string>
     <string name="enterYouMessage_">Enter your message:</string>
     <string name="sendMessage">Send Message</string>
     <string name="messageSend">Message Send</string>
@@ -373,4 +375,20 @@
       <string name="msgBookExistedInPersonalLibrary">Book existed in personal library</string>
       <string name="msgBookInsertedSuccessfully">Book inserted successfully</string>
       <string name="msgBookInsertingBook">Inserting book...</string>
+      <string name="english">English</string>
+      <string name="greek">Greek</string>
+      <string name="chooseLanguage">Choose Language</string>
+      <string name="rememberCredentials">Remember credentials</string>
+      <string name="books">Books</string>
+      <string name="results">Results</string>
+      <string name="changeLanguageSuccessMsg">Successfully changed Application language</string>
+      <string name="clearCache">Clear Cache</string>
+      <string name="clearCacheSummary">Clear application cache</string>
+      <string name="clearCacheOkayMsg">Cache memory deleted</string>
+      <string name="clearCacheQuestion">Are you sure you want to delete cache?</string>
+      <string name="clearCacheQuestionInfo">Cache includes downloaded text and images.</string>
+      <string name="showingACachedCopy">Showing a cached copy</string>
+      <string name="failedToLoadCachedData">Failed to load cached data</string>
+      
 </resources>
+

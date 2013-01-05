@@ -142,5 +142,29 @@ public class RegisterSuccessActivity extends SherlockActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	@Override
+	protected void onResume() {
+		//Set library's logo as ActionBar Icon
+		App.imageLoader.DisplayActionBarIcon(app.library.getImageURL(),
+				getApplicationContext(), getSupportActionBar());
+		
+	    if (App.refreshLang) {
+	        refresh();
+	    }
+	    super.onResume();
+	}
+
+	/**Refresh activity's language
+	 * 
+	 */
+	private void refresh() {
+		App.refreshLang=false;
+	    finish();
+	    Intent myIntent = new Intent(RegisterSuccessActivity.this, RegisterSuccessActivity.class);
+	    startActivity(myIntent);
+	}
+	
+	
 
 }
