@@ -164,9 +164,9 @@ public class ActivitiesActivity extends SherlockActivity {
 						isItemChecked = true;
 						
 						Book book = new Book();
-						book.title=selectedActivity.title;
-						book.isbn=selectedActivity.isbn;
-						book.authors=selectedActivity.authors;
+						book.title=selectedActivity.book.title;
+						book.isbn=selectedActivity.book.isbn;
+						book.authors=selectedActivity.book.authors;
 						app.selectedBook = book;
 
 						// REcreate the menu
@@ -286,7 +286,7 @@ public class ActivitiesActivity extends SherlockActivity {
 			menu.findItem(App.MENU_MY_BOOKS_BOOK_SELECTED)
 					.setVisible(true)
 					.setTitle(getString(R.string.reply) + ": "
-							+ selectedActivity.title);
+							+ selectedActivity.book.title);
 		}
 		else{
 			menu.findItem(App.MENU_MY_BOOKS_BOOK_SELECTED).setVisible(false);
@@ -451,12 +451,12 @@ public class ActivitiesActivity extends SherlockActivity {
 							data.type = ActivityType.IncomingRequest;
 
 							data.username = username;
-							data.isbn = isbn;
-							data.title = title;
-							data.authors = authors;
-							data.date = date;
+							data.book.isbn = isbn;
+							data.book.title = title;
+							data.book.authors = authors;
+							data.book.dateOfInsert = date;
 							data.acknowledge = acknowledge;
-							data.imgURL = imgURL;
+							data.book.imgURL = imgURL;
 
 
 							
@@ -605,12 +605,12 @@ public class ActivitiesActivity extends SherlockActivity {
 							data.type = ActivityType.OutgoingRequest;
 
 							data.username = username;
-							data.isbn = isbn;
-							data.title = title;
-							data.authors = authors;
-							data.date = date;
+							data.book.isbn = isbn;
+							data.book.title = title;
+							data.book.authors = authors;
+							data.book.dateOfInsert = date;
 							data.acknowledge = acknowledge;
-							data.imgURL = imgURL;
+							data.book.imgURL = imgURL;
 
 
 							// Insert book to array
@@ -755,11 +755,11 @@ public class ActivitiesActivity extends SherlockActivity {
 							data.type = ActivityType.BooksITook;
 
 							data.username = username;
-							data.isbn = isbn;
-							data.title = title;
-							data.authors = authors;
-							data.date = date;
-							data.imgURL = imgURL;
+							data.book.isbn = isbn;
+							data.book.title = title;
+							data.book.authors = authors;
+							data.book.dateOfInsert = date;
+							data.book.imgURL = imgURL;
 
 							// Insert book to array
 							arrayListBooksITook.add(data);
@@ -904,11 +904,11 @@ public class ActivitiesActivity extends SherlockActivity {
 							data.type = ActivityType.BooksIGave;
 
 							data.username = username;
-							data.isbn = isbn;
-							data.title = title;
-							data.authors = authors;
-							data.date = date;
-							data.imgURL = imgURL;
+							data.book.isbn = isbn;
+							data.book.title = title;
+							data.book.authors = authors;
+							data.book.dateOfInsert = date;
+							data.book.imgURL = imgURL;
 							// Insert book to array
 							arrayListBooksIGave.add(data);
 

@@ -140,7 +140,7 @@ SELECT U.username, BI.isbn, BI.title, BI.authors, BI.publishedYear,
 BI.pageCount, BI.dateOfInsert,
 BI.imgURL, BI.lang, B.status
 FROM SMARTLIB_USER U, SMARTLIB_BOOK_INFO BI, SMARTLIB_BOOK B
-WHERE BI.BI_ID=B.BI_ID AND U.U_ID=B.U_ID ORDER BY B.dateOfInsert DESC LIMIT 20
+WHERE BI.BI_ID=B.BI_ID AND U.U_ID=B.U_ID ORDER BY B.dateOfInsert DESC LIMIT 50
 ;
 "
     );

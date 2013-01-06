@@ -40,6 +40,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.format.DateUtils;
@@ -50,9 +51,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import cy.ac.ucy.pmpeis01.client.android.R;
 import cy.ac.ucy.pmpeis01.client.android.Cache.ImageLoader;
+import cy.ac.ucy.pmpeis01.client.android.Cache.ImageLoader.DataClassDisplayBookCover;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.Book.DataClassUser;
 
 
@@ -89,6 +92,8 @@ public class AdapterBookInfo extends ArrayAdapter<Book> {
 	public AdapterBookInfo(Context context, int resource, List<Book> items,
 			boolean pWatchBook) {
 		super(context, resource, items);
+
+		app = (App) context.getApplicationContext();
 
 		this.context = context;
 		this.resource = resource;
@@ -150,12 +155,30 @@ public class AdapterBookInfo extends ArrayAdapter<Book> {
 
 		TextView tvnocover = (TextView) booksInfoView
 				.findViewById(R.id.textViewNoCover);
+		ProgressBar progressDialogLoadCover = (ProgressBar) booksInfoView
+				.findViewById(R.id.progressBarLoadCover);
 
 
-		// show The Image and save it to Library
+
+		// Show the cover images
+		// images stored locally on our server
+		if (bookInfo.imgURL.substring(0, 13)
+				.equalsIgnoreCase("images/books/")){
+
+			// Append server url
+			bookInfo.imgURL = app.library.getURL() + bookInfo.imgURL;
+		}
+
+		DataClassDisplayBookCover bk = new DataClassDisplayBookCover();
+
+		bk.iv = bookCoverImage;
+		bk.tv = tvnocover;
+		bk.pb = progressDialogLoadCover;
+		bk.isCover = true;
+		bk.book=bookInfo;
+
 		try{
-			App.imageLoader.DisplayImage(bookInfo.imgURL, bookCoverImage,
-					tvnocover);			
+			App.imageLoader.DisplayImage(bk.book.imgURL, bk);
 		}
 		catch (NullPointerException e){
 			// noth

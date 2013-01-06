@@ -267,7 +267,7 @@
         <string name="language">Γλώσσα</string>
     <string name="selectedBook_">Επιλεγμένο Βιβλίο:</string>
     <string name="editBook">Επεξεργασία Βιβλίου</string>
-    <string name="edit">Επεξεργασία</string>
+    <string name="edit">Επεξεργ.</string>
     <string name="title_activity_edit_book">Επεξεργασία Βιβλίου</string>
     <string name="title_activity_watch_book">Βιβλίο</string>
     <string name="deleteBook">Διαγραφή Βιβλίο</string>
@@ -285,7 +285,7 @@
     <string name="isItReturned_">Σου έχει επιστραφεί;</string>
     <string name="msgAreYouSureDelBOok_">Είσαι σίγουρος ότι θες να διαγράψεις το βιβλίο;</string>
     <string name="deleted">Διεγράφη</string>
-    <string name="dash_">-</string>
+    <string name="generalSearch">Γενική αναζήτηση</string>
     <string name="author">Συγγραφέας</string>
     <string name="isbn">ISBN</string>
     <string name="title">Τίτλος</string>
@@ -294,12 +294,12 @@
     <string name="title_activity_book_search">Αναζήτηση Βιβλίου</string>
     <string name="enterYourKeywords_">Λέξεις κλειδιά:</string>
     <string name="search">Αναζήτηση  </string>
-    <string name="msgNoResultsFound">Δεν βρέθηκαν αποτελέσματα.</string>
+    <string name="msgNoResultsFound">Δεν βρέθηκαν αποτελέσματα</string>
     <string name="msgDatabaseError">Σφάλμα Βάσης Δεδομένων.</string>
-  <string name="msgWeirdError">Σφάλμα Βάσης Δεδομένων.\nΠαρακαλώ αναφέρετέ το.</string>
+ 	<string name="msgWeirdError">Σφάλμα Βάσης Δεδομένων.\nΠαρακαλώ αναφέρετέ το.</string>
     <string name="request">Αίτηση</string>
     <string name="available_">Διαθέσιμο:</string>
-    <string name="view">Προβολή</string>
+    <string name="view">Προβολη</string>
     <string name="msgPickBookOwner_">Διάλεξε ιδιοκτήτη:</string>
     <string name="msgRequestSend">Στάλθηκε αίτηση στον</string>
     <string name="msgDontAcceptRequests">Δεν αποδέχεται αιτήσεις</string>
@@ -360,12 +360,6 @@
     <string name="abs__activitychooserview_choose_application">Επιλογή εφαρμογής</string>
     <!-- Description of the choose target button in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] -->
     <string name="abs__shareactionprovider_share_with">Μοιράσου με</string>
-    <string-array name="ArraySearchColumnValues">
-        <item></item>
-        <item>isbn</item>
-        <item>τίτλος</item>
-        <item>συγγραφείς</item>
-    </string-array>
         <string name="abs__shareactionprovider_share_with_application">Μοιράσου με </string>
     <string name="lentOrReturn">Δανεισμός/Επιστροφή</string>
     <string name="insertBook">Εισαγωγή</string>

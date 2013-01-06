@@ -51,6 +51,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.ContactsContract.Contacts.Data;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -68,6 +69,7 @@ import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockFragment;
 
 import cy.ac.ucy.pmpeis01.client.android.R;
+import cy.ac.ucy.pmpeis01.client.android.Cache.ImageLoader.DataClassDisplayBookCover;
 
 
 
@@ -281,13 +283,9 @@ public class LoginFragment extends SherlockFragment {
 					R.id.imageViewLoginLibraryLogo);
 
 			// Show logo
-			try{
-				App.imageLoader.DisplayImage(lib.getImageURL(), loginLogo,null);			}
-			catch (NullPointerException e){
-				// noth
-			}
-			
-			
+			DataClassDisplayBookCover bk = new DataClassDisplayBookCover();
+			bk.iv=loginLogo;
+			App.imageLoader.DisplayImage(lib.getImageURL(), bk);
 
 			//Save bitmap in app 
 			loginLogo.buildDrawingCache();

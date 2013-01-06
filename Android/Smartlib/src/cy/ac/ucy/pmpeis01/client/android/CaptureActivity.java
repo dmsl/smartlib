@@ -570,15 +570,16 @@ public final class CaptureActivity extends SherlockActivity implements
 //				.setIcon(R.drawable.ic_menu_recent_history)
 //				.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
-		menu.add(Menu.NONE, App.MENU_GLOBAL_SETTINGS, Menu.NONE,
-				R.string.menu_settings)
-				.setIcon(R.drawable.ic_menu_settings_holo_light)
-				.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+
 
 		menu.add(Menu.NONE, App.MENU_LIBRARY_SETTINGS, Menu.NONE,
 				app.library.name).setIcon(R.drawable.ic_menu_account_list)
 				.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-
+		
+		menu.add(Menu.NONE, App.MENU_GLOBAL_SETTINGS, Menu.NONE,
+				R.string.menu_settings)
+				.setIcon(R.drawable.ic_menu_settings_holo_light)
+				.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 		return true;
 	}
 

@@ -46,6 +46,7 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
 import cy.ac.ucy.pmpeis01.client.android.R;
+import cy.ac.ucy.pmpeis01.client.android.Cache.ImageLoader.DataClassDisplayBookCover;
 import cy.ac.ucy.pmpeis01.client.android.history.HistoryActivity;
 
 
@@ -89,13 +90,10 @@ public class RegisterSuccessActivity extends SherlockActivity {
 		ImageView loginLogo = (ImageView) findViewById(R.id.imageViewLoginLibraryLogo);
 
 		// Show logo
+		DataClassDisplayBookCover bk = new DataClassDisplayBookCover();
+		bk.iv=loginLogo;
+		App.imageLoader.DisplayImage(app.library.getImageURL(), bk);
 		
-		try{
-			App.imageLoader.DisplayImage(app.library.getImageURL(), loginLogo,null);
-		}
-		catch (NullPointerException e){
-			// noth
-		}
 		
 
 	}

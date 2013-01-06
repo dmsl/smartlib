@@ -76,8 +76,8 @@ import cy.ac.ucy.pmpeis01.client.android.SmartLib.App.DeviceType;
  */
 public class ChooseLibraryFragment extends SherlockListFragment {
 
-	private final static String	TAG	= ChooseLibraryFragment.class
-										.getSimpleName();
+	private final static String	TAG					= ChooseLibraryFragment.class
+														.getSimpleName();
 
 	AdapterLibraryInfo			adapter;
 
@@ -89,8 +89,8 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 	App						app;
 
 	ArrayList<Library>			libraries;
-	
-	boolean failedToFetchLibraries=false;
+
+	boolean					failedToFetchLibraries	= false;
 
 
 
@@ -99,6 +99,8 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 	@Override
 	public void onResume() {
 		super.onResume();
+		
+		new AsyncTaskGetLibraries().execute();
 
 		// if we are on large layout device
 		if (app.deviceType.equals(DeviceType.Large)){
@@ -163,7 +165,7 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 		adapter = new AdapterLibraryInfo(getActivity(),
 				R.layout.library_item, libraries);
 		setListAdapter(adapter);
-		new AsyncTaskGetLibraries().execute();
+		//CHECK MOVED ATASK FROM HERE
 
 	}
 
@@ -230,7 +232,7 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 		switch (item.getItemId()) {
 			case App.MENU_START_ACTIVITY_REFRESH:
 				new AsyncTaskGetLibraries().execute();
-			
+
 				return true;
 
 		}
@@ -267,47 +269,7 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 
 
 
-	private void isNetworkAvailable() {
-		ConnectivityManager connectivityManager = (ConnectivityManager) getActivity()
-				.getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo activeNetworkInfo = connectivityManager
-				.getActiveNetworkInfo();
 
-
-
-		if (activeNetworkInfo == null){
-			{
-				AlertDialog.Builder alert = new AlertDialog.Builder(
-						getActivity());
-				alert.setTitle(R.string.msgNoInternetConnectionTitle);
-				alert.setMessage(R.string.msgNoInternetConnection);
-				alert.setIcon(android.R.drawable.ic_dialog_alert);
-
-				alert.setNeutralButton(R.string.no,
-						new DialogInterface.OnClickListener() {
-
-							public void onClick(DialogInterface dialog,
-									int whichButton) {
-
-							}
-						});
-
-				alert.setPositiveButton(R.string.yes,
-						new DialogInterface.OnClickListener() {
-
-							public void onClick(DialogInterface dialog,
-									int whichButton) {
-								startActivity(new Intent(
-										android.provider.Settings.ACTION_WIRELESS_SETTINGS));
-							}
-						});
-
-				alert.show();
-			}
-		}
-
-
-	}
 
 
 
@@ -327,13 +289,13 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			
-			failedToFetchLibraries=false;
-			
+
+			failedToFetchLibraries = false;
+
 			adapter.clear();
 
 
-			
+
 		}
 
 
@@ -365,7 +327,7 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 				catch (JSONException e){
 
 					Log.e(TAG, "Error parsing data " + e.toString());
-					failedToFetchLibraries=true;
+					failedToFetchLibraries = true;
 
 				}
 
@@ -383,11 +345,11 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 
 		@Override
 		protected void onPostExecute(JSONArray result) {
-			
-			if(failedToFetchLibraries){
+
+			if (failedToFetchLibraries){
 				Toast.makeText(getActivity(),
-						R.string.msgFailedContactWebpage, Toast.LENGTH_LONG)
-						.show();
+						R.string.msgFailedContactWebpage,
+						Toast.LENGTH_LONG).show();
 			}
 
 
@@ -440,22 +402,28 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 
 							// Insert library
 							libraries.add(library);
+
+							adapter.notifyDataSetChanged();
+
 						}
-						catch (JSONException e){
+						catch (Exception e){
+							Log.e(TAG, e.getMessage());
 						}
 
 
 
 					}
 
-					adapter.notifyDataSetChanged();
+
 
 
 
 
 					break;
 				case App.GENERAL_NO_INTERNET:
-					isNetworkAvailable();
+					// TODO PUT THIS OPTION IN OTHER MENUS TOO!
+					App.isNetworkAvailable(ChooseLibraryFragment.this
+							.getActivity());
 
 					break;
 

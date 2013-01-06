@@ -32,48 +32,54 @@
 
 package cy.ac.ucy.pmpeis01.client.android.SmartLib;
 
+
+
 import java.util.ArrayList;
-import java.util.Iterator;
+
+
 
 
 
 public class Book {
-	
-	String isbn;
-	
-	String title;
-	
-	String authors;
-	
-	int publishedYear;
-	
-	int pageCount;
-	
-	String dateOfInsert;
-	
-	String imgURL;
-	
-	String lang;
-	
-	int status;
-	
+
+	public String	isbn;
+
+	public String	title;
+
+	public String	authors;
+
+	public int	publishedYear;
+
+	public int	pageCount;
+
+	public String	dateOfInsert;
+
+	public String	imgURL;
+
+	public String	lang;
+
+	public int	status;
+
 	public static class DataClassUser {
-		String username;
-		int status;
-		
-		public DataClassUser(String user, int stat){
-			username=user;
-			status=stat;
+
+		String	username;
+
+		int		status;
+
+
+
+
+
+		public DataClassUser(String user, int stat) {
+			username = user;
+			status = stat;
 		}
 	}
-	
-	
-	ArrayList<DataClassUser> owners = new ArrayList<DataClassUser>();
-	
 
-	
+
+	public ArrayList<DataClassUser>	owners	= new ArrayList<DataClassUser>();
+
+
+
 
 }
-
-
-

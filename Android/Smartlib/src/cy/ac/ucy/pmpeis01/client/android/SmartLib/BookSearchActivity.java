@@ -56,6 +56,7 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -72,6 +73,7 @@ import com.actionbarsherlock.view.MenuItem;
 
 import cy.ac.ucy.pmpeis01.client.android.PreferencesActivity;
 import cy.ac.ucy.pmpeis01.client.android.R;
+import cy.ac.ucy.pmpeis01.client.android.SmartLib.App.DeviceType;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.Book.DataClassUser;
 
 
@@ -82,6 +84,8 @@ public class BookSearchActivity extends SherlockActivity {
 
 	private static final String	TAG			= BookSearchActivity.class
 												.getSimpleName();
+
+
 
 	LinearLayout				linearLayoutSearchLayout;
 
@@ -99,7 +103,7 @@ public class BookSearchActivity extends SherlockActivity {
 
 	App						app;
 
-	ArrayList<Book>			searchResultBooks;
+	ArrayList<Book>			arrayListSearchResultBooks;
 
 	DataClassSearch			dataClassSearch;
 
@@ -114,7 +118,8 @@ public class BookSearchActivity extends SherlockActivity {
 
 	ArrayAdapter<CharSequence>	adapterSearchColumns;
 
-	ArrayAdapter<Book>			adapterBookResults;
+	//
+	// ArrayAdapter<Book> adapterBookResults;
 
 
 
@@ -128,14 +133,23 @@ public class BookSearchActivity extends SherlockActivity {
 
 
 
+	AdapterBookInfo	bookInfoAdapter;
+
+
+
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+
+
+
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_book_search);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		app = (App) getApplication();
+		setContentView(R.layout.activity_book_search);
+
+		app.selectedBook = null;
 
 		linearLayoutSearchLayout = (LinearLayout) findViewById(R.id.linearLayoutSearchLayout);
 		editTextSearchKeyword = (EditText) findViewById(R.id.editTextSearchKeyword);
@@ -143,8 +157,11 @@ public class BookSearchActivity extends SherlockActivity {
 		buttonSearch = (Button) findViewById(R.id.buttonSearchBookSearch);
 		progressBarSearchButton = (ProgressBar) findViewById(R.id.progressBarSearchSearchButton);
 		listViewBookResults = (ListView) findViewById(R.id.listViewBookResults);
-
 		textViewSearchResults = (TextView) findViewById(R.id.textViewSearchSearchResults);
+		arrayListSearchResultBooks = new ArrayList<Book>();
+
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
 		// Create adapter for the Spinner
 		adapterSearchColumns = ArrayAdapter.createFromResource(this,
@@ -158,29 +175,36 @@ public class BookSearchActivity extends SherlockActivity {
 		spinnerColumnSelect.setAdapter(adapterSearchColumns);
 
 		isItemChecked = false;
-		
+
 		editTextSearchKeyword.addTextChangedListener(new TextWatcher() {
-			
+
 			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count){}
-			
-			
-			
-			
-			
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+			}
+
+
+
+
+
 			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {}
+			public void beforeTextChanged(CharSequence s, int start,
+					int count, int after) {
+			}
+
+
+
+
 
 			@Override
 			public void afterTextChanged(Editable s) {
-					if(s.length()==0){
-						buttonSearch.setEnabled(false);
-					}
-					else{
-						buttonSearch.setEnabled(true);
-					}
-				
+				if (s.length() == 0){
+					buttonSearch.setEnabled(false);
+				}
+				else{
+					buttonSearch.setEnabled(true);
+				}
+
 			}
 		});
 
@@ -198,14 +222,16 @@ public class BookSearchActivity extends SherlockActivity {
 						.toString();
 
 				// Re-init results
-				searchResultBooks = new ArrayList<Book>();
+				arrayListSearchResultBooks = new ArrayList<Book>();
 
-				new AsyncTaskBookSearch().execute(dataClassSearch);
+				new AsyncTaskSearchBooks().execute(dataClassSearch);
 			}
 		});
 
 
-		// When results is chosen
+
+
+
 		listViewBookResults.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -220,20 +246,91 @@ public class BookSearchActivity extends SherlockActivity {
 
 				isItemChecked = true;
 
-				// REcreate the menu
+				// Recreate the menu
 				invalidateOptionsMenu();
-
-				// linearLayoutSelectedBooks.setVisibility(View.VISIBLE);
-				//
-				// textViewMyBookSelected.setText(selectedBook.title);
-
 
 			}
 		});
 
+		listViewBookResults
+				.setOnItemLongClickListener(new OnItemLongClickListener() {
 
+					@Override
+					public boolean onItemLongClick(AdapterView<?> arg0,
+							View arg1, int pos, long arg3) {
+
+						app.selectedBook = (Book) (listViewBookResults
+								.getItemAtPosition(pos));
+
+						// Open Book
+						{
+							// If user owns that book, open edit book
+							if (app.selectedBook.status != App.BOOK_STATE_USER_DONT_OWNS){
+								// Workaround - Change the status of
+								// book, to users
+								// specific status
+								for (DataClassUser u : app.selectedBook.owners){
+									// Find real status for that book
+									if (u.username
+											.equalsIgnoreCase(app.user.username)){
+										app.selectedBook.status = u.status;
+										break;
+									}
+								}
+
+
+								Intent intent = new Intent(
+										BookSearchActivity.this,
+										EditBookActivity.class);
+
+								intent.putExtra(
+										App.ExtrasForEditBookActivityFromBookSearch,
+										true);
+
+								openedEditBook = true;
+
+								startActivity(intent);
+							}
+							else{
+								Boolean isAvail = false;
+
+								// Find all users who lent this book
+								for (DataClassUser u : app.selectedBook.owners){
+									if (u.status == App.BOOK_STATE_USER_AVAILABLE){
+										isAvail = true;
+									}
+								}
+
+
+
+								Intent intent = new Intent(
+										BookSearchActivity.this,
+										WatchBookActivity.class);
+
+								intent.putExtra(
+										App.ExtrasForWatchBookActivityFromBookSearch,
+										isAvail);
+
+								startActivity(intent);
+							}
+
+
+
+						}
+
+
+						return true;
+
+					}
+
+				});
 
 	}
+
+
+
+
+
 
 
 
@@ -244,17 +341,12 @@ public class BookSearchActivity extends SherlockActivity {
 		// Set library's logo as ActionBar Icon
 		App.imageLoader.DisplayActionBarIcon(app.library.getImageURL(),
 				getApplicationContext(), getSupportActionBar());
-
+		if (App.refreshLang){
+			refresh();
+		}
 		super.onResume();
 
 		if (openedEditBook){
-
-			adapterBookResults.clear();
-			if (dataClassSearch != null){
-				new AsyncTaskBookSearch().execute(dataClassSearch);
-			}
-
-
 			openedEditBook = false;// restore this value
 		}
 
@@ -293,10 +385,8 @@ public class BookSearchActivity extends SherlockActivity {
 
 
 
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-
 		menu.add(Menu.NONE, App.MENU_MY_BOOKS_BOOK_SELECTED, Menu.FIRST,
 				R.string.editBook)
 				.setVisible(false)
@@ -308,14 +398,11 @@ public class BookSearchActivity extends SherlockActivity {
 				R.string.search)
 				.setIcon(R.drawable.ic_menu_search_holo_light)
 				.setVisible(false)
-				.setShowAsAction(
-						MenuItem.SHOW_AS_ACTION_IF_ROOM);
+				.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
 
-		menu.add(Menu.NONE, App.MENU_CLEAR, Menu.FIRST, R.string.clear)
-				.setIcon(R.drawable.ic_menu_close_clear_cancel)
-				.setVisible(false)
-				.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-
+		menu.add(Menu.NONE, App.MENU_LIBRARY_SETTINGS, Menu.NONE,
+				app.library.name).setIcon(R.drawable.ic_menu_account_list)
+				.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_NEVER);
 
 		menu.add(Menu.NONE, App.MENU_GLOBAL_SETTINGS, Menu.NONE,
 				R.string.menu_settings)
@@ -324,9 +411,16 @@ public class BookSearchActivity extends SherlockActivity {
 
 
 
-		menu.add(Menu.NONE, App.MENU_LIBRARY_SETTINGS, Menu.NONE,
-				app.library.name).setIcon(R.drawable.ic_menu_account_list)
-				.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+		menu.add(Menu.FIRST, App.MENU_CLEAR, Menu.FIRST, R.string.clear)
+				.setIcon(R.drawable.ic_menu_close_clear_cancel)
+				.setVisible(false)
+				.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+
+
+
+
+
+
 
 
 
@@ -362,6 +456,7 @@ public class BookSearchActivity extends SherlockActivity {
 			case App.MENU_SEARCH_SEARCH_BOOKS:{
 				linearLayoutSearchLayout.setVisibility(View.VISIBLE);
 				isMakingSearch = true;
+				isItemChecked = false;
 				invalidateOptionsMenu();
 
 				// Show on screen keyboard
@@ -375,8 +470,19 @@ public class BookSearchActivity extends SherlockActivity {
 
 			case App.MENU_CLEAR:{
 
-				// Clear EditText data
-				editTextSearchKeyword.setText("");
+
+				// If data was already cleared, hide search panel
+				if (editTextSearchKeyword.getText().length() == 0){
+					// Close panel & soft keyboard
+					linearLayoutSearchLayout.setVisibility(View.GONE);
+					textViewSearchResults.setVisibility(View.VISIBLE);
+					isMakingSearch = false;
+					invalidateOptionsMenu();
+				}
+				// else just clear data
+				else{
+					editTextSearchKeyword.setText("");
+				}
 
 			}
 				return true;
@@ -441,33 +547,55 @@ public class BookSearchActivity extends SherlockActivity {
 
 
 
+
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 
 		if (isMakingSearch){
 			menu.findItem(App.MENU_SEARCH_SEARCH_BOOKS).setVisible(false);
 			menu.findItem(App.MENU_CLEAR).setVisible(true);
+
+			// Show on screen keyboard
+			InputMethodManager imm = (InputMethodManager) this
+					.getSystemService(Service.INPUT_METHOD_SERVICE);
+			editTextSearchKeyword.requestFocus();
+			imm.showSoftInput(editTextSearchKeyword, 0);
 		}
 		else{
 			menu.findItem(App.MENU_SEARCH_SEARCH_BOOKS).setVisible(true);
 			menu.findItem(App.MENU_CLEAR).setVisible(false);
+			// Hide on screen keyboard
+			InputMethodManager imm = (InputMethodManager) BookSearchActivity.this
+					.getSystemService(Service.INPUT_METHOD_SERVICE);
+			imm.hideSoftInputFromWindow(
+					editTextSearchKeyword.getWindowToken(), 0);
 		}
 
-		// If library is selected, show register option
+		// If book is selected, show edit/view options
 		if (isItemChecked){
+
+			String bookTitle;
+
+			if (app.deviceType.equals(DeviceType.Large)){
+				bookTitle = app.selectedBook.title;
+			}
+			else{
+				// If smaller device
+				bookTitle = app.selectedBook.title.substring(0, 9) + "..";
+			}
 
 			if (app.selectedBook.status != App.BOOK_STATE_USER_DONT_OWNS){
 				menu.findItem(App.MENU_MY_BOOKS_BOOK_SELECTED)
 						.setVisible(true)
 						.setTitle(getString(R.string.edit) + ": "
-								+ app.selectedBook.title);
+								+ bookTitle);
 			}
 			else{
 
 				menu.findItem(App.MENU_MY_BOOKS_BOOK_SELECTED)
 						.setVisible(true)
 						.setTitle(getString(R.string.view) + ": "
-								+ app.selectedBook.title);
+								+ bookTitle);
 
 			}
 
@@ -485,25 +613,20 @@ public class BookSearchActivity extends SherlockActivity {
 
 
 
-
-
-
-
-
-
-
 	/**
-	 * Get Search Results
+	 * Get User's Books
 	 * 
 	 * @author paschalis
 	 * 
 	 */
-	private class AsyncTaskBookSearch extends
+	private class AsyncTaskSearchBooks extends
 			AsyncTask<DataClassSearch, Integer, JSONArray> {
 
 
 		@Override
 		protected void onPreExecute() {
+			super.onPreExecute();
+
 			super.onPreExecute();
 			// Disable Search Pane
 			linearLayoutSearchLayout.setEnabled(false);
@@ -520,51 +643,57 @@ public class BookSearchActivity extends SherlockActivity {
 		protected JSONArray doInBackground(DataClassSearch... data) {
 
 			JSONArray result = null;
-
-			// int returnResult = App.GENERAL_NO_INTERNET;
-
-
-			ArrayList<NameValuePair> parameters = new ArrayList<NameValuePair>();
-			// Say that we are mobile (Android Device)
-			parameters.add(new BasicNameValuePair("device",
-					App.DEVICE_ANDROID));
-
-			// Set Username
-			parameters.add(new BasicNameValuePair("username", app
-					.getUsername()));
-
-
 			// If user also selected a column
-			if (data[0].column != ""){
-				parameters.add(new BasicNameValuePair("column",
-						data[0].column));
-			}
+			try{
 
-			parameters.add(new BasicNameValuePair("keyword", data[0].keyword));
+				ArrayList<NameValuePair> parameters = new ArrayList<NameValuePair>();
+				// Say that we are mobile (Android Device)
+				parameters.add(new BasicNameValuePair("device",
+						App.DEVICE_ANDROID));
+
+				// Set Username
+				parameters.add(new BasicNameValuePair("username", app
+						.getUsername()));
+
+
+
+				if (data[0].column != ""){
+					parameters.add(new BasicNameValuePair("column",
+							data[0].column));
+				}
+				parameters.add(new BasicNameValuePair("keyword",
+						data[0].keyword));
 
 
 
 
-			// Execute PHP Script
-			String resultStr = App.executePHPScript(
-					app.getLibrary_getSearch_URL(), parameters);
 
-			// Parse Result (JSON Obj)
-			if (resultStr != null){
-				try{
-					// Create JSON Obj based on the result!
-					result = new JSONArray(resultStr);
+
+
+				// Execute PHP Script
+				String resultStr = App.executePHPScript(
+						app.getLibrary_getSearch_URL(), parameters);
+
+				// Parse Result (JSON Obj)
+				if (resultStr != null){
+					try{
+						// Create JSON Obj based on the result!
+						result = new JSONArray(resultStr);
+
+					}
+					catch (JSONException e){
+						Log.e(TAG, "Error parsing data " + e.toString());
+
+
+					}
+
 
 				}
-				catch (JSONException e){
-					Log.e(TAG, "Error parsing data " + e.toString());
-
-
-				}
-
 
 			}
-
+			catch (Exception e){
+				// TODO: handle exception
+			}
 
 			return result;
 
@@ -588,8 +717,10 @@ public class BookSearchActivity extends SherlockActivity {
 
 			}
 			catch (Exception e1){
+			}
 
-				returnFromJson = App.BOOKS_OF_USER_NO_BOOKS;
+			if (result == null){
+				returnFromJson = App.GENERAL_NO_INTERNET;
 			}
 
 			switch (returnFromJson) {
@@ -602,21 +733,8 @@ public class BookSearchActivity extends SherlockActivity {
 					isMakingSearch = false;
 					invalidateOptionsMenu();
 
-					// Save all books to array
 
-					try{
 
-						textViewSearchResults
-								.setText(getString(R.string.results)
-										+ " ("
-										+ result.getJSONObject(0)
-												.getInt("booksNum")
-										+ ")");
-
-					}
-					catch (Exception e){
-
-					}
 
 
 
@@ -693,7 +811,7 @@ public class BookSearchActivity extends SherlockActivity {
 								}
 
 								// Insert book to array
-								searchResultBooks.add(book);
+								arrayListSearchResultBooks.add(book);
 
 							}
 
@@ -708,24 +826,17 @@ public class BookSearchActivity extends SherlockActivity {
 					}
 
 
-					adapterBookResults = new AdapterBookInfo(
-							BookSearchActivity.this
-									.getApplicationContext(),
-							R.layout.book_item, searchResultBooks, true);
 
-					// Hide on screen keyboard
-					InputMethodManager imm = (InputMethodManager) BookSearchActivity.this
-							.getSystemService(Service.INPUT_METHOD_SERVICE);
-					imm.hideSoftInputFromWindow(
-							editTextSearchKeyword.getWindowToken(), 0);
+					bookInfoAdapter = new AdapterBookInfo(
+							BookSearchActivity.this, R.layout.book_item,
+							arrayListSearchResultBooks, true);
 
 					// Show list
-					listViewBookResults.setAdapter(adapterBookResults);
+					listViewBookResults.setAdapter(bookInfoAdapter);
 
 					break;
 				case App.GENERAL_NO_INTERNET:
-					// TODO refresh button, and call again asynctask from
-					// refresh button
+					App.isNetworkAvailable(BookSearchActivity.this);
 					break;
 
 				case App.BOOKS_OF_USER_NO_BOOKS:
@@ -759,8 +870,11 @@ public class BookSearchActivity extends SherlockActivity {
 
 
 		}
-	}
 
+
+
+
+	}
 
 
 
@@ -772,10 +886,26 @@ public class BookSearchActivity extends SherlockActivity {
 	 * @return true if book exists, otherwise false
 	 */
 	Book bookExists(String pISBN) {
-		for (Book b : searchResultBooks){
+		for (Book b : arrayListSearchResultBooks){
 			if (b.isbn.equals(pISBN)) return b;
 		}
 		return null;
+	}
+
+
+
+
+
+	/**
+	 * Refresh activity's language
+	 * 
+	 */
+	private void refresh() {
+		App.refreshLang = false;
+		finish();
+		Intent myIntent = new Intent(BookSearchActivity.this,
+				BookSearchActivity.class);
+		startActivity(myIntent);
 	}
 
 

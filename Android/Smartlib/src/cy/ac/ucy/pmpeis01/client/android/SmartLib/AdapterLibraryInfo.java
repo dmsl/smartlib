@@ -46,6 +46,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import cy.ac.ucy.pmpeis01.client.android.R;
 import cy.ac.ucy.pmpeis01.client.android.Cache.ImageLoader;
+import cy.ac.ucy.pmpeis01.client.android.Cache.ImageLoader.DataClassDisplayBookCover;
 
 
 
@@ -117,15 +118,11 @@ public class AdapterLibraryInfo extends ArrayAdapter<Library> {
 				.findViewById(R.id.textViewLibraryLocation);
 
 		// show The Image and save it to Library
-		
-		try{
-			App.imageLoader.DisplayImage(libraryInfo.getImageURL(), libraryLogo, null);			
-		}
-		catch (NullPointerException e){
-			// noth
-		}
-		
-		//new DownloadImageTask(libraryLogo,libraryInfo).execute();
+		DataClassDisplayBookCover bk = new DataClassDisplayBookCover();
+			
+		bk.iv = libraryLogo;
+		App.imageLoader.DisplayImage(libraryInfo.getImageURL(), bk);			
+
 
 
 

@@ -169,7 +169,7 @@
         <item>@string/otherDontLent</item>
     </string-array>
     <string-array name="ArraySearchColumns">
-        <item>@string/dash_</item>
+        <item>@string/generalSearch</item>
         <item>@string/isbn</item>
         <item>@string/title</item>
         <item>@string/author</item>
@@ -220,7 +220,7 @@
     <string name="dismiss">Dismiss</string>
     <string name="msgFailedToRegisterTitle">Failed to Register</string>
     <string name="msgNoInternetConnectionTitle">No Data Connection</string>
-    <string name="msgNoInternetConnection">Internet Connection is lost.\nDo you want to open Wireless Settings?</string>
+    <string name="msgNoInternetConnection">Internet Connection is lost.\nDo you want to open Network Settings?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
     <string name="msgFailedToParseTitle">Failed to Parse Message</string>
@@ -313,7 +313,7 @@
     <string name="isItReturned_">Is it returned?</string>
     <string name="msgAreYouSureDelBOok_">Are you sure you want to delete this book?</string>
     <string name="deleted">Deleted</string>
-    <string name="dash_">-</string>
+    <string name="generalSearch">General Search</string>
     <string name="author">Author</string>
     <string name="isbn">ISBN</string>
     <string name="title">Title</string>

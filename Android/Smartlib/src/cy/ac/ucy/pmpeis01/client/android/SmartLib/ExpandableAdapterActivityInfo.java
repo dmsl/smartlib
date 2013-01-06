@@ -39,13 +39,16 @@ package cy.ac.ucy.pmpeis01.client.android.SmartLib;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import cy.ac.ucy.pmpeis01.client.android.R;
+import cy.ac.ucy.pmpeis01.client.android.Cache.ImageLoader.DataClassDisplayBookCover;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.MainActivity.DataClassActivities;
 
 
@@ -157,27 +160,28 @@ public class ExpandableAdapterActivityInfo extends BaseExpandableListAdapter {
 
 		username.setText(activityData.username);
 
-		date.setText(App.makeTimeStampHumanReadble(context,activityData.date));
+		date.setText(App.makeTimeStampHumanReadble(context,activityData.book.dateOfInsert));
 
 		//Set Ack Status strings
 			setStatusString(activityData.acknowledge,acknowledge,acknowledgeTitle);
 
 		
-		isbn.setText(activityData.isbn);
-		title.setText(activityData.title);
-		authors.setText(activityData.authors);
+		isbn.setText(activityData.book.isbn);
+		title.setText(activityData.book.title);
+		authors.setText(activityData.book.authors);
 		
 		TextView tvnocover = (TextView) convertView.
 				findViewById(R.id.textViewNoCover);
+		ProgressBar pb = (ProgressBar) convertView.findViewById(R.id.progressBarLoadCover);
 		
+		// show The Image and save it to
+		DataClassDisplayBookCover bk = new DataClassDisplayBookCover();
+		bk.iv=cover;
+		bk.isCover=true;
+		bk.pb=pb;
+		bk.tv=tvnocover;
+		App.imageLoader.DisplayImage(activityData.book.imgURL, bk);		
 
-		// show The Image and save it to Library
-		try{
-			App.imageLoader.DisplayImage(activityData.imgURL, cover,tvnocover);		
-		}
-		catch (NullPointerException e){
-			// noth
-		}
 		
 
 		// return activitiesInfoView;

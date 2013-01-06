@@ -34,6 +34,8 @@ package cy.ac.ucy.pmpeis01.client.android.SmartLib;
 
 import java.io.Serializable;
 
+import javax.crypto.spec.IvParameterSpec;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -54,6 +56,7 @@ import com.actionbarsherlock.view.MenuItem;
 import cy.ac.ucy.pmpeis01.client.android.CaptureActivity;
 import cy.ac.ucy.pmpeis01.client.android.PreferencesActivity;
 import cy.ac.ucy.pmpeis01.client.android.R;
+import cy.ac.ucy.pmpeis01.client.android.Cache.ImageLoader.DataClassDisplayBookCover;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.App.CaptureMode;
 import cy.ac.ucy.pmpeis01.client.android.history.HistoryActivity;
 
@@ -109,14 +112,11 @@ public class MainActivity extends SherlockActivity {
 			textViewLibraryLocation = (TextView) findViewById(R.id.textViewLibraryLocation);
 
 			// Show logo			
-			try{
-
+			DataClassDisplayBookCover bk = new DataClassDisplayBookCover();
+			bk.iv=imageViewLibaryLogo;
 				App.imageLoader.DisplayImage(app.library.getImageURL(),
-						imageViewLibaryLogo,null);	
-			}
-			catch (NullPointerException e){
-				// noth
-			}
+						bk);	
+			
 			
 			
 			
@@ -303,6 +303,11 @@ public class MainActivity extends SherlockActivity {
 	//
 	public static class DataClassActivities implements Serializable {
 
+		/**
+		 * 
+		 */
+		private static final long	serialVersionUID	= 1L;
+
 		public static int NO_ACKS = -15;
 
 		public enum ActivityType {
@@ -310,20 +315,17 @@ public class MainActivity extends SherlockActivity {
 		}
 
 		ActivityType type = ActivityType.NotSet;
-
-		String username;
-
-		String isbn;
-
-		String title;
-
-		String authors;
-
-		String date;
-
+		
+		Book book = new Book();
+		
 		int acknowledge = NO_ACKS;
 
-		String imgURL;
+		String username;
+//		String isbn;
+//		String title;
+//		String authors;
+//		String date;
+//		String imgURL;
 
 	}
 	

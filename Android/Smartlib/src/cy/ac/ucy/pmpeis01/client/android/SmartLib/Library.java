@@ -132,6 +132,13 @@ public class Library {
 	}
 	
 	/**
+	 * @return the URL of the library
+	 */
+	String getURL(){
+		return URL;
+	}
+	
+	/**
 	 * @return the Login URL
 	 */
 	String getLoginURL(){

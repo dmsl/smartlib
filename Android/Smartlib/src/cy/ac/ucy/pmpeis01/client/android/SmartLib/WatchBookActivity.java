@@ -77,6 +77,7 @@ import com.actionbarsherlock.widget.ShareActionProvider;
 import cy.ac.ucy.pmpeis01.client.android.CaptureActivity;
 import cy.ac.ucy.pmpeis01.client.android.PreferencesActivity;
 import cy.ac.ucy.pmpeis01.client.android.R;
+import cy.ac.ucy.pmpeis01.client.android.Cache.ImageLoader.DataClassDisplayBookCover;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.Book.DataClassUser;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.LentBookActivity.DataClassLentABook;
 
@@ -239,6 +240,7 @@ public class WatchBookActivity extends SherlockActivity {
 
 
 			textViewWatchBookAvailable.setText(R.string.yes);
+			App.setStyleSuccessDirection(textViewWatchBookAvailable);
 
 			// Requests a book
 			buttonRequestBook.setOnClickListener(new OnClickListener() {
@@ -298,14 +300,17 @@ public class WatchBookActivity extends SherlockActivity {
 
 		
 		TextView tvnc = (TextView) findViewById(R.id.textViewNoCover);
+		ProgressBar pb = (ProgressBar) findViewById(R.id.progressBarLoadCover);
 		
 		// show The Image and save it to Library
-		try{
-			App.imageLoader.DisplayImage(app.selectedBook.imgURL, bookCoverImage,tvnc);
-		}
-		catch (NullPointerException e){
-			// noth
-		}
+		DataClassDisplayBookCover bk = new DataClassDisplayBookCover();
+		bk.iv=bookCoverImage;
+		bk.isCover=true;
+		bk.tv=tvnc;
+		bk.pb=pb;
+		bk.book=app.selectedBook;
+		App.imageLoader.DisplayCover(bk);
+
 
 		bitmapBookCover = ((BitmapDrawable) bookCoverImage.getDrawable())
 				.getBitmap();

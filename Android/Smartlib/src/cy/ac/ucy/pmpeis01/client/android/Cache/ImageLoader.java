@@ -53,19 +53,28 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.provider.ContactsContract.Contacts.Data;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.ActionBar;
 
 import cy.ac.ucy.pmpeis01.client.android.R;
+import cy.ac.ucy.pmpeis01.client.android.Cache.ImageLoader.DataClassDisplayBookCover.DataClassBitmapGot;
+import cy.ac.ucy.pmpeis01.client.android.SmartLib.App;
+import cy.ac.ucy.pmpeis01.client.android.SmartLib.Book;
 
 
 
 
 
 public class ImageLoader {
+
+	private static String			TAG			= ImageLoader.class
+													.getSimpleName();
 
 	MemoryCache					memoryCache	= new MemoryCache();
 
@@ -93,6 +102,13 @@ public class ImageLoader {
 
 
 
+	/**
+	 * Display Action bar icon
+	 * 
+	 * @param url
+	 * @param ctx
+	 * @param actionBar
+	 */
 	public void DisplayActionBarIcon(String url, Context ctx,
 			ActionBar actionBar) {
 		Bitmap bitmap = memoryCache.get(url);
@@ -126,25 +142,95 @@ public class ImageLoader {
 
 
 
-	public void DisplayImage(String url, ImageView imageView,
-			TextView tvNoCover) throws NullPointerException {
+	/**
+	 * Display image (now used only for library logos)
+	 * 
+	 * @param url
+	 * @param bk
+	 * @param a
+	 */
+	public void DisplayImage(String url, DataClassDisplayBookCover img) {
 
-		imageViews.put(imageView, url);
+
+		imageViews.put(img.iv, url);
+
 
 		Bitmap bitmap = memoryCache.get(url);
 		if (bitmap != null){
-			imageView.setImageBitmap(bitmap);
-			imageView.refreshDrawableState();
-			tvNoCover.setVisibility(View.GONE);
+			// Show image
+			img.iv.setImageBitmap(bitmap);
+			img.iv.refreshDrawableState();
+
+			// If it is cover
+			if (img.isCover){
+				// Hide progress bar
+				img.pb.setVisibility(View.GONE);
+				img.tv.setVisibility(View.GONE);
+			}
+
+
 		}
 		else{
-			queuePhoto(url, imageView, tvNoCover);
-			imageView.setImageResource(stub_id);
-			tvNoCover.setVisibility(View.VISIBLE);
+
+			img.iv.setImageResource(stub_id);
+			if (img.isCover){
+				img.pb.setVisibility(View.VISIBLE);
+				img.tv.setVisibility(View.GONE);
+			}
+
+			queuePhoto(url, img);
+		}
+	}
+
+
+
+
+
+	/**
+	 * Display Book Cover
+	 * 
+	 * @param url
+	 * @param bk
+	 * @param a
+	 */
+	public void DisplayCover(DataClassDisplayBookCover bc) {
+
+
+		imageViews.put(bc.iv, bc.book.imgURL);
+
+		Bitmap bitmap = memoryCache.get(bc.book.imgURL);
+
+		// Image cache found
+		if (bitmap != null){
+			// Show image
+			bc.iv.setImageBitmap(bitmap);
+			bc.iv.refreshDrawableState();
+
+			// If it is cover
+			if (bc.isCover){
+				// Hide progress bar
+				bc.pb.setVisibility(View.GONE);
+				bc.tv.setVisibility(View.GONE);
+			}
 
 
 		}
+		// Image cache not found
+		else{
+			// Show default image
+			bc.iv.setImageResource(stub_id);
+			if (bc.isCover){
+				// and progress bar
+				bc.pb.setVisibility(View.VISIBLE);
+				bc.tv.setVisibility(View.GONE);
+			}
+
+			queuePhoto(bc);
+		}
 	}
+
+
+
 
 
 
@@ -156,8 +242,8 @@ public class ImageLoader {
 	 * @param url
 	 * @param imageView
 	 */
-	private void queuePhoto(String url, ImageView imageView, TextView tv) {
-		PhotoToLoad p = new PhotoToLoad(url, imageView, tv);
+	private void queuePhoto(String url, DataClassDisplayBookCover bk) {
+		PhotoToLoad p = new PhotoToLoad(url, bk);
 		executorService.submit(new PhotosLoader(p));
 	}
 
@@ -165,32 +251,70 @@ public class ImageLoader {
 
 
 
-	private Bitmap getBitmap(String url) {
+	/**
+	 * Queue photos for Book Covers
+	 * 
+	 * @param url
+	 * @param imageView
+	 */
+	private void queuePhoto(DataClassDisplayBookCover bc) {
+		PhotoToLoadBC pl = new PhotoToLoadBC(bc);
+		executorService.submit(new PhotosLoaderBC(pl));
+	}
+
+
+
+
+
+
+
+	private DataClassBitmapGot getBitmap(String url,
+			DataClassDisplayBookCover bk) {
 		File f = fileCache.getFile(url);
 
+		DataClassBitmapGot result = new DataClassBitmapGot();
+
 		// from SD cache
-		Bitmap b = decodeFile(f);
-		if (b != null) return b;
+		result.b = decodeFile(f);
+		if (result.b != null) return result;
 
 		// from web
 		try{
-			Bitmap bitmap = null;
-			URL imageUrl = new URL(url);
-			HttpURLConnection conn = (HttpURLConnection) imageUrl
-					.openConnection();
-			conn.setConnectTimeout(30000);
-			conn.setReadTimeout(30000);
-			conn.setInstanceFollowRedirects(true);
-			InputStream is = conn.getInputStream();
-			OutputStream os = new FileOutputStream(f);
-			Utils.CopyStream(is, os);
-			os.close();
-			bitmap = decodeFile(f);
-			return bitmap;
+			// If book doesnt have a cover
+			if (url.equals(App.noCoverURL)){
+				throw new Exception("No Cover exception");
+			}
+			// Download cover from web
+			else{
+				result.b = null;
+				URL imageUrl = new URL(url);
+				HttpURLConnection conn = (HttpURLConnection) imageUrl
+						.openConnection();
+				conn.setConnectTimeout(30000);
+				conn.setReadTimeout(30000);
+				conn.setInstanceFollowRedirects(true);
+				InputStream is = conn.getInputStream();
+				OutputStream os = new FileOutputStream(f);
+				Utils.CopyStream(is, os);
+				os.close();
+				result.b = decodeFile(f);
+			}
+
+
+			return result;
 		}
 		catch (Exception ex){
-			ex.printStackTrace();
-			return null;
+			Log.i(TAG, "Failed to download image: " + ex.getMessage());
+
+			if (bk != null){
+
+				// Change cover image URL to no cover
+				bk.book.imgURL = App.noCoverURL;
+
+			}
+
+				result.gotBitmap = false;
+				return result;
 		}
 	}
 
@@ -229,23 +353,34 @@ public class ImageLoader {
 		return null;
 	}
 
-	// Task for the queue
+
 	private class PhotoToLoad {
 
-		public String		url;
+		public String					url;
 
-		public ImageView	imageView;
-
-		public TextView	tv;
+		public DataClassDisplayBookCover	bk;
 
 
 
 
 
-		public PhotoToLoad(String u, ImageView i, TextView tvnc) {
+		public PhotoToLoad(String u, DataClassDisplayBookCover bk) {
 			url = u;
-			imageView = i;
-			this.tv = tvnc;
+			this.bk = bk;
+		}
+	}
+
+	// Task for the queue
+	private class PhotoToLoadBC {
+
+		public DataClassDisplayBookCover	bc;
+
+
+
+
+
+		public PhotoToLoadBC(DataClassDisplayBookCover bc) {
+			this.bc = bc;
 		}
 	}
 
@@ -268,6 +403,47 @@ public class ImageLoader {
 			this.ctx = ctx;
 		}
 	}
+
+
+	/**
+	 * Used for BookCovers
+	 * 
+	 * @author paschalis
+	 * 
+	 */
+	class PhotosLoaderBC implements Runnable {
+
+		PhotoToLoadBC	photoToLoadbc;
+
+
+
+
+
+		PhotosLoaderBC(PhotoToLoadBC photoToLoadbc) {
+			this.photoToLoadbc = photoToLoadbc;
+		}
+
+
+
+
+
+		@Override
+		public void run() {
+			if (imageViewReused(photoToLoadbc)) return;
+
+			DataClassBitmapGot rbmp = getBitmap(
+					photoToLoadbc.bc.book.imgURL, photoToLoadbc.bc);
+			memoryCache.put(photoToLoadbc.bc.book.imgURL, rbmp.b);
+			if (imageViewReused(photoToLoadbc)) return;
+			BitmapDisplayer bd = new BitmapDisplayer(rbmp.b, photoToLoadbc);
+			Activity a = (Activity) photoToLoadbc.bc.iv.getContext();
+			a.runOnUiThread(bd);
+		}
+	}
+
+
+
+
 
 
 
@@ -297,11 +473,12 @@ public class ImageLoader {
 		public void run() {
 			if (imageViewReused(photoToLoad)) return;
 
-			Bitmap bmp = getBitmap(photoToLoad.url);
-			memoryCache.put(photoToLoad.url, bmp);
+			DataClassBitmapGot rbmp = getBitmap(photoToLoad.url,
+					photoToLoad.bk);
+			memoryCache.put(photoToLoad.url, rbmp.b);
 			if (imageViewReused(photoToLoad)) return;
-			BitmapDisplayer bd = new BitmapDisplayer(bmp, photoToLoad);
-			Activity a = (Activity) photoToLoad.imageView.getContext();
+			BitmapDisplayer bd = new BitmapDisplayer(rbmp.b, photoToLoad);
+			Activity a = (Activity) photoToLoad.bk.iv.getContext();
 			a.runOnUiThread(bd);
 		}
 	}
@@ -331,9 +508,12 @@ public class ImageLoader {
 
 		@Override
 		public void run() {
-			Bitmap bmp = getBitmap(photoToLoadABS.url);
-			memoryCache.put(photoToLoadABS.url, bmp);
-			BitmapDisplayer bd = new BitmapDisplayer(bmp, photoToLoadABS);
+			DataClassBitmapGot rbmp = getBitmap(photoToLoadABS.url, null);
+			// if(rbmp.cacheIt){
+			memoryCache.put(photoToLoadABS.url, rbmp.b);
+			// }
+
+			BitmapDisplayer bd = new BitmapDisplayer(rbmp.b, photoToLoadABS);
 			Activity a = (Activity) photoToLoadABS.ctx;
 			a.runOnUiThread(bd);
 		}
@@ -344,8 +524,19 @@ public class ImageLoader {
 
 
 	boolean imageViewReused(PhotoToLoad photoToLoad) {
-		String tag = imageViews.get(photoToLoad.imageView);
+		String tag = imageViews.get(photoToLoad.bk.iv);
 		if (tag == null || !tag.equals(photoToLoad.url)) return true;
+		return false;
+	}
+
+
+
+
+
+	boolean imageViewReused(PhotoToLoadBC photoToLoadbc) {
+		String tag = imageViews.get(photoToLoadbc.bc.iv);
+		if (tag == null || !tag.equals(photoToLoadbc.bc.book.imgURL))
+			return true;
 		return false;
 	}
 
@@ -359,6 +550,9 @@ public class ImageLoader {
 		PhotoToLoadABS	photoToLoadABS;
 
 
+		PhotoToLoadBC	photoToLoadbc;
+
+
 
 
 
@@ -366,6 +560,7 @@ public class ImageLoader {
 			bitmap = b;
 			photoToLoad = p;
 			this.photoToLoadABS = null;
+			this.photoToLoadbc = null;
 		}
 
 
@@ -376,43 +571,79 @@ public class ImageLoader {
 			bitmap = bmp;
 			this.photoToLoadABS = photoToLoadABS;
 			this.photoToLoad = null;
+			this.photoToLoadbc = null;
 		}
 
 
 
 
 
-		//
+		public BitmapDisplayer(Bitmap b, PhotoToLoadBC photoToLoadbc) {
+			bitmap = b;
+			this.photoToLoadbc = photoToLoadbc;
+			this.photoToLoad = null;
+			this.photoToLoadABS = null;
 
-		//
+		}
 
 
-		public void run() throws NullPointerException {
-			// Using image for Action Bar
+
+
+
+		public void run() {
+			// Using for regular Image View
 			if (this.photoToLoad != null){
 				if (imageViewReused(photoToLoad)) return;
+
 				if (bitmap != null){
-					photoToLoad.imageView.setImageBitmap(bitmap);
-
-					photoToLoad.imageView.refreshDrawableState();
-					try{
-						photoToLoad.tv.setVisibility(View.GONE);
+					photoToLoad.bk.iv.setImageBitmap(bitmap);
+					photoToLoad.bk.iv.refreshDrawableState();
+					// If is a cover image
+					if (photoToLoad.bk.isCover){
+						photoToLoad.bk.pb.setVisibility(View.GONE);
+						photoToLoad.bk.tv.setVisibility(View.GONE);
 					}
-					catch (NullPointerException e){
-					}
-
 
 				}
 				else{
-					photoToLoad.imageView.setImageResource(stub_id);
-					try{
-						photoToLoad.tv.setVisibility(View.VISIBLE);
+
+					// Show default image
+					photoToLoad.bk.iv.setImageResource(stub_id);
+					// Show no cover message
+					if (photoToLoad.bk.isCover){
+						// CHECK REVERSE IN HERE!
+						photoToLoad.bk.pb.setVisibility(View.GONE);
+						photoToLoad.bk.tv.setVisibility(View.VISIBLE);
 					}
-					catch (NullPointerException e){}
 
 				}
 			}
-			// Using for regular Image View
+			// Using image of Cover
+			else if (this.photoToLoadbc != null){
+				if (imageViewReused(photoToLoadbc)) return;
+
+				if (bitmap != null){
+					photoToLoadbc.bc.iv.setImageBitmap(bitmap);
+					photoToLoadbc.bc.iv.refreshDrawableState();
+					photoToLoadbc.bc.pb.setVisibility(View.GONE);
+					photoToLoadbc.bc.tv.setVisibility(View.GONE);
+
+				}
+				else{
+
+					// Show default image
+					photoToLoadbc.bc.iv.setImageResource(stub_id);
+					// Show no cover message
+					// if (photoToLoadbc.bc.isCover){
+					// CHECK REVERSE IN HERE!
+					photoToLoadbc.bc.pb.setVisibility(View.GONE);
+					photoToLoadbc.bc.tv.setVisibility(View.VISIBLE);
+					// }
+
+				}
+
+			}
+			// Using image for Action Bar
 			else{
 				if (bitmap != null) photoToLoadABS.actionBar
 						.setIcon(new BitmapDrawable(photoToLoadABS.ctx
@@ -448,5 +679,54 @@ public class ImageLoader {
 	public String getCacheDirectory() {
 		return fileCache.cacheDir.toString();
 	}
+
+	public static class DataClassDisplayBookCover {
+
+		public ImageView	iv;
+
+		public TextView	tv;
+
+		public ProgressBar	pb;
+
+		public boolean		isCover;
+
+		public Book		book;
+
+
+
+
+
+		/**
+		 * Data help Class
+		 * 
+		 * @author paschalis
+		 * 
+		 */
+		public DataClassDisplayBookCover() {
+			iv = null;
+			tv = null;
+			pb = null;
+			book = null;
+			isCover = false;// assume its not cover
+
+		}
+
+		/**
+		 * Data help Class
+		 * 
+		 * @author paschalis
+		 * 
+		 */
+		public static class DataClassBitmapGot {
+
+			public Bitmap	b		= null;
+
+			public boolean	gotBitmap	= true;
+
+
+		}
+
+	}
+
 
 }

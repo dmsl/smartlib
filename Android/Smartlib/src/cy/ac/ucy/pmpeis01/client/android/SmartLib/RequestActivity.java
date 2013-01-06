@@ -63,6 +63,7 @@ import com.actionbarsherlock.view.MenuItem;
 import cy.ac.ucy.pmpeis01.client.android.CaptureActivity;
 import cy.ac.ucy.pmpeis01.client.android.PreferencesActivity;
 import cy.ac.ucy.pmpeis01.client.android.R;
+import cy.ac.ucy.pmpeis01.client.android.Cache.ImageLoader.DataClassDisplayBookCover;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.Book.DataClassUser;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.EditBookActivity.AsyncTaskReturnABook;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.LentBookActivity.DataClassLentABook;
@@ -130,7 +131,8 @@ public class RequestActivity extends SherlockActivity {
 
 		username.setText(dataClassActivities.username);
 
-		date.setText(App.makeTimeStampHumanReadble(getApplicationContext(),dataClassActivities.date));
+		date.setText(App.makeTimeStampHumanReadble(getApplicationContext(),
+				dataClassActivities.book.dateOfInsert));
 
 		// Set Ack Status strings
 		ExpandableAdapterActivityInfo.setStatusString(
@@ -138,40 +140,41 @@ public class RequestActivity extends SherlockActivity {
 				acknowledgeTitle);
 
 		TextView tvnc = (TextView) findViewById(R.id.textViewNoCover);
-		isbn.setText(dataClassActivities.isbn);
-		title.setText(dataClassActivities.title);
-		authors.setText(dataClassActivities.authors);
-		
-		
+		isbn.setText(dataClassActivities.book.isbn);
+		title.setText(dataClassActivities.book.title);
+		authors.setText(dataClassActivities.book.authors);
+
+
 
 		// show The Image and save it to Library
-		try{
-			App.imageLoader.DisplayImage(dataClassActivities.imgURL, cover,tvnc);
-		}
-		catch (NullPointerException e){
-			// noth
-		}
+		DataClassDisplayBookCover bk = new DataClassDisplayBookCover();
+		bk.iv = cover;
+		bk.isCover = true;
+		bk.tv = tvnc;
+		bk.pb = (ProgressBar) findViewById(R.id.progressBarLoadCover);
+		bk.book = dataClassActivities.book;
+
+		App.imageLoader.DisplayCover(bk);
 
 
 		buttonHybrid = (Button) findViewById(R.id.buttonRequestHybrid);
 		buttonContact = (Button) findViewById(R.id.buttonRequestContact);
-		
+
 		buttonContact.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(RequestActivity.this,
 						SendMessageActivity.class);
 
-				intent.putExtra(
-						App.ExtrasForSendMessage_DestinationUser,
+				intent.putExtra(App.ExtrasForSendMessage_DestinationUser,
 						dataClassActivities.username);
 
 				startActivity(intent);
-				
+
 			}
 		});
-		
+
 
 		progressBarHybrid = (ProgressBar) findViewById(R.id.progressBarRequestHybridButton);
 
@@ -286,7 +289,7 @@ public class RequestActivity extends SherlockActivity {
 										int which) {
 									// Return the book
 									new AsyncTaskReturnABook()
-											.execute(dataClassActivities.isbn);
+											.execute(dataClassActivities.book.isbn);
 								}
 							});
 
@@ -361,7 +364,7 @@ public class RequestActivity extends SherlockActivity {
 									DataClassLentABook data = new DataClassLentABook();
 
 									data.destinationUser = dataClassActivities.username;
-									data.isbn = dataClassActivities.isbn;
+									data.isbn = dataClassActivities.book.isbn;
 
 									new AsyncTaskLentABook_Activities()
 											.execute(data);
@@ -411,7 +414,7 @@ public class RequestActivity extends SherlockActivity {
 
 								DataClassLentABook d = new DataClassLentABook();
 								d.destinationUser = dataClassActivities.username;
-								d.isbn = dataClassActivities.isbn;
+								d.isbn = dataClassActivities.book.isbn;
 								d.answer = "0";
 								if (item == 0) d.answer = "1";
 
@@ -481,7 +484,7 @@ public class RequestActivity extends SherlockActivity {
 									// Delete a request
 									DataClassLentABook d = new DataClassLentABook();
 									d.destinationUser = dataClassActivities.username;
-									d.isbn = dataClassActivities.isbn;
+									d.isbn = dataClassActivities.book.isbn;
 
 									new AsyncTaskDeleteABookRequest()
 											.execute(d);
@@ -513,12 +516,10 @@ public class RequestActivity extends SherlockActivity {
 				.setIcon(R.drawable.ic_menu_settings_holo_light)
 				.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 
-		
+
 		menu.add(Menu.NONE, App.MENU_LIBRARY_SETTINGS, Menu.NONE,
-				app.library.name)
-				.setIcon(R.drawable.ic_menu_account_list)
-				.setShowAsActionFlags(
-						MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+				app.library.name).setIcon(R.drawable.ic_menu_account_list)
+				.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 		return true;
 	}
 
@@ -534,11 +535,11 @@ public class RequestActivity extends SherlockActivity {
 				return true;
 			case App.MENU_LIBRARY_SETTINGS:{
 				Intent myIntent = new Intent(RequestActivity.this,
-				 LibPreferences.class);
+						LibPreferences.class);
 				RequestActivity.this.startActivity(myIntent);
 
 			}
-			return true;
+				return true;
 			case App.MENU_GLOBAL_SETTINGS:{
 				Intent myIntent = new Intent(RequestActivity.this,
 						PreferencesActivity.class);
@@ -1055,43 +1056,44 @@ public class RequestActivity extends SherlockActivity {
 
 
 
-	
-	
-	
+
+
+
 	@Override
 	protected void onResume() {
-		//Set library's logo as ActionBar Icon
+		// Set library's logo as ActionBar Icon
 		App.imageLoader.DisplayActionBarIcon(app.library.getImageURL(),
 				getApplicationContext(), getSupportActionBar());
-		
-	    if (App.refreshLang) {
-	        refresh();
-	    }
-	    super.onResume();
+
+		if (App.refreshLang){
+			refresh();
+		}
+		super.onResume();
 	}
 
-	/**Refresh activity's language
+
+
+
+
+	/**
+	 * Refresh activity's language
 	 * 
 	 */
 	private void refresh() {
-		App.refreshLang=false;
-	    finish();
-	    Intent myIntent = new Intent(RequestActivity.this, RequestActivity.class);
-	    startActivity(myIntent);
+		App.refreshLang = false;
+		finish();
+		Intent myIntent = new Intent(RequestActivity.this,
+				RequestActivity.class);
+		startActivity(myIntent);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 
 }

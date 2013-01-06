@@ -57,6 +57,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -69,6 +70,7 @@ import com.actionbarsherlock.view.MenuItem;
 
 import cy.ac.ucy.pmpeis01.client.android.PreferencesActivity;
 import cy.ac.ucy.pmpeis01.client.android.R;
+import cy.ac.ucy.pmpeis01.client.android.SmartLib.App.DeviceType;
 
 
 
@@ -76,8 +78,8 @@ import cy.ac.ucy.pmpeis01.client.android.R;
 
 public class MyBooksActivity extends SherlockActivity {
 
-	private static final String	TAG			= MyBooksActivity.class
-												.getSimpleName();
+	private static final String	TAG				= MyBooksActivity.class
+													.getSimpleName();
 
 	App						app;
 
@@ -91,13 +93,17 @@ public class MyBooksActivity extends SherlockActivity {
 
 	LinearLayout				linearLayoutSelectedBooks;
 
-//	TextView					textViewMyBookSelected;
+	// TextView textViewMyBookSelected;
 
-	Boolean					isItemChecked	= false;
+	Boolean					isItemChecked		= false;
 
-	String					isbnParam		= null;
+	String					isbnParam			= null;
 
 	private ProgressBar			progressBarFetchMyBooks;
+
+	boolean					openedEditBook		= false;
+
+	boolean					showingLiveData	= false;
 
 
 
@@ -139,14 +145,11 @@ public class MyBooksActivity extends SherlockActivity {
 					+ app.user.name);
 		}
 
-		arrayListUserBooks = new ArrayList<Book>();
-
-//		textViewMyBookSelected = (TextView) findViewById(R.id.textViewMyBooksSelectedBook);
 
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		// Get user books
-		new AsyncTaskGetMyBooks().execute();
+		arrayListUserBooks = new ArrayList<Book>();
 
 		listViewMyBooks.setOnItemClickListener(new OnItemClickListener() {
 
@@ -165,9 +168,34 @@ public class MyBooksActivity extends SherlockActivity {
 				// Recreate the menu
 				invalidateOptionsMenu();
 
-	}
+			}
 		});
 
+
+
+
+		listViewMyBooks
+				.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+					@Override
+					public boolean onItemLongClick(AdapterView<?> arg0,
+							View arg1, int pos, long arg3) {
+
+						app.selectedBook = (Book) (listViewMyBooks
+								.getItemAtPosition(pos));
+						openedEditBook = true;
+
+
+						// Open Book
+						Intent intent = new Intent(MyBooksActivity.this,
+								EditBookActivity.class);
+
+						startActivity(intent);
+
+						return true;
+					}
+
+				});
 	}
 
 
@@ -187,6 +215,18 @@ public class MyBooksActivity extends SherlockActivity {
 
 		linearLayoutSelectedBooks.setVisibility(View.GONE);
 
+		if (openedEditBook){
+			openedEditBook = false;// restore this value
+		}
+
+		if (!showingLiveData){
+			// Get user books
+			arrayListUserBooks.clear();
+			new AsyncTaskGetMyBooks().execute();
+		}
+
+
+
 		isItemChecked = false;
 
 		app.selectedBook = null;
@@ -202,10 +242,7 @@ public class MyBooksActivity extends SherlockActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
-		menu.add(Menu.NONE, App.MENU_GLOBAL_SETTINGS, Menu.NONE,
-				R.string.menu_settings)
-				.setIcon(R.drawable.ic_menu_settings_holo_light)
-				.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+
 
 		menu.add(Menu.NONE, App.MENU_MY_BOOKS_BOOK_SELECTED, Menu.FIRST,
 				R.string.editBook)
@@ -217,6 +254,10 @@ public class MyBooksActivity extends SherlockActivity {
 		menu.add(Menu.NONE, App.MENU_LIBRARY_SETTINGS, Menu.NONE,
 				app.library.name).setIcon(R.drawable.ic_menu_account_list)
 				.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+		menu.add(Menu.NONE, App.MENU_GLOBAL_SETTINGS, Menu.NONE,
+				R.string.menu_settings)
+				.setIcon(R.drawable.ic_menu_settings_holo_light)
+				.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 		return true;
 	}
 
@@ -253,7 +294,7 @@ public class MyBooksActivity extends SherlockActivity {
 			case App.MENU_MY_BOOKS_BOOK_SELECTED:{
 				Intent intent = new Intent(MyBooksActivity.this,
 						EditBookActivity.class);
-
+				openedEditBook = true;
 				startActivity(intent);
 
 			}
@@ -272,10 +313,20 @@ public class MyBooksActivity extends SherlockActivity {
 
 		// If library is selected, show register option
 		if (isItemChecked){
-			menu.findItem(App.MENU_MY_BOOKS_BOOK_SELECTED)
-					.setVisible(true)
-					.setTitle(getString(R.string.edit) + ": "
-							+ app.selectedBook.title);
+
+			String bookTitle;
+
+			if (app.deviceType.equals(DeviceType.Large)){
+				bookTitle = app.selectedBook.title;
+			}
+			else{
+				// If smaller device
+				bookTitle = app.selectedBook.title.substring(0, 9) + "..";
+			}
+
+
+			menu.findItem(App.MENU_MY_BOOKS_BOOK_SELECTED).setVisible(true)
+					.setTitle(getString(R.string.edit) + ": " + bookTitle);
 		}
 		else{
 			menu.findItem(App.MENU_MY_BOOKS_BOOK_SELECTED).setVisible(false);
@@ -295,7 +346,11 @@ public class MyBooksActivity extends SherlockActivity {
 
 		String	cachedMyBooksURI;
 
+		String	cachedMyBooksURItmp;
+
 		File		cachedMyBooks;
+
+		File		cachedMyBookstmp;
 
 		TextView	textViewCachedCopyMsg;
 
@@ -310,8 +365,14 @@ public class MyBooksActivity extends SherlockActivity {
 
 			progressBarFetchMyBooks.setVisibility(View.VISIBLE);
 			// Open previous cache
-			cachedMyBooksURI = App.imageLoader.getCacheDirectory() + "/mb" + app.user.username.hashCode();
+			cachedMyBooksURI = App.imageLoader.getCacheDirectory() + "/mb"
+					+ app.user.username.hashCode();
+
+			cachedMyBooksURItmp = App.imageLoader.getCacheDirectory()
+					+ "/mb_" + app.user.username.hashCode();
+
 			cachedMyBooks = new File(cachedMyBooksURI);
+			cachedMyBookstmp = new File(cachedMyBooksURItmp);
 
 			// Show cached data until new data is fetched
 			if (cachedMyBooks.exists()){
@@ -335,21 +396,15 @@ public class MyBooksActivity extends SherlockActivity {
 				catch (IOException e){
 					Log.e(TAG, e.toString());
 				}
+				
+				showingLiveData = false;
 
 				// Parse and show cached data
 				parseAndShowData(cachedData, false);
 
 			}
 			else{
-				// Wait for new data
-				try{
-					// Create the file
-					cachedMyBooks.createNewFile();
-				}
-				catch (IOException e){
-					Log.e(TAG, e.toString());
-				}
-
+				showingLiveData = false;
 			}
 
 		}
@@ -378,10 +433,12 @@ public class MyBooksActivity extends SherlockActivity {
 			if (resultStr != null){
 				try{
 
+					// Create the temporary file
+					cachedMyBookstmp.createNewFile();
 
 					FileWriter fw;
-
-					fw = new FileWriter(cachedMyBooks.getAbsoluteFile());
+					// Save data to temporary file
+					fw = new FileWriter(cachedMyBookstmp.getAbsoluteFile());
 					BufferedWriter bw = new BufferedWriter(fw);
 
 					bw.write(resultStr);
@@ -393,6 +450,8 @@ public class MyBooksActivity extends SherlockActivity {
 				}
 
 			}
+
+
 
 			return resultStr;
 
@@ -413,9 +472,10 @@ public class MyBooksActivity extends SherlockActivity {
 
 					// Reset cached books
 					arrayListUserBooks.clear();
+					showingLiveData = true;
 				}
 
-				// Parse and Show Data
+				// Parse, Show Data and handle cache
 				parseAndShowData(resultStr, true);
 
 				// Hide progress bar
@@ -426,6 +486,8 @@ public class MyBooksActivity extends SherlockActivity {
 						R.string.msgFailedDownloadData,
 						Toast.LENGTH_SHORT).show();
 				progressBarFetchMyBooks.setVisibility(View.GONE);
+
+				App.isNetworkAvailable(MyBooksActivity.this);
 			}
 
 		}
@@ -446,6 +508,8 @@ public class MyBooksActivity extends SherlockActivity {
 				}
 				catch (JSONException e){
 					Log.e(TAG, "Error parsing data " + e.toString());
+					// Delete temporary cache
+					cachedMyBookstmp.delete();
 
 				}
 
@@ -460,6 +524,8 @@ public class MyBooksActivity extends SherlockActivity {
 				}
 				catch (Exception e1){
 					returnFromJson = App.BOOKS_OF_USER_NO_BOOKS;
+					// Delete temporary cache
+					cachedMyBookstmp.delete();
 				}
 
 				switch (returnFromJson) {
@@ -494,6 +560,8 @@ public class MyBooksActivity extends SherlockActivity {
 
 						}
 						catch (Exception e){
+							// Delete temporary cache
+							cachedMyBookstmp.delete();
 
 						}
 
@@ -543,35 +611,51 @@ public class MyBooksActivity extends SherlockActivity {
 								arrayListUserBooks.add(book);
 							}
 							catch (JSONException e){
+								// Delete temporary cache
+								cachedMyBookstmp.delete();
 							}
 
 						}
-						
-						bookInfoAdapter = new AdapterBookInfo(MyBooksActivity.this,
-								R.layout.book_item,
-								arrayListUserBooks, false);
+
+						bookInfoAdapter = new AdapterBookInfo(
+								MyBooksActivity.this,
+								R.layout.book_item, arrayListUserBooks,
+								false);
 
 						// Show list
 						listViewMyBooks.setAdapter(bookInfoAdapter);
 
+						//If is live data, save new cache
+						if(liveData){
+							cachedMyBooks.delete();
+							cachedMyBookstmp.renameTo(cachedMyBooks
+									.getAbsoluteFile());
+						}
+						
+
+
 						break;
 					case App.GENERAL_NO_INTERNET:
 						if (liveData){
-							// TODO refresh button, and call again
-							// asynctask
-							// from
-							// refresh button
+							// Delete newly cached data
+							cachedMyBookstmp.delete();
 						}
 						else{
 							Toast.makeText(MyBooksActivity.this,
 									R.string.failedToLoadCachedData,
 									Toast.LENGTH_LONG).show();
+							// Delete cache data
+							cachedMyBookstmp.delete();
+							cachedMyBooks.delete();
 						}
 
 						break;
 					case App.BOOKS_OF_USER_NO_BOOKS:
 
 						if (liveData){
+							// Delete newly cached data
+							cachedMyBookstmp.delete();
+							
 							Toast.makeText(MyBooksActivity.this,
 									R.string.msgYouHaveNoBooksSoFar,
 									Toast.LENGTH_LONG).show();
@@ -589,6 +673,9 @@ public class MyBooksActivity extends SherlockActivity {
 							Toast.makeText(MyBooksActivity.this,
 									R.string.failedToLoadCachedData,
 									Toast.LENGTH_LONG).show();
+							// Delete cache data
+							cachedMyBookstmp.delete();
+							cachedMyBooks.delete();
 						}
 
 
@@ -596,20 +683,30 @@ public class MyBooksActivity extends SherlockActivity {
 
 					case App.GENERAL_WEIRD_ERROR:
 						if (liveData){
+							// Delete newly-cached data
+							cachedMyBookstmp.delete();
+							
 							Toast.makeText(MyBooksActivity.this,
 									R.string.reportThisToDev,
 									Toast.LENGTH_LONG).show();
 							MyBooksActivity.this.finish();
+							
 						}
 						else{
 							Toast.makeText(MyBooksActivity.this,
 									R.string.failedToLoadCachedData,
 									Toast.LENGTH_LONG).show();
+							// Delete cache data
+							cachedMyBookstmp.delete();
+							cachedMyBooks.delete();
 						}
 
 						break;
 					case App.GENERAL_DATABASE_ERROR:
 						if (liveData){
+							// Delete newly-cached data
+							cachedMyBookstmp.delete();
+							
 							Toast.makeText(MyBooksActivity.this,
 									R.string.reportThisToDev,
 									Toast.LENGTH_LONG).show();
@@ -620,6 +717,9 @@ public class MyBooksActivity extends SherlockActivity {
 							Toast.makeText(MyBooksActivity.this,
 									R.string.failedToLoadCachedData,
 									Toast.LENGTH_LONG).show();
+							// Delete cache data
+							cachedMyBookstmp.delete();
+							cachedMyBooks.delete();
 						}
 
 						break;

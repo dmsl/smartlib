@@ -81,6 +81,7 @@ import com.actionbarsherlock.widget.ShareActionProvider;
 import cy.ac.ucy.pmpeis01.client.android.CaptureActivity;
 import cy.ac.ucy.pmpeis01.client.android.PreferencesActivity;
 import cy.ac.ucy.pmpeis01.client.android.R;
+import cy.ac.ucy.pmpeis01.client.android.Cache.ImageLoader.DataClassDisplayBookCover;
 
 
 
@@ -133,8 +134,8 @@ public class EditBookActivity extends SherlockActivity {
 
 
 	ArrayAdapter<CharSequence>	adapter;
-	
-	File sharingFile;
+
+	File						sharingFile;
 
 
 
@@ -181,18 +182,19 @@ public class EditBookActivity extends SherlockActivity {
 		textViewCheckYourBooks = (TextView) findViewById(R.id.textViewCheckYourBooks);
 
 
-		TextView tvnocover = (TextView) 
-				findViewById(R.id.textViewNoCover);
-		
+		TextView tvnocover = (TextView) findViewById(R.id.textViewNoCover);
+		ProgressBar pb = (ProgressBar) findViewById(R.id.progressBarLoadCover);
 
 		// show The Image and save it to Library
-		try{
-			App.imageLoader.DisplayImage(app.selectedBook.imgURL, bookCoverImage, tvnocover);		
-		}
-		catch (NullPointerException e){
-			// noth
-		}
-		
+		DataClassDisplayBookCover bk = new DataClassDisplayBookCover();
+
+		bk.iv = bookCoverImage;
+		bk.isCover=true;
+		bk.pb=pb;
+		bk.tv=tvnocover;
+		bk.book=app.selectedBook;
+
+		App.imageLoader.DisplayCover(bk);
 
 		// Assign the appropriate data from our alert object above
 		bookISBN.setText(app.selectedBook.isbn);
@@ -202,8 +204,8 @@ public class EditBookActivity extends SherlockActivity {
 				app.selectedBook.publishedYear).toString());
 		bookPageCount.setText(Integer.valueOf(app.selectedBook.pageCount)
 				.toString());
-		bookDateOfInsert.setText(App
-				.makeTimeStampHumanReadble(getApplicationContext(),app.selectedBook.dateOfInsert));
+		bookDateOfInsert.setText(App.makeTimeStampHumanReadble(
+				getApplicationContext(), app.selectedBook.dateOfInsert));
 		bookLanguage.setText(app.selectedBook.lang);
 
 
@@ -469,14 +471,14 @@ public class EditBookActivity extends SherlockActivity {
 
 	@Override
 	protected void onResume() {
-		//Set library's logo as ActionBar Icon
+		// Set library's logo as ActionBar Icon
 		App.imageLoader.DisplayActionBarIcon(app.library.getImageURL(),
 				getApplicationContext(), getSupportActionBar());
-		
-	    if (App.refreshLang) {
-	        refresh();
-	    }
-	    super.onResume();
+
+		if (App.refreshLang){
+			refresh();
+		}
+		super.onResume();
 
 		getStatusDefaultValue();
 
@@ -484,7 +486,7 @@ public class EditBookActivity extends SherlockActivity {
 			sharingFile.delete();
 		}
 		catch (Exception e){
-			//Noth -catches exception if null
+			// Noth -catches exception if null
 		}
 
 
@@ -528,7 +530,8 @@ public class EditBookActivity extends SherlockActivity {
 
 
 
-	/**Creates a sharing {@link Intent}.
+	/**
+	 * Creates a sharing {@link Intent}.
 	 * 
 	 * @return The sharing intent.
 	 */
@@ -536,28 +539,29 @@ public class EditBookActivity extends SherlockActivity {
 		Intent shareIntent = new Intent(Intent.ACTION_SEND);
 		shareIntent.setType("text/plain");
 
-		String root = Environment.getExternalStorageDirectory()+".SmartLib/Images";	
+		String root = Environment.getExternalStorageDirectory()
+				+ ".SmartLib/Images";
 		new File(root).mkdirs();
-		
-		
-		File file = new File(root , app.selectedBook.isbn); 
 
-		
+
+		File file = new File(root, app.selectedBook.isbn);
+
+
 		try{
 			FileOutputStream os = new FileOutputStream(file);
 			bitmapBookCover.compress(CompressFormat.PNG, 80, os);
-			os.flush(); 
+			os.flush();
 			os.close();
-			
+
 			Uri uri = Uri.fromFile(file);
 			shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
-			
+
 		}
 		catch (Exception e){
 			Log.e(TAG, e.getStackTrace().toString());
-		} 
-		
-		
+		}
+
+
 		String bookInfo = "\n\n\n\nMy "
 				+ getString(R.string.bookInfo)
 				+ ":\n"
@@ -984,17 +988,19 @@ public class EditBookActivity extends SherlockActivity {
 
 
 
-	/**Refresh activity's language
+	/**
+	 * Refresh activity's language
 	 * 
 	 */
 	private void refresh() {
-		App.refreshLang=false;
-	    finish();
-	    Intent myIntent = new Intent(EditBookActivity.this, EditBookActivity.class);
-	    startActivity(myIntent);
+		App.refreshLang = false;
+		finish();
+		Intent myIntent = new Intent(EditBookActivity.this,
+				EditBookActivity.class);
+		startActivity(myIntent);
 	}
-	
-	
+
+
 
 
 
