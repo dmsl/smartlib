@@ -89,7 +89,14 @@ public class RegisterSuccessActivity extends SherlockActivity {
 		ImageView loginLogo = (ImageView) findViewById(R.id.imageViewLoginLibraryLogo);
 
 		// Show logo
-		App.imageLoader.DisplayImage(app.library.getImageURL(), loginLogo);
+		
+		try{
+			App.imageLoader.DisplayImage(app.library.getImageURL(), loginLogo,null);
+		}
+		catch (NullPointerException e){
+			// noth
+		}
+		
 
 	}
 

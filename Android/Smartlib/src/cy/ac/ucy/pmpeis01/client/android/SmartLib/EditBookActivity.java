@@ -181,18 +181,18 @@ public class EditBookActivity extends SherlockActivity {
 		textViewCheckYourBooks = (TextView) findViewById(R.id.textViewCheckYourBooks);
 
 
+		TextView tvnocover = (TextView) 
+				findViewById(R.id.textViewNoCover);
+		
 
 		// show The Image and save it to Library
-		App.imageLoader.DisplayImage(app.selectedBook.imgURL, bookCoverImage);
-
-
-		bitmapBookCover = ((BitmapDrawable) bookCoverImage.getDrawable())
-				.getBitmap();
-
-		// new DownloadImageTask(bookCoverImage, bookInfo)
-		// .execute(bookInfo.imgURL);
-
-
+		try{
+			App.imageLoader.DisplayImage(app.selectedBook.imgURL, bookCoverImage, tvnocover);		
+		}
+		catch (NullPointerException e){
+			// noth
+		}
+		
 
 		// Assign the appropriate data from our alert object above
 		bookISBN.setText(app.selectedBook.isbn);

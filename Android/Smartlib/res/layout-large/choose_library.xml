@@ -52,8 +52,8 @@
 
         <TextView
             style="@style/title2"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/chooseLibrary"
+            android:gravity="center_horizontal"
+            android:text="@string/choose_n_Library"
             android:textAllCaps="false"
             android:textSize="20sp" />
 

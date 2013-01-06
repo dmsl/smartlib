@@ -269,12 +269,12 @@
                 android:value="cy.ac.ucy.pmpeis01.client.android.SmartLib.ActivitiesActivity" />
         </activity>
         <activity
-            android:name="cy.ac.ucy.pmpeis01.client.android.SmartLib.LatestAdditionsActivity"
+            android:name=".SmartLib.LatestAdditionsActivity"
             android:configChanges="locale"
             android:label="@string/title_activity_latest_additions" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cy.ac.ucy.pmpeis01.client.android.SmartLib.MainActivity" />
+                android:value=".SmartLib.MainActivity" />
         </activity>
         <activity
             android:name=".SmartLib.SendMessageActivity"

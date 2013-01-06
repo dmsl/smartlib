@@ -137,14 +137,20 @@ public class RequestActivity extends SherlockActivity {
 				dataClassActivities.acknowledge, acknowledge,
 				acknowledgeTitle);
 
-
+		TextView tvnc = (TextView) findViewById(R.id.textViewNoCover);
 		isbn.setText(dataClassActivities.isbn);
 		title.setText(dataClassActivities.title);
 		authors.setText(dataClassActivities.authors);
+		
+		
 
 		// show The Image and save it to Library
-		App.imageLoader.DisplayImage(dataClassActivities.imgURL, cover);
-
+		try{
+			App.imageLoader.DisplayImage(dataClassActivities.imgURL, cover,tvnc);
+		}
+		catch (NullPointerException e){
+			// noth
+		}
 
 
 		buttonHybrid = (Button) findViewById(R.id.buttonRequestHybrid);

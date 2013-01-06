@@ -41,7 +41,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Locale;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -82,7 +81,7 @@ public class MyBooksActivity extends SherlockActivity {
 
 	App						app;
 
-	ArrayList<Book>			arralArrayListUserBooks;
+	ArrayList<Book>			arrayListUserBooks;
 
 	ListView					listViewMyBooks;
 
@@ -92,7 +91,7 @@ public class MyBooksActivity extends SherlockActivity {
 
 	LinearLayout				linearLayoutSelectedBooks;
 
-	TextView					textViewMyBookSelected;
+//	TextView					textViewMyBookSelected;
 
 	Boolean					isItemChecked	= false;
 
@@ -140,9 +139,9 @@ public class MyBooksActivity extends SherlockActivity {
 					+ app.user.name);
 		}
 
-		arralArrayListUserBooks = new ArrayList<Book>();
+		arrayListUserBooks = new ArrayList<Book>();
 
-		textViewMyBookSelected = (TextView) findViewById(R.id.textViewMyBooksSelectedBook);
+//		textViewMyBookSelected = (TextView) findViewById(R.id.textViewMyBooksSelectedBook);
 
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -163,14 +162,10 @@ public class MyBooksActivity extends SherlockActivity {
 
 				isItemChecked = true;
 
-				// REcreate the menu
+				// Recreate the menu
 				invalidateOptionsMenu();
 
-				// linearLayoutSelectedBooks.setVisibility(View.VISIBLE);
-				//
-				// textViewMyBookSelected.setText(selectedBook.title);
-
-			}
+	}
 		});
 
 	}
@@ -417,7 +412,7 @@ public class MyBooksActivity extends SherlockActivity {
 					textViewCachedCopyMsg.setVisibility(View.GONE);
 
 					// Reset cached books
-					arralArrayListUserBooks.clear();
+					arrayListUserBooks.clear();
 				}
 
 				// Parse and Show Data
@@ -545,17 +540,16 @@ public class MyBooksActivity extends SherlockActivity {
 								book.status = bookStatus;
 
 								// Insert book to array
-								arralArrayListUserBooks.add(book);
+								arrayListUserBooks.add(book);
 							}
 							catch (JSONException e){
 							}
 
 						}
-
-						bookInfoAdapter = new AdapterBookInfo(
-								MyBooksActivity.this,
+						
+						bookInfoAdapter = new AdapterBookInfo(MyBooksActivity.this,
 								R.layout.book_item,
-								arralArrayListUserBooks, false);
+								arrayListUserBooks, false);
 
 						// Show list
 						listViewMyBooks.setAdapter(bookInfoAdapter);

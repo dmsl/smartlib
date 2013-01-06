@@ -166,9 +166,19 @@ public class ExpandableAdapterActivityInfo extends BaseExpandableListAdapter {
 		isbn.setText(activityData.isbn);
 		title.setText(activityData.title);
 		authors.setText(activityData.authors);
+		
+		TextView tvnocover = (TextView) convertView.
+				findViewById(R.id.textViewNoCover);
+		
 
 		// show The Image and save it to Library
-		App.imageLoader.DisplayImage(activityData.imgURL, cover);
+		try{
+			App.imageLoader.DisplayImage(activityData.imgURL, cover,tvnocover);		
+		}
+		catch (NullPointerException e){
+			// noth
+		}
+		
 
 		// return activitiesInfoView;
 

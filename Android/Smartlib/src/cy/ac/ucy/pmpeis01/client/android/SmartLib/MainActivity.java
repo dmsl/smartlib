@@ -108,9 +108,18 @@ public class MainActivity extends SherlockActivity {
 			imageViewLibaryLogo = (ImageView) findViewById(R.id.imageViewLibraryLogo);
 			textViewLibraryLocation = (TextView) findViewById(R.id.textViewLibraryLocation);
 
-			// Show logo
-			App.imageLoader.DisplayImage(app.library.getImageURL(),
-					imageViewLibaryLogo);
+			// Show logo			
+			try{
+
+				App.imageLoader.DisplayImage(app.library.getImageURL(),
+						imageViewLibaryLogo,null);	
+			}
+			catch (NullPointerException e){
+				// noth
+			}
+			
+			
+			
 			textViewLibraryLocation.setText(app.library.location);
 
 			// textViewWelcomeUser.setText();

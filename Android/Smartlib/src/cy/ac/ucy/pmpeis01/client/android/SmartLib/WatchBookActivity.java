@@ -296,9 +296,16 @@ public class WatchBookActivity extends SherlockActivity {
 
 		}
 
+		
+		TextView tvnc = (TextView) findViewById(R.id.textViewNoCover);
+		
 		// show The Image and save it to Library
-		App.imageLoader.DisplayImage(app.selectedBook.imgURL, bookCoverImage);
-
+		try{
+			App.imageLoader.DisplayImage(app.selectedBook.imgURL, bookCoverImage,tvnc);
+		}
+		catch (NullPointerException e){
+			// noth
+		}
 
 		bitmapBookCover = ((BitmapDrawable) bookCoverImage.getDrawable())
 				.getBitmap();

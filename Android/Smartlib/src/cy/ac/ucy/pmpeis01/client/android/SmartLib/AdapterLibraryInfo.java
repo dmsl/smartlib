@@ -117,7 +117,13 @@ public class AdapterLibraryInfo extends ArrayAdapter<Library> {
 				.findViewById(R.id.textViewLibraryLocation);
 
 		// show The Image and save it to Library
-		App.imageLoader.DisplayImage(libraryInfo.getImageURL(), libraryLogo);
+		
+		try{
+			App.imageLoader.DisplayImage(libraryInfo.getImageURL(), libraryLogo, null);			
+		}
+		catch (NullPointerException e){
+			// noth
+		}
 		
 		//new DownloadImageTask(libraryLogo,libraryInfo).execute();
 

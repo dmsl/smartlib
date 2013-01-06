@@ -161,6 +161,7 @@
     <string name="hello_world">Γεια σου κόσμε!!</string>
     <string name="title_activity_main">Καλωσόρισες</string>
     <string name="chooseLibrary">Επέλεξε βιβλιοθήκη</string>
+    <string name="choose_n_Library">Επέλεξε\nβιβλιοθήκη</string>
     <string name="login">Είσοδος</string>
     <string name="username">Ψευδώνυμο</string>
     <string name="password">Συνθηματικό</string>
@@ -389,6 +390,7 @@
       <string name="clearCacheQuestionInfo">Περιέχει ληφθέντες εικόνες και κείμενο.</string>
       <string name="showingACachedCopy">Αποθηκευμένο αντίγραφο</string>
       <string name="failedToLoadCachedData">Αποτυχία φόρτωσης προ-αποθηκευμένων δεδομένων.</string>
+      <string name="noCover">Χωρίς\nΕξώφυλλο</string>
       
 </resources>
 

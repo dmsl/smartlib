@@ -281,7 +281,13 @@ public class LoginFragment extends SherlockFragment {
 					R.id.imageViewLoginLibraryLogo);
 
 			// Show logo
-			App.imageLoader.DisplayImage(lib.getImageURL(), loginLogo);
+			try{
+				App.imageLoader.DisplayImage(lib.getImageURL(), loginLogo,null);			}
+			catch (NullPointerException e){
+				// noth
+			}
+			
+			
 
 			//Save bitmap in app 
 			loginLogo.buildDrawingCache();

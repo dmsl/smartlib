@@ -189,6 +189,7 @@
     <string name="hello_world">Hello World!\\nHello World!</string>
     <string name="title_activity_main">Welcome</string>
     <string name="chooseLibrary">Choose library</string>
+    <string name="choose_n_Library">Choose\nlibrary</string>
     <string name="login">Login</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
@@ -389,6 +390,7 @@
       <string name="clearCacheQuestionInfo">Cache includes downloaded text and images.</string>
       <string name="showingACachedCopy">Showing a cached copy</string>
       <string name="failedToLoadCachedData">Failed to load cached data</string>
+      <string name="noCover">No Cover</string>
       
 </resources>
 

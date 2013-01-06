@@ -89,8 +89,8 @@ public class AdapterBookInfo extends ArrayAdapter<Book> {
 	public AdapterBookInfo(Context context, int resource, List<Book> items,
 			boolean pWatchBook) {
 		super(context, resource, items);
-		
-		this.context=context;
+
+		this.context = context;
 		this.resource = resource;
 
 		searchBook = pWatchBook;
@@ -148,8 +148,19 @@ public class AdapterBookInfo extends ArrayAdapter<Book> {
 		TextView bookStatusMsg = (TextView) booksInfoView
 				.findViewById(R.id.textViewBookStatusMessage);
 
+		TextView tvnocover = (TextView) booksInfoView
+				.findViewById(R.id.textViewNoCover);
+
+
 		// show The Image and save it to Library
-		App.imageLoader.DisplayImage(bookInfo.imgURL, bookCoverImage);
+		try{
+			App.imageLoader.DisplayImage(bookInfo.imgURL, bookCoverImage,
+					tvnocover);			
+		}
+		catch (NullPointerException e){
+			// noth
+		}
+
 
 
 
@@ -160,17 +171,13 @@ public class AdapterBookInfo extends ArrayAdapter<Book> {
 		bookPublishedYear.setText(Integer.valueOf(bookInfo.publishedYear)
 				.toString());
 		bookPageCount.setText(Integer.valueOf(bookInfo.pageCount).toString());
-		bookDateOfInsert
-				.setText(App.makeTimeStampHumanReadble(getContext(),bookInfo.dateOfInsert));
+		bookDateOfInsert.setText(App.makeTimeStampHumanReadble(getContext(),
+				bookInfo.dateOfInsert));
 		bookLanguage.setText(bookInfo.lang);
 
 		setBookStatusMessage(bookInfo.status, bookInfo.owners, bookStatusMsg);
 
 		return booksInfoView;
-
-
-
-
 
 	}
 
@@ -182,122 +189,123 @@ public class AdapterBookInfo extends ArrayAdapter<Book> {
 	 * Returns a string according to book status
 	 * 
 	 * @param status
-	 * @param owners 
+	 * @param owners
 	 */
-	private void setBookStatusMessage(int status, ArrayList<DataClassUser> owners, TextView tv) {
+	private void setBookStatusMessage(int status,
+			ArrayList<DataClassUser> owners, TextView tv) {
 
-			switch (status) {
-				
-				
-				case App.BOOK_STATE_USER_RENTED:
-					// If opened from watch book activity
-					if (searchBook){
-						tv.setText(context.getString(R.string.own) + ": "
-								+ context.getString(R.string.rented));
-						tv.setTextColor(Color.parseColor("#04B306"));
-						tv.setVisibility(View.VISIBLE);
-					}
-					//Opened from MyBooks
-					else{
-						tv.setText(R.string.rented);
-						tv.setTextColor(Color.parseColor("#04B306"));//Green
-						tv.setVisibility(View.VISIBLE);
-					}
-					;
-					break;
+		switch (status) {
 
-				case App.BOOK_STATE_USER_AVAILABLE:
-					// If opened from watch book activity
-					if (searchBook){
-						tv.setText(context.getString(R.string.own) + ": "
-								+ context.getString(R.string.available));
-						tv.setTextColor(Color.parseColor("#ff33b5e5"));//  holo-blue
-						tv.setVisibility(View.VISIBLE);
+
+			case App.BOOK_STATE_USER_RENTED:
+				// If opened from watch book activity
+				if (searchBook){
+					tv.setText(context.getString(R.string.own) + ": "
+							+ context.getString(R.string.rented));
+					tv.setTextColor(Color.parseColor("#04B306"));
+					tv.setVisibility(View.VISIBLE);
+				}
+				// Opened from MyBooks
+				else{
+					tv.setText(R.string.rented);
+					tv.setTextColor(Color.parseColor("#04B306"));// Green
+					tv.setVisibility(View.VISIBLE);
+				}
+				;
+				break;
+
+			case App.BOOK_STATE_USER_AVAILABLE:
+				// If opened from watch book activity
+				if (searchBook){
+					tv.setText(context.getString(R.string.own) + ": "
+							+ context.getString(R.string.available));
+					tv.setTextColor(Color.parseColor("#ff33b5e5"));// holo-blue
+					tv.setVisibility(View.VISIBLE);
+				}
+				// Opened from MyBooks
+				else{
+					tv.setText(R.string.available);
+					tv.setTextColor(Color.parseColor("#ff33b5e5"));// holo-blue
+					tv.setVisibility(View.VISIBLE);
+				}
+
+				break;
+			case App.BOOK_STATE_USER_NO_RENTAL:
+				// If opened from watch book activity
+				if (searchBook){
+					tv.setTextColor(Color.parseColor("#C2022C"));// red
+					tv.setText(context.getString(R.string.own) + ": "
+							+ context.getString(R.string.dontLent));
+					tv.setVisibility(View.VISIBLE);
+				}
+				// Opened from MyBooks
+				else{
+					tv.setText(R.string.dontLent);
+					tv.setTextColor(Color.parseColor("#C2022C"));
+					tv.setVisibility(View.VISIBLE);
+				}
+
+
+
+				break;
+			case App.BOOK_STATE_USER_OTHER:
+				// If opened from watch book activity
+				if (searchBook){
+					tv.setTextColor(Color.parseColor("#C2022C"));
+					tv.setText(context.getString(R.string.own) + ": "
+							+ context.getString(R.string.otherDontLent));
+					tv.setVisibility(View.VISIBLE);
+				}
+				// Opened from MyBooks
+				else{
+					tv.setText(R.string.otherDontLent);
+					tv.setTextColor(Color.parseColor("#C2022C"));
+					tv.setVisibility(View.VISIBLE);
+				}
+				break;
+			case App.BOOK_STATE_USER_DONT_OWNS:
+				// If opened from watch book activity
+				if (searchBook){
+					// Workaround
+					boolean isAvail = false;
+
+					// Find if its available or not
+					for (DataClassUser dataClassUser : owners){
+						if (dataClassUser.status == App.BOOK_STATE_USER_AVAILABLE){
+							isAvail = true;
+						}
 					}
-					//Opened from MyBooks
-					else{
+
+					// Book is available
+					if (isAvail){
 						tv.setText(R.string.available);
 						tv.setTextColor(Color.parseColor("#ff33b5e5"));// holo-blue
 						tv.setVisibility(View.VISIBLE);
 					}
+					else{
+						tv.setText(R.string.notAvailable);
+						tv.setTextColor(Color.parseColor("#C2022C"));
+						tv.setVisibility(View.VISIBLE);
+					}
 
-					break;
-				case App.BOOK_STATE_USER_NO_RENTAL:
-					// If opened from watch book activity
-					if (searchBook){
-						tv.setTextColor(Color.parseColor("#C2022C"));//red
-						tv.setText(context.getString(R.string.own) + ": "
-								+ context.getString(R.string.dontLent));
-						tv.setVisibility(View.VISIBLE);
-					}
-					//Opened from MyBooks
-					else{
-						tv.setText(R.string.dontLent);
-						tv.setTextColor(Color.parseColor("#C2022C"));
-						tv.setVisibility(View.VISIBLE);
-					}
-					
-					
-					
-					break;
-				case App.BOOK_STATE_USER_OTHER:
-					// If opened from watch book activity
-					if (searchBook){
-						tv.setTextColor(Color.parseColor("#C2022C"));
-						tv.setText(context.getString(R.string.own) + ": "
-								+ context.getString(R.string.otherDontLent));
-						tv.setVisibility(View.VISIBLE);
-					}
-					//Opened from MyBooks
-					else{
-						tv.setText(R.string.otherDontLent);
-						tv.setTextColor(Color.parseColor("#C2022C"));
-						tv.setVisibility(View.VISIBLE);
-					}
-					break;
-				case App.BOOK_STATE_USER_DONT_OWNS:
-					// If opened from watch book activity
-					if (searchBook){
-						//Workaround
-						boolean isAvail=false;
-						
-						//Find if its available or not
-						for (DataClassUser dataClassUser : owners){
-							if(dataClassUser.status==App.BOOK_STATE_USER_AVAILABLE){
-								isAvail=true;
-							}
-						}
-						
-						//Book is available
-						if(isAvail){
-							tv.setText(R.string.available);
-							tv.setTextColor(Color.parseColor("#ff33b5e5"));//  holo-blue
-							tv.setVisibility(View.VISIBLE);
-						}
-						else{
-							tv.setText(R.string.notAvailable);
-							tv.setTextColor(Color.parseColor("#C2022C"));
-							tv.setVisibility(View.VISIBLE);
-						}
-						
-						
-					}
-					//Opened from MyBooks
-					else{
-						tv.setText(R.string.dontOwn);
-						tv.setTextColor(Color.parseColor("#C2022C"));
-						tv.setVisibility(View.VISIBLE);
-					}
-					
-					
-				
-					
-					break;
-				default:
-					tv.setVisibility(View.INVISIBLE);
-					break;
 
-			}
+				}
+				// Opened from MyBooks
+				else{
+					tv.setText(R.string.dontOwn);
+					tv.setTextColor(Color.parseColor("#C2022C"));
+					tv.setVisibility(View.VISIBLE);
+				}
+
+
+
+
+				break;
+			default:
+				tv.setVisibility(View.INVISIBLE);
+				break;
+
+		}
 
 	}
 
