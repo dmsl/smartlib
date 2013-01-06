@@ -52,7 +52,7 @@
     layout="@layout/book_item" />
 
 <LinearLayout
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content" >
 
     <android.support.v7.widget.Space
@@ -63,7 +63,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_weight="5"
         android:orientation="vertical" >
 
@@ -78,7 +78,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp" >
+            android:layout_marginBottom="10dp" >
 
             <Spinner
                 android:id="@+id/spinnerBookStatus"
@@ -123,7 +123,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp" >
+            android:layout_marginTop="10dp" >
 
             <Button
                 android:id="@+id/buttonBookDelete"

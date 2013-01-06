@@ -50,6 +50,7 @@ import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.NavUtils;
@@ -92,8 +93,6 @@ public class MyBooksActivity extends SherlockActivity {
 	AdapterBookInfo			bookInfoAdapter;
 
 	LinearLayout				linearLayoutSelectedBooks;
-
-	// TextView textViewMyBookSelected;
 
 	Boolean					isItemChecked		= false;
 
@@ -315,15 +314,24 @@ public class MyBooksActivity extends SherlockActivity {
 		if (isItemChecked){
 
 			String bookTitle;
+			try{
 
-			if (app.deviceType.equals(DeviceType.Large)){
-				bookTitle = app.selectedBook.title;
-			}
-			else{
-				// If smaller device
-				bookTitle = app.selectedBook.title.substring(0, 9) + "..";
-			}
 
+
+				if (app.deviceType.equals(DeviceType.Large)){
+					bookTitle = app.selectedBook.title;
+				}
+				else{
+					// If smaller device
+					bookTitle = app.selectedBook.title.substring(0, 9)
+							+ "..";
+				}
+			}
+			catch (Exception e){
+				menu.findItem(App.MENU_MY_BOOKS_BOOK_SELECTED).setVisible(
+						false);
+				return false;
+			}
 
 			menu.findItem(App.MENU_MY_BOOKS_BOOK_SELECTED).setVisible(true)
 					.setTitle(getString(R.string.edit) + ": " + bookTitle);
@@ -380,9 +388,10 @@ public class MyBooksActivity extends SherlockActivity {
 				textViewCachedCopyMsg.setVisibility(View.VISIBLE);
 
 				// Make progress bar smaller
-				progressBarFetchMyBooks.setScaleX(0.5f);
-				progressBarFetchMyBooks.setScaleY(0.5f);
-
+				if (Build.VERSION.SDK_INT >= 11){
+					progressBarFetchMyBooks.setScaleX(0.5f);
+					progressBarFetchMyBooks.setScaleY(0.5f);
+				}
 				String cachedData = "";
 				// Read data from file
 				try{
@@ -396,7 +405,7 @@ public class MyBooksActivity extends SherlockActivity {
 				catch (IOException e){
 					Log.e(TAG, e.toString());
 				}
-				
+
 				showingLiveData = false;
 
 				// Parse and show cached data
@@ -472,8 +481,10 @@ public class MyBooksActivity extends SherlockActivity {
 
 					// Reset cached books
 					arrayListUserBooks.clear();
-					showingLiveData = true;
+
 				}
+
+				showingLiveData = true;
 
 				// Parse, Show Data and handle cache
 				parseAndShowData(resultStr, true);
@@ -625,13 +636,13 @@ public class MyBooksActivity extends SherlockActivity {
 						// Show list
 						listViewMyBooks.setAdapter(bookInfoAdapter);
 
-						//If is live data, save new cache
-						if(liveData){
+						// If is live data, save new cache
+						if (liveData){
 							cachedMyBooks.delete();
 							cachedMyBookstmp.renameTo(cachedMyBooks
 									.getAbsoluteFile());
 						}
-						
+
 
 
 						break;
@@ -655,7 +666,7 @@ public class MyBooksActivity extends SherlockActivity {
 						if (liveData){
 							// Delete newly cached data
 							cachedMyBookstmp.delete();
-							
+
 							Toast.makeText(MyBooksActivity.this,
 									R.string.msgYouHaveNoBooksSoFar,
 									Toast.LENGTH_LONG).show();
@@ -685,12 +696,12 @@ public class MyBooksActivity extends SherlockActivity {
 						if (liveData){
 							// Delete newly-cached data
 							cachedMyBookstmp.delete();
-							
+
 							Toast.makeText(MyBooksActivity.this,
 									R.string.reportThisToDev,
 									Toast.LENGTH_LONG).show();
 							MyBooksActivity.this.finish();
-							
+
 						}
 						else{
 							Toast.makeText(MyBooksActivity.this,
@@ -706,7 +717,7 @@ public class MyBooksActivity extends SherlockActivity {
 						if (liveData){
 							// Delete newly-cached data
 							cachedMyBookstmp.delete();
-							
+
 							Toast.makeText(MyBooksActivity.this,
 									R.string.reportThisToDev,
 									Toast.LENGTH_LONG).show();

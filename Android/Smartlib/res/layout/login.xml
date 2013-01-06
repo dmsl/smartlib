@@ -47,16 +47,17 @@
     <TextView
         android:id="@+id/TextViewLoginTitle"
         style="@style/title1"
+        android:layout_marginTop="0dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:enabled="false"
         android:text="@string/login"
         />
 
-          <android.support.v7.widget.Space
-          android:id="@+id/space2"
-          android:layout_width="0dp"
-          android:layout_height="20dp" />
+<!--           <android.support.v7.widget.Space -->
+<!--           android:id="@+id/space2" -->
+<!--           android:layout_width="0dp" -->
+<!--           android:layout_height="5dp" /> -->
     
       <TextView
           android:id="@+id/TextViewLoginLibraryName"
@@ -83,8 +84,6 @@
               android:layout_height="105dp"
               android:clickable="false"
               android:contentDescription="@string/libraryLogo"
-              android:maxHeight="120dp"
-              android:maxWidth="200dp"
               android:src="@drawable/default_library" />
 
           <TextView
@@ -106,7 +105,7 @@
       <android.support.v7.widget.Space
           android:id="@+id/space3"
           android:layout_width="0dp"
-          android:layout_height="10dp" />
+          android:layout_height="5dp" />
 
       <RelativeLayout
           android:layout_width="match_parent"
@@ -118,7 +117,9 @@
               android:layout_height="wrap_content"
               android:layout_alignParentTop="true"
               android:layout_centerHorizontal="true"
-              android:visibility="invisible" />
+              android:visibility="invisible" 
+               style="?android:attr/android:progressBarStyleSmall"
+              />
 
           <TextView
               android:id="@+id/textViewLoginMessage"

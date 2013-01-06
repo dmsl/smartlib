@@ -85,13 +85,12 @@
                     <Spinner
                         android:id="@+id/spinnerSearchSelectColumn"
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp" />
+                        android:layout_height="wrap_content"/>
 
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp" >
+                         >
 
                         <Button
                             android:id="@+id/buttonSearchBookSearch"

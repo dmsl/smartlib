@@ -106,8 +106,8 @@
     <style name="mainActivityButtons" parent="">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:paddingBottom">15dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:paddingBottom">10dp</item>
         <item name="android:paddingLeft">30dp</item>
         <item name="android:paddingRight">30dp</item>
         <item name="android:paddingTop">15dp</item>

@@ -32,12 +32,17 @@
 
 package cy.ac.ucy.pmpeis01.client.android.SmartLib;
 
+
+
 import java.util.ArrayList;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -47,6 +52,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -61,23 +67,32 @@ import cy.ac.ucy.pmpeis01.client.android.CaptureActivity;
 import cy.ac.ucy.pmpeis01.client.android.PreferencesActivity;
 import cy.ac.ucy.pmpeis01.client.android.R;
 
+
+
+
+
 public class LentBookActivity extends SherlockActivity {
 
-	private static final String TAG = LentBookActivity.class.getSimpleName();
+	private static final String	TAG					= LentBookActivity.class
+														.getSimpleName();
 
-	EditText editTextDestinationUsername;
+	EditText					editTextDestinationUsername;
 
-	TextView textViewLentResult;
+	TextView					textViewLentResult;
 
-	Button buttonLentBook;
+	Button					buttonLentBook;
 
-	ProgressBar progressBarLentButton;
+	ProgressBar				progressBarLentButton;
 
-	App app;
+	App						app;
 
-	Boolean fromEditBookActivity = false;
+	Boolean					fromEditBookActivity	= false;
 
-	String gotISBN;
+	String					gotISBN;
+
+
+
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -91,7 +106,7 @@ public class LentBookActivity extends SherlockActivity {
 		// Get arguments (User,Destination,ISBN)
 		final Bundle extras = getIntent().getExtras();
 
-		try {
+		try{
 			final String isbn = extras
 					.getString(App.ExtrasForLentBookActivityISBN);
 
@@ -99,7 +114,8 @@ public class LentBookActivity extends SherlockActivity {
 
 			gotISBN = isbn;
 
-		} catch (Exception e) {
+		}
+		catch (Exception e){
 			Toast.makeText(LentBookActivity.this,
 					"Something went wrong. Please report this",
 					Toast.LENGTH_LONG).show();
@@ -107,6 +123,7 @@ public class LentBookActivity extends SherlockActivity {
 			LentBookActivity.this.finish();
 
 		}
+
 
 		progressBarLentButton = (ProgressBar) findViewById(R.id.progressBarLentButton);
 
@@ -124,21 +141,32 @@ public class LentBookActivity extends SherlockActivity {
 
 			}
 
+
+
+
+
 			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
+			public void beforeTextChanged(CharSequence s, int start,
+					int count, int after) {
 
 			}
 
+
+
+
+
 			@Override
 			public void afterTextChanged(Editable s) {
-				if (editTextDestinationUsername.getText().length() >= 4) {
+				if (editTextDestinationUsername.getText().length() >= 4){
 					buttonLentBook.setEnabled(true);
-				} else {
+				}
+				else{
 					buttonLentBook.setEnabled(false);
 				}
 			}
 		});
+
+
 
 		buttonLentBook.setOnClickListener(new OnClickListener() {
 
@@ -146,8 +174,8 @@ public class LentBookActivity extends SherlockActivity {
 			public void onClick(View v) {
 				DataClassLentABook data = new DataClassLentABook();
 
-				data.destinationUser = editTextDestinationUsername.getText()
-						.toString();
+				data.destinationUser = editTextDestinationUsername
+						.getText().toString();
 
 				data.isbn = gotISBN;
 
@@ -157,6 +185,10 @@ public class LentBookActivity extends SherlockActivity {
 		});
 
 	}
+
+
+
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -174,40 +206,49 @@ public class LentBookActivity extends SherlockActivity {
 		return true;
 	}
 
+
+
+
+
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
 
 	};
 
+
+
+
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case android.R.id.home:
-			if (fromEditBookActivity) {
-				onBackPressed();
-			} else {
-				NavUtils.navigateUpFromSameTask(this);
+			case android.R.id.home:
+				if (fromEditBookActivity){
+					onBackPressed();
+				}
+				else{
+					NavUtils.navigateUpFromSameTask(this);
+				}
+
+				return true;
+			case App.MENU_LIBRARY_SETTINGS:{
+				Intent myIntent = new Intent(LentBookActivity.this,
+						LibPreferences.class);
+				LentBookActivity.this.startActivity(myIntent);
+
 			}
+				return true;
+			case R.id.itemClearRegister:
+				editTextDestinationUsername.setText("");
+				return true;
+			case App.MENU_GLOBAL_SETTINGS:{
 
-			return true;
-		case App.MENU_LIBRARY_SETTINGS: {
-			Intent myIntent = new Intent(LentBookActivity.this,
-					LibPreferences.class);
-			LentBookActivity.this.startActivity(myIntent);
-
-		}
-			return true;
-		case R.id.itemClearRegister:
-			editTextDestinationUsername.setText("");
-			return true;
-		case App.MENU_GLOBAL_SETTINGS: {
-
-			Intent myIntent = new Intent(LentBookActivity.this,
-					PreferencesActivity.class);
-			LentBookActivity.this.startActivity(myIntent);
-			return true;
-		}
+				Intent myIntent = new Intent(LentBookActivity.this,
+						PreferencesActivity.class);
+				LentBookActivity.this.startActivity(myIntent);
+				return true;
+			}
 
 		}
 		return super.onOptionsItemSelected(item);
@@ -222,7 +263,11 @@ public class LentBookActivity extends SherlockActivity {
 	private class AsyncTaskLentABook extends
 			AsyncTask<DataClassLentABook, Integer, Integer> {
 
-		DataClassLentABook mData;
+		DataClassLentABook	mData;
+
+
+
+
 
 		@Override
 		protected void onPreExecute() {
@@ -233,6 +278,10 @@ public class LentBookActivity extends SherlockActivity {
 
 		}
 
+
+
+
+
 		@Override
 		protected Integer doInBackground(DataClassLentABook... data) {
 
@@ -242,8 +291,8 @@ public class LentBookActivity extends SherlockActivity {
 
 			ArrayList<NameValuePair> parameters = new ArrayList<NameValuePair>();
 			// Say that we are mobile (Android Device)
-			parameters
-					.add(new BasicNameValuePair("device", App.DEVICE_ANDROID));
+			parameters.add(new BasicNameValuePair("device",
+					App.DEVICE_ANDROID));
 
 			// Save Username , ISBN, and Destination User
 			parameters.add(new BasicNameValuePair("owner", app.getUsername()));
@@ -256,14 +305,15 @@ public class LentBookActivity extends SherlockActivity {
 					app.getLibrary_lentABook_URL(), parameters);
 
 			// Parse Result (JSON Obj)
-			if (resultStr != null) {
-				try {
+			if (resultStr != null){
+				try{
 					// Create JSON Obj based on the result!
 					JSONObject userData = new JSONObject(resultStr);
 
 					returnResult = userData.getInt("result");
 
-				} catch (JSONException e) {
+				}
+				catch (JSONException e){
 					Log.e(TAG, "Error parsing data " + e.toString());
 
 				}
@@ -274,25 +324,31 @@ public class LentBookActivity extends SherlockActivity {
 
 		}
 
+
+
+
+
 		protected void onPostExecute(Integer result) {
 
 			progressBarLentButton.setVisibility(View.INVISIBLE);
 			buttonLentBook.setVisibility(View.VISIBLE);
 
-			if (result == App.BORROW_SUCCESSFULL) {
+			if (result == App.BORROW_SUCCESSFULL){
 
 				Toast.makeText(LentBookActivity.this,
-						R.string.msgBookSuccessfullyLented, Toast.LENGTH_SHORT)
-						.show();
+						R.string.msgBookSuccessfullyLented,
+						Toast.LENGTH_SHORT).show();
 
 				// Workaround
-				try {
+				try{
 					app.selectedBook.status = App.BOOK_STATE_USER_RENTED;
-				} catch (Exception e) {
+				}
+				catch (Exception e){
 					// Noth
 				}
 				LentBookActivity.this.finish();
-			} else if (result == App.BORROW_CANT_LEND_YOURSELF) {
+			}
+			else if (result == App.BORROW_CANT_LEND_YOURSELF){
 				textViewLentResult
 						.setText(getString(R.string.msgYouCantLendYourself)
 								+ ". "
@@ -304,10 +360,10 @@ public class LentBookActivity extends SherlockActivity {
 
 			}
 
-			else if (result == App.BORROW_NOT_FOUND_USER_DESTINATION) {
+			else if (result == App.BORROW_NOT_FOUND_USER_DESTINATION){
 				textViewLentResult
-						.setText(getString(R.string.msgFailedToFindUser) + ": "
-								+ mData.destinationUser + ".\n"
+						.setText(getString(R.string.msgFailedToFindUser)
+								+ ": " + mData.destinationUser + ".\n"
 								+ getString(R.string.msgPleaseTryAgain));
 				App.setStyleErrorDirection(textViewLentResult);
 
@@ -315,7 +371,7 @@ public class LentBookActivity extends SherlockActivity {
 
 			}
 
-			else {
+			else{
 				textViewLentResult.setText(R.string.msgBookFailedToLent);
 				App.setStyleErrorDirection(textViewLentResult);
 
@@ -338,34 +394,47 @@ public class LentBookActivity extends SherlockActivity {
 	 */
 	public static class DataClassLentABook {
 
-		public String isbn;
+		public String	isbn;
 
-		public String destinationUser;
+		public String	destinationUser;
 
-		public String answer;
+		public String	answer;
 	}
+
+
+
+
+
 	@Override
 	protected void onResume() {
-		//Set library's logo as ActionBar Icon
+		// Set library's logo as ActionBar Icon
 		App.imageLoader.DisplayActionBarIcon(app.library.getImageURL(),
 				getApplicationContext(), getSupportActionBar());
-		
-	    if (App.refreshLang) {
-	        refresh();
-	    }
-	    super.onResume();
+
+		if (App.refreshLang){
+			refresh();
+		}
+		super.onResume();
+
+
 	}
 
-	/**Refresh activity's language
+
+
+
+
+	/**
+	 * Refresh activity's language
 	 * 
 	 */
 	private void refresh() {
-		App.refreshLang=false;
-	    finish();
-	    Intent myIntent = new Intent(LentBookActivity.this, LentBookActivity.class);
-	    startActivity(myIntent);
+		App.refreshLang = false;
+		finish();
+		Intent myIntent = new Intent(LentBookActivity.this,
+				LentBookActivity.class);
+		startActivity(myIntent);
 	}
-	
-	
+
+
 
 }

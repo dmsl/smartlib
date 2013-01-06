@@ -113,15 +113,12 @@ public class BookSearchActivity extends SherlockActivity {
 
 	boolean					openedEditBook	= false;
 
+	boolean					resultsShowing	= false;
+
 	/** Whether user is making search or just watching results */
 	boolean					isMakingSearch	= true;
 
 	ArrayAdapter<CharSequence>	adapterSearchColumns;
-
-	//
-	// ArrayAdapter<Book> adapterBookResults;
-
-
 
 	class DataClassSearch {
 
@@ -145,6 +142,8 @@ public class BookSearchActivity extends SherlockActivity {
 
 
 		super.onCreate(savedInstanceState);
+
+		resultsShowing = false;
 
 		app = (App) getApplication();
 		setContentView(R.layout.activity_book_search);
@@ -472,7 +471,8 @@ public class BookSearchActivity extends SherlockActivity {
 
 
 				// If data was already cleared, hide search panel
-				if (editTextSearchKeyword.getText().length() == 0){
+				if (editTextSearchKeyword.getText().length() == 0
+						&& resultsShowing){
 					// Close panel & soft keyboard
 					linearLayoutSearchLayout.setVisibility(View.GONE);
 					textViewSearchResults.setVisibility(View.VISIBLE);
@@ -575,13 +575,21 @@ public class BookSearchActivity extends SherlockActivity {
 		if (isItemChecked){
 
 			String bookTitle;
+			try{
+				if (app.deviceType.equals(DeviceType.Large)){
+					bookTitle = app.selectedBook.title;
+				}
+				else{
+					// If smaller device
+					bookTitle = app.selectedBook.title.substring(0, 9)
+							+ "..";
+				}
 
-			if (app.deviceType.equals(DeviceType.Large)){
-				bookTitle = app.selectedBook.title;
 			}
-			else{
-				// If smaller device
-				bookTitle = app.selectedBook.title.substring(0, 9) + "..";
+			catch (Exception e){
+				menu.findItem(App.MENU_MY_BOOKS_BOOK_SELECTED).setVisible(
+						false);
+				return false;
 			}
 
 			if (app.selectedBook.status != App.BOOK_STATE_USER_DONT_OWNS){
@@ -830,6 +838,8 @@ public class BookSearchActivity extends SherlockActivity {
 					bookInfoAdapter = new AdapterBookInfo(
 							BookSearchActivity.this, R.layout.book_item,
 							arrayListSearchResultBooks, true);
+
+					resultsShowing = true;
 
 					// Show list
 					listViewBookResults.setAdapter(bookInfoAdapter);

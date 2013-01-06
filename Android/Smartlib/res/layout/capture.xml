@@ -50,21 +50,16 @@
 
     <ToggleButton
         android:id="@+id/toggleButtonCameraLight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:gravity="center_horizontal"
-        android:textAllCaps="false"
         android:visibility="invisible"
         android:background="@drawable/toggle_flash"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:textOn=""
         android:textOff=""
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:layout_centerVertical="true"
         />
 
 

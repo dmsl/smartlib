@@ -64,59 +64,63 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal" >
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" >
-
-            <ImageView
-                android:id="@+id/imageViewBookCover"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:src="@drawable/nocover" />
-
-            <TextView
-                android:id="@+id/textViewNoCover"
-                style="@style/errorDirection"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:gravity="center_horizontal"
-                android:text="@string/noCover"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#000000"
-                android:textSize="15sp"
-                android:visibility="gone" 
-                />
-
-            <ProgressBar
-                android:id="@+id/progressBarLoadCover"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:visibility="visible" />
-
-        </RelativeLayout>
-
         <LinearLayout
             android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:id="@+id/imageViewBookCover"
+                    android:layout_width="120dp"
+                    android:layout_height="130dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/nocover" />
+
+                <TextView
+                    android:id="@+id/textViewNoCover"
+                    style="@style/errorDirection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_horizontal"
+                    android:text="@string/noCover"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:visibility="gone" />
+
+                <ProgressBar
+                    android:id="@+id/progressBarLoadCover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="visible" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                  android:baselineAligned="false" >
-
+                   <!--  android:layout_weight="1.2" -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.2"
                     android:orientation="vertical"
-                    android:paddingRight="10dp" >
+                    android:paddingRight="5dp" >
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -155,16 +159,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="8"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/textViewBookISBN"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="9999999" />
+                        android:text="9999999999999" />
 
                     <TextView
                         android:id="@+id/textViewBookPublishedYear"

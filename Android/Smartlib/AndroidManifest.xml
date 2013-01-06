@@ -78,7 +78,7 @@
         <!-- android:theme="@style/Theme.Sherlock.Light." -->
         <activity
             android:name=".SmartLib.StartActivity"
-            android:configChanges="locale"
+            android:configChanges="locale|orientation"
             android:label="@string/title_smartlib"
             android:windowSoftInputMode="stateHidden" >
             <intent-filter>
@@ -121,7 +121,7 @@
         </activity>
         <activity
             android:name=".PreferencesActivity"
-            android:configChanges="locale"
+            android:configChanges="locale|orientation"
             android:label="@string/preferences_name"
             android:stateNotNeeded="true" >
         </activity>
@@ -183,7 +183,7 @@
         </activity>
         <activity
             android:name=".SmartLib.RegisterActivity"
-            android:configChanges="locale"
+            android:configChanges="locale|orientation"
             android:label="@string/title_activity_register" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -191,7 +191,7 @@
         </activity>
         <activity
             android:name=".SmartLib.LibPreferences"
-            android:configChanges="locale"
+            android:configChanges="locale|orientation"
             android:enabled="true"
             android:label="Settings" >
             <intent-filter>
@@ -200,7 +200,7 @@
         </activity>
         <activity
             android:name=".SmartLib.MainActivity"
-            android:configChanges="locale"
+            android:configChanges="locale|orientation"
             android:label="@string/title_activity_main">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -208,7 +208,7 @@
         </activity>
         <activity
             android:name=".SmartLib.RegisterSuccessActivity"
-            android:configChanges="locale"
+            android:configChanges="locale|orientation"
             android:label="@string/title_activity_register_success" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -216,7 +216,8 @@
         </activity>
         <activity
             android:name=".SmartLib.LentBookActivity"
-            android:configChanges="locale"
+            android:configChanges="locale|orientation"
+            android:windowSoftInputMode="stateVisible"
             android:label="@string/title_activity_lent_book"
             android:screenOrientation="sensor" >
             <meta-data
@@ -234,7 +235,7 @@
         </activity>
         <activity
             android:name=".SmartLib.EditBookActivity"
-            android:configChanges="locale"
+            android:configChanges="locale|orientation"
             android:label="@string/title_activity_edit_book" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -242,13 +243,14 @@
         </activity>
         <activity
             android:name=".SmartLib.WatchBookActivity"
-            android:configChanges="locale"
+            android:configChanges="locale|orientation"
             android:label="@string/title_activity_watch_book" >
         </activity>
         <activity
             android:name="cy.ac.ucy.pmpeis01.client.android.SmartLib.BookSearchActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/title_activity_book_search" >
+            android:label="@string/title_activity_book_search"
+             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cy.ac.ucy.pmpeis01.client.android.SmartLib.MainActivity" />
@@ -263,15 +265,16 @@
         </activity>
         <activity
             android:name=".SmartLib.RequestActivity"
-            android:configChanges="locale"
+            android:configChanges="locale|orientation"
             android:label="@string/title_activity_request" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cy.ac.ucy.pmpeis01.client.android.SmartLib.ActivitiesActivity" />
         </activity>
         <activity
+            android:launchMode="singleTop"
             android:name=".SmartLib.LatestAdditionsActivity"
-            android:configChanges="locale"
+            android:configChanges="locale|orientation"
             android:label="@string/title_activity_latest_additions" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -279,7 +282,7 @@
         </activity>
         <activity
             android:name=".SmartLib.SendMessageActivity"
-            android:configChanges="locale"
+            android:configChanges="locale|orientation"
             android:label="@string/title_activity_send_message" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
