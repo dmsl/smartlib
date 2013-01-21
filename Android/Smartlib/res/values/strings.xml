@@ -150,6 +150,7 @@
     <string name="wifi_ssid_label">Network Name</string>
     <string name="wifi_type_label">Type</string>
     <string name="zxing_url">http://code.google.com/p/zxing</string>
+     
 
     <!--  -->
     <!--  -->
@@ -184,7 +185,9 @@
         <item>title</item>
         <item>authors</item>
     </string-array>
-        <string name="msgScannerDefaultMessage">Scan ISBN codes</string>
+       <string name="msgScannerDefaultMessage">Scan ISBN codes</string>
+        <string name="msg_default_mms_subject">Hi</string>
+  <string name="msg_default_status">Place ISBN barcode in rectangle to scan it.</string>
     <string name="app_name">SmartLib</string>
     <string name="hello_world">Hello World!\\nHello World!</string>
     <string name="title_activity_main">Welcome</string>
@@ -391,6 +394,8 @@
       <string name="showingACachedCopy">Showing a cached copy</string>
       <string name="failedToLoadCachedData">Failed to load cached data</string>
       <string name="noCover">No Cover</string>
+      <string name="msgSaveCredentials">You can save your credentials on</string>
+      <string name="msgSaveCredentials_settings">settings</string>
       
 </resources>
 

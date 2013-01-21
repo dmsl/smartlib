@@ -180,7 +180,7 @@
     <string name="application">Εφαρμογή</string>
     <string name="submit">Καταχώρηση</string>
     <string name="title_activity_register">Εγγραφή</string>
-    <string name="msgLoginWrongCredencials">Λάθος συνθηματικά.</string>
+    <string name="msgLoginWrongCredentials">Λάθος συνθηματικά.</string>
     <string name="msgLoginCantReachServer">Πρόβλημα διακομιστή.</string>
     <string name="msgLoginAccountNotActivated">Λογαριασμός μη ενεργοποιημένος.\nΈλεγξε το email σου: </string>
     <string name="msgLoginUserBanned">Είστε αποκλεισμένος από την SmartLib.\nEπικοινωνήστε: </string>
@@ -385,6 +385,13 @@
       <string name="showingACachedCopy">Αποθηκευμένο αντίγραφο</string>
       <string name="failedToLoadCachedData">Αποτυχία φόρτωσης προ-αποθηκευμένων δεδομένων.</string>
       <string name="noCover">Χωρίς\nΕξώφυλλο</string>
-      
+       <string name="msgSaveCredentials">Μπορείς να αποθηκεύσεις τα συνθηματικά σου στις ρυθμίσεις </string>
+      <string name="msgSaveCredentials_settings"></string>
+      <string-array name="ArraySearchColumnValues">
+        <item></item>
+        <item>isbn</item>
+        <item>title</item>
+        <item>authors</item>
+    </string-array>
 </resources>
 

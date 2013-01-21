@@ -36,6 +36,7 @@ import java.io.Serializable;
 
 import javax.crypto.spec.IvParameterSpec;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -48,6 +49,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
@@ -94,6 +96,8 @@ public class MainActivity extends SherlockActivity {
 		setContentView(R.layout.activity_main);
 		
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
+		showMessageIfHaventSavedCredentials();
 
 		try {
 			getSupportActionBar().setTitle(
@@ -265,6 +269,18 @@ public class MainActivity extends SherlockActivity {
 	public void onBackPressed() {
 		super.onBackPressed();
 	};
+	
+	private void showMessageIfHaventSavedCredentials(){
+		getApplicationContext();
+		SharedPreferences settings = getSharedPreferences(app.library.name,
+				Context.MODE_PRIVATE);
+		String username =	settings.getString(LibPreferences.lib_user_username, "");
+		
+		if(username=="") {
+			Toast.makeText(getApplicationContext(), getString(R.string.msgSaveCredentials)+ " " +
+					app.library.name +" " + getString(R.string.msgSaveCredentials_settings), Toast.LENGTH_LONG).show();
+		}
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

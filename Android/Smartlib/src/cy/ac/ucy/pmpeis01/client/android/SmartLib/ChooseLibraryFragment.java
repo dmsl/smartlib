@@ -42,14 +42,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.R.bool;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,8 +50,12 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.Window;
 
 import cy.ac.ucy.pmpeis01.client.android.R;
 import cy.ac.ucy.pmpeis01.client.android.SmartLib.App.DeviceType;
@@ -92,6 +89,8 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 
 	boolean					failedToFetchLibraries	= false;
 
+	Menu						menu;
+
 
 
 
@@ -99,12 +98,19 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		
-		new AsyncTaskGetLibraries().execute();
 
-		// if we are on large layout device
-		if (app.deviceType.equals(DeviceType.Large)){
-			try{
+		try{
+
+			if (libraries.size() < 0){
+				libraries.clear();
+				new AsyncTaskGetLibraries().execute();
+			}
+
+
+
+			// if we are on large layout device
+			if (app.deviceType.equals(DeviceType.Large)){
+
 
 				if (chosenLib.positionOnList != -1){
 
@@ -116,9 +122,11 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 					// //getListView().setItemChecked(app.librarySelectedOnList,
 					// true);
 				}
+
 			}
-			catch (NullPointerException e){
-			}
+
+		}
+		catch (NullPointerException e){
 		}
 
 	}
@@ -126,9 +134,9 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 
 
 
-
-	public ChooseLibraryFragment() {
-	}
+	//
+	// public ChooseLibraryFragment() {
+	// }
 
 
 
@@ -160,12 +168,15 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 
 		app = (App) getSherlockActivity().getApplication();
 
+
+
 		libraries = new ArrayList<Library>();
 
 		adapter = new AdapterLibraryInfo(getActivity(),
 				R.layout.library_item, libraries);
 		setListAdapter(adapter);
-		//CHECK MOVED ATASK FROM HERE
+
+		new AsyncTaskGetLibraries().execute();
 
 	}
 
@@ -227,11 +238,28 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 
 
 
+
+
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		super.onCreateOptionsMenu(menu, inflater);
+
+		this.menu = menu;
+
+	}
+
+
+
+
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case App.MENU_START_ACTIVITY_REFRESH:
+			case App.MENU_START_ACTIVITY_REFRESH:{
+				libraries.clear();
+
 				new AsyncTaskGetLibraries().execute();
+			}
 
 				return true;
 
@@ -290,11 +318,14 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 		protected void onPreExecute() {
 			super.onPreExecute();
 
+			menu.findItem(App.MENU_START_ACTIVITY_REFRESH).setVisible(false);
+			((SherlockFragmentActivity) getActivity())
+					.setSupportProgressBarIndeterminateVisibility(true);
+			
+
+
 			failedToFetchLibraries = false;
-
 			adapter.clear();
-
-
 
 		}
 
@@ -345,6 +376,10 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 
 		@Override
 		protected void onPostExecute(JSONArray result) {
+			
+			menu.findItem(App.MENU_START_ACTIVITY_REFRESH).setVisible(true);
+			((SherlockFragmentActivity) getActivity())
+					.setSupportProgressBarIndeterminateVisibility(false);
 
 			if (failedToFetchLibraries){
 				Toast.makeText(getActivity(),
@@ -352,6 +387,7 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 						Toast.LENGTH_LONG).show();
 			}
 
+			
 
 
 			int returnFromJson = App.GENERAL_NO_INTERNET;

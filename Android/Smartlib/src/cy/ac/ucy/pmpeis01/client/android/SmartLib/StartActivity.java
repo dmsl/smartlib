@@ -43,6 +43,7 @@ import android.widget.EditText;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.Window;
 
 import cy.ac.ucy.pmpeis01.client.android.PreferencesActivity;
 import cy.ac.ucy.pmpeis01.client.android.R;
@@ -78,12 +79,13 @@ public class StartActivity extends SherlockFragmentActivity implements
 
 
 
-
-
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+		
 //		SUMMER REMOVED
 //		App.historyManager = new HistoryManager(this);
 //		App.historyManager.trimHistory();
@@ -149,6 +151,7 @@ public class StartActivity extends SherlockFragmentActivity implements
 	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+
 
 		menu.add(Menu.NONE, App.MENU_START_ACTIVITY_REFRESH, Menu.FIRST,
 				R.string.refresh)
