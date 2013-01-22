@@ -27,10 +27,10 @@
 	Fax: +357-22-892701
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cy.ac.ucy.pmpeis01.client.android"
+    package="cy.ac.ucy.paschalis.client.android"
     android:installLocation="auto"
-    android:versionCode="2"
-    android:versionName="1.1" >
+    android:versionCode="1"
+    android:versionName="1.0" >
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -98,11 +98,11 @@
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cy.ac.ucy.pmpeis01.client.android.SmartLib.MainActivity"
+                android:value="cy.ac.ucy.paschalis.client.android.SmartLib.MainActivity"
              	
              	/>
             <intent-filter>
-                <action android:name="cy.ac.ucy.pmpeis01.client.android.SCAN" />
+                <action android:name="cy.ac.ucy.paschalis.client.android.SCAN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
@@ -132,7 +132,7 @@
             android:screenOrientation="landscape"
             android:stateNotNeeded="true" >
             <intent-filter>
-                <action android:name="cy.ac.ucy.pmpeis01.client.android.SEARCH_BOOK_CONTENTS" />
+                <action android:name="cy.ac.ucy.paschalis.client.android.SEARCH_BOOK_CONTENTS" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -187,7 +187,7 @@
             android:label="@string/title_activity_register" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cy.ac.ucy.pmpeis01.client.android.SmartLib.StartActivity" />
+                android:value="cy.ac.ucy.paschalis.client.android.SmartLib.StartActivity" />
         </activity>
         <activity
             android:name=".SmartLib.LibPreferences"
@@ -204,7 +204,7 @@
             android:label="@string/title_activity_main">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cy.ac.ucy.pmpeis01.client.android.SmartLib.StartActivity" />
+                android:value="cy.ac.ucy.paschalis.client.android.SmartLib.StartActivity" />
         </activity>
         <activity
             android:name=".SmartLib.RegisterSuccessActivity"
@@ -212,7 +212,7 @@
             android:label="@string/title_activity_register_success" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cy.ac.ucy.pmpeis01.client.android.SmartLib.StartActivity" />
+                android:value="cy.ac.ucy.paschalis.client.android.SmartLib.StartActivity" />
         </activity>
         <activity
             android:name=".SmartLib.LentBookActivity"
@@ -222,7 +222,7 @@
             android:screenOrientation="sensor" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cy.ac.ucy.pmpeis01.client.android.CaptureActivity" />
+                android:value="cy.ac.ucy.paschalis.client.android.CaptureActivity" />
         </activity>
         <activity
             android:name=".SmartLib.MyBooksActivity"
@@ -231,7 +231,7 @@
             android:label="@string/title_activity_my_books" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cy.ac.ucy.pmpeis01.client.android.SmartLib.MainActivity" />
+                android:value="cy.ac.ucy.paschalis.client.android.SmartLib.MainActivity" />
         </activity>
         <activity
             android:name=".SmartLib.EditBookActivity"
@@ -239,7 +239,7 @@
             android:label="@string/title_activity_edit_book" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cy.ac.ucy.pmpeis01.client.android.SmartLib.MyBooksActivity" />
+                android:value="cy.ac.ucy.paschalis.client.android.SmartLib.MyBooksActivity" />
         </activity>
         <activity
             android:name=".SmartLib.WatchBookActivity"
@@ -247,13 +247,13 @@
             android:label="@string/title_activity_watch_book" >
         </activity>
         <activity
-            android:name="cy.ac.ucy.pmpeis01.client.android.SmartLib.BookSearchActivity"
+            android:name="cy.ac.ucy.paschalis.client.android.SmartLib.BookSearchActivity"
             android:configChanges="locale|orientation"
             android:label="@string/title_activity_book_search"
              >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cy.ac.ucy.pmpeis01.client.android.SmartLib.MainActivity" />
+                android:value="cy.ac.ucy.paschalis.client.android.SmartLib.MainActivity" />
         </activity>
         <activity
             android:name=".SmartLib.ActivitiesActivity"
@@ -261,7 +261,7 @@
             android:label="@string/title_activity_activities" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cy.ac.ucy.pmpeis01.client.android.SmartLib.MainActivity" />
+                android:value="cy.ac.ucy.paschalis.client.android.SmartLib.MainActivity" />
         </activity>
         <activity
             android:name=".SmartLib.RequestActivity"
@@ -269,7 +269,7 @@
             android:label="@string/title_activity_request" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cy.ac.ucy.pmpeis01.client.android.SmartLib.ActivitiesActivity" />
+                android:value="cy.ac.ucy.paschalis.client.android.SmartLib.ActivitiesActivity" />
         </activity>
         <activity
             android:launchMode="singleTop"
@@ -286,7 +286,7 @@
             android:label="@string/title_activity_send_message" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cy.ac.ucy.pmpeis01.client.android.SmartLib.RequestActivity" />
+                android:value="cy.ac.ucy.paschalis.client.android.SmartLib.RequestActivity" />
         </activity>
     </application>
 
