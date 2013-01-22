@@ -44,9 +44,12 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
+import android.view.KeyEvent;
 
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
+import com.actionbarsherlock.view.MenuItem;
 
+import cy.ac.ucy.paschalis.client.android.PreferencesActivity;
 import cy.ac.ucy.paschalis.client.android.R;
 
 
@@ -81,8 +84,11 @@ public class LibPreferences extends SherlockPreferenceActivity implements
 		// Set library's logo as ActionBar Icon
 		App.imageLoader.DisplayActionBarIcon(app.library.getImageURL(),
 				getApplicationContext(), getSupportActionBar());
+		
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		super.onCreate(aSavedState);
+		
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(this);
 		prefs.registerOnSharedPreferenceChangeListener(this);
@@ -169,8 +175,19 @@ public class LibPreferences extends SherlockPreferenceActivity implements
 
 	}
 
+	
+	
+	  @Override
+       public boolean onOptionsItemSelected(MenuItem item) {
+               switch (item.getItemId()) {
+               case android.R.id.home:
+                   LibPreferences.this.finish(); 
 
-
+               }
+               return true;
+       }
+	
+	
 
 
 	/**

@@ -88,9 +88,9 @@ public class MainActivity extends SherlockActivity {
 		app = (App) getApplication();
 
 		setContentView(R.layout.activity_main);
-		
+
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		
+
 		showMessageIfHaventSavedCredentials();
 
 		try {
@@ -114,10 +114,10 @@ public class MainActivity extends SherlockActivity {
 			bk.iv=imageViewLibaryLogo;
 				App.imageLoader.DisplayImage(app.library.getImageURL(),
 						bk);	
-			
-			
-			
-			
+
+
+
+
 			textViewLibraryLocation.setText(app.library.location);
 
 			// textViewWelcomeUser.setText();
@@ -263,13 +263,13 @@ public class MainActivity extends SherlockActivity {
 	public void onBackPressed() {
 		super.onBackPressed();
 	};
-	
+
 	private void showMessageIfHaventSavedCredentials(){
 		getApplicationContext();
 		SharedPreferences settings = getSharedPreferences(app.library.name,
 				Context.MODE_PRIVATE);
 		String username =	settings.getString(LibPreferences.lib_user_username, "");
-		
+
 		if(username=="") {
 			Toast.makeText(getApplicationContext(), getString(R.string.msgSaveCredentials)+ " " +
 					app.library.name +" " + getString(R.string.msgSaveCredentials_settings), Toast.LENGTH_LONG).show();
@@ -325,9 +325,9 @@ public class MainActivity extends SherlockActivity {
 		}
 
 		ActivityType type = ActivityType.NotSet;
-		
+
 		Book book = new Book();
-		
+
 		int acknowledge = NO_ACKS;
 
 		String username;
@@ -338,13 +338,13 @@ public class MainActivity extends SherlockActivity {
 //		String imgURL;
 
 	}
-	
+
 	@Override
 	protected void onResume() {
 		//Set library's logo as ActionBar Icon
 		App.imageLoader.DisplayActionBarIcon(app.library.getImageURL(),
 				getApplicationContext(), getSupportActionBar());
-		
+
 	    if (App.refreshLang) {
 	        refresh();
 	    }
@@ -360,7 +360,7 @@ public class MainActivity extends SherlockActivity {
 	    Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
 	    startActivity(myIntent);
 	}
-	
-	
+
+
 
 }

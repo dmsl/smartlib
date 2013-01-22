@@ -34,7 +34,7 @@
     
 
 
-<cy.ac.ucy.pmpeis01.client.android.book.SearchBookContentsListItem
+<cy.ac.ucy.paschalis.client.android.book.SearchBookContentsListItem
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="fill_parent"
@@ -61,4 +61,4 @@
             android:textSize="14sp"
             android:typeface="serif"/>
 
-</cy.ac.ucy.pmpeis01.client.android.book.SearchBookContentsListItem>
+</cy.ac.ucy.paschalis.client.android.book.SearchBookContentsListItem>

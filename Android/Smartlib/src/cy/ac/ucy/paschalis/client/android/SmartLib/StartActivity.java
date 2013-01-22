@@ -37,6 +37,7 @@ package cy.ac.ucy.paschalis.client.android.SmartLib;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.widget.EditText;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
@@ -78,17 +79,19 @@ public class StartActivity extends SherlockFragmentActivity implements
 
 
 
+
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-		
-//		SUMMER REMOVED
-//		App.historyManager = new HistoryManager(this);
-//		App.historyManager.trimHistory();
-		
+
+		// SUMMER REMOVED
+		// App.historyManager = new HistoryManager(this);
+		// App.historyManager.trimHistory();
+
 		App.imageLoader = new ImageLoader(StartActivity.this);
 
 		app = (App) getApplication();
@@ -128,10 +131,10 @@ public class StartActivity extends SherlockFragmentActivity implements
 		// if we are on XL or L device, set it
 		else{
 			app.deviceType = DeviceType.Large;
-			//If its a Tablet, do nothing!
+			// If its a Tablet, do nothing!
 		}
 
-		
+
 
 	}
 
@@ -153,15 +156,14 @@ public class StartActivity extends SherlockFragmentActivity implements
 
 
 		menu.add(Menu.NONE, App.MENU_START_ACTIVITY_REFRESH, Menu.FIRST,
-				R.string.refresh)
-				.setIcon(R.drawable.ic_menu_refresh)
+				R.string.refresh).setIcon(R.drawable.ic_menu_refresh)
 				.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-//	SUMMER REMOVED	
-//		menu.add(Menu.NONE, App.MENU_SCANNED_BOOKS_ID, Menu.NONE,
-//				R.string.menuScannedBooks)
-//				.setIcon(R.drawable.ic_menu_recent_history)
-//				.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-		
+		// SUMMER REMOVED
+		// menu.add(Menu.NONE, App.MENU_SCANNED_BOOKS_ID, Menu.NONE,
+		// R.string.menuScannedBooks)
+		// .setIcon(R.drawable.ic_menu_recent_history)
+		// .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+
 		menu.add(Menu.NONE, App.MENU_GLOBAL_SETTINGS, Menu.NONE,
 				R.string.menu_settings)
 				.setIcon(R.drawable.ic_menu_settings_holo_light)
@@ -169,7 +171,7 @@ public class StartActivity extends SherlockFragmentActivity implements
 
 
 
-		
+
 		getSupportMenuInflater().inflate(R.menu.activity_start, menu);
 
 
@@ -212,14 +214,19 @@ public class StartActivity extends SherlockFragmentActivity implements
 				StartActivity.this.startActivity(myIntent);
 
 			}
-			return true;
+				return true;
 			case App.MENU_SCANNED_BOOKS_ID:{
 				Intent myIntent = new Intent(StartActivity.this,
 						HistoryActivity.class);
 				StartActivity.this.startActivity(myIntent);
 			}
-			return true;
-			
+				return true;
+			case android.R.id.home:
+
+
+				onBackPressed();
+				break;
+
 
 		}
 		return super.onOptionsItemSelected(item);
@@ -236,49 +243,58 @@ public class StartActivity extends SherlockFragmentActivity implements
 		if (isLibrarySelected){
 			menu.findItem(R.id.itemClearLogin).setVisible(true);
 			menu.findItem(R.id.itemRegister).setVisible(true);
-			
-			//Hide refresh only on regular devices(Smartphones)
-			if(app.deviceType.equals(DeviceType.Regular))
-				menu.findItem(App.MENU_START_ACTIVITY_REFRESH).setVisible(false);
+
+			// Hide refresh only on regular devices(Smartphones)
+			if (app.deviceType.equals(DeviceType.Regular))
+				menu.findItem(App.MENU_START_ACTIVITY_REFRESH).setVisible(
+						false);
 		}
 		else{
 			menu.findItem(R.id.itemClearLogin).setVisible(false);
 			menu.findItem(R.id.itemRegister).setVisible(false);
 			menu.findItem(App.MENU_START_ACTIVITY_REFRESH).setVisible(true);
 		}
-//		SUMMER REMOVED
-//		if (App.historyManager.historyItemsNumber() > 0){
-//			//menu.findItem(App.MENU_ADD_BOOKS_ID).setVisible(true);
-//			menu.findItem(App.MENU_SCANNED_BOOKS_ID).setVisible(true);
-//		}
-//		else{
-//			//menu.findItem(App.MENU_ADD_BOOKS_ID).setVisible(false);
-//			menu.findItem(App.MENU_SCANNED_BOOKS_ID).setVisible(false);
-//		}
-//		
+		// SUMMER REMOVED
+		// if (App.historyManager.historyItemsNumber() > 0){
+		// //menu.findItem(App.MENU_ADD_BOOKS_ID).setVisible(true);
+		// menu.findItem(App.MENU_SCANNED_BOOKS_ID).setVisible(true);
+		// }
+		// else{
+		// //menu.findItem(App.MENU_ADD_BOOKS_ID).setVisible(false);
+		// menu.findItem(App.MENU_SCANNED_BOOKS_ID).setVisible(false);
+		// }
+		//
 		return true;
 	}
 
-	
+
+
+
+
 	@Override
 	protected void onResume() {
-	    if (App.refreshLang) {
-	        refresh();
-	    }
-	    super.onResume();
+		if (App.refreshLang){
+			refresh();
+		}
+		super.onResume();
 	}
 
-	/**Refresh activity's language
+
+
+
+
+	/**
+	 * Refresh activity's language
 	 * 
 	 */
 	private void refresh() {
-		App.refreshLang=false;
-	    finish();
-	    Intent myIntent = new Intent(StartActivity.this, StartActivity.class);
-	    startActivity(myIntent);
+		App.refreshLang = false;
+		finish();
+		Intent myIntent = new Intent(StartActivity.this, StartActivity.class);
+		startActivity(myIntent);
 	}
-	
-	
+
+
 
 
 
@@ -349,6 +365,21 @@ public class StartActivity extends SherlockFragmentActivity implements
 
 
 
+	/**
+	 * Interface Implementation. Callback called from
+	 * {@link ChooseLibraryFragment} User selected Library And now login screen
+	 * will show
+	 * 
+	 */
+	public void onBackPressed() {
+
+//		if(!app.homeAsUpEnabled)
+//			return;
+		
+		invalidateOptionsMenu();
+		
+		super.onBackPressed();
+	}
 
 
 

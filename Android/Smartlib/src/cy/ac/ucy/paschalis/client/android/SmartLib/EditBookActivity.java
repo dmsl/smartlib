@@ -746,6 +746,7 @@ public class EditBookActivity extends SherlockActivity {
 			if (result == App.GENERAL_SUCCESSFULL){
 				// Workaround
 				app.selectedBook.status = tryStatus;
+				app.shouldRefresh=true;
 
 			}
 
@@ -754,6 +755,7 @@ public class EditBookActivity extends SherlockActivity {
 				Toast.makeText(EditBookActivity.this,
 						R.string.msgFailedToChangeStatusCode,
 						Toast.LENGTH_SHORT).show();
+				app.shouldRefresh=false;
 
 			}
 			updateButtons();

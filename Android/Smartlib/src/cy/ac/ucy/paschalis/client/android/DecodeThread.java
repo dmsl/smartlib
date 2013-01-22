@@ -32,20 +32,19 @@
 
 package cy.ac.ucy.paschalis.client.android;
 
-import cy.ac.ucy.paschalis.BarcodeFormat;
-import cy.ac.ucy.paschalis.DecodeHintType;
-import cy.ac.ucy.paschalis.ResultPointCallback;
-
-import android.content.SharedPreferences;
-import android.os.Handler;
-import android.os.Looper;
-import android.preference.PreferenceManager;
-
 import java.util.Collection;
 import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
+
+import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Looper;
+import android.preference.PreferenceManager;
+import cy.ac.ucy.paschalis.BarcodeFormat;
+import cy.ac.ucy.paschalis.DecodeHintType;
+import cy.ac.ucy.paschalis.ResultPointCallback;
 
 /**
  * This thread does all the heavy lifting of decoding the images.

@@ -32,6 +32,9 @@
 
 package cy.ac.ucy.paschalis.client.android;
 
+import com.actionbarsherlock.app.SherlockPreferenceActivity;
+import com.actionbarsherlock.view.MenuItem;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -44,16 +47,18 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.view.KeyEvent;
 import android.widget.Toast;
 import cy.ac.ucy.paschalis.client.android.R;
 import cy.ac.ucy.paschalis.client.android.SmartLib.App;
+import cy.ac.ucy.paschalis.client.android.SmartLib.LibPreferences;
 
 /**
  * The main settings activity.
  * 
  * @author dswitkin@google.com (Daniel Switkin)
  */
-public final class PreferencesActivity extends PreferenceActivity implements
+public final class PreferencesActivity extends SherlockPreferenceActivity implements
 		OnSharedPreferenceChangeListener {
 
 	// public static final String KEY_DECODE_1D = "preferences_decode_1D";
@@ -99,6 +104,8 @@ public final class PreferencesActivity extends PreferenceActivity implements
 		super.onCreate(icicle);
 
 		addPreferencesFromResource(R.xml.preferences);
+//		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		PreferenceScreen preferences = getPreferenceScreen();
 		preferences.getSharedPreferences()
@@ -234,6 +241,20 @@ public final class PreferencesActivity extends PreferenceActivity implements
 		disableLastCheckedPref();
 	}
 
+	  @Override
+       public boolean onOptionsItemSelected(MenuItem item) {
+               switch (item.getItemId()) {
+               case android.R.id.home:
+                   PreferencesActivity.this.finish(); 
+
+               }
+               return true;
+       }
+
+
+	
+	
+	
 	private void disableLastCheckedPref() {
 		// Collection<CheckBoxPreference> checked = new
 		// ArrayList<CheckBoxPreference>(

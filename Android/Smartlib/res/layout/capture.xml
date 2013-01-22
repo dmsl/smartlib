@@ -65,7 +65,7 @@
 
     <!-- or the whole camera ??? Black Dim of the camera output -->
 
-    <cy.ac.ucy.pmpeis01.client.android.ViewfinderView
+    <cy.ac.ucy.paschalis.client.android.ViewfinderView
         android:id="@+id/viewfinder_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

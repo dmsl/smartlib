@@ -42,7 +42,7 @@ public enum EncodeHintType {
   /**
    * Specifies what degree of error correction to use, for example in QR Codes.
    * Type depends on the encoder. For example for QR codes it's type
-   * {@link cy.ac.ucy.pmpeis01.qrcode.decoder.ErrorCorrectionLevel ErrorCorrectionLevel}.
+   * {@link cy.ac.ucy.paschalis.qrcode.decoder.ErrorCorrectionLevel ErrorCorrectionLevel}.
    */
   ERROR_CORRECTION,
 
@@ -58,13 +58,13 @@ public enum EncodeHintType {
 
   /**
    * Specifies what compaction mode to use for PDF417 (type
-   * {@link cy.ac.ucy.pmpeis01.pdf417.encoder.Compaction Compaction}).
+   * {@link cy.ac.ucy.paschalis.pdf417.encoder.Compaction Compaction}).
    */
   PDF417_COMPACTION,
 
   /**
    * Specifies the minimum and maximum number of rows and columns for PDF417 (type
-   * {@link cy.ac.ucy.pmpeis01.pdf417.encoder.Dimensions Dimensions}).
+   * {@link cy.ac.ucy.paschalis.pdf417.encoder.Dimensions Dimensions}).
    */
   PDF417_DIMENSIONS,
 

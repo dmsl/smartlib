@@ -124,7 +124,7 @@ public final class CaptureActivity extends SherlockActivity implements
 
 	private static final long BULK_MODE_SCAN_DELAY_MS = 1000L;
 
-	private static final String PACKAGE_NAME = "cy.ac.ucy.pmpeis01.client.android";
+	private static final String PACKAGE_NAME = "cy.ac.ucy.paschalis.client.android";
 
 	private static final String PRODUCT_SEARCH_URL_PREFIX = "http://www.google";
 

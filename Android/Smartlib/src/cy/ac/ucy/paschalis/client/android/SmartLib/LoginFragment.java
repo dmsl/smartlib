@@ -41,6 +41,8 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -66,9 +68,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.view.MenuItem;
 
 import cy.ac.ucy.paschalis.client.android.R;
 import cy.ac.ucy.paschalis.client.android.Cache.ImageLoader.DataClassDisplayBookCover;
+import cy.ac.ucy.paschalis.client.android.SmartLib.App.DeviceType;
+import cy.ac.ucy.paschalis.client.android.SmartLib.ChooseLibraryFragment.OnLibrarySelectedListener;
 
 
 
@@ -84,11 +89,6 @@ import cy.ac.ucy.paschalis.client.android.Cache.ImageLoader.DataClassDisplayBook
  * 
  */
 public class LoginFragment extends SherlockFragment {
-
-
-
-
-
 
 
 	public static final int		LOGIN_CORRECT_CREDENCIALS	= 1;
@@ -143,6 +143,9 @@ public class LoginFragment extends SherlockFragment {
 			Bundle savedInstanceState) {
 
 		app = ((StartActivity) getActivity()).app;
+		if (app.deviceType.equals(DeviceType.Regular))
+			((ActionBar) getSherlockActivity().getActionBar())
+					.setDisplayHomeAsUpEnabled(true);
 
 		// If activity recreated (such as from screen rotate), restore
 		// the previous Library selection set by onSaveInstanceState().
@@ -160,6 +163,8 @@ public class LoginFragment extends SherlockFragment {
 
 
 	}
+
+
 
 
 
@@ -265,8 +270,8 @@ public class LoginFragment extends SherlockFragment {
 			((StartActivity) getActivity()).invalidateOptionsMenu();
 
 
-			
-			
+
+
 			TextView loginLibrary = (TextView) getActivity().findViewById(
 					R.id.TextViewLoginLibraryName);
 
@@ -283,19 +288,18 @@ public class LoginFragment extends SherlockFragment {
 
 			// Show logo
 			DataClassDisplayBookCover bk = new DataClassDisplayBookCover();
-			bk.iv=loginLogo;
+			bk.iv = loginLogo;
 			App.imageLoader.DisplayImage(lib.getImageURL(), bk);
 
-			//Save bitmap in app 
+			// Save bitmap in app
 			loginLogo.buildDrawingCache();
-			
+
 			// Save Library logo as drawable in app
-			app.loginLogoDrawable = new BitmapDrawable(
-					getResources(),
+			app.loginLogoDrawable = new BitmapDrawable(getResources(),
 					loginLogo.getDrawingCache());
-			
-			
-			
+
+
+
 			enableLoginForm();
 			tryToAutofillWithPrefs();
 		}
@@ -312,27 +316,29 @@ public class LoginFragment extends SherlockFragment {
 
 
 	private void tryToAutofillWithPrefs() {
-		SharedPreferences settings = getActivity().getSharedPreferences(app.library.name,
+		SharedPreferences settings = getActivity().getSharedPreferences(
+				app.library.name,
 				getActivity().getApplicationContext().MODE_PRIVATE);
-		String username =	settings.getString(LibPreferences.lib_user_username, "");
-		if(username=="") return;
-		
-		String pass =	settings.getString(LibPreferences.lib_userPass, "");
-		String password="";
+		String username = settings.getString(
+				LibPreferences.lib_user_username, "");
+		if (username == "") return;
+
+		String pass = settings.getString(LibPreferences.lib_userPass, "");
+		String password = "";
 		try{
-			password=  Crypto.decrypt(MainActivity.PSW, pass);
+			password = Crypto.decrypt(MainActivity.PSW, pass);
 		}
 		catch (Exception e){
 			e.printStackTrace();
 		}
-		
-		if(password=="") return;
-		
+
+		if (password == "") return;
+
 		editTextUsername.setText(username);
 		editTextPassword.setText(password);
-		
-		
-		
+
+
+
 	}
 
 
@@ -746,6 +752,10 @@ public class LoginFragment extends SherlockFragment {
 
 
 	}// End of Async Task Inner Class
+	// The container Activity must implement this interface so the frag can
+	// deliver messages
+
+
 
 
 

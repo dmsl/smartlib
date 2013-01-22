@@ -221,6 +221,8 @@ public class App extends Application {
 
 	public Book				selectedBook;
 
+	public boolean				shouldRefresh									= false;
+
 	public Drawable			loginLogoDrawable;
 
 	private static final String	MASTER_URL									= "http://www.cs.ucy.ac.cy/projects/smartLib";

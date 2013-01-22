@@ -42,11 +42,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -133,9 +136,21 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 
 
 
-	//
-	// public ChooseLibraryFragment() {
-	// }
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		
+		((ActionBar) getSherlockActivity().getActionBar())
+		.setHomeButtonEnabled(false);
+		
+		((ActionBar) getSherlockActivity().getActionBar())
+		.setDisplayHomeAsUpEnabled(false);
+		
+		
+		return super.onCreateView(inflater, container, savedInstanceState);
+	}
+
 
 
 
@@ -159,6 +174,8 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 
 
 
+	
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -167,6 +184,7 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 
 		app = (App) getSherlockActivity().getApplication();
 
+		
 
 
 		libraries = new ArrayList<Library>();
@@ -178,8 +196,6 @@ public class ChooseLibraryFragment extends SherlockListFragment {
 		new AsyncTaskGetLibraries().execute();
 
 	}
-
-
 
 
 

@@ -218,7 +218,8 @@ public class MyBooksActivity extends SherlockActivity {
 			openedEditBook = false;// restore this value
 		}
 
-		if (!showingLiveData){
+		if (!showingLiveData || app.shouldRefresh){
+			app.shouldRefresh = false;
 			// Get user books
 			arrayListUserBooks.clear();
 			new AsyncTaskGetMyBooks().execute();

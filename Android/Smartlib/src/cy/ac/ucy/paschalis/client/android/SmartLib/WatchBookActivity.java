@@ -54,6 +54,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -110,7 +111,7 @@ public class WatchBookActivity extends SherlockActivity {
 	TextView					textViewWatchBookAvailable;
 
 	Bitmap					bitmapBookCover;
-	
+
 	/** Ignore first time, when app choosing default db's value */
 	Boolean					booleanFirstInit;
 
@@ -289,23 +290,23 @@ public class WatchBookActivity extends SherlockActivity {
 
 		}
 
-		
+
 		TextView tvnc = (TextView) findViewById(R.id.textViewNoCover);
 		ProgressBar pb = (ProgressBar) findViewById(R.id.progressBarLoadCover);
-		
+
 		// show The Image and save it to Library
 		DataClassDisplayBookCover bk = new DataClassDisplayBookCover();
-		bk.iv=bookCoverImage;
-		bk.isCover=true;
-		bk.tv=tvnc;
-		bk.pb=pb;
-		bk.book=app.selectedBook;
+		bk.iv = bookCoverImage;
+		bk.isCover = true;
+		bk.tv = tvnc;
+		bk.pb = pb;
+		bk.book = app.selectedBook;
 		App.imageLoader.DisplayCover(bk);
 
 
 		bitmapBookCover = ((BitmapDrawable) bookCoverImage.getDrawable())
 				.getBitmap();
-		
+
 		// new DownloadImageTask(bookCoverImage, bookInfo)
 		// .execute(bookInfo.imgURL);
 
@@ -319,8 +320,8 @@ public class WatchBookActivity extends SherlockActivity {
 				app.selectedBook.publishedYear).toString());
 		bookPageCount.setText(Integer.valueOf(app.selectedBook.pageCount)
 				.toString());
-		bookDateOfInsert.setText(App
-				.makeTimeStampHumanReadble(getApplicationContext(),app.selectedBook.dateOfInsert));
+		bookDateOfInsert.setText(App.makeTimeStampHumanReadble(
+				getApplicationContext(), app.selectedBook.dateOfInsert));
 		bookLanguage.setText(app.selectedBook.lang);
 
 
@@ -329,6 +330,10 @@ public class WatchBookActivity extends SherlockActivity {
 		buttonRequestBook = (Button) findViewById(R.id.buttonRequestBook);
 
 	}
+
+
+
+
 
 
 
@@ -368,14 +373,14 @@ public class WatchBookActivity extends SherlockActivity {
 
 	@Override
 	protected void onResume() {
-		//Set library's logo as ActionBar Icon
+		// Set library's logo as ActionBar Icon
 		App.imageLoader.DisplayActionBarIcon(app.library.getImageURL(),
 				getApplicationContext(), getSupportActionBar());
-		
-		if (App.refreshLang) {
-	        refresh();
-	    }
-		
+
+		if (App.refreshLang){
+			refresh();
+		}
+
 		super.onResume();
 
 		getStatusDefaultValue();
@@ -473,7 +478,9 @@ public class WatchBookActivity extends SherlockActivity {
 
 
 
-	/**Creates a sharing {@link Intent}.
+
+	/**
+	 * Creates a sharing {@link Intent}.
 	 * 
 	 * @return The sharing intent.
 	 */
@@ -481,28 +488,29 @@ public class WatchBookActivity extends SherlockActivity {
 		Intent shareIntent = new Intent(Intent.ACTION_SEND);
 		shareIntent.setType("text/plain");
 
-		String root = Environment.getExternalStorageDirectory()+".SmartLib/Images";	
+		String root = Environment.getExternalStorageDirectory()
+				+ ".SmartLib/Images";
 		new File(root).mkdirs();
-		
-		
-		File file = new File(root , app.selectedBook.isbn); 
 
-		
+
+		File file = new File(root, app.selectedBook.isbn);
+
+
 		try{
 			FileOutputStream os = new FileOutputStream(file);
 			bitmapBookCover.compress(CompressFormat.PNG, 80, os);
-			os.flush(); 
+			os.flush();
 			os.close();
-			
+
 			Uri uri = Uri.fromFile(file);
 			shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
-			
+
 		}
 		catch (Exception e){
 			Log.e(TAG, e.getStackTrace().toString());
-		} 
-		
-		
+		}
+
+
 		String bookInfo = "\n\n\n\n "
 				+ getString(R.string.bookInfo)
 				+ ":\n"
@@ -541,6 +549,7 @@ public class WatchBookActivity extends SherlockActivity {
 
 		return shareIntent;
 	}
+
 
 
 
@@ -748,17 +757,23 @@ public class WatchBookActivity extends SherlockActivity {
 
 	}
 
-	/**Refresh activity's language
+
+
+
+
+	/**
+	 * Refresh activity's language
 	 * 
 	 */
 	private void refresh() {
-		App.refreshLang=false;
-	    finish();
-	    Intent myIntent = new Intent(WatchBookActivity.this, WatchBookActivity.class);
-	    startActivity(myIntent);
+		App.refreshLang = false;
+		finish();
+		Intent myIntent = new Intent(WatchBookActivity.this,
+				WatchBookActivity.class);
+		startActivity(myIntent);
 	}
-	
-	
-	
+
+
+
 
 }

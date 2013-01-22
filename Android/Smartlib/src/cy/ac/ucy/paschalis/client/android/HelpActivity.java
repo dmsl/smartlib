@@ -32,7 +32,6 @@
 
 package cy.ac.ucy.paschalis.client.android;
 
-import cy.ac.ucy.paschalis.client.android.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -42,6 +41,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import cy.ac.ucy.paschalis.client.android.R;
 
 /**
  * An HTML-based help screen with Back and Done buttons at the bottom.
