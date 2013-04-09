@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ This file is part of SmartLib Project.
+
+    SmartLib is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SmartLib is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SmartLib.  If not, see <http://www.gnu.org/licenses/>.
+
+	Author: Paschalis Mpeis
+
+	Affiliation:
+	Data Management Systems Laboratory 
+	Dept. of Computer Science 
+	University of Cyprus 
+	P.O. Box 20537 
+	1678 Nicosia, CYPRUS 
+	Web: http://dmsl.cs.ucy.ac.cy/
+	Email: dmsl@cs.ucy.ac.cy
+	Tel: +357-22-892755
+	Fax: +357-22-892701
+
+
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/menu_settings">
+
+  <PreferenceCategory android:title="@string/preferences_actions_title">
+    <CheckBoxPreference
+        android:key="preferences_play_beep"
+        android:defaultValue="true"
+        android:title="@string/preferences_play_beep_title"/>
+    <CheckBoxPreference
+        android:key="preferences_vibrate"
+        android:defaultValue="false"
+        android:title="@string/preferences_vibrate_title"/>
+    <CheckBoxPreference
+        android:key="preferences_copy_to_clipboard"
+        android:defaultValue="true"
+        android:title="@string/preferences_copy_to_clipboard_title"/>
+        <CheckBoxPreference
+        android:key="preferences_scan_only_mode"
+        android:defaultValue="false"
+        android:title="@string/preferences_scan_only_mode"
+        android:summaryOn="@string/preferences_scan_only_modeON"
+         android:summaryOff="@string/preferences_scan_only_modeOFF"
+        android:shouldDisableView="true" android:enabled="false" android:selectable="false"/>
+
+  </PreferenceCategory>
+
+  <PreferenceCategory android:title="@string/preferences_general_title">
+
+    <CheckBoxPreference
+        android:key="preferences_auto_focus"
+        android:defaultValue="true"
+        android:title="@string/preferences_auto_focus_title"/>
+    <ListPreference android:key="preferences_language" android:title="..."/>
+    <Preference android:title="@string/clearCache" android:summary="@string/clearCacheSummary" android:key="preferences_clear_cache"/>
+
+  </PreferenceCategory>
+</PreferenceScreen>

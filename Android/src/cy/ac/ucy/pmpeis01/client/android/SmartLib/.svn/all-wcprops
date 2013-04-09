@@ -1,0 +1,185 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/repos/smartlib/!svn/ver/290/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib
+END
+LibPreferences.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/LibPreferences.java
+END
+ChooseLibraryFragment.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/ChooseLibraryFragment.java
+END
+Book.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/Book.java
+END
+LentBookActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/LentBookActivity.java
+END
+RegisterSuccessActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/RegisterSuccessActivity.java
+END
+LoginFragment.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/LoginFragment.java
+END
+PopularBooksActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/PopularBooksActivity.java
+END
+ExpandableAdapterActivityInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/ExpandableAdapterActivityInfo.java
+END
+LibraryData.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/repos/smartlib/!svn/ver/344/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/LibraryData.java
+END
+LoginTitleFragment.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/LoginTitleFragment.java
+END
+WatchBookActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/WatchBookActivity.java
+END
+MyBooksActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/MyBooksActivity.java
+END
+MainActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/MainActivity.java
+END
+RegisterActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/RegisterActivity.java
+END
+Library.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/Library.java
+END
+TODO.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/repos/smartlib/!svn/ver/260/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/TODO.java
+END
+RequestActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/RequestActivity.java
+END
+BookInfoAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/repos/smartlib/!svn/ver/299/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/BookInfoAdapter.java
+END
+AdapterBookInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/AdapterBookInfo.java
+END
+StartActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/StartActivity.java
+END
+SendMessageActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/SendMessageActivity.java
+END
+EditBookActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/EditBookActivity.java
+END
+User.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/User.java
+END
+BookSearch.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/BookSearch.java
+END
+App.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/App.java
+END
+Crypto.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/Crypto.java
+END
+LibraryInfoAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/repos/smartlib/!svn/ver/260/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/LibraryInfoAdapter.java
+END
+ActivitiesActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/ActivitiesActivity.java
+END
+AdapterLibraryInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/AdapterLibraryInfo.java
+END
+EmptyFragment.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/client/android/SmartLib/EmptyFragment.java
+END

@@ -1,0 +1,215 @@
+
+package cy.ac.ucy.pmpeis01.client.android.SmartLib;
+
+
+
+import java.util.List;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import cy.ac.ucy.pmpeis01.client.android.R;
+import cy.ac.ucy.pmpeis01.client.android.ImageLoader.ImageLoader;
+
+
+
+
+
+/**
+ * @author paschalis
+ * 
+ *         Our customized adapter, to show the data to the opponent's row, as WE
+ *         like!
+ * 
+ *         Binds usergame & timestamp to the appropriate TextView in the
+ *         opponent's row
+ * 
+ */
+public class LibraryInfoAdapter extends ArrayAdapter<Library> {
+
+	int		resource;
+
+	String	response;
+
+	Context	context;
+	
+	App app;
+
+
+
+
+
+	// Initialize adapter
+	public LibraryInfoAdapter(Context context, int resource,
+			List<Library> items) {
+		super(context, resource, items);
+		this.resource = resource;
+
+	}
+
+
+
+
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		LinearLayout libraryInfoView;
+
+		// Get the current alert object
+		Library libraryInfo = getItem(position);
+
+
+		// Inflate the view
+		if (convertView == null){
+			libraryInfoView = new LinearLayout(getContext());
+			String inflater = Context.LAYOUT_INFLATER_SERVICE;
+			LayoutInflater vi;
+			vi = (LayoutInflater) getContext().getSystemService(inflater);
+			vi.inflate(resource, libraryInfoView, true);
+		}
+		else{
+			libraryInfoView = (LinearLayout) convertView;
+		}
+
+		// Get layout's Data
+		TextView libraryName = (TextView) libraryInfoView
+				.findViewById(R.id.TextViewLibraryName);
+		
+		ImageView libraryLogo = (ImageView) libraryInfoView
+				.findViewById(R.id.imageViewLibraryLogo);
+		TextView libraryLocation = (TextView) libraryInfoView
+				.findViewById(R.id.textViewLibraryLocation);
+
+		// show The Image and save it to Library
+		App.imageLoader.DisplayImage(libraryInfo.getImageURL(), libraryLogo);
+		
+		//new DownloadImageTask(libraryLogo,libraryInfo).execute();
+
+
+
+		// Assign the appropriate data from our alert object above
+		libraryName.setText(libraryInfo.name);
+		// libraryLogo
+		libraryLocation.setText(libraryInfo.location);
+
+
+		return libraryInfoView;
+	}
+
+
+
+
+
+
+//
+//	/**
+//	 * Asynchronous Task, to download an image
+//	 * 
+//	 * 
+//	 * @author paschalis
+//	 * 
+//	 */
+//	private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+//
+//		private final String	TAG		= DownloadImageTask.class
+//											.getSimpleName();
+//
+//		ImageView				bmImage;
+//
+//		boolean				success	= true;
+//
+//
+//		Library lib;
+//
+//
+//		/**
+//		 * @param bmImage
+//		 *             the resource we want to bind
+//		 */
+//		public DownloadImageTask(ImageView bmImage, Library pLib) {
+//			this.bmImage = bmImage;
+//			lib=pLib;
+//		}
+//
+//
+//
+//
+//
+//		@Override
+//		protected Bitmap doInBackground(String... urls) {
+//			//No saved(cached) bitmap
+//			if(lib.logoImage==null){
+//			String urldisplay = urls[0];
+//			URL url = null;
+//			try{
+//				url = new URL(urldisplay);
+//				URLConnection connection = url.openConnection();
+//				
+//				connection.setUseCaches(true);
+//				Object response = connection.getContent();
+//				if (response instanceof Bitmap) {
+//				  Bitmap bitmap = (Bitmap)response;
+//				}
+//				  
+//			}
+//			catch (MalformedURLException e1){
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			
+//			
+//			}
+//			catch (IOException e){
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} 
+//			
+//			
+//			 Bitmap mIcon11 = null;
+//			 try{
+//			 InputStream in = new java.net.URL(urldisplay).openStream();
+//			 mIcon11 = BitmapFactory.decodeStream(in);
+//			 }
+//			 catch (Exception e){
+//			 // Failed to fetch logo
+//			 success = false;
+//			 // Image failed to download
+//			 Log.e(TAG, e.getMessage());
+//			 e.printStackTrace();
+//			 }
+//
+//				return mIcon11;
+//			}
+//
+//			else{
+//				return lib.logoImage;
+//				
+//			}
+//		
+//		}
+//
+//
+//
+//
+//
+//		protected void onPostExecute(Bitmap result) {
+//			if (success){ 
+//				bmImage.setImageBitmap(result);
+//				lib.logoImage=result;
+//			}
+//		else
+//				bmImage.setImageResource(R.drawable.default_lib_logo);
+//		}
+//
+//
+//
+//
+//
+//
+//	}
+
+}

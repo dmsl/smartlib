@@ -1,0 +1,109 @@
+/*
+ This file is part of SmartLib Project.
+
+    SmartLib is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SmartLib is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SmartLib.  If not, see <http://www.gnu.org/licenses/>.
+    
+	Author: Paschalis Mpeis
+
+	Affiliation:
+	Data Management Systems Laboratory 
+	Dept. of Computer Science 
+	University of Cyprus 
+	P.O. Box 20537 
+	1678 Nicosia, CYPRUS 
+	Web: http://dmsl.cs.ucy.ac.cy/
+	Email: dmsl@cs.ucy.ac.cy
+	Tel: +357-22-892755
+	Fax: +357-22-892701
+	
+
+ */
+
+package cy.ac.ucy.paschalis.client.android.Cache;
+
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import android.graphics.Bitmap;
+import android.util.Log;
+
+public class MemoryCache {
+
+    private static final String TAG = "MemoryCache";
+    private Map<String, Bitmap> cache=Collections.synchronizedMap(
+            new LinkedHashMap<String, Bitmap>(10,1.5f,true));//Last argument true for LRU ordering
+    private long size=0;//current allocated size
+    private long limit=1000000;//max memory in bytes
+
+    public MemoryCache(){
+        //use 25% of available heap size
+        setLimit(Runtime.getRuntime().maxMemory()/4);
+    }
+    
+    public void setLimit(long new_limit){
+        limit=new_limit;
+        Log.i(TAG, "MemoryCache will use up to "+limit/1024./1024.+"MB");
+    }
+
+    public Bitmap get(String id){
+        try{
+            if(!cache.containsKey(id))
+                return null;
+            //NullPointerException sometimes happen here http://code.google.com/p/osmdroid/issues/detail?id=78 
+            return cache.get(id);
+        }catch(NullPointerException ex){
+            return null;
+        }
+    }
+
+    public void put(String id, Bitmap bitmap){
+        try{
+            if(cache.containsKey(id))
+                size-=getSizeInBytes(cache.get(id));
+            cache.put(id, bitmap);
+            size+=getSizeInBytes(bitmap);
+            checkSize();
+        }catch(Throwable th){
+            th.printStackTrace();
+        }
+    }
+    
+    private void checkSize() {
+        Log.i(TAG, "cache size="+size+" length="+cache.size());
+        if(size>limit){
+            Iterator<Entry<String, Bitmap>> iter=cache.entrySet().iterator();//least recently accessed item will be the first one iterated  
+            while(iter.hasNext()){
+                Entry<String, Bitmap> entry=iter.next();
+                size-=getSizeInBytes(entry.getValue());
+                iter.remove();
+                if(size<=limit)
+                    break;
+            }
+            Log.i(TAG, "Clean cache. New size "+cache.size());
+        }
+    }
+
+    public void clear() {
+        cache.clear();
+    }
+
+    long getSizeInBytes(Bitmap bitmap) {
+        if(bitmap==null)
+            return 0;
+        return bitmap.getRowBytes() * bitmap.getHeight();
+    }
+}

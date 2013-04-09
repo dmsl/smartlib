@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+ This file is part of SmartLib Project.
+
+    SmartLib is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SmartLib is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SmartLib.  If not, see <http://www.gnu.org/licenses/>.
+    
+    
+	Author: Paschalis Mpeis
+
+	Affiliation:
+	Data Management Systems Laboratory 
+	Dept. of Computer Science 
+	University of Cyprus 
+	P.O. Box 20537 
+	1678 Nicosia, CYPRUS 
+	Web: http://dmsl.cs.ucy.ac.cy/
+	Email: dmsl@cs.ucy.ac.cy
+	Tel: +357-22-892755
+	Fax: +357-22-892701
+    
+    
+    -->
+    
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <android.support.v7.widget.Space
+        android:id="@+id/space1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="3" />
+
+    <TextView
+        android:id="@+id/textViewActivityGroupItemTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:layout_weight="5"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:text="Group Item"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ff33b5e5"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewActivityGroupItemNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="X"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/qrcode/encoder
+END
+ByteMatrix.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/qrcode/encoder/ByteMatrix.java
+END
+MaskUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/qrcode/encoder/MaskUtil.java
+END
+QRCode.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/repos/smartlib/!svn/ver/370/Android/SmartLib/src/cy/ac/ucy/pmpeis01/qrcode/encoder/QRCode.java
+END
+Encoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/qrcode/encoder/Encoder.java
+END
+MatrixUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/qrcode/encoder/MatrixUtil.java
+END
+BlockPair.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/repos/smartlib/!svn/ver/176/Android/SmartLib/src/cy/ac/ucy/pmpeis01/qrcode/encoder/BlockPair.java
+END
