@@ -36,6 +36,7 @@ package cy.ac.ucy.paschalis.client.android.SmartLib;
 
 import android.content.Intent;
 import android.os.Bundle;
+//import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.EditText;
 

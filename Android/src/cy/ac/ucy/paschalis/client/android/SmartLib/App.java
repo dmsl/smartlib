@@ -225,7 +225,7 @@ public class App extends Application {
 
 	public Drawable			loginLogoDrawable;
 
-	private static final String	MASTER_URL									= "http://www.cs.ucy.ac.cy/projects/smartLib";
+	private static final String	MASTER_URL									= "https://smartlib.cs.ucy.ac.cy";
 
 	private static final String	getLibrariesPath								= "/MASTER/getLibraries.php";
 

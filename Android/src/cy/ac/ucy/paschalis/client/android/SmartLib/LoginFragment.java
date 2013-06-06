@@ -728,14 +728,6 @@ public class LoginFragment extends SherlockFragment {
 				}
 				catch (JSONException e){
 
-					Toast.makeText(
-							LoginFragment.this.getSherlockActivity(),
-							getString(R.string.msgFailedContactWebpage)
-									+ "\n"
-									+ getString(R.string.msgReportThisTo_)
-									+ app.library.email,
-							Toast.LENGTH_LONG).show();
-
 					Log.e(TAG, "Error parsing data " + e.toString());
 
 					returnResult = LOGIN_FAILED_PARSE;
