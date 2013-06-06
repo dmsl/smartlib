@@ -31,22 +31,24 @@
     
     
     -->
-    
+
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:padding="4dip">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dip">
 
 
-  <TextView android:id="@+id/bookmark_title"
+    <TextView
+            android:id="@+id/bookmark_title"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:singleLine="true"/>
 
-  <TextView android:id="@+id/bookmark_url"
+    <TextView
+            android:id="@+id/bookmark_url"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"

@@ -31,11 +31,11 @@
     
     
     -->
-    
+
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="ApplicationTheme" parent="Theme.Sherlock.Light.DarkActionBar"
-        android:alertDialogStyle="Theme.Sherlock.Dialog.Light">
+           android:alertDialogStyle="Theme.Sherlock.Dialog.Light">
     </style>
 
     <style name="titleParent">
@@ -92,12 +92,12 @@
         <item name="android:textColor">#C2022C</item>
         <item name="android:layout_marginTop">30dp</item>
     </style>
-    
-        <style name="cameraDirection" >
+
+    <style name="cameraDirection">
         <item name="android:textSize">20sp</item>
         <item name="android:typeface">monospace</item>
         <item name="android:textColor">#FFFFFF</item>
-         <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowColor">#000000</item>
         <item name="android:shadowDx">1</item>
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">3</item>

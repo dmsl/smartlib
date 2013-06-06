@@ -31,41 +31,41 @@
     
     
     -->
-    
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textViewPopularBooks"
-        style="@style/title2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="15dp"
-        android:text="Popular Books"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:visibility="visible" />
+            android:id="@+id/textViewPopularBooks"
+            style="@style/title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="15dp"
+            android:text="Popular Books"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:visibility="visible"/>
 
     <ProgressBar
-        android:id="@+id/progressBarFetchPopularBooks"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+            android:id="@+id/progressBarFetchPopularBooks"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
 
     <ListView
-        android:id="@+id/listViewBookResults"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:divider="#ff33b5e5"
-        android:dividerHeight="4dp"
-        android:overScrollMode="ifContentScrolls"
-        android:scrollingCache="true"
-        android:visibility="visible" >
+            android:id="@+id/listViewBookResults"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="#ff33b5e5"
+            android:dividerHeight="4dp"
+            android:overScrollMode="ifContentScrolls"
+            android:scrollingCache="true"
+            android:visibility="visible">
 
     </ListView>
 

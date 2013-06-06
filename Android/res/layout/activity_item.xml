@@ -31,152 +31,152 @@
     
     
     -->
-    
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
-    android:addStatesFromChildren="false"
-    android:orientation="vertical" >
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="5dp"
+              android:addStatesFromChildren="false"
+              android:orientation="vertical">
 
 
     <LinearLayout
-        android:baselineAligned="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" >
+            android:baselineAligned="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
 
         <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_weight="1"
-            android:gravity="center_vertical|center_horizontal" >
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal">
 
             <ImageView
-                android:id="@+id/imageViewActivityBookCover"
-                android:layout_width="fill_parent"
-                android:layout_height="70dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:contentDescription="@string/bookInfo"
-                android:scaleType="centerCrop"
-                android:src="@drawable/nocover" />
+                    android:id="@+id/imageViewActivityBookCover"
+                    android:layout_width="fill_parent"
+                    android:layout_height="70dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@string/bookInfo"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/nocover"/>
 
-             <LinearLayout
-                 android:layout_width="fill_parent"
-                 android:layout_height="70dp"
-                 android:background="#55ffffff"
-                 android:orientation="vertical" >
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="70dp"
+                    android:background="#55ffffff"
+                    android:orientation="vertical">
 
-    </LinearLayout>
-            
+            </LinearLayout>
+
             <TextView
-                android:id="@+id/textViewActivityItemUsername"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignWithParentIfMissing="false"
-                android:layout_centerHorizontal="true"
-                android:layout_centerInParent="false"
-                android:layout_centerVertical="true"
-                android:shadowColor="#000000"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="2"
-                android:text="owner"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#ff33b5e5"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:typeface="normal" />
+                    android:id="@+id/textViewActivityItemUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignWithParentIfMissing="false"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="false"
+                    android:layout_centerVertical="true"
+                    android:shadowColor="#000000"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    android:text="owner"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#ff33b5e5"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:typeface="normal"/>
 
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5"
-            android:gravity="center"
-            android:orientation="vertical" >
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:paddingRight="10dp" >
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:text="@string/date_"
-                        android:textStyle="bold" />
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingRight="10dp">
 
                     <TextView
-                        android:id="@+id/textViewActivityItemAnswerTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:text="@string/answer_"
-                        android:textStyle="bold" />
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:text="@string/date_"
+                            android:textStyle="bold"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:text="@string/isbn_"
-                        android:textStyle="bold" />
+                            android:id="@+id/textViewActivityItemAnswerTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:text="@string/answer_"
+                            android:textStyle="bold"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:text="@string/isbn_"
+                            android:textStyle="bold"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="8"
-                    android:orientation="vertical" >
-
-                    <TextView
-                        android:id="@+id/textViewActivityItemDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="yesterday" />
+                        android:layout_weight="8"
+                        android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textViewActivityItemAnswer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="dont asnwered yet" />
+                            android:id="@+id/textViewActivityItemDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="yesterday"/>
 
                     <TextView
-                        android:id="@+id/textViewActivityItemISBN"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="435345345345" />
+                            android:id="@+id/textViewActivityItemAnswer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="dont asnwered yet"/>
+
+                    <TextView
+                            android:id="@+id/textViewActivityItemISBN"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="435345345345"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textViewActivityItemTitle"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="bottom|center_horizontal"
-        android:text="title of book"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#ff33b5e5"
-        android:textSize="18sp" />
+            android:id="@+id/textViewActivityItemTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|center_horizontal"
+            android:text="title of book"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ff33b5e5"
+            android:textSize="18sp"/>
 
     <TextView
-        android:id="@+id/textViewActivityItemAuthors"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top|center_horizontal"
-        android:text="John John, John"
-        android:textSize="13sp" />
+            android:id="@+id/textViewActivityItemAuthors"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|center_horizontal"
+            android:text="John John, John"
+            android:textSize="13sp"/>
 
 </LinearLayout>

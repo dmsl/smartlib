@@ -30,39 +30,47 @@
 
 
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/menu_settings">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:title="@string/menu_settings">
 
-  <PreferenceCategory android:title="@string/preferences_actions_title">
-    <CheckBoxPreference
-        android:key="preferences_play_beep"
-        android:defaultValue="true"
-        android:title="@string/preferences_play_beep_title"/>
-    <CheckBoxPreference
-        android:key="preferences_vibrate"
-        android:defaultValue="false"
-        android:title="@string/preferences_vibrate_title"/>
-    <CheckBoxPreference
-        android:key="preferences_copy_to_clipboard"
-        android:defaultValue="true"
-        android:title="@string/preferences_copy_to_clipboard_title"/>
+    <PreferenceCategory android:title="@string/preferences_actions_title">
         <CheckBoxPreference
-        android:key="preferences_scan_only_mode"
-        android:defaultValue="false"
-        android:title="@string/preferences_scan_only_mode"
-        android:summaryOn="@string/preferences_scan_only_modeON"
-         android:summaryOff="@string/preferences_scan_only_modeOFF"
-        android:shouldDisableView="true" android:enabled="false" android:selectable="false"/>
+                android:key="preferences_play_beep"
+                android:defaultValue="true"
+                android:title="@string/preferences_play_beep_title"/>
+        <CheckBoxPreference
+                android:key="preferences_vibrate"
+                android:defaultValue="false"
+                android:title="@string/preferences_vibrate_title"/>
+        <CheckBoxPreference
+                android:key="preferences_copy_to_clipboard"
+                android:defaultValue="true"
+                android:title="@string/preferences_copy_to_clipboard_title"/>
+        <CheckBoxPreference
+                android:key="preferences_scan_only_mode"
+                android:defaultValue="false"
+                android:title="@string/preferences_scan_only_mode"
+                android:summaryOn="@string/preferences_scan_only_modeON"
+                android:summaryOff="@string/preferences_scan_only_modeOFF"
+                android:shouldDisableView="true"
+                android:enabled="false"
+                android:selectable="false"/>
 
-  </PreferenceCategory>
+    </PreferenceCategory>
 
-  <PreferenceCategory android:title="@string/preferences_general_title">
+    <PreferenceCategory android:title="@string/preferences_general_title">
 
-    <CheckBoxPreference
-        android:key="preferences_auto_focus"
-        android:defaultValue="true"
-        android:title="@string/preferences_auto_focus_title"/>
-    <ListPreference android:key="preferences_language" android:title="..."/>
-    <Preference android:title="@string/clearCache" android:summary="@string/clearCacheSummary" android:key="preferences_clear_cache"/>
+        <CheckBoxPreference
+                android:key="preferences_auto_focus"
+                android:defaultValue="true"
+                android:title="@string/preferences_auto_focus_title"/>
+        <ListPreference
+                android:key="preferences_language"
+                android:title="..."/>
+        <Preference
+                android:title="@string/clearCache"
+                android:summary="@string/clearCacheSummary"
+                android:key="preferences_clear_cache"/>
 
-  </PreferenceCategory>
+    </PreferenceCategory>
 </PreferenceScreen>

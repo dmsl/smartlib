@@ -31,180 +31,180 @@
     
     
     -->
-    
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="5dp"
-    android:addStatesFromChildren="false"
-    android:orientation="vertical" >
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginTop="5dp"
+              android:addStatesFromChildren="false"
+              android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textViewBookTitle"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="bottom|center_horizontal"
-        android:text="title of book"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#ff33b5e5"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+            android:id="@+id/textViewBookTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|center_horizontal"
+            android:text="title of book"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ff33b5e5"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/textViewBookAuthors"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top|center_horizontal"
-        android:text="John John, John"
-        android:textSize="17sp"
-        android:textStyle="bold" />
+            android:id="@+id/textViewBookAuthors"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|center_horizontal"
+            android:text="John John, John"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" >
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/imageViewBookCover"
-                    android:layout_width="120dp"
-                    android:layout_height="130dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:src="@drawable/nocover" />
+                        android:id="@+id/imageViewBookCover"
+                        android:layout_width="120dp"
+                        android:layout_height="130dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:src="@drawable/nocover"/>
 
                 <TextView
-                    android:id="@+id/textViewNoCover"
-                    style="@style/errorDirection"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:gravity="center_horizontal"
-                    android:text="@string/noCover"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="#000000"
-                    android:textSize="15sp"
-                    android:visibility="gone" />
+                        android:id="@+id/textViewNoCover"
+                        style="@style/errorDirection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_horizontal"
+                        android:text="@string/noCover"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#000000"
+                        android:textSize="15sp"
+                        android:visibility="gone"/>
 
                 <ProgressBar
-                    android:id="@+id/progressBarLoadCover"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:visibility="visible" />
+                        android:id="@+id/progressBarLoadCover"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:visibility="visible"/>
             </RelativeLayout>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                 android:baselineAligned="false" >
-                   <!--  android:layout_weight="1.2" -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                android:orientation="vertical">
+
+            <LinearLayout
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingRight="5dp" >
-
-                    <TextView
+                    android:baselineAligned="false">
+                <!--  android:layout_weight="1.2" -->
+                <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:text="@string/isbn_"
-                        android:textStyle="bold" />
+                        android:orientation="vertical"
+                        android:paddingRight="5dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:text="@string/published_"
-                        android:textStyle="bold" />
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:text="@string/isbn_"
+                            android:textStyle="bold"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:text="@string/pages_"
-                        android:textStyle="bold" />
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:text="@string/published_"
+                            android:textStyle="bold"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:text="@string/inserted_"
-                        android:textStyle="bold" />
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:text="@string/pages_"
+                            android:textStyle="bold"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:text="@string/language_"
-                        android:textStyle="bold" />
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:text="@string/inserted_"
+                            android:textStyle="bold"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:text="@string/language_"
+                            android:textStyle="bold"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textViewBookISBN"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="9999999999999" />
+                            android:id="@+id/textViewBookISBN"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="9999999999999"/>
 
                     <TextView
-                        android:id="@+id/textViewBookPublishedYear"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2004" />
+                            android:id="@+id/textViewBookPublishedYear"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2004"/>
 
                     <TextView
-                        android:id="@+id/textViewBookPageCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="773" />
+                            android:id="@+id/textViewBookPageCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="773"/>
 
                     <TextView
-                        android:id="@+id/textViewBookDateOfInsert"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="3 days ago" />
+                            android:id="@+id/textViewBookDateOfInsert"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3 days ago"/>
 
                     <TextView
-                        android:id="@+id/textViewBookLanguage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="en" />
+                            android:id="@+id/textViewBookLanguage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="en"/>
                 </LinearLayout>
 
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textViewBookStatusMessage"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center_horizontal"
-                android:paddingTop="10dp"
-                android:text="statusmsg"
-                android:visibility="invisible" />
+                    android:id="@+id/textViewBookStatusMessage"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="10dp"
+                    android:text="statusmsg"
+                    android:visibility="invisible"/>
 
         </LinearLayout>
 

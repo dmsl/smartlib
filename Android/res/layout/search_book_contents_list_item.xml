@@ -31,18 +31,18 @@
     
     
     -->
-    
 
 
-<cy.ac.ucy.paschalis.client.android.book.SearchBookContentsListItem
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/sbc_list_item"
-    android:padding="6dip">
+<zxing.client.android.book.SearchBookContentsListItem
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/sbc_list_item"
+        android:padding="6dip">
 
-  <TextView android:id="@+id/page_number_view"
+    <TextView
+            android:id="@+id/page_number_view"
             android:layout_width="75dip"
             android:layout_height="wrap_content"
             android:layout_gravity="left|top"
@@ -52,7 +52,8 @@
             android:textSize="14sp"
             android:textStyle="bold"/>
 
-  <TextView android:id="@+id/snippet_view"
+    <TextView
+            android:id="@+id/snippet_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|top"
@@ -61,4 +62,4 @@
             android:textSize="14sp"
             android:typeface="serif"/>
 
-</cy.ac.ucy.paschalis.client.android.book.SearchBookContentsListItem>
+</zxing.client.android.book.SearchBookContentsListItem>

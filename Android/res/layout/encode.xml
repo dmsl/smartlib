@@ -31,7 +31,7 @@
     
     
     -->
-    
+
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
@@ -41,28 +41,31 @@
               android:orientation="vertical"
               android:gravity="center">
 
-  <ImageView android:id="@+id/image_view"
-             android:layout_width="fill_parent"
-             android:layout_height="wrap_content"
-             android:layout_gravity="center_horizontal"
-             android:scaleType="center"/>
+    <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="center"/>
 
-  <ScrollView android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:layout_gravity="center_horizontal"
-              android:gravity="center">
+    <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center">
 
-    <TextView android:id="@+id/contents_text_view"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:layout_gravity="center_horizontal"
-              android:gravity="center"
-              android:textColor="@color/contents_text"
-              android:textSize="18sp"
-              android:paddingBottom="8dip"
-              android:paddingLeft="8dip"
-              android:paddingRight="8dip"/>
+        <TextView
+                android:id="@+id/contents_text_view"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:textColor="@color/contents_text"
+                android:textSize="18sp"
+                android:paddingBottom="8dip"
+                android:paddingLeft="8dip"
+                android:paddingRight="8dip"/>
 
-  </ScrollView>
+    </ScrollView>
 
 </LinearLayout>

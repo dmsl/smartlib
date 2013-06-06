@@ -31,38 +31,41 @@
     
     
     -->
-    
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:background="@color/sbc_layout_view">
 
-  <LinearLayout
-      android:orientation="horizontal"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:layout_weight="0">
-
-    <EditText android:id="@+id/query_text_view"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_gravity="left|center_vertical"
-              android:layout_weight="1"
-              android:singleLine="true"
-              android:selectAllOnFocus="true"
-              android:inputType="text"/>
-
-    <Button android:id="@+id/query_button"
-            android:layout_width="wrap_content"
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="@string/button_search_book_contents"/>
+            android:layout_weight="0">
 
-  </LinearLayout>
+        <EditText
+                android:id="@+id/query_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:selectAllOnFocus="true"
+                android:inputType="text"/>
+
+        <Button
+                android:id="@+id/query_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="@string/button_search_book_contents"/>
+
+    </LinearLayout>
 
 
-  <ListView android:id="@+id/result_list_view"
+    <ListView
+            android:id="@+id/result_list_view"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>

@@ -31,8 +31,11 @@
     
     
     -->
-    
-    <item android:id="@+id/itemClearRegister" android:title="@string/clear"
-        android:showAsAction="ifRoom" 
-        android:icon="@drawable/ic_menu_close_clear_cancel"
-        ></item></menu>
+
+    <item
+            android:id="@+id/itemClearRegister"
+            android:title="@string/clear"
+            android:showAsAction="ifRoom"
+            android:icon="@drawable/ic_menu_close_clear_cancel"
+            ></item>
+</menu>
