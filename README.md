@@ -26,8 +26,8 @@ SmartLib Project is under the GPL:
     	
 	Source Authors:
 		Paschalis Mpeis: Webpage(HTML5,PHP,JS,MySQL), Android Application(Java)
-		Xrisovalandis Anastasiou: iOS Application (Objective C)
-		Xristalla Tsoutsouki: iOS Application (Objective C)
+		Chrysovalantis Anastasiou: iOS Application (Objective C)
+		Chrystalla Tsoutsouki: iOS Application (Objective C)
 
 	Affiliation:
 	Data Management Systems Laboratory 
