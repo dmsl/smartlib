@@ -227,7 +227,7 @@ public final class Intents {
 		/**
 		 * Internal intent used to trigger connection to a wi-fi network.
 		 */
-		public static final String ACTION = "mp.paschalis.WIFI_CONNECT";
+		public static final String ACTION = "cy.ac.ucy.paschalis.client.android.WIFI_CONNECT";
 
 		/**
 		 * The network to connect to, all the configuration provided here.
@@ -253,7 +253,7 @@ public final class Intents {
 		 * Give the user a choice of items to encode as a barcode, then render it as a QR Code and
 		 * display onscreen for a friend to scan with their phone.
 		 */
-		public static final String ACTION = "mp.paschalis.SHARE";
+		public static final String ACTION = "cy.ac.ucy.paschalis.client.android.SHARE";
 
 		private Share() {
 		}

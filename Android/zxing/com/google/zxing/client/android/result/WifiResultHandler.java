@@ -20,7 +20,7 @@ import android.content.Context;
 import android.net.wifi.WifiManager;
 import android.widget.Toast;
 
-import mp.paschalis.R;
+import cy.ac.ucy.paschalis.client.android.R;
 import com.google.zxing.client.android.CaptureActivity;
 import com.google.zxing.client.android.wifi.WifiConfigManager;
 import com.google.zxing.client.result.ParsedResult;

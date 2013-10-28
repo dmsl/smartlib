@@ -38,7 +38,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
-import mp.paschalis.R;
+import cy.ac.ucy.paschalis.client.android.R;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.android.FinishListener;
 import com.google.zxing.client.android.Intents;

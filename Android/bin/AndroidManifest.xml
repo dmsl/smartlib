@@ -200,7 +200,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name="mp.paschalis.MainActivity"
+                android:name="mp.android.MainActivity"
                 android:configChanges="locale|orientation"
                 android:label="@string/title_activity_main">
             <meta-data
@@ -216,7 +216,7 @@
                     android:value="cy.ac.ucy.paschalis.client.android.SmartLib.StartActivity"/>
         </activity>
         <activity
-                android:name="mp.paschalis.LentBookActivity"
+                android:name="mp.android.LentBookActivity"
                 android:configChanges="locale|orientation"
                 android:windowSoftInputMode="stateVisible"
                 android:label="@string/title_activity_lent_book"

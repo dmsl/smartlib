@@ -29,7 +29,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import mp.paschalis.R;
+import cy.ac.ucy.paschalis.client.android.R;
 import com.google.zxing.client.android.HttpHelper;
 import com.google.zxing.client.android.LocaleManager;
 import com.google.zxing.client.android.history.HistoryManager;

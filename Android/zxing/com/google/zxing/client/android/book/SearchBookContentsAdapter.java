@@ -24,7 +24,7 @@ import android.widget.ArrayAdapter;
 
 import java.util.List;
 
-import mp.paschalis.R;
+import cy.ac.ucy.paschalis.client.android.R;
 
 /**
  * Manufactures list items which represent SBC results.

@@ -50,7 +50,7 @@ include 'scripts/sessionInit.php';
     <title>SmartLib</title>
     <link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
     <!--    Include Scripts-->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
     <link href=styles.css rel=stylesheet>
     </link>
     <!--    Include Extra headers-->
@@ -78,7 +78,7 @@ include 'scripts/sessionInit.php';
                     <h1>Download SmartLib on your Smartphone or Tablet</h1>
                 </header>
                 <div class="mainContent" id="downloadsDevices">
-                    <img id="qrcode" src="http://www.cs.ucy.ac.cy/projects/smartLib/images/qr.png"
+                    <img id="qrcode" src="https://www.cs.ucy.ac.cy/projects/smartLib/images/qr.png"
                          alt="Smart QR Code"/>
 
                     <p>
@@ -95,7 +95,7 @@ include 'scripts/sessionInit.php';
                             </button>
                         </a>
                         <a class="nodec"
-                           href="http://itunes.apple.com" target="_blank">
+                           href="https://itunes.apple.com" target="_blank">
                             <button class="sendButton">iOS</button>
                         </a> <br>
                         <br>

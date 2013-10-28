@@ -38,8 +38,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import mp.paschalis.R;
-import mp.paschalis.App;
+import cy.ac.ucy.paschalis.client.android.R;
+import cy.ac.ucy.paschalis.client.android.App;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 import com.google.zxing.client.android.result.ResultHandler;

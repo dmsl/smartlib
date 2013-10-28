@@ -29,7 +29,7 @@ import android.util.Log;
 
 import java.io.IOException;
 
-import mp.paschalis.R;
+import cy.ac.ucy.paschalis.client.android.R;
 
 
 /**

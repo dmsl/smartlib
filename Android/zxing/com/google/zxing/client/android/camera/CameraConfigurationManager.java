@@ -34,7 +34,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import mp.paschalis.App;
+import cy.ac.ucy.paschalis.client.android.App;
 import com.google.zxing.client.android.PreferencesActivity;
 
 

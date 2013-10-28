@@ -33,11 +33,11 @@ define('_FAX', '+xxx-xx-xxxx');
 //Email
 define('_EMAIL', 'xxxxxx@xxxxxxxxxx');
 //Department URL
-define('_DEPARTMENT_URL', 'http://www.');
+define('_DEPARTMENT_URL', 'https://www.');
 //Organization URL
-define('_ORGANIZATION_URL', 'http://www.');
+define('_ORGANIZATION_URL', 'https://www.');
 //Library URL
-define('_LIB_URL', 'http://www.');
+define('_LIB_URL', 'https://www.');
 //Key defined for safety in some webpages
 define('_MY_KEY', '1234');
 

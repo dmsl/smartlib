@@ -31,7 +31,7 @@ import com.actionbarsherlock.view.MenuItem;
 
 import java.util.List;
 
-import mp.paschalis.R;
+import cy.ac.ucy.paschalis.client.android.R;
 import com.google.zxing.client.android.CaptureActivity;
 import com.google.zxing.client.android.Intents;
 

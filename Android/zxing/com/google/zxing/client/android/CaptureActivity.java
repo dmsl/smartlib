@@ -74,10 +74,10 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
-import mp.paschalis.R;
-import mp.paschalis.App;
-import mp.paschalis.LentBookActivity;
-import mp.paschalis.LibPreferences;
+import cy.ac.ucy.paschalis.client.android.R;
+import cy.ac.ucy.paschalis.client.android.App;
+import cy.ac.ucy.paschalis.client.android.LentBookActivity;
+import cy.ac.ucy.paschalis.client.android.LibPreferences;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 import com.google.zxing.ResultMetadataType;

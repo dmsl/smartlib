@@ -26,7 +26,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 
-import mp.paschalis.R;
+import cy.ac.ucy.paschalis.client.android.R;
 
 /**
  * An HTML-based help screen with Back and Done buttons at the bottom.

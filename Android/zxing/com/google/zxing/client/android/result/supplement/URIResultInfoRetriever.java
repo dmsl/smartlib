@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import mp.paschalis.R;
+import cy.ac.ucy.paschalis.client.android.R;
 import com.google.zxing.client.android.HttpHelper;
 import com.google.zxing.client.android.history.HistoryManager;
 import com.google.zxing.client.result.URIParsedResult;

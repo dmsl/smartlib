@@ -33,7 +33,7 @@ import android.view.View;
 import java.util.Collection;
 import java.util.Locale;
 
-import mp.paschalis.R;
+import cy.ac.ucy.paschalis.client.android.R;
 import com.google.zxing.Result;
 import com.google.zxing.client.android.Contents;
 import com.google.zxing.client.android.Intents;

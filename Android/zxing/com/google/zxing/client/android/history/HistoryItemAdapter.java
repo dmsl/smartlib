@@ -28,7 +28,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import mp.paschalis.R;
+import cy.ac.ucy.paschalis.client.android.R;
 import com.google.zxing.Result;
 
 

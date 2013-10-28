@@ -56,7 +56,7 @@ if ($_SESSION['loggedin'] == 1) {
     <title>SmartLib</title>
     <link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
     <!--    Include Scripts-->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
     <link href=styles.css rel=stylesheet>
     </link>
     <!--    Include Extra headers-->

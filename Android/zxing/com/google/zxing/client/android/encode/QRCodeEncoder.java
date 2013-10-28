@@ -35,7 +35,7 @@ import java.util.Collections;
 import java.util.EnumMap;
 import java.util.Map;
 
-import mp.paschalis.R;
+import cy.ac.ucy.paschalis.client.android.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;

@@ -22,7 +22,7 @@ import android.content.Intent;
 import java.text.DateFormat;
 import java.util.Date;
 
-import mp.paschalis.R;
+import cy.ac.ucy.paschalis.client.android.R;
 import com.google.zxing.client.result.CalendarParsedResult;
 import com.google.zxing.client.result.ParsedResult;
 

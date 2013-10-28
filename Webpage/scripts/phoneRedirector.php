@@ -53,7 +53,7 @@ $isiPhone = (bool)strpos($_SERVER['HTTP_USER_AGENT'], 'iPhone');
 $isiPod = (bool)strpos($_SERVER['HTTP_USER_AGENT'], 'iPod');
 
 if ($isiPad || $isiPhone || $isiPod) {
-    header('http://itunes.apple.com/');
+    header('https://itunes.apple.com/');
     die();
 }
 

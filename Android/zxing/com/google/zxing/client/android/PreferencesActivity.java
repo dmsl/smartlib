@@ -32,8 +32,8 @@ import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.actionbarsherlock.view.MenuItem;
 
-import mp.paschalis.R;
-import mp.paschalis.App;
+import cy.ac.ucy.paschalis.client.android.R;
+import cy.ac.ucy.paschalis.client.android.App;
 
 /**
  * The main settings activity.

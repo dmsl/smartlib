@@ -27,7 +27,7 @@ import android.view.SurfaceHolder;
 
 import java.io.IOException;
 
-import mp.paschalis.App;
+import cy.ac.ucy.paschalis.client.android.App;
 import com.google.zxing.client.android.PlanarYUVLuminanceSource;
 
 

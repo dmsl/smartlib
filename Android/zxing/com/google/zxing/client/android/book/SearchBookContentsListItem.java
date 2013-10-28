@@ -27,7 +27,7 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
-import mp.paschalis.R;
+import cy.ac.ucy.paschalis.client.android.R;
 
 /**
  * A list item which displays the page number and snippet of this search result.
