@@ -99,7 +99,7 @@
                 >
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="mp.paschalis.MainActivity"
+                    android:value="cy.ac.ucy.paschalis.client.android.MainActivity"
 
                     />
             <intent-filter>
@@ -188,7 +188,7 @@
                 android:label="@string/title_activity_register">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="mp.paschalis.StartActivity"/>
+                    android:value="cy.ac.ucy.paschalis.client.android.StartActivity"/>
         </activity>
         <activity
                 android:name="cy.ac.ucy.paschalis.client.android.LibPreferences"
@@ -205,7 +205,7 @@
                 android:label="@string/title_activity_main">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="mp.paschalis.StartActivity"/>
+                    android:value="cy.ac.ucy.paschalis.client.android.StartActivity"/>
         </activity>
         <activity
                 android:name="cy.ac.ucy.paschalis.client.android.RegisterSuccessActivity"
@@ -213,7 +213,7 @@
                 android:label="@string/title_activity_register_success">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="mp.paschalis.StartActivity"/>
+                    android:value="cy.ac.ucy.paschalis.client.android.StartActivity"/>
         </activity>
         <activity
                 android:name="cy.ac.ucy.paschalis.client.android.LentBookActivity"
@@ -232,7 +232,7 @@
                 android:label="@string/title_activity_my_books">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="mp.paschalis.MainActivity"/>
+                    android:value="cy.ac.ucy.paschalis.client.android.MainActivity"/>
         </activity>
         <activity
                 android:name="cy.ac.ucy.paschalis.client.android.EditBookActivity"
@@ -240,7 +240,7 @@
                 android:label="@string/title_activity_edit_book">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="mp.paschalis.MyBooksActivity"/>
+                    android:value="cy.ac.ucy.paschalis.client.android.MyBooksActivity"/>
         </activity>
         <activity
                 android:name="cy.ac.ucy.paschalis.client.android.WatchBookActivity"
@@ -254,7 +254,7 @@
                 >
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="mp.paschalis.MainActivity"/>
+                    android:value="cy.ac.ucy.paschalis.client.android.MainActivity"/>
         </activity>
         <activity
                 android:name="cy.ac.ucy.paschalis.client.android.ActivitiesActivity"
@@ -262,7 +262,7 @@
                 android:label="@string/title_activity_activities">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="mp.paschalis.MainActivity"/>
+                    android:value="cy.ac.ucy.paschalis.client.android.MainActivity"/>
         </activity>
         <activity
                 android:name="cy.ac.ucy.paschalis.client.android.RequestActivity"
@@ -270,7 +270,7 @@
                 android:label="@string/title_activity_request">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="mp.paschalis.ActivitiesActivity"/>
+                    android:value="cy.ac.ucy.paschalis.client.android.ActivitiesActivity"/>
         </activity>
         <activity
                 android:launchMode="singleTop"
@@ -279,7 +279,7 @@
                 android:label="@string/title_activity_latest_additions">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="mp.paschalis.MainActivity"/>
+                    android:value="cy.ac.ucy.paschalis.client.android.MainActivity"/>
         </activity>
         <activity
                 android:name="cy.ac.ucy.paschalis.client.android.SendMessageActivity"
@@ -287,7 +287,7 @@
                 android:label="@string/title_activity_send_message">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="mp.paschalis.RequestActivity"/>
+                    android:value="cy.ac.ucy.paschalis.client.android.RequestActivity"/>
         </activity>
     </application>
 
