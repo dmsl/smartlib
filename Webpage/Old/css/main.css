@@ -1,0 +1,142 @@
+#Books-Table
+
+{
+
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+
+	font-size: 12px;
+
+	margin: 45px;
+
+	width: 90%;
+
+	text-align: left;
+
+	border-collapse: collapse;
+
+}
+
+#Books-Table
+
+{
+
+	font-size: 14px;
+
+	font-weight: normal;
+
+	padding: 12px 15px;
+
+	color: #039;
+
+}
+
+#Books-Table
+
+{
+
+	padding: 10px 15px;
+
+	color: #669;
+
+	border-top: 1px solid #e8edff;
+
+}
+
+.oce-first
+
+{
+
+	background: #d0dafd;
+
+	border-right: 10px solid transparent;
+
+	border-left: 10px solid transparent;
+
+}
+
+#Books-Table tr:hover td
+
+{
+
+	color: #339;
+
+	background: #eff2ff;
+
+}
+
+#logo img   {
+
+	float: left;
+
+	position: absolute;
+
+	
+
+}
+
+
+
+#background {
+
+
+
+padding-top:25px;
+
+padding-bottom:25px;
+
+padding-right:50px;
+
+padding-left:50px;
+
+text-align:right;
+
+}
+
+#underlinemenu{
+width: auto;
+margin-top: -40px;
+float: right;
+}
+
+#underlinemenu ul{
+margin: 0;
+margin-bottom: 1em;
+padding-left: 0;
+float: left;
+font-weight: bold;
+width: 100%;
+border: 1px solid #DFDFDF;
+border-width: 1px 0;
+}
+
+* html #underlinemenu ul{ /*IE only rule. Delete extra margin-bottom*/
+margin-bottom: 0;
+}
+
+#underlinemenu ul li{
+display: inline;
+}
+
+
+#underlinemenu ul li a{
+float: left;
+color: gray;
+font-weight: bold;
+padding: 2px 6px 4px 6px;
+text-decoration: none;
+background: white url(media/menudivide.gif) top right repeat-y;
+}
+
+#underlinemenu ul li a:hover{
+color: black;
+background-color: #F3F3F3;
+border-bottom: 4px solid black;
+padding-bottom: 0;
+}
+
+#register {
+margin-top: 40px;
+}
+
+
+

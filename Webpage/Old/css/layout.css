@@ -1,0 +1,21 @@
+.col1,.col2,.col3,.cols {float:left}
+.col1 {width: 1030px;}
+.col4 {width: 1030px;}
+.col2 {width:290px}
+.cols {width:225px}
+/* index.html */
+#page1 {background:url(../images/bg_top.gif)}
+#page1 .text {background:url(../images/unicy.png) 0 0 no-repeat;padding:71px 0 0 500px;margin-top:17px;height:339px}
+#page1 .text1 span {padding-bottom:40px}
+
+/* index-1.html */
+/* index-2.html */
+/* index-3.html */
+#page4 .cols {width:85px}
+.android{ padding-top: 5px;}
+#screenshots {
+	width: 980px;
+}
+/* index-4.html */
+/* index-5.html */
+/* index-6.html */

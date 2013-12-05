@@ -17,7 +17,7 @@
  *  @file LoginViewController
  *  @brief View for logging in to system.
  *
- *  @author Chrysovalantis Anastasiou, Chrystalla Tsoutsouki
+ *  @author Chrysovalantis Anastasiou, Chrystalla Tsoutsouki, Aphrodite Christou
  *  @affiliation
  *      Data Management Systems Laboratory
  *      Dept. of Computer Science
@@ -34,26 +34,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UITableViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate,UIAlertViewDelegate>
+@interface LoginViewController : UITableViewController <UITextFieldDelegate, UIAlertViewDelegate> //ME
 {
     IBOutlet UITextField *username;
     IBOutlet UITextField *password;
     IBOutlet UISwitch *remember;
-    IBOutlet UIPickerView *libraries;
 }
 
 @property (nonatomic, retain) IBOutlet UITextField *username;
 @property (nonatomic, retain) IBOutlet UITextField *password;
 @property (nonatomic, retain) IBOutlet UISwitch *remember;
-@property (nonatomic, retain) IBOutlet UIPickerView *libraries;
-
-@property (nonatomic, retain) IBOutlet UILabel *title;
-@property (nonatomic, retain) NSDictionary *currentLib;
-@property (nonatomic, retain) NSString *baseURL;
-@property (nonatomic, retain) NSString *baseName;
 
 -(IBAction)login:(id)sender;
--(IBAction)showList:(id)sender;
--(void)refreshTitle;
 
 @end

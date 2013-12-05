@@ -39,6 +39,7 @@ $_SESSION['isMobileDevice'] = 0;
 $device = $_POST['device'];
 $pISBN = $_POST['isbn'];
 $pUsername = $_POST['username'];
+$lib_id = isset($_POST['libid']) ? intval($_POST['libid']) : 0;
 
 
 $_SESSION['UserID'] = "";
@@ -68,7 +69,7 @@ if ($_SESSION['isMobileDevice']) {
 
 
     //Check if book already exists to database
-    if (checkIfBookAlreadyExists($pUsername, $pISBN))
+    if (checkIfBookAlreadyExists($pUsername, $pISBN, $lib_id))
         mobileSendBookAlreadyExistsError();
 
     //URL for the Google Books API
@@ -198,7 +199,7 @@ if ($_SESSION['isMobileDevice']) {
 
         //Add Book to Database
         addBookToDatabase($book_ISBN, $book_title, $book_authors, $book_publishedYear,
-            $book_pageCount, $book_imgURL, $book_language);
+            $book_pageCount, $book_imgURL, $book_language, $lib_id);
 
 
     } else {
@@ -211,7 +212,7 @@ if ($_SESSION['isMobileDevice']) {
 
 ////////////////////////////////// Functions
 function addBookToDatabase($ISBN, $title, $authors, $publishedYear,
-                           $pageCount, $imgURL, $language)
+                           $pageCount, $imgURL, $language, $lib_id)
 {
 
     //Book Info Dont exists
@@ -240,11 +241,13 @@ function addBookToDatabase($ISBN, $title, $authors, $publishedYear,
         $_SESSION['BookInfoID'] = mysql_result($result, 0);
     }
 
-
+	$sql = sprintf("INSERT INTO SMARTLIB_BOOK (U_ID, LIB_ID, BI_ID) VALUES ('%s', %d, '%s')", 
+		mysql_real_escape_string($_SESSION["UserID"]), 
+		$lib_id, 
+		mysql_real_escape_string($_SESSION["BookInfoID"]));
+	
     //Create entry for Book between Book Info ID, and User ID
-    $insertBook
-        = mysql_query("INSERT INTO SMARTLIB_BOOK (U_ID, BI_ID) VALUES ('" . $_SESSION['UserID'] . "'," .
-        "'" . $_SESSION['BookInfoID'] . "')") or dbError(mysql_error());
+    $insertBook = mysql_query($sql) or dbError(mysql_error());
 
     //Inform user about Successfull Insertion
     mobileSendSuccess();
@@ -253,7 +256,7 @@ function addBookToDatabase($ISBN, $title, $authors, $publishedYear,
 
 
 //Checks if books already exists for user
-function checkIfBookAlreadyExists($pUser, $pISBN)
+function checkIfBookAlreadyExists($pUser, $pISBN, $lib_id)
 {
 
 
@@ -282,9 +285,7 @@ function checkIfBookAlreadyExists($pUser, $pISBN)
 
     //Find if Book of user exists
     // Check username uniqueness
-    $sqlString = "SELECT B_ID FROM SMARTLIB_BOOK WHERE U_ID='" . $_SESSION['UserID'] . "'" .
-        " AND BI_ID='" . $_SESSION['BookInfoID'] . "'";
-
+    $sqlString = sprintf("SELECT B_ID FROM SMARTLIB_BOOK WHERE LIB_ID=%d AND BI_ID=%d", $lib_id, $_SESSION['BookInfoID']);
 
     $bookMatches = mysql_query($sqlString);
 
@@ -469,98 +470,4 @@ function convertAccentsAndSpecialToNormal($string)
 
     return $string;
 }
-
-
-/*
- * result:1 BOOK_INSERTED
-* result:0 BOOK_ALREADY_EXISTS
-* result: -11 DATABASE_ERROR
-* result:-2 BOOK_ISBN_DONT_EXISTS (dont exists in Google Books API)
-* result: -12 Weird didnt matched a username with its unique id. this must be a programmers error
-*
-
-*
-*
-* */
-
-
-//echo  '<br />';
-
-
-//foreach ($data->totalItems as $items) {
-//		echo $items->firstName . '<br />';
-//	}
-
-
-//echo "</br>";echo "</br>";echo "</br>";
-//echo "title";
-
-//echo $data[0]->title;
-
-//	echo "</br>";
-//	echo "isbn";
-
-//	echo $data[0]->isbn;
-
-//echo $data['isbn']; // "apples"
-//	echo $data['title']; // "apples"
-//echo $data['b']; // "bananas"
-
-
-//echo "JSON decoded: ".$json_output;
-
-//	echo $data->{'isbn'}."</br>";
-//echo $data->{'title'}."</br>";
-//	echo $data->{'authors'}."</br>";
-//	echo $data->{'publishedYear'}."</br>";
-//	echo $data->{'pageCount'}."</br>";
-//	echo $data->{'language'}."</br>";
-
-
-/*	foreach ( $json_output->trends as $trend )
- {
-echo "{$trend->name}\n";
-}
-*/
-
-
-/* My key: AIzaSyDEe8uL165TMaqASbFRxTVfPSfbQvwCKd4
- *
-Da vinci code ISBN: 9780785941743, 9780593055052, 9780739326749, 9788467202397, 9780828815130
-
-
-WORKS FOR DAVINCI CODE!
-https://www.googleapis.com/books/v1/volumes?q=+isbn:9780739326749&key=AIzaSyDEe8uL165TMaqASbFRxTVfPSfbQvwCKd4
-
-
---------------------------------------------
-OLD CODE:
-
-"https://ajax.googleapis.com/ajax/services/search/books?v=1.0&q=ISBN"
-+ isbn+ "&key=ABQIAAAA94MJuF2gFa9KqeGTuI0EjBSkkyQUZK2-HCU2v8Q1ngVNh8D3JBThgk7ik35T7gM0BpiNLjAu-mKyIg&userip=192.168.0.1");
-
-
-https://ajax.googleapis.com/ajax/services/search/books?v=1.0&q=ISBN9780739326749&key=ABQIAAAA94MJuF2gFa9KqeGTuI0EjBSkkyQUZK2-HCU2v8Q1ngVNh8D3JBThgk7ik35T7gM0BpiNLjAu-mKyIg
------------------------------------------
-
-Performing a search
-
-You can perform a volumes search by sending an HTTP GET request to the following URI:
-
-https://www.googleapis.com/books/v1/volumes?q=search+terms
-This request has a single required parameter:
-
-q - Search for volumes that contain this text string. There are special keywords you can specify in the search terms to search in particular fields, such as:
-intitle: Returns results where the text following this keyword is found in the title.
-inauthor: Returns results where the text following this keyword is found in the author.
-inpublisher: Returns results where the text following this keyword is found in the publisher.
-subject: Returns results where the text following this keyword is listed in the category list of the volume.
-isbn: Returns results where the text following this keyword is the ISBN number.
-lccn: Returns results where the text following this keyword is the Library of Congress Control Number.
-oclc: Returns results where the text following this keyword is the Online Computer Library Center number.
-*
-*
-*/
-
-
 ?>

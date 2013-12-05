@@ -49,7 +49,7 @@ $_SESSION['destName'] = "";
 $_SESSION['destEmail'] = "";
 $_SESSION['senderName'] = "";
 $_SESSION['app'] = "Web";
-$_SESSION['appQR'] = "https://www.cs.ucy.ac.cy/projects/smartLib/images/qr.png";
+$_SESSION['appQR'] = "http://www.cs.ucy.ac.cy/projects/smartLib/images/qr.png";
 
 /*
  * username: from who i ask the book

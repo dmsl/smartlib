@@ -35,6 +35,7 @@
 #import "MyBookResultsCell.h"
 
 @implementation MyBookResultsCell
+
 @synthesize selectForShare,bookCover,title;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

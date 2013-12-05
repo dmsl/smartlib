@@ -17,7 +17,7 @@
  *  @file RegisterViewController.h
  *  @brief View for registering to system.
  *
- *  @author Chrysovalantis Anastasiou, Chrystalla Tsoutsouki
+ *  @author Chrysovalantis Anastasiou, Chrystalla Tsoutsouki, Aphrodite Christou
  *  @affiliation
  *      Data Management Systems Laboratory
  *      Dept. of Computer Science
@@ -34,7 +34,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RegisterViewController : UITableViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIAlertViewDelegate>
+@interface RegisterViewController : UITableViewController <UITextFieldDelegate, UIAlertViewDelegate> //ME
 {
     IBOutlet UITextField *username;
     IBOutlet UITextField *fname;
@@ -45,11 +45,8 @@
     IBOutlet UITextField *telephone;
     IBOutlet UISwitch *emailNotifications;
     IBOutlet UISwitch *appNotifications;
-    IBOutlet UIPickerView *libraries;
 }
 
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *title;
-@property (nonatomic, retain) IBOutlet UILabel *title2;
 @property (nonatomic, retain) IBOutlet UITextField *username;
 @property (nonatomic, retain) IBOutlet UITextField *fname;
 @property (nonatomic, retain) IBOutlet UITextField *lname;
@@ -59,13 +56,8 @@
 @property (nonatomic, retain) IBOutlet UITextField *telephone;
 @property (nonatomic, retain) IBOutlet UISwitch *emailNotifications;
 @property (nonatomic, retain) IBOutlet UISwitch *appNotifications;
-@property (nonatomic, retain) IBOutlet UIPickerView *libraries;
-@property (nonatomic, retain) NSString *baseURL;
-@property (nonatomic, retain) NSString *baseName;
 
 -(IBAction)resetFields:(id)sender;
 -(IBAction)submitRegistration:(id)sender;
--(IBAction)showList:(id)sender;
--(void)refreshTitle;
 
 @end

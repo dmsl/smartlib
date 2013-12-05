@@ -72,23 +72,34 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+#pragma mark Controller's methods
+
+-(IBAction)refreshResults:(id)sender
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"borrower"]; //NEW -> update details
+
+    [self reloadBooks:self];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     // create a toolbar that has two buttons in the right
-    UIToolbar* tools = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 96, 44.01)];
+ /*   UIToolbar* tools = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 96, 44.01)];
     NSMutableArray* buttons = [[NSMutableArray alloc] initWithCapacity:2];
     
     // create a standard "refresh" button to reset the fields
     UIBarButtonItem* bi = [[UIBarButtonItem alloc]
                            initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadBooks:)];
+    
     bi.style = UIBarButtonItemStyleBordered;
     [buttons addObject:bi];
     [bi release];
     
     //edit button
     [buttons addObject:[self editButtonItem]];
+    
     
     [tools setItems:buttons animated:NO];
     [buttons release];
@@ -98,13 +109,14 @@
     [tools release];
     
     self.navigationItem.rightBarButtonItem = right;
-    [right release];
+    [right release]; */
 
     NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
     username =[[userDef objectForKey:@"user"] objectForKey:@"username"];
-    if (![userDef objectForKey:@"userBooks"]) {
+    //NSLog(@"userBooks %@",[userDef objectForKey:@"userBooks"]);
+//    if (![userDef objectForKey:@"userBooks"]) {
         [self reloadBooks:self];
-    }
+/*    }
     else {
         loading = [[UIAlertView alloc] initWithTitle:@"Reading from device.." message:@"\n" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
         UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -118,10 +130,12 @@
         
         [self performSelector:@selector(readFromPhone) withObject:nil afterDelay:0];
     }
+ */
 }
 
 -(void)readFromPhone
 {
+    NSLog(@"readFromPhone");
     NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
     NSMutableArray *tempDicts = [userDef objectForKey:@"userBooks"];
     scannedBooks = [[NSMutableArray alloc] initWithCapacity:[tempDicts count]];
@@ -138,6 +152,7 @@
 
 -(IBAction)reloadBooks:(id)sender
 {
+    NSLog(@"reloadBooks");
     loading = [[UIAlertView alloc] initWithTitle:@"Getting list.." message:@"\n" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     indicator.center = loading.center;
@@ -164,13 +179,15 @@
     if ([[[scannedBooks objectAtIndex:0] objectForKey:@"result"] integerValue] == 1) {
         [(NSMutableArray*) scannedBooks removeObjectAtIndex:0];
         scannedBooks = (NSMutableArray*)[Book copyFromSmartLib:scannedBooks];
-        NSUserDefaults *myBooks = [NSUserDefaults standardUserDefaults];
+       // NSUserDefaults *myBooks = [NSUserDefaults standardUserDefaults];
+        //NSLog(@"myBooks %@",[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
         NSMutableArray *dicts = [[NSMutableArray alloc] initWithCapacity:[scannedBooks count]];
         for (NSInteger count=0; count<[scannedBooks count]; count++) {
             [dicts addObject:[[scannedBooks objectAtIndex:count] info]];
         }
-        [myBooks setObject:dicts forKey:@"userBooks"];
-        [myBooks synchronize];
+        //[myBooks setObject:dicts forKey:@"userBooks"];
+        //[myBooks synchronize];
+        //NSLog(@"userBooks %@",[myBooks objectForKey:@"userBooks"]);
         [dicts release];
         [self.tableView reloadData];
     }
@@ -204,6 +221,11 @@
     switch (result) {
         case 1:
         {
+            //NEW > UNTIL refresh getUserBooks
+            NSUserDefaults *userdef = [NSUserDefaults standardUserDefaults];
+            [userdef setObject:user forKey:@"borrower"];
+            //NSLog(@"BORROWER %@",[userdef objectForKey:@"borrower"]);
+            
             NSString *msg = [NSString stringWithFormat:@"Book successfully borrowed to %@",user];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Rented" message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
             alert.tag = 100;
@@ -325,22 +347,25 @@
         [myOptions showInView:self.view];
         [myOptions release];
     }
-    //not rental
+    //not rental => ADD delete
     else if(result ==-1 || result ==-2)
     {
-        UIActionSheet* myOptions = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel"destructiveButtonTitle:nil otherButtonTitles:@"Book Information",@"Change Book Status" ,nil];
+        //UIActionSheet* myOptions = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel"destructiveButtonTitle:nil otherButtonTitles:@"Book Information",@"Change Book Status" ,nil];
+        UIActionSheet* myOptions = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel"destructiveButtonTitle:nil otherButtonTitles:@"Book Information",@"Change Book Status",@"Delete Book" ,nil];
         myOptions.tag = 2;
         [myOptions showInView:self.view];
         [myOptions release];
         
     }
-    //available
+    //available => ADD delete
     else if(result==0)
     {
-        UIActionSheet* myOptions = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel"destructiveButtonTitle:nil otherButtonTitles:@"Book Information",@"Change Book Status",@"Lent the book" ,nil];
+        //UIActionSheet* myOptions = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel"destructiveButtonTitle:nil otherButtonTitles:@"Book Information",@"Change Book Status",@"Lent the book" ,nil];
+         UIActionSheet* myOptions = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel"destructiveButtonTitle:nil otherButtonTitles:@"Book Information",@"Change Book Status",@"Delete Book",@"Lent the book" ,nil];
         myOptions.tag = 3;
         [myOptions showInView:self.view];
         [myOptions release];
+
     }
     
     //Error appears
@@ -364,6 +389,7 @@
 }
 
 
+/*
 -(BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[[[scannedBooks objectAtIndex:indexPath.row] info] objectForKey:@"status"] integerValue] != 1) {
@@ -373,7 +399,7 @@
         return NO;
     }
 }
-
+*/
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -468,7 +494,8 @@
     }
 }
 
-
+// => Copy delete
+/*
 -(void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(editingStyle ==UITableViewCellEditingStyleDelete)
@@ -503,14 +530,14 @@
         [Book release];
     }
 }
-
+*/
 
 -(void) tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     [scannedBooks exchangeObjectAtIndex:[sourceIndexPath row] withObjectAtIndex:[destinationIndexPath row]];
 }
 
-
+/*
 -(void)actionSheet:(UIActionSheet *) actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == actionSheet.cancelButtonIndex)
@@ -580,6 +607,109 @@
         [rental release];
     }
 }
+*/
+
+-(void)actionSheet:(UIActionSheet *) actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == actionSheet.cancelButtonIndex)
+    {
+        NSLog(@"Cancel");
+    }
+    
+    else if (buttonIndex == 0)
+    {
+        NSLog(@"Book info");
+        [self performSegueWithIdentifier:@"bookInfo" sender:self];
+    }
+    
+    else if(buttonIndex == 1)
+    {
+        
+        NSLog(@"Change Book Status");
+        NSString *isbn= [[[scannedBooks objectAtIndex:number] info] objectForKey:@"isbn"];
+        
+        BookActions * action = [[BookActions alloc]init];
+        NSInteger result = [action stateOfBook:isbn user:username];
+        
+        NSString *Currentstatus=nil;
+        NSString *NewStatus=nil;
+        
+        if (result==-1 || result==-2)
+        {
+            Currentstatus=[[NSString alloc]initWithFormat:@"No Rental"];
+            NewStatus=[[NSString alloc]initWithFormat:@"Available"];
+            NextStatus=0;
+        }
+        
+        else if (!result)
+        {
+            Currentstatus=[[NSString alloc]initWithFormat:@"Available"];
+            NewStatus=[[NSString alloc]initWithFormat:@"No Rental"];
+            NextStatus =-1;
+        }
+        
+        else
+        {
+            UIAlertView *Error =[[UIAlertView alloc] initWithTitle:@"Error" message:@"Unexpected error appeared!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [Error show];
+            [Error release];
+            [self viewDidDisappear:YES];
+        }
+        
+        NSString *msg = [NSString stringWithFormat:@"Book status is going from %@ to %@",Currentstatus ,NewStatus];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Book Status "  message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        alert.tag =1;
+        [ alert show];
+        [alert release];
+        
+        // [msg release];
+        [NewStatus release];
+        [Currentstatus release];
+        [action release];
+    }
+    else if(buttonIndex == 2)
+    {
+        NSLog(@"Delete");
+        BookActions *Book = [[BookActions alloc]init];
+        NSString *isbn= [[[scannedBooks objectAtIndex:number] info] objectForKey:@"isbn"];
+        //NSString *isbn= [[[scannedBooks objectAtIndex:indexPath.row] info] objectForKey:@"isbn"];
+        
+        //check book's state.
+        NSInteger state= [Book stateOfBook:isbn user:username];
+        //number = indexPath.row;
+        // STATE -> AVAILABLE ->NO RENTAL  so user can delete it
+        if (state==0 || state==-1 || state== -2) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Are you sure you want to delete this book?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes",nil];
+            alert.tag = 100;
+            [alert show];
+            [alert release];
+        }
+        //STATE->RENTED
+        else if (state ==1)
+        {
+            UIAlertView *Error =[[UIAlertView alloc] initWithTitle:@"Error" message:@"Book is rented." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [Error show];
+            [Error release];
+        }
+        else
+        {
+            UIAlertView *Error =[[UIAlertView alloc] initWithTitle:@"Error" message:@"Unexpected error appeared!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [Error show];
+            [Error release];
+        }
+        [Book release];
+    } else
+    {
+        NSLog(@"Lent");
+        
+        UIAlertView *rental = [[UIAlertView alloc] initWithTitle:@"Rent Book..." message:@"Who will you rent the book to?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Rent", nil];
+        [rental setAlertViewStyle:UIAlertViewStylePlainTextInput];
+        rental.tag = 21;
+        [rental show];
+        [rental release];
+    }
+}
+
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -588,8 +718,6 @@
         BookDetailsViewController *mybooks = [segue destinationViewController];
         mybooks.bookInfo = [scannedBooks objectAtIndex:number];
     }
-    
-    
 }
 
 @end

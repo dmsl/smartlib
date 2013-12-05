@@ -78,15 +78,17 @@
 
         <!-- android:theme="@style/Theme.Sherlock.Light." -->
         <activity
+
                 android:name="cy.ac.ucy.paschalis.client.android.StartActivity"
                 android:configChanges="locale|orientation"
                 android:label="@string/title_smartlib"
                 android:windowSoftInputMode="stateHidden">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+            </intent-filter>s
         </activity>
         <activity
                 android:configChanges="locale"

@@ -39,6 +39,7 @@ $_SESSION['isMobileDevice']=0;
 $device = $_POST['device'];
 $pISBN = $_POST['isbn'];
 $pOwner = $_POST['owner'];
+$lib_id = isset($_POST["libid"]) ? intval($_POST["libid"]) : 0;
 
 /*owner
 * isbn
@@ -82,7 +83,7 @@ include ('../dbConnect.php');
 if($_SESSION['isMobileDevice']){
 
 	//Find out the relation between owner of bookand book
-	findUsersRelationWithBook($pOwner, $pISBN);
+	findUsersRelationWithBook($pOwner, $pISBN, $lib_id);
 
 	//If this book was already lented
 	if($_SESSION['BookStatus']==1){
@@ -163,10 +164,6 @@ function returnBookToOwner(){
 	
 }
 
-
-
-
-
 /**
  * Finds user's relation with book
  * 1:
@@ -178,7 +175,7 @@ function returnBookToOwner(){
  * -12: Weird Error
  *
  * */
-function findUsersRelationWithBook($pOwner,$pISBN){
+function findUsersRelationWithBook($pOwner, $pISBN, $lib_id){
 
 
 	$queryFindUser= sprintf("SELECT U_ID FROM SMARTLIB_USER WHERE username='%s'",
@@ -204,8 +201,7 @@ function findUsersRelationWithBook($pOwner,$pISBN){
 	}
 
 	//Find BookID and Its Status
-	$sqlString ="SELECT B_ID, status FROM SMARTLIB_BOOK WHERE U_ID='".$_SESSION['OwnerID']."'".
-			" AND BI_ID='".$_SESSION['BookInfoID']."'";
+	$sqlString ="SELECT B_ID, status FROM SMARTLIB_BOOK WHERE U_ID='".$_SESSION['OwnerID']."' AND LIB_ID = " . $lib_id . " AND BI_ID='".$_SESSION['BookInfoID']."'";
 
 
 	$bookMatches = mysql_query($sqlString);

@@ -39,6 +39,9 @@ $_SESSION['isMobileDevice'] = 0;
 
 //Get the device, ISBN & Username
 $device = $_REQUEST['device'];
+$lib_id = isset($_REQUEST["libid"]) ? intval($_REQUEST["libid"]) : 0;
+
+
 //$pUsername = $_REQUEST['username'];
 $pKey = $_REQUEST['mykey'];
 
@@ -81,69 +84,30 @@ if ($_SESSION['isMobileDevice']) {
     //	findUserID($pUsername);
     //}
 
-    printPopularBooks();
+    printPopularBooks($lib_id);
 
 }
 
 
-function printPopularBooks()
+function printPopularBooks($lib_id)
 {
-
-    /*
-PREVIOUS QUERY: Popular Books
-
-SELECT U.username, BI2.isbn, BI2.title, BI2.authors, BI2.publishedYear,
-BI2.pageCount, BI2.dateOfInsert,
-BI2.imgURL, BI2.lang, B2.status,
- count(*) AS CNT
-FROM SMARTLIB_USER U, SMARTLIB_BOOK_INFO BI2, SMARTLIB_BOOK B2,
-(
-(
--- Get Data from borrow history
-SELECT
-BI.BI_ID, BH.B_ID, BH.U_ID
-FROM SMARTLIB_BOOK B, SMARTLIB_BOOK_INFO BI, SMARTLIB_BORROW_HISTORY BH
-WHERE BI.BI_ID=B.BI_ID AND
-B.B_ID = BH.B_ID
-)
-UNION DISTINCT
-(
--- Get Data from Active Borrows
-SELECT BI.BI_ID, BR.B_ID, BR.U_ID
-FROM SMARTLIB_BOOK B, SMARTLIB_BOOK_INFO BI, SMARTLIB_BORROWS BR
-WHERE BI.BI_ID=B.BI_ID AND
-B.B_ID = BR.B_ID
-)
-
-UNION DISTINCT
-(
--- Get Latest book aditions
-SELECT BI.BI_ID, B.B_ID ,B.U_ID
-FROM SMARTLIB_BOOK B, SMARTLIB_BOOK_INFO BI
-WHERE BI.BI_ID=B.BI_ID ORDER BY BI.dateOfInsert LIMIT 20
-)
-
-)
-as T2
-WHERE BI2.BI_ID=T2.BI_ID
-AND B2.B_ID=T2.B_ID AND B2.U_ID=U.U_ID
-
-GROUP BY T2.BI_ID
-ORDER BY COUNT(*) DESC
-;
-
-     * */
-
-    $queryPopularBooksHugeQuery = sprintf(
-        "
-SELECT U.username, BI.isbn, BI.title, BI.authors, BI.publishedYear,
-BI.pageCount, BI.dateOfInsert,
-BI.imgURL, BI.lang, B.status
-FROM SMARTLIB_USER U, SMARTLIB_BOOK_INFO BI, SMARTLIB_BOOK B
-WHERE BI.BI_ID=B.BI_ID AND U.U_ID=B.U_ID ORDER BY B.dateOfInsert DESC LIMIT 50
-;
-"
+    $queryPopularBooksHugeQuery = sprintf("SELECT 
+			U.username, 
+			I.username as borrower, 
+			BI.isbn, BI.title, BI.authors, BI.publishedYear, BI.pageCount, BI.dateOfInsert, BI.imgURL, BI.lang, 
+			B.status
+		FROM SMARTLIB_USER U 
+			LEFT JOIN SMARTLIB_BOOK B ON B.U_ID = U.U_ID 
+			LEFT JOIN SMARTLIB_LIBRARY L ON B.LIB_ID = L.ID 
+			LEFT JOIN SMARTLIB_BOOK_INFO BI ON B.BI_ID = BI.BI_ID 
+			LEFT JOIN SMARTLIB_BORROWS R ON R.B_ID = B.B_ID 
+			LEFT JOIN SMARTLIB_USER I ON R.U_ID = I.U_ID 
+		WHERE L.ID = %d 
+		ORDER BY B.dateOfInsert DESC LIMIT 50", 
+		$lib_id
     );
+	
+	#
 
 
     //Find Unique ID of Book Info
@@ -157,9 +121,7 @@ WHERE BI.BI_ID=B.BI_ID AND U.U_ID=B.U_ID ORDER BY B.dateOfInsert DESC LIMIT 50
 
     if (!($_SESSION['web'] == 1)) {
 
-        $row_set[] = array(
-            "result" => "1",
-        );
+        $row_set[] = array("result" => "1");
     }
 
     while ($row = mysql_fetch_assoc($result)) {

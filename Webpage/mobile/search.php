@@ -38,6 +38,7 @@ $_SESSION['isMobileDevice']=0;
 //Get the device, ISBN & Username
 $device = $_POST['device'];
 $pUsername = $_POST['username'];
+$lib_id = isset($_POST["libid"]) ? intval($_POST["libid"]) : 0;
 $_SESSION['keyword']= $_POST['keyword'];
 $_SESSION['column']= $_POST['column'];
 
@@ -56,24 +57,19 @@ if($device=="android" || $device=="iOS"){
 //Connect to database
 include ('../dbConnect.php');
 
-
-
-
 if($_SESSION['isMobileDevice']){
 
-	
 	//Inform user about his relation with the book
 	verifyUser($pUsername);
 
 
 	//User wants specific search, but not puts keyword?
-	if($_SESSION['keyword']==""){
+	if($_SESSION['keyword']=="")
+	{
 		mobileSendWeirdError();
-			}
+	}
 
-		
-	printUserQuery();
-
+	printUserQuery($lib_id);
 }
 
 
@@ -102,70 +98,63 @@ function verifyUser($pUser){
 
 
 
-function printUserQuery(){
+function printUserQuery($lib_id){
 	
 	$escKeyword = mysql_real_escape_string($_SESSION['keyword']);
 	
 	$queryOfUser="";
 	
 	//Make a general query
-	if($_SESSION['column'] ==""){
+	if($_SESSION['column'] =="")
+	{
+		$queryOfUser = sprintf("SELECT 
+				U.username, 
+				L.name as libname, 
+				BI.isbn, BI.title, BI.authors, BI.publishedYear, BI.pageCount, BI.imgURL, BI.lang, 
+				B.dateOfInsert, B.status,
+				I.username as borrower 
+			FROM SMARTLIB_BOOK_INFO BI 
+				LEFT JOIN SMARTLIB_BOOK B ON BI.BI_ID = B.BI_ID 
+				LEFT JOIN SMARTLIB_USER U ON B.U_ID=U.U_ID 
+				LEFT JOIN SMARTLIB_LIBRARY L ON B.LIB_ID = L.ID 
+				LEFT JOIN SMARTLIB_BORROWS R ON B.B_ID = R.B_ID 
+				LEFT JOIN SMARTLIB_USER I ON R.U_ID = I.U_ID 
+			WHERE (BI.isbn like '%s%s%s' OR BI.title like '%s%s%s' OR BI.authors like '%s%s%s') AND (L.ID = %d OR %d = 0)  
+			ORDER BY BI.title",
+			"%", $escKeyword, "%", 
+			"%", $escKeyword, "%", 
+			"%", $escKeyword, "%", 
+			$lib_id,
+			$lib_id);
+	}
+	else 
+	{
+		if(!($_SESSION['column'] == "isbn" || $_SESSION['column'] == "title" || $_SESSION['column'] == "authors"))
+		{
+			mobileSendWeirdError();
+		}
 		
-
-		
-		$queryOfUser = sprintf("SELECT U.username, BI.isbn, BI.title, BI.authors, BI.publishedYear, " .
-				" BI.pageCount, B.dateOfInsert, BI.imgURL, BI.lang, B.status "
-				." FROM SMARTLIB_BOOK_INFO BI, SMARTLIB_BOOK B, SMARTLIB_USER U ".
-				" WHERE ( BI.isbn like '%s%s%s' OR ".
-				"  BI.title like '%s%s%s' OR ".
-				"  BI.authors like '%s%s%s' ) ".
-				"AND BI.BI_ID = B.BI_ID AND B.U_ID=U.U_ID ORDER BY BI.title",
-				"%",$escKeyword,"%",
-				"%",$escKeyword,"%",
-				"%",$escKeyword,"%"
-				);
-		
-		
+		$queryOfUser = sprintf("SELECT 
+				U.username, 
+				L.name as libname, 
+				BI.isbn, BI.title, BI.authors, BI.publishedYear, BI.pageCount, BI.imgURL, BI.lang, 
+				B.dateOfInsert, B.status,
+				I.username as borrower 
+			FROM SMARTLIB_BOOK_INFO BI 
+				LEFT JOIN SMARTLIB_BOOK B ON BI.BI_ID = B.BI_ID
+				LEFT JOIN SMARTLIB_USER U ON B.U_ID = U.U_ID 
+				LEFT JOIN SMARTLIB_LIBRARY L ON B.LIB_ID = L.ID 
+				LEFT JOIN SMARTLIB_BORROWS R ON B.B_ID = R.B_ID 
+				LEFT JOIN SMARTLIB_USER I ON R.U_ID = I.U_ID 
+			WHERE BI.%s like '%s%s%s' AND (L.ID = %d OR %d = 0) ORDER BY BI.title", 
+			$_SESSION['column'],
+			"%", $escKeyword, "%",
+			$lib_id,
+			$lib_id);
 	}
 
-	//Make a generic query
-	else {
-		/*
-		
-		Returns all usernames
-		
-		SELECT U.username, BI.*
-		FROM BOOK_INFO BI, BOOK B, USER U
-		WHERE BI.authors like '%dan b%'AND BI.BI_ID = B.BI_ID AND B.U_ID=U.U_ID
-		
-		* */
-		
-		//Force Query only to these fields
-		if(!($_SESSION['column']=="isbn" || $_SESSION['column']=="title"
-				|| $_SESSION['column']=="authors")){
-				mobileSendWeirdError();
-				}
-		
-		$queryOfUser = sprintf("SELECT U.username, BI.isbn, BI.title, BI.authors, BI.publishedYear, " .
-			" BI.pageCount, B.dateOfInsert, BI.imgURL, BI.lang, B.status "
-				." FROM SMARTLIB_BOOK_INFO BI, SMARTLIB_BOOK B, SMARTLIB_USER U ".
-		" WHERE BI.%s like '%s%s%s'AND BI.BI_ID = B.BI_ID AND B.U_ID=U.U_ID ORDER BY BI.title",
-				$_SESSION['column'],"%",$escKeyword,"%");
-		
-		
-		
-
-	}
-	
-	//echo $queryOfUser;76
-
-	
-	
 	//Run query TODO move outside
 	$result = mysql_query($queryOfUser) or dbError(mysql_error());
-
-
-
 	
 	
 	//Get book ID and its status

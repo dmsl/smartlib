@@ -1,0 +1,141 @@
+/* Getting the new tags to behave */
+article,aside,audio,canvas,command,datalist,details,embed,figcaption,figure,footer,header,hgroup,keygen,meter,nav,output,progress,section,source,video {display:block}
+mark,rp,rt,ruby,summary,time {display:inline}
+.left {float:left}
+.right {float:right}
+.wrapper {width:100%;overflow:hidden}
+body {background:url(../images/bg_top2.gif) top repeat-x #e2e2e2;border:0;font:13px Arial,Helvetica,sans-serif;color:#323232;line-height:17px}
+.ic, .ic a {border:0;float:right;background:#fff;color:#f00;width:50%;line-height:10px;font-size:10px;margin:-220% 0 0 0;overflow:hidden;padding:0}
+.css3 {border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;box-shadow:0 0 4px rgba(0,0,0,.4);-moz-box-shadow:0 0 4px rgba(0,0,0,.4);-webkit-box-shadow:0 0 4px rgba(0,0,0,.4);behavior:url(js/PIE.htc);position:relative}
+.main {	margin:0 auto;	width:1100px}
+a {color:#96c120;text-decoration:underline;outline:none}
+a:hover {text-decoration:none}
+h1 {float:left;padding:16px 0 0 0}
+h2 {font-size:35px;font-weight:600;color:#000;line-height:44px;padding:16px 0 9px 0;letter-spacing:-1px}
+h3 {font-size:15px;font-weight:600;color:#000;line-height:10px;padding:3px 0 0 0;letter-spacing:0px}
+.box h2 {padding:29px 0 16px 0}
+p {padding-bottom:17px}
+/* header */
+header {}
+#logo {display:block;background:url(../images/Smartscan.png) no-repeat;width: 145px;height: 95px;text-indent:-5000px}
+#search {float:right;padding:35px 0 0 0}
+#search .bg {background:url(../images/search.gif) no-repeat;width:193px;height:36px}
+#search .submit {float:right;height:36px;width:40px;background:none;cursor:pointer}
+#search .input {float:right;background:none;font:13px Arial,Helvetica,sans-serif;color:#323232;height:16px;width:143px;padding:10px;padding-right:0}
+#menu {overflow:hidden;margin-top:3px; float:right;}
+#menu li {float:left}
+#menu a {display:block;font-size:20px;font-weight:400;color:#000;background:url(../images/menu.gif) top repeat-x;line-height:55px;text-decoration:none}
+#menu li span {display:block;background:url(../images/menu_left.gif) top left no-repeat}
+#menu .alpha span {background:url(../images/left_menu.gif) top left no-repeat}
+#menu .alpha a:hover span,#menu .alpha#menu_active a span {background:url(../images/left_menu_active.gif) top left no-repeat}
+#menu .omega span span {background:url(../images/right_menu.gif) top right no-repeat}
+#menu .omega a:hover span span,#menu .omega#menu_active a span span {background:url(../images/right_menu_active.gif) top right no-repeat}
+#menu li span span,#menu .alpha span span {background:url(../images/menu_right.gif) top right no-repeat;padding:0 60px}
+#menu a:hover,#menu #menu_active a {color:#fff;background:url(../images/menu_active.gif) top repeat-x}
+#menu a:hover span,#menu #menu_active a span {background:url(../images/menu_left_active.gif) top left no-repeat}
+#menu a:hover span span,#menu #menu_active a span span,#menu .alpha#menu_active a span span,#menu .alpha a:hover span span {background:url(../images/menu_right_active.gif) top right no-repeat}
+.text {background:url(../images/unicy.png) 1px 0 no-repeat;padding:18px 0 0 20%;width:100%;margin-top:15px;text-align:center;height:265px; background-position-x: 20%; background-position-y: 35px;}
+.text1 {font-size:40px;font-weight:700;line-height:100px;color:#000;letter-spacing:-2px;display:block}
+.text1 span {display:block;font-size:30px;line-height:50px;margin-top:-17px;letter-spacing:-1px;padding-bottom:20px}
+.text .button {display:inline-block;font-size:30px;font-weight:700;color:#fff;line-height:53px;padding:0 37px;background:url(../images/button_bg.gif) top repeat-x #96c120;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;behavior:url(js/PIE.htc);position:relative;text-decoration:none}
+.text .button:hover {background:#696969}
+/* content */
+#content {margin-right:4px;background:url(../images/bg_cont.gif) bottom repeat-x #fff;border:1px solid #ccc;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;box-shadow:1px 1px 2px #cfcfcf;-moz-box-shadow:1px 1px 2px #cfcfcf;-webkit-box-shadow:1px 1px 2px #cfcfcf;behavior:url(js/PIE.htc);position:relative}
+.pad {padding:0 30px 0 35px}
+.pad_left1 {padding-left:55px}
+.pad_left2 {padding-left:45px}
+.marg_right1 {margin-right:12px}
+.marg_right2 {margin-right:18px}
+.pad_bot1 {padding-bottom:35px}
+.pad_bot2 {padding-bottom:49px}
+.pad_bot3 {padding-bottom:7px}
+.pad_bot4 {padding-bottom:17px}
+.marg_top {margin-top:17px}
+.marg_top2 {margin-top:7px}
+.box {background:#f5f5f5;behavior:url(js/PIE.htc);position:relative;width:100%;overflow:hidden}
+.box.top {border-radius:10px 10px 0 0;-moz-border-radius:10px 10px 0 0;-webkit-border-radius:10px 10px 0 0;behavior:url(js/PIE.htc)}
+.box.bot {border-radius:0 0 11px 11px ;-moz-border-radius:0 0 11px 11px;-webkit-border-radius:0 0 11px 11px;behavior:url(js/PIE.htc)}
+.banners {padding:19px 0 19px 19px;overflow:hidden}
+.banners li {width:210px;float:left;padding-right:12px}
+.banners p {padding-bottom:7px}
+.banners p.font1 {font-weight:bold;color:#318ea2;padding:16px 0 7px 0}
+.banners .marker {background:url(../images/marker_1.gif) no-repeat}
+.banners .marker:hover {background:url(../images/marker_3.gif) no-repeat}
+.banners .pad {padding:0 10px 0 15px}
+.marker {display:inline-block;background:url(../images/marker_3.gif) no-repeat;width:17px;height:17px}
+.marker:hover {display:inline-block;background:url(../images/marker_1.gif) no-repeat;width:17px;height:17px}
+.line1 {background:url(../images/line_ver1.gif) 250px 0 repeat-y;padding:7px 0}
+.under {padding-bottom:17px;border-bottom:1px solid #ddd;margin-bottom:17px}
+.color1 {color:#96c120}
+.list1 li {line-height:23px}
+.list1 li a {padding-left:20px;background:url(../images/marker_2.gif) 5px 5px no-repeat}
+/* footer */
+footer {padding:25px 0 28px 0;width:100%;overflow:hidden;text-align:center;line-height:18px}
+footer a {}
+footer a:hover {}
+/* forms */
+#ContactForm {font-weight:bold;color:#323232;line-height:28px}
+#ContactForm .wrapper {padding-bottom:6px}
+#ContactForm .bg {background:url(../images/bg_input.gif) top repeat-x #e6e6e6;float:right;margin-right:150px;border:1px solid #ccc;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;box-shadow:1px 1px 2px #e3e3e3;-moz-box-shadow:1px 1px 2px #e3e3e3;-webkit-box-shadow:1px 1px 2px #e3e3e3;behavior:url(js/PIE.htc);position:relative;height:26px}
+#ContactForm .bg2 {background:url(../images/bg_textarea.gif) top repeat-x #e6e6e6;float:right;margin-right:2px;border:1px solid #ccc;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;box-shadow:1px 1px 2px #e3e3e3;-moz-box-shadow:1px 1px 2px #e3e3e3;-webkit-box-shadow:1px 1px 2px #e3e3e3;behavior:url(js/PIE.htc);position:relative;height:191px}
+#ContactForm .button {margin-left:8px;margin-top:9px;float:right;margin-right:2px;font-size:20px;font-weight:700;color:#fff;line-height:35px;width:90px;text-align:center;background:url(../images/button_form.gif) top repeat-x #308da2;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;behavior:url(js/PIE.htc);position:relative;text-decoration:none}
+#ContactForm .input {width:260px;height:16px;background:none;padding:5px 10px;color:#323232;font:13px Arial,Helvetica,sans-serif;margin:0}
+#ContactForm textarea {overflow:auto;width:260px;height:181px;padding:5px 10px;color:#323232;font:13px Arial,Helvetica,sans-serif;margin:0}
+#ContactForm .button:hover {background:#696969}
+
+#register {
+margin-top: 40px;
+border-collapse: collapse;
+}
+
+#login {
+margin-top: 40px;
+border-collapse: collapse;
+}
+
+#register td {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#login td {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#contact {
+margin-top: 40px;
+float:left;
+margin-left:100px;
+}
+
+#sendEmail {
+	float:left;
+	margin-left: 150px;
+	}
+	
+#map {
+ margin-top:40px;
+ width:100%;
+ height:300px;
+ 
+}
+
+.success, .error {
+  border: 1px solid;
+  margin: 10px 0px;
+  padding:15px 10px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+}
+.success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  background-image:url('../images/success.png');
+}
+
+.error {
+  color: #D8000C;
+  background-color: #FFBABA;
+  background-image: url('../images/error.png');
+}

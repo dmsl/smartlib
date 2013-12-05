@@ -49,7 +49,7 @@
     UIAlertView *waiting;
     UIActionSheet *actions;
 }
-@synthesize cover,title,authors,pageCount,isbn,lang,publishYear,owner,availability;
+@synthesize cover,title,authors,pageCount,isbn,lang,publishYear,owner,availability,borrower,library_name;
 @synthesize bookInfo;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -77,11 +77,30 @@
 {   
     cover.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[bookInfo.info objectForKey:@"imgURL"]]]];
     title.text = [bookInfo.info objectForKey:@"title"];
+    if ([title.text isEqualToString:@""])
+        title.text=@"N/A";
+    
     authors.text = [bookInfo.info objectForKey:@"authors"];
+    if ([authors.text isEqualToString:@""])
+        authors.text=@"N/A";
+    
     pageCount.text = [NSString stringWithFormat:@"%@",[bookInfo.info objectForKey:@"pageCount"]];
+    if ([pageCount.text isEqualToString:@""])
+        pageCount.text=@"N/A";
+    
     isbn.text = [bookInfo.info objectForKey:@"isbn"];
+    if ([isbn.text isEqualToString:@""])
+        isbn.text=@"N/A";
+    
     lang.text = [bookInfo.info objectForKey:@"lang"];
+    if ([lang.text isEqualToString:@""])
+        lang.text=@"N/A";
+    
     publishYear.text = [bookInfo.info objectForKey:@"publishedYear"];
+    if ([publishYear.text isEqualToString:@""])
+        publishYear.text=@"N/A";
+    
+    //Owner
     if ([[bookInfo.info objectForKey:@"username"] isEqualToString:@""] || ![bookInfo.info objectForKey:@"username"]) {
         owner.text = username;
         [bookInfo.info setValue:username forKey:@"username"];
@@ -89,6 +108,14 @@
     else {
         owner.text = [bookInfo.info objectForKey:@"username"];
     }
+    
+    library_name.text = [bookInfo.info objectForKey:@"libname"];
+    if ([library_name.text isEqualToString:@""])
+        library_name.text=@"N/A";
+   
+    /*if ([publishYear.text isEqualToString:@""])
+        publishYear.text=@"N/A";
+    */
     state = [[BookActions alloc] init];
     state.delegate = nil;
     NSInteger stateCode = [state stateOfBook:isbn.text user:owner.text];
@@ -118,8 +145,34 @@
         }
     }
     [state release];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([availability.text isEqualToString:@"YES"]) {
+        borrower.text = @"None";
+    } else {
+        
+        //NEW
+        //NSLog(@"borrower in %@",[userDefaults objectForKey:@"borrower"]);
+        if ([userDefaults objectForKey:@"borrower"]!=nil) {
+            borrower.text=[userDefaults objectForKey:@"borrower"];
+        } //end NEW
+        
+        else {
+        
+            if ([bookInfo.info objectForKey:@"borrower"]) {
+                if ([[bookInfo.info objectForKey:@"borrower"] isKindOfClass:[NSNull class]]) {
+                    borrower.text= @"N/A";
+                } else {
+                    if ([[bookInfo.info objectForKey:@"username"] isEqualToString:[[userDefaults objectForKey:@"user"]objectForKey:@"username"]] ||     [[bookInfo.info objectForKey:@"borrower"] isEqualToString:[[userDefaults objectForKey:@"user"]objectForKey:@"username"]]) {
+                            borrower.text=[bookInfo.info objectForKey:@"borrower"];
+                    } else
+                    borrower.text= @"N/A";
+                }
+            }
+        }
+    }
 }
-
 
 -(IBAction)takeAction:(id)sender
 {   
@@ -338,7 +391,7 @@
 //{
 //    // Navigation logic may go here. Create and push another view controller.
 //    /*
-//     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+//     DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"Nib name" bundle:nil];
 //     // ...
 //     // Pass the selected object to the new view controller.
 //     [self.navigationController pushViewController:detailViewController animated:YES];
@@ -346,7 +399,7 @@
 //     */
 //}
 
-
+/*
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ( [[segue identifier] isEqualToString:@"enterKeywords"] ) {
@@ -355,4 +408,6 @@
         nextView.delegate = self;
     }
 }
+*/
+
 @end

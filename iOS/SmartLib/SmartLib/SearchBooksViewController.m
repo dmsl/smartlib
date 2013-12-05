@@ -351,6 +351,8 @@
     results = (NSMutableArray*)[searching searchForBooksWithKeywords:searchField.text forUser:[[[NSUserDefaults standardUserDefaults] objectForKey:@"user"] objectForKey:@"username"] advancedSearch:advanced];
     [searching release];
     
+    NSLog(@"search result %d",[[[results objectAtIndex:0] objectForKey:@"result"] integerValue]);
+    
     if ([[[results objectAtIndex:0] objectForKey:@"result"] integerValue] == 1) {
         NSLog(@"Found %@ books",[[results objectAtIndex:0] objectForKey:@"booksNum"]);
         [results removeObjectAtIndex:0];

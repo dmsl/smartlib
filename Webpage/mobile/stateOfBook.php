@@ -40,6 +40,7 @@ $_SESSION['isMobileDevice']=0;
 $device = $_POST['device'];
 $pISBN = $_POST['isbn'];
 $pUsername = $_POST['username'];
+$lib_id = isset($_POST['libid']) ? intval($_POST['libid']) : 0;
 
 $_SESSION['UserID']="";
 $_SESSION['BookInfoID']="";
@@ -62,7 +63,7 @@ include ('../dbConnect.php');
 if($_SESSION['isMobileDevice']){
 
 	//Inform user about his relation with the book
-	sendUserStateOfBook($pUsername, $pISBN);
+	sendUserStateOfBook($pUsername, $pISBN, $lib_id);
 
 	/*
 	 *  0: Available
@@ -83,11 +84,12 @@ if($_SESSION['isMobileDevice']){
 
 
 //Checks if books already exists for user
-function sendUserStateOfBook($pUser,$pISBN){
+function sendUserStateOfBook($pUser,$pISBN, $lib_id){
 	
 	
 	$queryFindUser= sprintf("SELECT U_ID FROM SMARTLIB_USER WHERE username='%s'",
 			mysql_real_escape_string($pUser));
+			
 
 	// Find Unique ID of User
 	$result = mysql_query($queryFindUser) or dbError(mysql_error());
@@ -111,21 +113,20 @@ function sendUserStateOfBook($pUser,$pISBN){
 
 	//Find if Book of user exists
 	// Check username uniqueness
-	$sqlString ="SELECT status FROM SMARTLIB_BOOK WHERE U_ID='".$_SESSION['UserID']."'".
-			" AND BI_ID='".$_SESSION['BookInfoID']."'";
-
-
+	$sqlString = sprintf("SELECT status from SMARTLIB_BOOK WHERE LIB_ID=%d AND BI_ID=%d", $lib_id, $_SESSION["BookInfoID"]);
+	
 	$bookMatches = mysql_query($sqlString);
-	
-	
-
-	
 
 	$bookExists = mysql_num_rows($bookMatches);
 
-	if($bookExists > 0){
+	if($bookExists > 0)
+	{
 		// Find Status Code of User's Book
-		$_SESSION['status'] = mysql_result($bookMatches, 0);
+		
+		$book_status = mysql_result($bookMatches, 0);
+		
+		$_SESSION['status'] = $book_status;
+		
 		mobileSendBookOwnershipInfo($_SESSION['status']);
 
 	}

@@ -17,7 +17,7 @@
  *  @file SmartLibMenuViewController.h
  *  @brief Application's main menu.
  *
- *  @author Chrysovalantis Anastasiou
+ *  @author Chrysovalantis Anastasiou, Aphrodite Christou
  *  @affiliation
  *      Data Management Systems Laboratory
  *      Dept. of Computer Science
@@ -42,7 +42,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *welcome;
 
 -(IBAction)appOptions:(id)sender;
-
+-(IBAction)mainMenu:(id)sender;
 -(IBAction)scanner:(id)sender;
 
 @end

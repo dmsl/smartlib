@@ -42,7 +42,7 @@ $device = $_POST['device'];
 $pISBN = $_POST['isbn'];
 $pOwner = $_POST['owner'];
 $pDestination = $_POST['destination'];
-
+$lib_id = isset($_POST["libid"]) ? intval($_POST["libid"]) : 0;
 
 
 /*owner
@@ -88,29 +88,21 @@ if($_SESSION['isMobileDevice']){
 	
 
 	//Find out the relation between owner of bookand book
-	findUsersRelationWithBook($pOwner, $pISBN);
+	findUsersRelationWithBook($pOwner, $pISBN, $lib_id);
 	
 	//Find User ID of Destination User
 	findUserIdOfDestination($pDestination);
 	
 	//Lent this book from user Owner to user Destination
-	if($_SESSION['BookStatus']==0){
+	if ($_SESSION['BookStatus'] == 0)
+	{
 		lentBookToUser();
-		//Send Success Message
 		mobileSendSuccessMessage();
-		
 	}
-	//Weird Error . This should have been checked before
-	else{
+	else
+	{
 		mobileSendWeirdError();
 	}
-	
-	
-
-
-
-
-
 }
 
 //Lents a Book from user owner to user Destination
@@ -192,20 +184,17 @@ function findUserIdOfDestination($pDestination){
  * -12: Weird Error
  *
  * */
-function findUsersRelationWithBook($pOwner,$pISBN){
+function findUsersRelationWithBook($pOwner,$pISBN, $lib_id){
 
 
-	$queryFindUser= sprintf("SELECT U_ID FROM SMARTLIB_USER WHERE username='%s'",
-			mysql_real_escape_string($pOwner));
+	$queryFindUser = sprintf("SELECT U_ID FROM SMARTLIB_USER WHERE username='%s'", mysql_real_escape_string($pOwner));
 
-	// Find Unique ID of User
 	$result = mysql_query($queryFindUser) or dbError(mysql_error());
 	$_SESSION['OwnerID'] = mysql_result($result, 0);
-
-	if($_SESSION['OwnerID'] ==""){
+	if($_SESSION['OwnerID'] =="")
+	{
 		mobileSendWeirdError();
 	}
-
 
 	//Find Unique ID of Book Info
 	$result = mysql_query("SELECT BI_ID FROM SMARTLIB_BOOK_INFO WHERE isbn='".$pISBN."'") or dbError(mysql_error());
@@ -218,12 +207,8 @@ function findUsersRelationWithBook($pOwner,$pISBN){
 	}
 
 	//Find BookID and Its Status
-	$sqlString ="SELECT B_ID, status FROM SMARTLIB_BOOK WHERE U_ID='".$_SESSION['OwnerID']."'".
-			" AND BI_ID='".$_SESSION['BookInfoID']."'";
-
-
+	$sqlString ="SELECT B_ID, status FROM SMARTLIB_BOOK WHERE U_ID='".$_SESSION['OwnerID']."' AND LIB_ID = " . $lib_id . " AND BI_ID='".$_SESSION['BookInfoID']."'";
 	$bookMatches = mysql_query($sqlString);
-
 
 	//Get book ID and its status
 	if(mysql_num_rows($bookMatches) > 0){

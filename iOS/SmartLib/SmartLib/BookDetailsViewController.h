@@ -46,6 +46,9 @@
     IBOutlet UITextView *lang;
     IBOutlet UITextView *owner;
     IBOutlet UITextView *availability;
+    IBOutlet UITextView *borrower;
+     IBOutlet UITextView *library_name;
+    
     Book *bookInfo;
 }
 
@@ -58,6 +61,8 @@
 @property (nonatomic, retain) IBOutlet UITextView *lang;
 @property (nonatomic, retain) IBOutlet UITextView *owner;
 @property (nonatomic, retain) IBOutlet UITextView *availability;
+@property (nonatomic, retain) IBOutlet UITextView *borrower;
+@property (nonatomic, retain) IBOutlet UITextView *library_name;
 @property (nonatomic, retain) Book *bookInfo;
 
 -(IBAction)takeAction:(id)sender;

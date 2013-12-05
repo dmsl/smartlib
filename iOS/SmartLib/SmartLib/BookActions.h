@@ -43,7 +43,12 @@
 
 @property (nonatomic, retain) id delegate;
 
--(NSArray*)getLibraries;
+//-(NSArray*)getLibraries;
+-(NSMutableArray*)getLibraries;
+-(NSMutableArray*)getUserLibraries;
+-(NSArray*)searchForLibrariesWithKeywords:(NSString*)keywords;// advancedSearch:(NSString*)extras;
+-(NSArray*)searchForUserLibrariesWithKeywords:(NSString*)keywords forUser:(NSString*)user;// advancedSearch:(NSString*)extras;
+
 
 -(NSInteger)saveBook:(NSString*)isbn;
 -(NSInteger)stateOfBook:(NSString*)isbn user:(NSString*)username;

@@ -72,15 +72,15 @@
         Book *temp = [scannedBooks objectAtIndex:count];
         
         if ([[temp.info objectForKey:@"isbn"] isEqualToString:isbn]) {
-//future use of remember duplicates switch
-//            
-//            if (duplicates.on) {
-//                NSNumber *copies = [temp.info objectForKey:@"bookCopies"];
-//                copies = [NSNumber numberWithInt: [copies integerValue] + 1];
-//                [temp.info setValue:copies forKey:@"bookCopies"];
-//                [copies release];
-//            }
-                return YES;
+            //future use of remember duplicates switch
+            //
+            //            if (duplicates.on) {
+            //                NSNumber *copies = [temp.info objectForKey:@"bookCopies"];
+            //                copies = [NSNumber numberWithInt: [copies integerValue] + 1];
+            //                [temp.info setValue:copies forKey:@"bookCopies"];
+            //                [copies release];
+            //            }
+            return YES;
         }
     }
     return NO;
@@ -92,7 +92,7 @@
     
     // Prepare URL request to download info
     NSString *urlS = [NSString stringWithFormat: @"https://www.googleapis.com/books/v1/volumes?q=+isbn:%@&key=AIzaSyCGV3gOZL3bDjjmSHjpZ-bu1_i1CY6h-Gk",isbn];
-
+    
     NSData *response = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlS]];
     NSString *json_string = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
     
@@ -111,7 +111,7 @@
         [number release];
         return NO;
     }
-    else 
+    else
     {
         volumeInfo = [[[volumeInfo objectForKey:@"items"] objectAtIndex:0] objectForKey:@"volumeInfo"];
         Book *book = [[Book alloc] init];
@@ -131,7 +131,7 @@
     //remove viewer when scan finished
     [[Zreader readerView] stop];
     
-    if (GET_BOOL([[[NSUserDefaults standardUserDefaults] objectForKey:@"appPreferences"]objectForKey:@"beep"])) 
+    if (GET_BOOL([[[NSUserDefaults standardUserDefaults] objectForKey:@"appPreferences"]objectForKey:@"beep"]))
     {
         [self beep];
     }
@@ -298,7 +298,7 @@
         Zreader.cameraFlashMode = UIImagePickerControllerCameraFlashModeOn;
     }
     else {
-        Zreader.cameraFlashMode = UIImagePickerControllerCameraFlashModeOff;        
+        Zreader.cameraFlashMode = UIImagePickerControllerCameraFlashModeOff;
     }
 }
 
@@ -317,7 +317,7 @@
                 [self vibrate];
             }
             NSString *isbn = [alertView textFieldAtIndex:0].text;
- 
+            
             [self performSelector:@selector(takeActionForISBN:) withObject:isbn afterDelay:0];
         }
         else {
@@ -404,11 +404,11 @@
     if ([popover isPopoverVisible]) {
         [popover dismissPopoverAnimated:NO];
     }
-//    [[Zreader readerView] stop];
-//    UIAlertView *mainMenu = [[UIAlertView alloc] initWithTitle:@"Warning!" message:@"You will lose all unsaved scanned books. Is it OK?" delegate:self cancelButtonTitle:@"Don't Leave" otherButtonTitles:@"Main Menu", nil];
-//    mainMenu.tag = 3;
-//    [mainMenu show];
-//    [mainMenu release];
+    //    [[Zreader readerView] stop];
+    //    UIAlertView *mainMenu = [[UIAlertView alloc] initWithTitle:@"Warning!" message:@"You will lose all unsaved scanned books. Is it OK?" delegate:self cancelButtonTitle:@"Don't Leave" otherButtonTitles:@"Main Menu", nil];
+    //    mainMenu.tag = 3;
+    //    [mainMenu show];
+    //    [mainMenu release];
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -419,7 +419,7 @@
     Zreader = nil;
     Zreader.cameraFlashMode = UIImagePickerControllerCameraFlashModeOff;
     [readerViewer addSubview:[self makeViewer]];
-//    [readerViewer sizeToFit];
+    //    [readerViewer sizeToFit];
     flash.on = NO;
     duplicates.on = NO;
     scannedBooks = [[NSMutableArray alloc] initWithCapacity:4];
@@ -429,7 +429,7 @@
     }
 }
 
--(void)viewDidAppear:(BOOL)animated 
+-(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [[Zreader readerView] start];
@@ -502,7 +502,7 @@
             dvc.popover = popover;
         }
     }
-
+    
     if ([popover isPopoverVisible]) {
         [popover dismissPopoverAnimated:NO];
     }
@@ -510,7 +510,7 @@
         [option dismissWithClickedButtonIndex:-1 animated:YES];
         option = nil;
     }
-
+    
 }
 
 

@@ -71,6 +71,7 @@
     [internetReachable startNotifier];
     
     // check if a pathway to a random host exists
+    //HOST_NAME => "www.cs.ucy.ac.cy"
     hostReachable = [[Reachability reachabilityWithHostName: @"www.cs.ucy.ac.cy"] retain];
     [hostReachable startNotifier];
     

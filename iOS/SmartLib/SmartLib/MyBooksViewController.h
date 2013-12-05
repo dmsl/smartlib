@@ -56,5 +56,6 @@
 
 -(IBAction)mainMenu:(id)sender;
 -(IBAction)reloadBooks:(id)sender;
+-(IBAction)refreshResults:(id)sender;
 
 @end

@@ -17,7 +17,7 @@
  *  @file LoginViewController
  *  @brief View for logging in to system.
  *
- *  @author Chrysovalantis Anastasiou, Chrystalla Tsoutsouki
+ *  @author Chrysovalantis Anastasiou, Chrystalla Tsoutsouki, Aphrodite Christou
  *  @affiliation
  *      Data Management Systems Laboratory
  *      Dept. of Computer Science
@@ -34,26 +34,14 @@
 
 #import "LoginViewController.h"
 #import "BookActions.h"
-#import "PickerViewPopover.h"
-
-@interface LoginViewController ()
-
--(void)getLibraries;
-
-@end
 
 @implementation LoginViewController
 {
-    NSArray *librariesList;
     id responder;
-    NSString *baseURL;
     UIAlertView *waiting;
-//    UIView *indicating;
-    UIPopoverController *popover;
-    UIActionSheet *sheet;
 }
 
-@synthesize username, password, remember, libraries, title, currentLib, baseName, baseURL;
+@synthesize username, password, remember ;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -67,69 +55,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
+    
+/*
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"baseURL"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"currentLib"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"new"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"new2"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"rememberedLibs"];
+    [[NSUserDefaults standardUserDefaults]synchronize ];
+    NSLog(@"empty %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);  */
 
--(void)refreshTitle
-{
-    title.text = baseName;
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [librariesList release];
-    [baseURL release];
+    
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-//        indicating = [[UIView alloc] init];
-//        indicating.center = libraries.center;
-//        indicating.frame = CGRectMake([libraries center].x-50,[libraries center].y-50, 100, 100);
-//        indicating.backgroundColor = [UIColor blackColor];
-//        indicating.alpha = 0.5;
-//        [self.view addSubview:indicating];
-//        UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-//        indicator.center = CGPointMake(50, 50);
-//        [indicator startAnimating];
-//        [indicating addSubview:indicator];
-//        [indicator release];
-//        
-        [self performSelector:@selector(getLibraries) withObject:nil afterDelay:0];
-//    }
-}
-
--(void)dismissActionSheet
-{
-    currentLib = [librariesList objectAtIndex:[libraries selectedRowInComponent:0]];
-    [self pickerView:libraries didSelectRow:[libraries selectedRowInComponent:0] inComponent:0];
-    [self refreshTitle];
-    [sheet dismissWithClickedButtonIndex:-1 animated:YES];
-}
-
--(void)getLibraries
-{
-    BookActions *getLibraries = [[BookActions alloc] init];
-    librariesList = [[getLibraries getLibraries] retain];
-    [getLibraries release];
-//    [indicating removeFromSuperview];
-    if ([[[librariesList objectAtIndex:0] objectForKey:@"result"] integerValue] == 1) {
-        [(NSMutableArray*)librariesList removeObjectAtIndex:0];
-        [libraries reloadAllComponents];
-    }
-    else if ([[[librariesList objectAtIndex:0] objectForKey:@"result"] integerValue] == -11) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Database Error" message:@"Error connecting to database" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Try again", nil];
-        alert.tag = 2;
-        [alert show];
-        [alert release];
-    }
-}
-
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -153,17 +97,18 @@
 }
 
 -(IBAction)login:(id)sender
-{   
-    if (([username.text isEqualToString:@""]) ||([password.text isEqualToString:@""]) || [baseURL isEqualToString:@""])
+{
+    if (([username.text isEqualToString:@""]) ||([password.text isEqualToString:@""]))
     {
         NSString *alertTitle = @"Error";
         NSString *alertMessage = @"You haven't filled all the required fields.";
         UIAlertView *registrationDone = [[UIAlertView alloc] initWithTitle: alertTitle message: alertMessage delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Retry" ,  nil];
-        registrationDone.tag = 1;
+        //registrationDone.tag = 1;
+        registrationDone.tag=2; //ME
         [registrationDone show];
         [registrationDone release];
     }
-    else 
+    else
     {
         waiting = [[UIAlertView alloc] initWithTitle:@"Logging in.." message:@"\n" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
         UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -176,7 +121,7 @@
         
         [self performSelector:@selector(loggingIn) withObject:nil afterDelay:1];
     }
-
+    
 }
 
 -(void)loggingIn
@@ -184,8 +129,9 @@
     NSUserDefaults *addingUserCred = [NSUserDefaults standardUserDefaults];
     
     //url request to check authentication
-    NSString *URL = [NSString stringWithFormat:@"%@/mobile/%@",baseURL,LOGIN_PHP];
+    NSString *URL = [NSString stringWithFormat:@"%@/mobile/%@",MASTER_URL,LOGIN_PHP]; //ME
     NSMutableURLRequest *login = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL]];
+    
     NSString *formData = [[NSString alloc] initWithFormat:@"device=iOS&username=%@&password=%@",username.text,password.text];
     [login setHTTPMethod:@"POST"];
     [login setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
@@ -205,13 +151,13 @@
     //dismiss the indicator alert
     [waiting dismissWithClickedButtonIndex:-1 animated:YES];
     [waiting release];
+    
     if ([userInfo isEqualToDictionary:nil] || userInfo == nil ) {
-        UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Sorry this is not a valid library anymore." delegate:self cancelButtonTitle:@"Clear" otherButtonTitles:@"Retry", nil];
+        UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Sorry something going wrong." delegate:self cancelButtonTitle:@"Clear" otherButtonTitles:@"Retry", nil];
         error.tag = 2;
         [error show];
         [error release];
-    }
-    else if ([[userInfo objectForKey:@"result"] isEqualToString:@"0"]) {
+    } else if ([[userInfo objectForKey:@"result"] isEqualToString:@"0"]) {
         NSLog(@"Either your username or password is wrong.");
         UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Either your username or password is wrong." delegate:self cancelButtonTitle:@"Clear" otherButtonTitles:@"Retry", nil];
         error.tag = 2;
@@ -233,35 +179,16 @@
             [userCredentials setObject:username.text forKey:@"username"];
             [userCredentials setObject:password.text forKey:@"password"];
             
-            if (remember.on) {
-                NSMutableDictionary *rememberedLibs = [[addingUserCred objectForKey:@"rememberedLibs"] mutableCopy];
-                if (rememberedLibs == nil) {
-                    rememberedLibs = [[NSMutableDictionary alloc] initWithCapacity:2];
-                }
-                
-//                if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-                    [rememberedLibs setObject:userCredentials forKey:baseName];
-//                }
-//                else {
-//                    [rememberedLibs setObject:userCredentials forKey:[[librariesList objectAtIndex:[libraries selectedRowInComponent:0]] objectForKey:@"name"]];
-//                }
-                [addingUserCred setObject:rememberedLibs forKey:@"rememberedLibs"];
-                [rememberedLibs release];
-            }
             [addingUserCred setObject:userCredentials forKey:@"userCredentials"];
             [userCredentials release];
-            [addingUserCred setBool:remember.on forKey:@"rememberThisLib"];
+            
+            [addingUserCred setBool:remember.on forKey:@"rememberThis"];
+
             [addingUserCred setBool:YES forKey:@"session"];
             [addingUserCred setObject:userInfo forKey:@"user"];
-            [addingUserCred setObject:baseURL forKey:@"baseURL"];
-//            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-                [addingUserCred setObject:currentLib forKey:@"currentLib"];
-//            }
-//            else {
-//                [addingUserCred setObject:[librariesList objectAtIndex:[libraries selectedRowInComponent:0]] forKey:@"currentLib"];
-//            }
             [addingUserCred synchronize];
-            [self performSegueWithIdentifier:@"enterLibrary" sender:self];
+            
+            [self performSegueWithIdentifier:@"Liblogin" sender:self]; //ME
         }
         else if (level == 0){
             UIAlertView *notActivated = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please activate your account and then try logging in again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -269,7 +196,7 @@
             [notActivated release];
             if ([addingUserCred objectForKey:@"userCredentials"]!=nil) {
                 [addingUserCred removeObjectForKey:@"userCredentials"];
-                [addingUserCred setBool:NO forKey:@"rememberThisLib"];
+                [addingUserCred setBool:NO forKey:@"rememberThis"];
                 [addingUserCred synchronize];
             }
             if ([addingUserCred objectForKey:@"user"]!=nil) {
@@ -279,13 +206,13 @@
         }
         else if (level == -1) {
             
-        }
-        else if (level == -2) {
-            UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You can't login to this library because you've been banned." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            error.tag = 2;
-            [error show];
-            [error release];
-        }
+        } /*
+           else if (level == -2) {
+           UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You can't login to this library because you've been banned." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+           error.tag = 2;
+           [error show];
+           [error release];
+           }*/
     }
 }
 
@@ -299,9 +226,6 @@
             password.text = nil;
             remember.on = NO;
             [username becomeFirstResponder];
-        }
-        else {
-            [self performSelector:@selector(getLibraries) withObject:nil afterDelay:0];
         }
     }
     else {
@@ -321,107 +245,6 @@
                 remember.on = NO;
                 [username becomeFirstResponder];
             }
-        }
-    }
-}
-
-#pragma mark Picker View Data source
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 1;// or the number of vertical "columns" the picker will show...
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if (librariesList!=nil && ([librariesList count] != 0)) {
-        return [librariesList count];
-    }
-    else {
-        return 1;
-    }
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row
-            forComponent:(NSInteger)component {
-    
-    if (librariesList==nil || ([librariesList count] == 0)) {
-        return [NSString stringWithFormat:@"No Libraries found"];
-    }
-    else {
-        return [NSString stringWithFormat:@"%@",[[librariesList objectAtIndex:row] objectForKey:@"name"]];
-    }
-}
-
-#pragma mark Picker View Delegate
-
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    if (librariesList!=nil && ([librariesList count] != 0)) {
-        baseURL = [[librariesList objectAtIndex:row] objectForKey:@"url"];
-        baseName = [[librariesList objectAtIndex:row] objectForKey:@"name"];
-    }
-    else {
-        baseURL = @"";
-        baseName = @"";
-    }
-    
-    NSUserDefaults *rememberedLibsCheck = [NSUserDefaults standardUserDefaults];
-    NSString *libName = [[librariesList objectAtIndex:row] objectForKey:@"name"];
-    NSDictionary *rememberedCredentials = [[rememberedLibsCheck objectForKey:@"rememberedLibs"] objectForKey:libName];
-    if (rememberedCredentials && ([rememberedCredentials count] != 0)) {
-        username.text = [rememberedCredentials objectForKey:@"username"];
-        password.text = [rememberedCredentials objectForKey:@"password"];
-        remember.on = YES;
-    }
-    else {
-        username.text = nil;
-        password.text = nil;
-        remember.on = NO;
-    }
-}
-
-#pragma mark - Seque
-
--(IBAction)showList:(id)sender
-{
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [self performSegueWithIdentifier:@"libList" sender:sender];
-    }
-    else {
-        sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil  otherButtonTitles:nil];
-        [sheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
-        
-        CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
-        libraries = [[UIPickerView alloc] initWithFrame:pickerFrame];
-        libraries.showsSelectionIndicator = YES;
-        libraries.dataSource = self;
-        libraries.delegate = self;
-        [sheet addSubview:libraries];
-        [libraries release];
-        [sheet showInView:self.view];
-        [sheet setBounds:CGRectMake(0, 0, 320, 485)];
-        [sheet release];
-        
-        UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Close"]];
-        closeButton.momentary = YES;
-        closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
-        closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
-        closeButton.tintColor = [UIColor blackColor];
-        [closeButton addTarget:self action:@selector(dismissActionSheet) forControlEvents:UIControlEventValueChanged];
-        [sheet addSubview:closeButton];
-        [closeButton release];
-    }
-}
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"libList"]) {
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            PickerViewPopover *dvc = [(UIStoryboardPopoverSegue*)segue destinationViewController];
-            popover = [(UIStoryboardPopoverSegue *)segue popoverController];
-            dvc.popover = popover;
-            dvc.delegate = self;
-            dvc.saveLib = YES;
         }
     }
 }

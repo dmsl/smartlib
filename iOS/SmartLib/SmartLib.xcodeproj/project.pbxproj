@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D9982471839105F00A1BB7A /* SmartLibLibraryMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9982461839105F00A1BB7A /* SmartLibLibraryMenuController.m */; };
+		0D99824A18393A4800A1BB7A /* SelectLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D99824918393A4800A1BB7A /* SelectLibraryViewController.m */; };
+		0D99825318393C0A00A1BB7A /* LibraryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D99825218393C0A00A1BB7A /* LibraryCell.m */; };
+		0DB626271839C2C7003346F1 /* CreateLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB626261839C2C7003346F1 /* CreateLibraryViewController.m */; };
+		0DB8B7E0183976A9006EA233 /* Library.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB8B7DF183976A9006EA233 /* Library.m */; };
+		0DFA267218354718003D1194 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DFA267118354718003D1194 /* Default-568h@2x.png */; };
 		5E60139615C4165900224CB5 /* BooksGiven.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E60139515C4165900224CB5 /* BooksGiven.m */; };
 		5E60139A15C4166800224CB5 /* BooksTaken.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E60139915C4166800224CB5 /* BooksTaken.m */; };
 		5E6013A515C4436F00224CB5 /* IncomingRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6013A415C4436F00224CB5 /* IncomingRequests.m */; };
@@ -78,10 +84,20 @@
 		C0FD4ADC15D944ED00B04E39 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FD4ADB15D944ED00B04E39 /* Default-Portrait~ipad.png */; };
 		C0FD4ADE15D944F200B04E39 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FD4ADD15D944F200B04E39 /* Default-Portrait@2x~ipad.png */; };
 		C0FD4AE015D944F500B04E39 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FD4ADF15D944F500B04E39 /* Default-Landscape~ipad.png */; };
-		C0FD7F8E15E7FDCD00F99A81 /* PickerViewPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FD7F8D15E7FDCD00F99A81 /* PickerViewPopover.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D9982451839105F00A1BB7A /* SmartLibLibraryMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartLibLibraryMenuController.h; sourceTree = "<group>"; };
+		0D9982461839105F00A1BB7A /* SmartLibLibraryMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartLibLibraryMenuController.m; sourceTree = "<group>"; };
+		0D99824818393A4800A1BB7A /* SelectLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLibraryViewController.h; sourceTree = "<group>"; };
+		0D99824918393A4800A1BB7A /* SelectLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLibraryViewController.m; sourceTree = "<group>"; };
+		0D99825118393C0A00A1BB7A /* LibraryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryCell.h; sourceTree = "<group>"; };
+		0D99825218393C0A00A1BB7A /* LibraryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryCell.m; sourceTree = "<group>"; };
+		0DB626251839C2C7003346F1 /* CreateLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateLibraryViewController.h; sourceTree = "<group>"; };
+		0DB626261839C2C7003346F1 /* CreateLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateLibraryViewController.m; sourceTree = "<group>"; };
+		0DB8B7DE183976A9006EA233 /* Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Library.h; sourceTree = "<group>"; };
+		0DB8B7DF183976A9006EA233 /* Library.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Library.m; sourceTree = "<group>"; };
+		0DFA267118354718003D1194 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5E60139415C4165900224CB5 /* BooksGiven.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksGiven.h; sourceTree = "<group>"; };
 		5E60139515C4165900224CB5 /* BooksGiven.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooksGiven.m; sourceTree = "<group>"; };
 		5E60139815C4166800224CB5 /* BooksTaken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksTaken.h; sourceTree = "<group>"; };
@@ -528,8 +544,6 @@
 		C0FD4ADB15D944ED00B04E39 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		C0FD4ADD15D944F200B04E39 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		C0FD4ADF15D944F500B04E39 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
-		C0FD7F8C15E7FDCC00F99A81 /* PickerViewPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewPopover.h; sourceTree = "<group>"; };
-		C0FD7F8D15E7FDCD00F99A81 /* PickerViewPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewPopover.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -559,6 +573,7 @@
 		C0F59C4015BCA2DB00B0BBE2 = {
 			isa = PBXGroup;
 			children = (
+				0DFA267118354718003D1194 /* Default-568h@2x.png */,
 				C0FD4ADF15D944F500B04E39 /* Default-Landscape~ipad.png */,
 				C0FD4ADD15D944F200B04E39 /* Default-Portrait@2x~ipad.png */,
 				C0FD4ADB15D944ED00B04E39 /* Default-Portrait~ipad.png */,
@@ -601,69 +616,77 @@
 		C0F59C5515BCA2DB00B0BBE2 /* SmartLib */ = {
 			isa = PBXGroup;
 			children = (
-				C041565315BDEC78003E8160 /* MainStoryboard_iPad.storyboard */,
-				C0F59CB215BCA38300B0BBE2 /* MainStoryboard_iPhone.storyboard */,
+				5EDBDF0F15BDDF1E007D0B94 /* ActivitiesForBookCell.h */,
+				5EDBDF1015BDDF1E007D0B94 /* ActivitiesForBookCell.m */,
 				C0F59C7415BCA34D00B0BBE2 /* AppDelegate.h */,
 				C0F59C7515BCA34D00B0BBE2 /* AppDelegate.m */,
-				C08FA26915BCB9760081FA83 /* Reachability.h */,
-				C08FA26A15BCB9770081FA83 /* Reachability.m */,
-				C0CCDCDD15C20BCF00F307C9 /* ConnectivityChecks.h */,
-				C0CCDCDE15C20BD000F307C9 /* ConnectivityChecks.m */,
 				C0F59C7615BCA34D00B0BBE2 /* AppPreferencesViewController.h */,
 				C0F59C7715BCA34D00B0BBE2 /* AppPreferencesViewController.m */,
 				C0F59C7815BCA34D00B0BBE2 /* Book.h */,
 				C0F59C7915BCA34D00B0BBE2 /* Book.m */,
 				C0A486BD15BF5BC60034845D /* BookActions.h */,
 				C0A486BE15BF5BC60034845D /* BookActions.m */,
-				C0F59C8215BCA37000B0BBE2 /* JSONParser.h */,
-				C0F59C8315BCA37000B0BBE2 /* JSONParser.m */,
-				C0F59C8C15BCA37000B0BBE2 /* NavigationViewController.h */,
-				C0F59C8D15BCA37000B0BBE2 /* NavigationViewController.m */,
-				C0F59C9015BCA37000B0BBE2 /* RootViewController.h */,
-				C0F59C9115BCA37000B0BBE2 /* RootViewController.m */,
-				C0F59C8E15BCA37000B0BBE2 /* RegisterViewController.h */,
-				C0F59C8F15BCA37000B0BBE2 /* RegisterViewController.m */,
-				C0FD7F8C15E7FDCC00F99A81 /* PickerViewPopover.h */,
-				C0FD7F8D15E7FDCD00F99A81 /* PickerViewPopover.m */,
-				C0F59C8815BCA37000B0BBE2 /* LoginViewController.h */,
-				C0F59C8915BCA37000B0BBE2 /* LoginViewController.m */,
-				C0F59C9C15BCA37000B0BBE2 /* SmartLibNavigationController.h */,
-				C0F59C9D15BCA37000B0BBE2 /* SmartLibNavigationController.m */,
-				C0F59C9A15BCA37000B0BBE2 /* SmartLibMenuViewController.h */,
-				C0F59C9B15BCA37000B0BBE2 /* SmartLibMenuViewController.m */,
-				C0F59C8615BCA37000B0BBE2 /* LibraryDetailsViewController.h */,
-				C0F59C8715BCA37000B0BBE2 /* LibraryDetailsViewController.m */,
+				C0F59C7A15BCA34D00B0BBE2 /* BookDetailsViewController.h */,
+				C0F59C7B15BCA34D00B0BBE2 /* BookDetailsViewController.m */,
+				5E60139415C4165900224CB5 /* BooksGiven.h */,
+				5E60139515C4165900224CB5 /* BooksGiven.m */,
+				5E60139815C4166800224CB5 /* BooksTaken.h */,
+				5E60139915C4166800224CB5 /* BooksTaken.m */,
+				C0CCDCDD15C20BCF00F307C9 /* ConnectivityChecks.h */,
+				C0CCDCDE15C20BD000F307C9 /* ConnectivityChecks.m */,
+				0DB626251839C2C7003346F1 /* CreateLibraryViewController.h */,
+				0DB626261839C2C7003346F1 /* CreateLibraryViewController.m */,
 				C0F59C7C15BCA34D00B0BBE2 /* EnterBookViewController.h */,
 				C0F59C8115BCA37000B0BBE2 /* EnterBookViewController.m */,
+				5E6013A315C4436E00224CB5 /* IncomingRequests.h */,
+				5E6013A415C4436F00224CB5 /* IncomingRequests.m */,
+				C0F59C8215BCA37000B0BBE2 /* JSONParser.h */,
+				C0F59C8315BCA37000B0BBE2 /* JSONParser.m */,
+				0DB8B7DE183976A9006EA233 /* Library.h */,
+				0DB8B7DF183976A9006EA233 /* Library.m */,
+				0D99825118393C0A00A1BB7A /* LibraryCell.h */,
+				0D99825218393C0A00A1BB7A /* LibraryCell.m */,
+				C0F59C8615BCA37000B0BBE2 /* LibraryDetailsViewController.h */,
+				C0F59C8715BCA37000B0BBE2 /* LibraryDetailsViewController.m */,
+				C0F59C8815BCA37000B0BBE2 /* LoginViewController.h */,
+				C0F59C8915BCA37000B0BBE2 /* LoginViewController.m */,
+				C041565315BDEC78003E8160 /* MainStoryboard_iPad.storyboard */,
+				C0F59CB215BCA38300B0BBE2 /* MainStoryboard_iPhone.storyboard */,
+				5EDBDF0715BDD54F007D0B94 /* MyBookResultsCell.h */,
+				5EDBDF0815BDD54F007D0B94 /* MyBookResultsCell.m */,
+				C0F59C8A15BCA37000B0BBE2 /* MyBooksViewController.h */,
+				C0F59C8B15BCA37000B0BBE2 /* MyBooksViewController.m */,
+				C0F59C8C15BCA37000B0BBE2 /* NavigationViewController.h */,
+				C0F59C8D15BCA37000B0BBE2 /* NavigationViewController.m */,
+				5E6013A715C457BD00224CB5 /* OutgoingRequests.h */,
+				5E6013A815C457BD00224CB5 /* OutgoingRequests.m */,
+				C08FA26915BCB9760081FA83 /* Reachability.h */,
+				C08FA26A15BCB9770081FA83 /* Reachability.m */,
+				C0F59C8E15BCA37000B0BBE2 /* RegisterViewController.h */,
+				C0F59C8F15BCA37000B0BBE2 /* RegisterViewController.m */,
+				C0F59C9015BCA37000B0BBE2 /* RootViewController.h */,
+				C0F59C9115BCA37000B0BBE2 /* RootViewController.m */,
 				C0F59C9415BCA37000B0BBE2 /* ScannedBooksViewController.h */,
 				C0F59C9515BCA37000B0BBE2 /* ScannedBooksViewController.m */,
 				C0F59C9615BCA37000B0BBE2 /* SearchBooksViewController.h */,
 				C0F59C9715BCA37000B0BBE2 /* SearchBooksViewController.m */,
 				C0F59C9815BCA37000B0BBE2 /* SearchViewResultsCell.h */,
 				C0F59C9915BCA37000B0BBE2 /* SearchViewResultsCell.m */,
-				C0F59C7A15BCA34D00B0BBE2 /* BookDetailsViewController.h */,
-				C0F59C7B15BCA34D00B0BBE2 /* BookDetailsViewController.m */,
-				C0F59C8A15BCA37000B0BBE2 /* MyBooksViewController.h */,
-				C0F59C8B15BCA37000B0BBE2 /* MyBooksViewController.m */,
-				5EDBDF0715BDD54F007D0B94 /* MyBookResultsCell.h */,
-				5EDBDF0815BDD54F007D0B94 /* MyBookResultsCell.m */,
-				C0F4678B15C4A37000AAE8EF /* UserActionsViewController.h */,
-				C0F4678C15C4A37000AAE8EF /* UserActionsViewController.m */,
-				C0F59C9E15BCA37000B0BBE2 /* TopBooksViewController.h */,
-				C0F59C9F15BCA37000B0BBE2 /* TopBooksViewController.m */,
-				5EDBDF0F15BDDF1E007D0B94 /* ActivitiesForBookCell.h */,
-				5EDBDF1015BDDF1E007D0B94 /* ActivitiesForBookCell.m */,
-				5E60139415C4165900224CB5 /* BooksGiven.h */,
-				5E60139515C4165900224CB5 /* BooksGiven.m */,
-				5E60139815C4166800224CB5 /* BooksTaken.h */,
-				5E60139915C4166800224CB5 /* BooksTaken.m */,
-				5E6013A315C4436E00224CB5 /* IncomingRequests.h */,
-				5E6013A415C4436F00224CB5 /* IncomingRequests.m */,
-				5E6013A715C457BD00224CB5 /* OutgoingRequests.h */,
-				5E6013A815C457BD00224CB5 /* OutgoingRequests.m */,
+				0D99824818393A4800A1BB7A /* SelectLibraryViewController.h */,
+				0D99824918393A4800A1BB7A /* SelectLibraryViewController.m */,
 				C0B2673315C758BB00CE7130 /* SendMessageViewController.h */,
 				C0B2673415C758BB00CE7130 /* SendMessageViewController.m */,
+				0D9982451839105F00A1BB7A /* SmartLibLibraryMenuController.h */,
+				0D9982461839105F00A1BB7A /* SmartLibLibraryMenuController.m */,
+				C0F59C9A15BCA37000B0BBE2 /* SmartLibMenuViewController.h */,
+				C0F59C9B15BCA37000B0BBE2 /* SmartLibMenuViewController.m */,
+				C0F59C9C15BCA37000B0BBE2 /* SmartLibNavigationController.h */,
+				C0F59C9D15BCA37000B0BBE2 /* SmartLibNavigationController.m */,
 				C0F59C5615BCA2DB00B0BBE2 /* Supporting Files */,
+				C0F59C9E15BCA37000B0BBE2 /* TopBooksViewController.h */,
+				C0F59C9F15BCA37000B0BBE2 /* TopBooksViewController.m */,
+				C0F4678B15C4A37000AAE8EF /* UserActionsViewController.h */,
+				C0F4678C15C4A37000AAE8EF /* UserActionsViewController.m */,
 			);
 			path = SmartLib;
 			sourceTree = "<group>";
@@ -1132,7 +1155,7 @@
 		C0F59C4215BCA2DB00B0BBE2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "University of Cyprus";
 			};
 			buildConfigurationList = C0F59C4515BCA2DB00B0BBE2 /* Build configuration list for PBXProject "SmartLib" */;
@@ -1163,6 +1186,7 @@
 				C0F59CC415BCA3A600B0BBE2 /* 19-gear.png in Resources */,
 				C0F59CC515BCA3A600B0BBE2 /* 96-book.png in Resources */,
 				C0F59CC615BCA3A600B0BBE2 /* 112-group.png in Resources */,
+				0DFA267218354718003D1194 /* Default-568h@2x.png in Resources */,
 				C0F59CC715BCA3A600B0BBE2 /* 158-wrench-2.png in Resources */,
 				C0F59CC815BCA3A600B0BBE2 /* Computer Data 01.caf in Resources */,
 				C0F59CC915BCA3A600B0BBE2 /* logo-iPad.png in Resources */,
@@ -1199,8 +1223,11 @@
 				C0F59C7D15BCA34D00B0BBE2 /* AppDelegate.m in Sources */,
 				C0F59C7E15BCA34D00B0BBE2 /* AppPreferencesViewController.m in Sources */,
 				C0F59C7F15BCA34D00B0BBE2 /* Book.m in Sources */,
+				0DB8B7E0183976A9006EA233 /* Library.m in Sources */,
 				C0F59C8015BCA34D00B0BBE2 /* BookDetailsViewController.m in Sources */,
 				C0F59CA015BCA37000B0BBE2 /* EnterBookViewController.m in Sources */,
+				0D99824A18393A4800A1BB7A /* SelectLibraryViewController.m in Sources */,
+				0D9982471839105F00A1BB7A /* SmartLibLibraryMenuController.m in Sources */,
 				C0F59CA115BCA37000B0BBE2 /* JSONParser.m in Sources */,
 				C0F59CA315BCA37000B0BBE2 /* LibraryDetailsViewController.m in Sources */,
 				C0F59CA415BCA37000B0BBE2 /* LoginViewController.m in Sources */,
@@ -1212,6 +1239,7 @@
 				C0F59CAB15BCA37000B0BBE2 /* SearchBooksViewController.m in Sources */,
 				C0F59CAC15BCA37000B0BBE2 /* SearchViewResultsCell.m in Sources */,
 				C0F59CAD15BCA37000B0BBE2 /* SmartLibMenuViewController.m in Sources */,
+				0DB626271839C2C7003346F1 /* CreateLibraryViewController.m in Sources */,
 				C0F59CAE15BCA37000B0BBE2 /* SmartLibNavigationController.m in Sources */,
 				C0F59CAF15BCA37000B0BBE2 /* TopBooksViewController.m in Sources */,
 				C08FA26B15BCB9770081FA83 /* Reachability.m in Sources */,
@@ -1220,12 +1248,12 @@
 				C0A486BF15BF5BC60034845D /* BookActions.m in Sources */,
 				C0CCDCDF15C20BD000F307C9 /* ConnectivityChecks.m in Sources */,
 				5E60139615C4165900224CB5 /* BooksGiven.m in Sources */,
+				0D99825318393C0A00A1BB7A /* LibraryCell.m in Sources */,
 				5E60139A15C4166800224CB5 /* BooksTaken.m in Sources */,
 				5E6013A515C4436F00224CB5 /* IncomingRequests.m in Sources */,
 				5E6013A915C457BD00224CB5 /* OutgoingRequests.m in Sources */,
 				C0F4678D15C4A37000AAE8EF /* UserActionsViewController.m in Sources */,
 				C0B2673515C758BB00CE7130 /* SendMessageViewController.m in Sources */,
-				C0FD7F8E15E7FDCD00F99A81 /* PickerViewPopover.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1263,7 +1291,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Demetris Zeinalipour (HY45H9826Z)";
 				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
@@ -1274,12 +1308,17 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FB9CE2C3-A106-4156-8BF9-E4AB6DF345F0";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1288,20 +1327,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Demetris Zeinalipour";
 				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "67D3B845-C9CD-423E-9ED4-583F53971224";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1310,6 +1359,8 @@
 		C0F59C6D15BCA2DC00B0BBE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartLib/SmartLib-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
@@ -1321,6 +1372,7 @@
 					"\"$(SRCROOT)/Google API\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1329,6 +1381,8 @@
 		C0F59C6E15BCA2DC00B0BBE2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartLib/SmartLib-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
@@ -1340,6 +1394,7 @@
 					"\"$(SRCROOT)/Google API\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

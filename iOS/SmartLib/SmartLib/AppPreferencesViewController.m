@@ -87,7 +87,7 @@
         vibrate.on = DECODE_SWITCH_VALUE([preferences objectForKey:@"vibrate"]);
         scanning1Donly.on = DECODE_SWITCH_VALUE([preferences objectForKey:@"scanning1Donly"]);
     }
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  

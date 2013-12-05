@@ -43,7 +43,8 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 
-#define MASTER_URL @"http://www.cs.ucy.ac.cy/projects/smartLib"
+#define HOST_NAME "www.cs.ucy.ac.cy"
+#define MASTER_URL @"http://www.thechristou.com/smartLib/"
 #define GET_LIBRARIES_PHP @"/MASTER/getLibraries.php"
 #define LOGIN_PHP @"/authenticate.php"
 #define REGISTER_PHP @"/SQLregister.php"
@@ -64,6 +65,9 @@
 #define POPULAR_BOOKS_PHP @"/popularBooks.php"
 #define REPLY_REQUEST_PHP @"/replyToBookRequest.php"
 #define SEND_MESSAGE_PHP @"/sendMessage.php"
-
+#define CREATE_LIB_PHP @"/createLib.php"
+#define GET_USER_LIBRARIES_PHP @"/getUserLibraries.php"
+#define SEARCH_LIBRARIES_PHP @"/searchLib.php"
+#define SEARCH_USER_LIBRARIES_PHP @"/searchUserLib.php"
 
 #endif

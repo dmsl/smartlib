@@ -67,7 +67,7 @@
     UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     [items addObject:button];
     [button release];
-    button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonItemStylePlain target:message action:@selector(resignFirstResponder)];
+    //button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonItemStylePlain target:message action:@selector(resignFirstResponder)];
     button.title = @"Done";
     button.tintColor = [UIColor blueColor];
     [items addObject:button];

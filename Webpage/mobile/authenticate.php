@@ -34,14 +34,12 @@ Fax: +357-22-892701
 
 */
 
-
 //CHECK FOR MOBILE
 session_start();
 require_once("../CONFIG.php");
 
 //Connect to database
 include ('../dbConnect.php');
-
 
 $_SESSION['isMobileDevice'] = 0;
 
@@ -56,7 +54,6 @@ $password = $_POST['password'];
 if ($device == "android" || $device == "iOS") {
     $_SESSION['isMobileDevice'] = 1;
 }
-
 
 //Check if user hasnt provided credencials
 if ($username == "" || $password == ""

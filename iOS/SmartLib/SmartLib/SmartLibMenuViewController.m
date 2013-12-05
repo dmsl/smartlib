@@ -17,7 +17,7 @@
  *  @file SmartLibMenuViewController.m
  *  @brief Application's main menu.
  *
- *  @author Chrysovalantis Anastasiou
+ *  @author Chrysovalantis Anastasiou, Aphrodite Christou
  *  @affiliation
  *      Data Management Systems Laboratory
  *      Dept. of Computer Science
@@ -61,9 +61,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    welcome.text = [NSString stringWithFormat:@"Welcome to SmartLib, %@", [[defaults objectForKey:@"user"]               objectForKey:@"name"]];
-	// Do any additional setup after loading the view.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults]; //ME
+    welcome.text = [NSString stringWithFormat:@"Lib: %@",[[defaults objectForKey:@"currentLib"] objectForKey:@"name"]];
+    // Do any additional setup after loading the view.
 }
 
 -(void)viewDidUnload
@@ -91,28 +91,27 @@
     }
 }
 
+-(IBAction)mainMenu:(id)sender
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     options = nil;
     if (buttonIndex == actionSheet.destructiveButtonIndex) {
         NSUserDefaults *userdef = [NSUserDefaults standardUserDefaults];
-        if (![userdef boolForKey:@"rememberThisLib"]) {
-//            [[userdef objectForKey:@"userCredentials"] removeAllObjects];
+        if (![userdef boolForKey:@"rememberThis"]) {
+            //            [[userdef objectForKey:@"userCredentials"] removeAllObjects];
             [userdef removeObjectForKey:@"userCredentials"];
-//            [[userdef objectForKey:@"user"] removeAllObjects];
+            //            [[userdef objectForKey:@"user"] removeAllObjects];
             [userdef removeObjectForKey:@"user"];
-            [userdef removeObjectForKey:@"baseURL"];
-            NSString *curLibName = [[userdef objectForKey:@"currentLib"] objectForKey:@"name"];
-            if ([userdef objectForKey:@"rememberedLibs"] && [[userdef objectForKey:@"rememberedLibs"] objectForKey:curLibName]) {
-                NSMutableDictionary *rememberedLibs = [[userdef objectForKey:@"rememberedLibs"] mutableCopy];
-                [rememberedLibs removeObjectForKey:curLibName];
-                [userdef setObject:rememberedLibs forKey:@"rememberedLibs"];
-                [rememberedLibs release];
-            }
             [userdef removeObjectForKey:@"currentLib"];
-            [userdef setBool:NO forKey:@"rememberThisLib"];
+            //[userdef removeObjectForKey:@"libraries"];
+            [userdef setBool:NO forKey:@"rememberThis"];
         }
-        [userdef removeObjectForKey:@"userBooks"];
+        //[userdef removeObjectForKey:@"userBooks"];
+        [userdef removeObjectForKey:@"userLib"];
         [userdef setBool:NO forKey:@"session"];
         [userdef synchronize];
         [self performSegueWithIdentifier:@"logout" sender:self];

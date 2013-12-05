@@ -1168,6 +1168,16 @@ public final class CaptureActivity extends SherlockActivity implements
 
 			parameters.add(new BasicNameValuePair("isbn", data[0].ISBN));
 
+            ///////////////////AGRIDIOTIS///////////////
+
+
+
+           parameters
+                   .add(new BasicNameValuePair("libid", app.library.id));
+
+
+
+
 			// Execute PHP Script
 			String resultStr = App.executePHPScript(
 					app.getLibrary_stateOfBook_URL(), parameters);
@@ -1555,7 +1565,18 @@ public final class CaptureActivity extends SherlockActivity implements
 			parameters
 					.add(new BasicNameValuePair("username", app.getUsername()));
 
-			// SUMMER CHANGED from i to 0
+
+
+            ///////////////////AGRIDIOTIS///////////////
+
+
+
+            parameters
+                  .add(new BasicNameValuePair("libid", app.library.id));
+
+
+
+            // SUMMER CHANGED from i to 0
 			parameters.add(new BasicNameValuePair("isbn", isbns[0]));
 
 			// Execute PHP Script

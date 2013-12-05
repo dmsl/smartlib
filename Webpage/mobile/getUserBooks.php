@@ -39,6 +39,7 @@ $_SESSION['isMobileDevice'] = 0;
 $device = $_REQUEST['device'];
 $pUsername = $_REQUEST['username'];
 $pKey = $_REQUEST['mykey'];
+$libId = isset($_REQUEST["libid"]) ? ((int)$_REQUEST["libid"]) : 0;
 
 require_once("../CONFIG.php");
 $mykey = _MY_KEY;
@@ -76,7 +77,7 @@ if ($_SESSION['isMobileDevice']) {
     //Inform user about his relation with the book
     findUserID($pUsername);
 
-    printUserBooks();
+    printUserBooks($libId);
 
 }
 
@@ -100,7 +101,7 @@ function findUserID($pUser)
 }
 
 
-function printUserBooks()
+function printUserBooks($libId)
 {
 
     /*
@@ -113,11 +114,15 @@ function printUserBooks()
 
      * */
 
-    $queryGetUserBooks = sprintf("SELECT BI.isbn, BI.title, BI.authors, BI.publishedYear, " .
-            " BI.pageCount, B.dateOfInsert, BI.imgURL, BI.lang, B.status"
-            . " FROM SMARTLIB_BOOK_INFO BI, SMARTLIB_BOOK B WHERE BI.BI_ID=B.BI_ID AND B.U_ID='%s' ORDER BY BI.title",
-        $_SESSION['UserID']);
-
+    $sql = sprintf("SELECT L.id as libid, U.username as borrower, L.name as libname, BI.isbn, BI.title, BI.authors, BI.publishedYear, BI.pageCount, B.dateOfInsert, BI.imgURL, BI.lang, B.lib_id, B.status 
+		FROM SMARTLIB_BOOK_INFO BI 
+			left join SMARTLIB_BOOK B on BI.BI_ID=B.BI_ID 
+			left join SMARTLIB_LIBRARY L ON B.lib_id = L.id 
+			left join SMARTLIB_BORROWS R ON B.b_id = R.b_id 
+			left join SMARTLIB_USER U ON R.u_id = U.U_ID 
+		WHERE B.U_ID='%s'", $_SESSION['UserID']);
+    $queryGetUserBooks = $libId > 0 ? sprintf("%s AND B.lib_id='%d'", $sql, $libId) : $sql;
+    $queryGetUserBooks .= "ORDER BY BI.title";
 
     //Find Unique ID of Book Info
     $result = mysql_query($queryGetUserBooks) or dbError(mysql_error());
@@ -135,8 +140,9 @@ function printUserBooks()
     );
 
 
-    while ($row = mysql_fetch_assoc($result)) {
-        $row_set[] = $row;
+    while ($row = mysql_fetch_assoc($result)) 
+	{
+		$row_set[] = $row;
     }
     echo json_encode($row_set);
 

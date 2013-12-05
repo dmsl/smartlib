@@ -60,8 +60,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+        
 	// Do any additional setup after loading the view.
-    
+    /*
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"baseURL"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"libraries"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"rememberThis"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"currentLib"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userCredentials"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"user"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userBooks"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"session"];
+    */
+    //NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+
     self.view.hidden = YES;
     connectivityCheckStarted = NO;
     
@@ -102,7 +114,7 @@
 
 -(void)receivedResponse
 {
-    NSLog(@"%d",[connectivityAlert retainCount]);
+    //NSLog(@"%d",[connectivityAlert retainCount]);
     [connectivityAlert dismissWithClickedButtonIndex:-1 animated:YES];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     NSLog(@"Connectivity Status is: %d",connectivityStatus);
