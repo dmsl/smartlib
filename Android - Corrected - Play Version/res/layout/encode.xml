@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+ This file is part of SmartLib Project.
+
+    SmartLib is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SmartLib is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SmartLib.  If not, see <http://www.gnu.org/licenses/>.
+    
+    
+	Author: Paschalis Mpeis
+
+	Affiliation:
+	Data Management Systems Laboratory 
+	Dept. of Computer Science 
+	University of Cyprus 
+	P.O. Box 20537 
+	1678 Nicosia, CYPRUS 
+	Web: http://dmsl.cs.ucy.ac.cy/
+	Email: dmsl@cs.ucy.ac.cy
+	Tel: +357-22-892755
+	Fax: +357-22-892701
+    
+    
+    -->
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:fillViewport="true"
+              android:background="@color/encode_view"
+              android:orientation="vertical"
+              android:gravity="center">
+
+    <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="center"/>
+
+    <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center">
+
+        <TextView
+                android:id="@+id/contents_text_view"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:textColor="@color/contents_text"
+                android:textSize="18sp"
+                android:paddingBottom="8dip"
+                android:paddingLeft="8dip"
+                android:paddingRight="8dip"/>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="EclipseModuleManager" forced_jdk="true">
+    <conelement value="com.android.ide.eclipse.adt.DEPENDENCIES" />
+    <src_description expected_position="1">
+      <src_folder value="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK" expected_position="0" />
+      <src_folder value="com.android.ide.eclipse.adt.LIBRARIES" expected_position="1" />
+      <src_folder value="file://$MODULE_DIR$/libs/LayoutLibrary/src" expected_position="2" />
+      <src_folder value="file://$MODULE_DIR$/libs/LayoutLibrary/gen" expected_position="3" />
+    </src_description>
+  </component>
+  <component name="FacetManager">
+    <facet type="android" name="Android">
+      <configuration>
+        <option name="GEN_FOLDER_RELATIVE_PATH_APT" value="/libs/LayoutLibrary/gen" />
+        <option name="GEN_FOLDER_RELATIVE_PATH_AIDL" value="/libs/LayoutLibrary/gen" />
+        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/libs/LayoutLibrary/AndroidManifest.xml" />
+        <option name="RES_FOLDER_RELATIVE_PATH" value="/libs/LayoutLibrary/res" />
+        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/libs/LayoutLibrary/assets" />
+        <option name="LIBS_FOLDER_RELATIVE_PATH" value="/libs/LayoutLibrary/libs" />
+        <option name="LIBRARY_PROJECT" value="true" />
+        <resOverlayFolders>
+          <path>/libs/LayoutLibrary/res-overlay</path>
+        </resOverlayFolders>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/libs/LayoutLibrary/bin/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/libs/LayoutLibrary">
+      <sourceFolder url="file://$MODULE_DIR$/libs/LayoutLibrary/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/libs/LayoutLibrary/gen" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="Android 4.0.3 Platform" jdkType="Android SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="com.android.ide.eclipse.adt.DEPENDENCIES" level="application" />
+  </component>
+</module>
+

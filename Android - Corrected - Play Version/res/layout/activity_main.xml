@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+ This file is part of SmartLib Project.
+
+    SmartLib is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SmartLib is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SmartLib.  If not, see <http://www.gnu.org/licenses/>.
+    
+    
+	Author: Paschalis Mpeis
+
+	Affiliation:
+	Data Management Systems Laboratory 
+	Dept. of Computer Science 
+	University of Cyprus 
+	P.O. Box 20537 
+	1678 Nicosia, CYPRUS 
+	Web: http://dmsl.cs.ucy.ac.cy/
+	Email: dmsl@cs.ucy.ac.cy
+	Tel: +357-22-892755
+	Fax: +357-22-892701
+    
+    
+    -->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:overScrollMode="ifContentScrolls">
+
+    <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <android.support.v7.widget.Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"/>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="20"
+                android:orientation="vertical">
+
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                <!-- SUMMER CHANGED -->
+                <Button
+                        android:id="@+id/buttonMainInsertBook"
+                        style="@style/mainActivityButtons"
+                        android:layout_width="fill_parent"
+                        android:drawableRight="@drawable/ic_menu_camera"
+                        android:text="@string/insertBook"/>
+
+                <Button
+                        android:id="@+id/buttonMainBookLentBook"
+                        style="@style/mainActivityButtons"
+                        android:layout_width="fill_parent"
+                        android:drawableRight="@drawable/ic_menu_forward"
+                        android:text="@string/lentOrReturn"/>
+
+                <Button
+                        android:id="@+id/buttonMainBookSearch"
+                        style="@style/mainActivityButtons"
+                        android:layout_width="fill_parent"
+                        android:drawableRight="@drawable/ic_menu_search"
+                        android:text="@string/bookSearch"/>
+
+                <Button
+                        android:id="@+id/buttonMainPopularBooks"
+                        style="@style/mainActivityButtons"
+                        android:layout_width="fill_parent"
+                        android:drawableRight="@drawable/ic_menu_star"
+                        android:text="@string/latestAdditions"/>
+
+                <Button
+                        android:id="@+id/buttonMainMyBooks"
+                        style="@style/mainActivityButtons"
+                        android:layout_width="fill_parent"
+                        android:drawableRight="@drawable/ic_menu_home"
+                        android:text="@string/myBooks"/>
+                <!-- SUMMER REMOVED -->
+                <Button
+                        android:id="@+id/buttonMainActivities"
+                        style="@style/mainActivityButtons"
+                        android:layout_width="fill_parent"
+                        android:drawableRight="@drawable/ic_menu_notifications"
+                        android:text="@string/activities"
+                        android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal">
+
+                <ImageView
+                        android:id="@+id/imageViewLibraryLogo"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:maxHeight="100dp"
+                        android:maxWidth="100dp"
+                        android:src="@drawable/default_library"/>
+
+                <TextView
+                        android:id="@+id/textViewLibraryLocation"
+                        style="@style/titleInPicture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/imageViewLibraryLogo"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:text="Location"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#ff000000"/>
+
+                <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="100dp"
+                        android:background="#66ffffff"
+                        android:orientation="vertical">
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <android.support.v7.widget.Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"/>
+
+    </LinearLayout>
+
+</ScrollView>

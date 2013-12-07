@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+ This file is part of SmartLib Project.
+
+    SmartLib is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SmartLib is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SmartLib.  If not, see <http://www.gnu.org/licenses/>.
+    
+    
+	Author: Paschalis Mpeis
+
+	Affiliation:
+	Data Management Systems Laboratory 
+	Dept. of Computer Science 
+	University of Cyprus 
+	P.O. Box 20537 
+	1678 Nicosia, CYPRUS 
+	Web: http://dmsl.cs.ucy.ac.cy/
+	Email: dmsl@cs.ucy.ac.cy
+	Tel: +357-22-892755
+	Fax: +357-22-892701
+    
+    
+    -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_gravity="top|center_horizontal"
+              android:layout_margin="10dp"
+              android:clickable="false"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+    <TextView
+            android:id="@+id/TextViewLibraryName"
+            style="@style/titleLibraryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="0dp"
+            android:text="LibName"
+            android:textSize="25sp"/>
+
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <!-- CHECK: was below: android:layout_weight="0" FIXME scale of image-->
+
+        <ImageView
+                android:id="@+id/imageViewLibraryLogo"
+                android:layout_width="130dp"
+                android:layout_height="105dp"
+                android:adjustViewBounds="false"
+                android:clickable="false"
+                android:src="@drawable/default_library"/>
+
+        <TextView
+                android:id="@+id/textViewLibraryLocation"
+                style="@style/titleInPicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imageViewLibraryLogo"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="Location"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
